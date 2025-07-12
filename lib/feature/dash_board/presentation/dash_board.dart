@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import '../../case_detection/presentation/case_detection_view.dart';
 import '../../distribution/presentation/view/distribution_view.dart';
 import '../../drawer/presentation/view/drawer.dart';
 import '../../setting/presentation/view/setting.dart';
@@ -34,6 +35,9 @@ class DashboardScreen extends StatelessWidget {
         title: 'كشف حالات',
         icon: Icons.description,
         color: Color(0xFF4ECDC4),
+        onTap: () {
+          Navigator.pushNamed(context, CaseDetection.routeName);
+        },
       ),
       ServiceItem(
         title: 'بحث ميداني',

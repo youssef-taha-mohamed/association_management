@@ -4,6 +4,7 @@ import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
 import '../../feature/auth/presentation/view/register.dart';
 import '../../feature/auth/presentation/view/reset_password.dart';
+import '../../feature/case_detection/presentation/case_detection_view.dart';
 import '../../feature/dash_board/presentation/dash_board.dart';
 import '../../feature/distribution/presentation/view/distribution_view.dart';
 import '../../feature/parent/home/presentation/home_parents.dart';
@@ -86,13 +87,12 @@ abstract final class AppRouter {
       //       ),
       //     );
       //   });
-      // case CompleteView.routeName:
-      //   return _buildRoute(builder: (context) {
-      //     return BlocProvider(
-      //       create: (context) => RegisterCubit(),
-      //       child: const CompleteView(),
-      //     );
-      //   });
+      case CaseDetection.routeName:
+        return buildRoute(
+          builder: (context) {
+            return const CaseDetection();
+          },
+        );
       // case BlogsView.routeName:
       //   assert(
       //   argument is BlogsViewArguments,
@@ -107,14 +107,14 @@ abstract final class AppRouter {
           builder: (context) => const ForgetPasswordEmailView(),
         );
       case DistributionScreen.routeName:
-        return buildRoute(builder: (context) => const DistributionScreen(),);
+        return buildRoute(builder: (context) => const DistributionScreen());
       case ResetPasswordView.routeName:
-        return buildRoute(builder: (context) => const ResetPasswordView(),);
+        return buildRoute(builder: (context) => const ResetPasswordView());
       case OtpVerificationView.routeName:
         // final arg = argument as Blog?;
-        return buildRoute(builder: (context) => OtpVerificationView(),);
+        return buildRoute(builder: (context) => OtpVerificationView());
       case SettingsScreen.routeName:
-        return buildRoute(builder: (context) => SettingsScreen(),);
+        return buildRoute(builder: (context) => SettingsScreen());
       // case MyTransactionsView.routeName:
       //   return _buildRoute(
       //     builder: (context) => const MyTransactionsView(),

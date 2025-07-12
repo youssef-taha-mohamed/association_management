@@ -8,7 +8,6 @@ import '../../feature/dash_board/presentation/dash_board.dart';
 import '../../feature/parent/home/presentation/home_parents.dart';
 import '../view_model/splash_view_model.dart';
 import '../view_model/state.dart';
-import '../widgets/custom_background.dart';
 import '../widgets/jumping_dots_progress_indicator.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -82,11 +81,12 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          EnhancedIslamicBackground(
-            primaryColor: AppColors.darkGreen,
-            secondaryColor: Colors.white,
-            opacity: 0.1,
-          ),
+          // EnhancedIslamicBackground(
+          //   primaryColor: AppColors.darkGreen,
+          //   secondaryColor: Colors.white,
+          //   opacity: 0.1,
+          // ),
+          Container(color: AppColors.primaryColor),
           Stack(
             children: [
               Column(
@@ -100,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       width: 180,
                       height: 90,
                     ),
-                  )
+                  ),
                 ],
               ),
               Positioned(

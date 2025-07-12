@@ -6,7 +6,6 @@ import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_textfield.dart';
 import '../../../../core/style/app_colors.dart';
 import '../../../../shared/widgets/app_logo.dart';
-import '../../../../shared/widgets/custom_background.dart';
 import '../../../../shared/widgets/custom_language.dart';
 import '../../../../shared/widgets/easy_button.dart';
 import '../../../../shared/widgets/main_text.dart';
@@ -27,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
     text: 'yt48750@gmail.com',
   );
   final TextEditingController _passwordController = TextEditingController(
-    text: 'jfjffiigig'
+    text: 'jfjffiigig',
   );
   final _formKey = GlobalKey<FormState>();
 
@@ -43,27 +42,6 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Stack(
         children: [
-          // Container(
-          //   decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //       begin: Alignment.topCenter,
-          //       end: Alignment.bottomCenter,
-          //       colors: [
-          //         AppColors.darkGreen.withOpacity(0.9),
-          //         AppColors.primaryColor.withOpacity(0.8),
-          //       ],
-          //     ),
-          //   ),
-          //   child: CustomPaint(
-          //     painter: BackgroundPatternPainter(),
-          //     child: Container(),
-          //   ),
-          // ),
-          // EnhancedIslamicBackground(
-          //   primaryColor: AppColors.darkGreen,
-          //   secondaryColor: Colors.white,
-          //   opacity: 0.1,
-          // ),
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
@@ -77,7 +55,7 @@ class _LoginViewState extends State<LoginView> {
                     16.ph,
                     // عنوان الشاشة
                     MainText(
-                      context.l10n.welcome_to_konoz,
+                      context.l10n.welcome,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       textAlign: TextAlign.center,
@@ -114,9 +92,10 @@ class _LoginViewState extends State<LoginView> {
                               MainTextField(
                                 controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
-                                textDirection: context.isArabic
-                                    ? TextDirection.rtl
-                                    : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 label: context.l10n.email_userName,
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
@@ -127,8 +106,8 @@ class _LoginViewState extends State<LoginView> {
                                     return context.l10n.email_validation;
                                   }
                                   if (!RegExp(
-                                          r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                      .hasMatch(value)) {
+                                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+                                  ).hasMatch(value)) {
                                     return context.l10n.email_validation_error;
                                   }
                                   return null;
@@ -140,9 +119,10 @@ class _LoginViewState extends State<LoginView> {
                                 controller: _passwordController,
                                 isPassword: true,
                                 label: context.l10n.password,
-                                textDirection: context.isArabic
-                                    ? TextDirection.rtl
-                                    : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.lock_outline,
                                   color: AppColors.primaryColor,
@@ -153,7 +133,8 @@ class _LoginViewState extends State<LoginView> {
                                   }
                                   if (value.length < 6) {
                                     return context
-                                        .l10n.password_validation_size;
+                                        .l10n
+                                        .password_validation_size;
                                   }
                                   return null;
                                 },
@@ -161,9 +142,10 @@ class _LoginViewState extends State<LoginView> {
 
                               // زر نسيت كلمة المرور
                               Align(
-                                alignment: context.isArabic
-                                    ? Alignment.centerLeft
-                                    : Alignment.centerRight,
+                                alignment:
+                                    context.isArabic
+                                        ? Alignment.centerLeft
+                                        : Alignment.centerRight,
                                 child: TextButton(
                                   style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
@@ -192,7 +174,7 @@ class _LoginViewState extends State<LoginView> {
                                     Navigator.pushNamedAndRemoveUntil(
                                       context,
                                       DashboardScreen.routeName,
-                                          (route) => false,
+                                      (route) => false,
                                     );
                                   }
                                 },
@@ -211,9 +193,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         Text(
                           context.l10n.do_not_have_account,
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
+                          style: TextStyle(fontSize: 16),
                         ),
                         TextButton(
                           onPressed: () {
@@ -247,10 +227,11 @@ class _LoginViewState extends State<LoginView> {
 class BackgroundPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = Colors.white.withOpacity(0.05)
-      ..strokeWidth = 1.0
-      ..style = PaintingStyle.stroke;
+    final Paint paint =
+        Paint()
+          ..color = Colors.white.withOpacity(0.05)
+          ..strokeWidth = 1.0
+          ..style = PaintingStyle.stroke;
 
     // رسم شكل نجمة إسلامية
     void drawIslamicStar(Canvas canvas, Offset center, double size) {
@@ -307,7 +288,11 @@ class BackgroundPatternPainter extends CustomPainter {
       if (i % 2 == 0) {
         borderPath.moveTo(startX, size.height);
         borderPath.quadraticBezierTo(
-            midX, size.height - arcSize / 2, endX, size.height);
+          midX,
+          size.height - arcSize / 2,
+          endX,
+          size.height,
+        );
       }
     }
 

@@ -45,11 +45,11 @@ class _RegisterViewState extends State<RegisterView> {
       body: Stack(
         children: [
           // Islamic Background Pattern (same as login screen)
-          EnhancedIslamicBackground(
-            primaryColor: AppColors.darkGreen,
-            secondaryColor: Colors.white,
-            opacity: 0.1,
-          ),
+          // EnhancedIslamicBackground(
+          //   primaryColor: AppColors.darkGreen,
+          //   secondaryColor: Colors.white,
+          //   opacity: 0.1,
+          // ),
           // Screen Content
           SafeArea(
             child: SingleChildScrollView(
@@ -111,7 +111,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _nameController,
                                 keyboardType: TextInputType.name,
                                 label: context.l10n.full_name,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.person_outline,
                                   color: AppColors.primaryColor,
@@ -128,7 +131,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _userNameController,
                                 keyboardType: TextInputType.name,
                                 label: context.l10n.user_name,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.person_outline,
                                   color: AppColors.primaryColor,
@@ -146,7 +152,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 label: context.l10n.email,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
                                   color: AppColors.primaryColor,
@@ -156,8 +165,8 @@ class _RegisterViewState extends State<RegisterView> {
                                     return context.l10n.email_va;
                                   }
                                   if (!RegExp(
-                                          r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                      .hasMatch(value)) {
+                                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+                                  ).hasMatch(value)) {
                                     return context.l10n.email_err;
                                   }
                                   return null;
@@ -169,7 +178,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _phoneController,
                                 keyboardType: TextInputType.phone,
                                 label: context.l10n.phone_number,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.phone_outlined,
                                   color: AppColors.primaryColor,
@@ -177,7 +189,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return context
-                                        .l10n.please_enter_your_phone_number;
+                                        .l10n
+                                        .please_enter_your_phone_number;
                                   }
                                   return null;
                                 },
@@ -188,7 +201,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _passwordController,
                                 isPassword: true,
                                 label: context.l10n.password,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.lock_outline,
                                   color: AppColors.primaryColor,
@@ -199,7 +215,8 @@ class _RegisterViewState extends State<RegisterView> {
                                   }
                                   if (value.length < 6) {
                                     return context
-                                        .l10n.password_validation_size;
+                                        .l10n
+                                        .password_validation_size;
                                   }
                                   return null;
                                 },
@@ -209,7 +226,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _confirmPasswordController,
                                 isPassword: true,
                                 label: context.l10n.confirm_password,
-                                textDirection: context.isArabic ? TextDirection.rtl : TextDirection.ltr,
+                                textDirection:
+                                    context.isArabic
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
                                 prefixIcon: Icon(
                                   Icons.lock_outline,
                                   color: AppColors.primaryColor,
@@ -217,7 +237,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return context
-                                        .l10n.confirm_password_validation;
+                                        .l10n
+                                        .confirm_password_validation;
                                   }
                                   if (value != _passwordController.text) {
                                     return context.l10n.passwords_do_not_match;
@@ -268,7 +289,8 @@ class _RegisterViewState extends State<RegisterView> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: MainText(
-                                            context.l10n.terms_validation),
+                                          context.l10n.terms_validation,
+                                        ),
                                         backgroundColor: Colors.red,
                                       ),
                                     );

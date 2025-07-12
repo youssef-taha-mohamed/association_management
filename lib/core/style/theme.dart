@@ -8,9 +8,10 @@ String globalLangCode = 'ar';
 
 String fontFamilyAr = 'Cairo';
 String fontFamilyEn = 'Noto_Serif';
-final font = NavigationService.navigatorKey.currentContext?.isArabic == true
-    ? fontFamilyEn
-    : fontFamilyAr;
+final font =
+    NavigationService.navigatorKey.currentContext?.isArabic == true
+        ? fontFamilyEn
+        : fontFamilyAr;
 BoxDecoration kCustomBoxDecoration = BoxDecoration(
   color: AppColors.itemBG,
   borderRadius: BorderRadius.circular(15),
@@ -41,7 +42,6 @@ ThemeData _getApplicationThemeLight() {
 
     // Font Family
     //fontFamily: globalLangCode == 'en' ? fontFamilyEn : fontFamilyAr,
-
     canvasColor: AppColors.lightThemeBg,
 
     inputDecorationTheme: InputDecorationTheme(
@@ -63,49 +63,30 @@ ThemeData _getApplicationThemeLight() {
         fontWeight: FontWeight.w600,
       ),
       isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 16,
-        horizontal: 20,
-      ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: AppColors.grey,
-        ),
+        borderSide: const BorderSide(color: AppColors.grey),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: AppColors.primaryColor,
-        ),
+        borderSide: const BorderSide(color: AppColors.primaryColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: AppColors.primaryColor,
-          width: 2,
-        ),
+        borderSide: const BorderSide(color: AppColors.primaryColor, width: 2),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: AppColors.grey300,
-          width: 1.5,
-        ),
+        borderSide: const BorderSide(color: AppColors.grey300, width: 1.5),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: AppColors.red,
-          width: 1.5
-        ),
+        borderSide: const BorderSide(color: AppColors.red, width: 1.5),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(
-          color: AppColors.red,
-          width: 2,
-        ),
+        borderSide: BorderSide(color: AppColors.red, width: 2),
       ),
     ),
     // AppBar Theme
@@ -130,74 +111,99 @@ ThemeData _getApplicationThemeLight() {
     // Time Picker Theme
     timePickerTheme: TimePickerThemeData(
       backgroundColor: AppColors.white,
-      hourMinuteColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.grey200),
-      dayPeriodColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.grey200),
-      dayPeriodTextColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : Colors.black87),
-      hourMinuteTextColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : Colors.black87),
+      hourMinuteColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.grey200,
+      ),
+      dayPeriodColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.grey200,
+      ),
+      dayPeriodTextColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : Colors.black87,
+      ),
+      hourMinuteTextColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : Colors.black87,
+      ),
       dialHandColor: AppColors.primaryColor,
       dialBackgroundColor: AppColors.grey200,
-      hourMinuteTextStyle:
-          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      dayPeriodTextStyle:
-          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      hourMinuteTextStyle: const TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      dayPeriodTextStyle: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
       entryModeIconColor: Colors.black87,
     ),
 
-// Date Picker Theme
+    // Date Picker Theme
     datePickerTheme: DatePickerThemeData(
       backgroundColor: AppColors.white,
       headerBackgroundColor: AppColors.primaryColor,
       headerForegroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
-      dayForegroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : AppColors.black),
-      dayBackgroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : Colors.transparent),
-      todayForegroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : AppColors.primaryColor),
-      todayBackgroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.primaryColor.withOpacity(0.1)),
-      yearForegroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : AppColors.black),
-      yearBackgroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : Colors.transparent),
-    ),
-    //container theme
-    cardTheme: CardTheme(
-      color: AppColors.itemBG,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(7),
+      dayForegroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : AppColors.black,
+      ),
+      dayBackgroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : Colors.transparent,
+      ),
+      todayForegroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : AppColors.primaryColor,
+      ),
+      todayBackgroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withOpacity(0.1),
+      ),
+      yearForegroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : AppColors.black,
+      ),
+      yearBackgroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : Colors.transparent,
       ),
     ),
+    //container theme
+    // cardTheme: CardTheme(
+    //   color: AppColors.itemBG,
+    //   elevation: 0,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(7),
+    //   ),
+    // ),
     // Radio Theme
     radioTheme: RadioThemeData(
-      fillColor:
-          WidgetStateColor.resolveWith((states) => AppColors.defaultColor),
+      fillColor: WidgetStateColor.resolveWith(
+        (states) => AppColors.defaultColor,
+      ),
     ),
 
     // navigationBarTheme: const NavigationBarThemeData(
@@ -222,8 +228,9 @@ ThemeData _getApplicationThemeLight() {
 
     // Checkbox Theme
     checkboxTheme: CheckboxThemeData(
-      fillColor:
-          WidgetStateColor.resolveWith((states) => AppColors.defaultColor),
+      fillColor: WidgetStateColor.resolveWith(
+        (states) => AppColors.defaultColor,
+      ),
     ),
     // Text Theme
     textTheme: TextTheme(
@@ -336,10 +343,7 @@ ThemeData _getApplicationThemeDark() {
         fontWeight: FontWeight.w600,
         fontFamily: font,
       ),
-      labelStyle: TextStyle(
-        fontFamily: font,
-        fontSize: 12,
-      ),
+      labelStyle: TextStyle(fontFamily: font, fontSize: 12),
       errorStyle: TextStyle(
         fontFamily: font,
         fontSize: 12,
@@ -374,15 +378,15 @@ ThemeData _getApplicationThemeDark() {
       //primarySwatch: AppColors.secondColor,
       brightness: Brightness.dark,
     ),
-    cardTheme: CardTheme(
-      color: AppColors.darkItemBG,
-      elevation: 0,
-      shadowColor: AppColors.black,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(7),
-      ),
-    ),
 
+    // cardTheme: CardTheme(
+    //   color: AppColors.darkItemBG,
+    //   elevation: 0,
+    //   shadowColor: AppColors.black,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(7),
+    //   ),
+    // ),
     scaffoldBackgroundColor: AppColors.darkItemBG3,
     navigationBarTheme: const NavigationBarThemeData(
       backgroundColor: AppColors.darkItemBG3,
@@ -414,61 +418,85 @@ ThemeData _getApplicationThemeDark() {
     // Time Picker Theme
     timePickerTheme: TimePickerThemeData(
       backgroundColor: AppColors.darkItemBG3,
-      hourMinuteColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.darkItemBG2),
-      dayPeriodColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.darkItemBG2),
-      dayPeriodTextColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : Colors.white70),
-      hourMinuteTextColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : Colors.white70),
+      hourMinuteColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.darkItemBG2,
+      ),
+      dayPeriodColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.darkItemBG2,
+      ),
+      dayPeriodTextColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : Colors.white70,
+      ),
+      hourMinuteTextColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : Colors.white70,
+      ),
       dialHandColor: AppColors.primaryColor,
       dialBackgroundColor: AppColors.darkItemBG,
-      hourMinuteTextStyle:
-          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      dayPeriodTextStyle:
-          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      hourMinuteTextStyle: const TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      dayPeriodTextStyle: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
       entryModeIconColor: Colors.white70,
     ),
 
-// Date Picker Theme
+    // Date Picker Theme
     datePickerTheme: DatePickerThemeData(
       backgroundColor: AppColors.darkItemBG3,
       headerBackgroundColor: AppColors.primaryColor,
       headerForegroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
-      dayForegroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : AppColors.white),
-      dayBackgroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : Colors.transparent),
-      todayForegroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? Colors.white
-              : AppColors.primaryColor),
-      todayBackgroundColor: WidgetStateColor.resolveWith((states) =>
-          states.contains(WidgetState.selected)
-              ? AppColors.primaryColor
-              : AppColors.primaryColor.withOpacity(0.3)),
-      yearForegroundColor: MaterialStateColor.resolveWith((states) =>
-          states.contains(MaterialState.selected)
-              ? Colors.white
-              : AppColors.white),
-      yearBackgroundColor: MaterialStateColor.resolveWith((states) =>
-          states.contains(MaterialState.selected)
-              ? AppColors.primaryColor
-              : Colors.transparent),
+      dayForegroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : AppColors.white,
+      ),
+      dayBackgroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : Colors.transparent,
+      ),
+      todayForegroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? Colors.white
+                : AppColors.primaryColor,
+      ),
+      todayBackgroundColor: WidgetStateColor.resolveWith(
+        (states) =>
+            states.contains(WidgetState.selected)
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withOpacity(0.3),
+      ),
+      yearForegroundColor: MaterialStateColor.resolveWith(
+        (states) =>
+            states.contains(MaterialState.selected)
+                ? Colors.white
+                : AppColors.white,
+      ),
+      yearBackgroundColor: MaterialStateColor.resolveWith(
+        (states) =>
+            states.contains(MaterialState.selected)
+                ? AppColors.primaryColor
+                : Colors.transparent,
+      ),
     ),
 
     bottomSheetTheme: const BottomSheetThemeData(

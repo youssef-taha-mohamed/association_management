@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:management/l10n/arb/app_localizations.dart';
 import 'package:requests_inspector/requests_inspector.dart';
 import '../core/network/client/dio/client.dart';
 import '../core/routes/app_router.dart';
@@ -23,16 +24,18 @@ class ManagementApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RequestsInspector(
-        navigatorKey: NavigationService.navigatorKey,
-        enabled: inspectorEnabled,
-        showInspectorOn: ShowInspectorOn.LongPress,
-        hideInspectorBanner: true,
-        child: Sizer(
-            builder: (context, orientation, deviceType) => ScreenUtilInit(
-                  useInheritedMediaQuery: true,
-                  designSize: const Size(375, 790),
-                  child: BlocBuilder<ThemeCubit, ThemeState>(
-                    builder: (context, state) => MaterialApp(
+      navigatorKey: NavigationService.navigatorKey,
+      enabled: inspectorEnabled,
+      showInspectorOn: ShowInspectorOn.LongPress,
+      hideInspectorBanner: true,
+      child: Sizer(
+        builder:
+            (context, orientation, deviceType) => ScreenUtilInit(
+              useInheritedMediaQuery: true,
+              designSize: const Size(375, 790),
+              child: BlocBuilder<ThemeCubit, ThemeState>(
+                builder:
+                    (context, state) => MaterialApp(
                       debugShowCheckedModeBanner: false,
                       navigatorObservers: [AppNavObserver()],
                       debugShowMaterialGrid: false,
@@ -56,17 +59,23 @@ class ManagementApp extends StatelessWidget {
                       home: SplashScreen(),
                       builder: (context, child) {
                         // NavigatorHelper.of(context);
-                        return Builder(builder: (context) {
-                          return Directionality(
-                              textDirection: context.l10n.localeName == 'ar'
-                                  ? TextDirection.rtl
-                                  : TextDirection.ltr,
-                              child: child!);
-                        });
+                        return Builder(
+                          builder: (context) {
+                            return Directionality(
+                              textDirection:
+                                  context.l10n.localeName == 'ar'
+                                      ? TextDirection.rtl
+                                      : TextDirection.ltr,
+                              child: child!,
+                            );
+                          },
+                        );
                       },
                     ),
-                  ),
-                )));
+              ),
+            ),
+      ),
+    );
   }
 }
 
@@ -124,10 +133,7 @@ class RouteStackItem {
   final String? name;
   final Object? args;
 
-  const RouteStackItem({
-    required this.name,
-    required this.args,
-  });
+  const RouteStackItem({required this.name, required this.args});
 
   factory RouteStackItem.fromRoute(Route route) =>
       RouteStackItem(name: route.settings.name, args: route.settings.arguments);

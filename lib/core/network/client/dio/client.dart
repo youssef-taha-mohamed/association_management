@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:management/l10n/arb/app_localizations.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -44,18 +45,16 @@ final class DioClient {
     }
     _dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) async{
+        onRequest: (options, handler) async {
           final packageInfo = await PackageInfo.fromPlatform();
-          options.headers.addAll(
-            {
-              "Content-Type": "application/json",
-              "Accept": "application/json",
-              //"X-Socket-Id":
-              // await PusherChannelsFlutter.getInstance().getSocketId(),
-              if (Platform.isIOS && kDebugMode == false)
-                'ios_version': packageInfo.version
-            },
-          );
+          options.headers.addAll({
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            //"X-Socket-Id":
+            // await PusherChannelsFlutter.getInstance().getSocketId(),
+            if (Platform.isIOS && kDebugMode == false)
+              'ios_version': packageInfo.version,
+          });
           final tkn = AuthenticationProvider.instance.currentUser?.accessToken;
           if (tkn != null) {
             options.headers['Authorization'] = 'Bearer $tkn';
@@ -72,14 +71,17 @@ final class DioClient {
           try {
             // التحقق من حالة الخطأ 401 للتعامل مع انتهاء صلاحية التوكن
             if (response.statusCode == 401) {
-              log('401 Unauthorized - Logging out user and redirecting to login');
+              log(
+                '401 Unauthorized - Logging out user and redirecting to login',
+              );
               // تسجيل الخروج محلياً
               await AuthenticationProvider.instance.logoutLocally();
 
               // التوجيه إلى صفحة تسجيل الدخول
               NavigationService.navigatorKey.currentState?.pushNamedAndRemoveUntil(
-                LoginView.routeName, // استبدل هذا بمسار صفحة تسجيل الدخول الخاصة بك
-                    (route) => false,
+                LoginView
+                    .routeName, // استبدل هذا بمسار صفحة تسجيل الدخول الخاصة بك
+                (route) => false,
               );
             }
             final json = Map<String, dynamic>.from(response.data as Map);

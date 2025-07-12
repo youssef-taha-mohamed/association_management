@@ -59,11 +59,11 @@ class _LoginViewState extends State<LoginView> {
           //     child: Container(),
           //   ),
           // ),
-          EnhancedIslamicBackground(
-            primaryColor: AppColors.darkGreen,
-            secondaryColor: Colors.white,
-            opacity: 0.1,
-          ),
+          // EnhancedIslamicBackground(
+          //   primaryColor: AppColors.darkGreen,
+          //   secondaryColor: Colors.white,
+          //   opacity: 0.1,
+          // ),
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
@@ -78,28 +78,19 @@ class _LoginViewState extends State<LoginView> {
                     // عنوان الشاشة
                     MainText(
                       context.l10n.welcome_to_konoz,
-                      color: AppColors.white,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      textAlign: TextAlign.center,
-                    ),
-                    8.ph,
-                    MainText(
-                      context.l10n.holy_quran_education_platform,
-                      color: AppColors.goldAccent,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
                       textAlign: TextAlign.center,
                     ),
                     16.ph,
                     // بطاقة معلومات الدخول
                     Container(
                       decoration: BoxDecoration(
-                        color: AppColors.white.withOpacity(0.95),
+                        color: AppColors.white.withValues(alpha: 0.95),
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.black.withOpacity(0.1),
+                            color: AppColors.black.withValues(alpha: 0.1),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -221,7 +212,6 @@ class _LoginViewState extends State<LoginView> {
                         Text(
                           context.l10n.do_not_have_account,
                           style: TextStyle(
-                            color: AppColors.white,
                             fontSize: 16,
                           ),
                         ),

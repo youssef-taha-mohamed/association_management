@@ -1,0 +1,347 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:management/core/extension/extension_helper.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../../../core/style/app_colors.dart';
+import '../../../../core/utils/utilites.dart';
+import '../../../../shared/widgets/app_logo.dart';
+import '../../../../shared/widgets/custom_back.dart';
+import '../../../../shared/widgets/custom_background.dart';
+import '../../../../shared/widgets/custom_toast.dart';
+import '../../../../shared/widgets/easy_button.dart';
+import '../../../../shared/widgets/main_text.dart';
+import 'reset_password.dart';
+
+class OtpVerificationView extends StatefulWidget {
+  const OtpVerificationView({super.key});
+
+  static const String routeName = '/otp-verification';
+
+  @override
+  State<OtpVerificationView> createState() => _OtpVerificationViewState();
+}
+
+class _OtpVerificationViewState extends State<OtpVerificationView>
+    with SingleTickerProviderStateMixin {
+  final otpController = TextEditingController();
+  late Animation<double> _animation;
+  late AnimationController _animationController;
+  bool _isVerifying = false;
+  int _remainingTime = 0;
+  Timer? _timer;
+  final int _resendDuration = 40;
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _animation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+    _animationController.forward();
+
+    // بدء التايمر تلقائياً عند فتح الشاشة
+    _startResendTimer();
+  }
+
+  // دالة لبدء العد التنازلي
+  void _startResendTimer() {
+    setState(() {
+      _remainingTime = _resendDuration;
+    });
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          _timer?.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    otpController.dispose();
+    _animationController.dispose();
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _verifyOtp() async {
+    if (_isVerifying || otpController.text.length != 6) {
+      ToastService.showError(context, context.l10n.please_enter_complete_code);
+      return;
+    }
+
+    setState(() {
+      _isVerifying = true;
+    });
+
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil(ResetPasswordView.routeName, (route) => false);
+    // final cubit = context.read<AuthCubit>();
+    // cubit.verifyUser(
+    //   parameter: OTPParameter(
+    //     phone: widget.phoneNumber,
+    //     otp: otpController.text,
+    //     fcmToken: await NotificationService.getFcmToken(),
+    //   ),
+    // );
+  }
+
+  void _resendOtp() {
+    if (_isVerifying || _remainingTime > 0)
+      return; // منع الضغط إذا كان التايمر نشط
+    //final cubit = context.read<AuthCubit>();
+    otpController.clear();
+    //cubit.resendOtp(phone: widget.phoneNumber);
+
+    // إعادة تشغيل المؤقت
+    _startResendTimer();
+
+    // إظهار رسالة نجاح إرسال الكود (اختياري)
+    ToastService.showSuccess(context, context.l10n.code_sent_successfully);
+  }
+
+  // تنسيق عرض الوقت المتبقي
+  String get _formattedRemainingTime {
+    return '00:${_remainingTime.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (!didPop) {
+          showExitDialog(context);
+        }
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            EnhancedIslamicBackground(
+              primaryColor: AppColors.darkGreen,
+              secondaryColor: Colors.white,
+              opacity: 0.1,
+            ),
+
+            // محتوى الشاشة
+            SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Align(
+                            alignment:
+                            context.isArabic
+                                ? Alignment.centerRight
+                                : Alignment.centerLeft,
+                            child: MyBackButton(
+                              margin: EdgeInsets.zero,
+                              size: 60,
+                              onPressed: () async {
+                                showExitDialog(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      16.ph,
+                      // شعار التطبيق
+                      AppLogo(),
+                      16.ph,
+                      // عنوان الشاشة
+                      MainText(
+                        context.l10n.otp_verification,
+                        color: AppColors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        textAlign: TextAlign.center,
+                      ),
+                      8.ph,
+                      MainText(
+                        context.l10n.otp_verification_description,
+                        color: AppColors.goldAccent,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        textAlign: TextAlign.center,
+                      ),
+                      16.ph,
+                      // بطاقة إدخال رمز التحقق
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.white.withOpacity(0.95),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.black.withOpacity(0.1),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainText(
+                                  context.l10n.enter_otp,
+                                  color: AppColors.darkGreen,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                16.ph,
+                                ScaleTransition(
+                                  scale: _animation,
+                                  child: Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: PinCodeTextField(
+                                      appContext: context,
+                                      length: 6,
+                                      controller: otpController,
+                                      keyboardType: TextInputType.number,
+                                      animationType: AnimationType.fade,
+                                      enableActiveFill: true,
+                                      textStyle: TextStyle(
+                                        fontSize: 22,
+                                        color:
+                                        isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      pinTheme: PinTheme(
+                                        shape: PinCodeFieldShape.box,
+                                        borderRadius: BorderRadius.circular(8),
+                                        fieldHeight: 50,
+                                        fieldWidth: 45,
+                                        activeFillColor:
+                                        isDarkMode
+                                            ? Colors.grey[800]
+                                            : Colors.grey[100],
+                                        inactiveFillColor:
+                                        isDarkMode
+                                            ? Colors.grey[900]
+                                            : Colors.grey[50],
+                                        selectedFillColor:
+                                        isDarkMode
+                                            ? Colors.grey[700]
+                                            : Colors.grey[200],
+                                        borderWidth: 1,
+                                        activeColor:
+                                        Theme.of(context).primaryColor,
+                                        inactiveColor:
+                                        isDarkMode
+                                            ? Colors.grey[700]!
+                                            : Colors.grey[300]!,
+                                        selectedColor:
+                                        Theme.of(context).primaryColor,
+                                      ),
+                                      onCompleted: (value) {
+                                        _verifyOtp();
+                                      },
+                                      onChanged: (value) {},
+                                      enabled: !_isVerifying,
+                                    ),
+                                  ),
+                                ),
+                                24.ph,
+                                // زر التحقق
+                                LoadingButton(
+                                  onTap: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      // التحقق من الرمز
+                                      Navigator.pushNamed(
+                                        context,
+                                        ResetPasswordView.routeName,
+                                      );
+                                    }
+                                  },
+                                  isLoading: _isVerifying,
+                                  name: context.l10n.verify,
+                                ),
+                                16.ph,
+                                // إعادة إرسال الكود مع التايمر
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                      onPressed:
+                                      _remainingTime > 0
+                                          ? null
+                                          : _resendOtp,
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                        _remainingTime > 0
+                                            ? AppColors.grey
+                                            : AppColors.tertiaryColor,
+                                      ),
+                                      child: MainText(
+                                        context.l10n.resend_code,
+                                        color:
+                                        _remainingTime > 0
+                                            ? AppColors.grey
+                                            : AppColors.tertiaryColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    // عرض التايمر فقط عندما يكون نشطاً
+                                    if (_remainingTime > 0)
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 2,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.darkGreen
+                                              .withOpacity(0.1),
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                        ),
+                                        child: MainText(
+                                          _formattedRemainingTime,
+                                          color: AppColors.darkGreen,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // إضافة getter للتحقق من وضع السمة الداكن
+  bool get isDarkMode => Theme.of(context).brightness == Brightness.dark;
+}

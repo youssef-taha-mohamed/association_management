@@ -1,0 +1,182 @@
+import 'dart:convert';
+import 'package:konoz/core/constant/endpoint.dart';
+import '../../../../../core/network/client/base/client.dart';
+import '../../../../../core/network/response_handler/base/response_handler.dart';
+import '../../../domain/entities/parameters/add_fcm_token.dart';
+import '../../../domain/entities/parameters/read.dart';
+import '../../../domain/entities/parameters/toggle_notification.dart';
+import '../../../domain/entities/parameters/user_by_token.dart';
+import '../../../domain/entities/parameters/verify_account.dart';
+import '../../../domain/entities/profile_modification_data.dart';
+import '../../models/parameters/add_fcm_token.dart';
+import '../../models/parameters/toggle_notification.dart';
+import '../../models/parameters/verify_account.dart';
+import '../../models/profile_modification_data.dart';
+import '../base/data_source.dart';
+
+final class UserRemoteDataSource implements UserDataSource {
+  UserRemoteDataSource({
+    required NetworkClient client,
+    required ResponseHandler responseHandler,
+  })  : _client = client,
+        _responseHandler = responseHandler;
+  final NetworkClient _client;
+  final ResponseHandler _responseHandler;
+
+  // late PusherChannel _pusherChannel;
+
+  @override
+  Future<void> addFcmToken({
+    required AddFcmTokenParameters parameters,
+  }) async {
+    final response = await _client.post(
+      uri: Uri.parse(ApiEndPoint.addFcmToken),
+      body: AddFcmTokenParametersDTO.fromEntity(parameters).toMap(),
+    );
+
+    return _responseHandler.handle<void>(
+      response: response,
+      expectedCases: [200],
+      expectedCasesHandler: (status) {},
+    );
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    final response = await _client.delete(
+      uri: Uri.parse(ApiEndPoint.delete),
+    );
+
+    return _responseHandler.handle<void>(
+      response: response,
+      expectedCases: [200, 202],
+      expectedCasesHandler: (state) {},
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>> read({
+    required ReadUserParameters parameters,
+  }) async {
+    final response = await _client.get(
+      uri: Uri.parse(ApiEndPoint.read(parameters)),
+    );
+
+    return _responseHandler.handle<Map<String, dynamic>>(
+      response: response,
+      expectedCases: [200, 202],
+      expectedCasesHandler: (state) {
+        final jsonResponse = Map<String, dynamic>.from(
+          jsonDecode(response.body) as Map,
+        );
+
+        final data = Map<String, dynamic>.from(jsonResponse['data'] as Map);
+        return Map<String, dynamic>.from(data['items'] as Map);
+      },
+    );
+  }
+
+  @override
+  Future<void> sendOtpToVerifyUserAccount() async {
+    final response = await _client.get(
+      uri: Uri.parse(ApiEndPoint.sendOtpToVerifyUserAccount),
+    );
+
+    return _responseHandler.handle<void>(
+      response: response,
+      expectedCases: [200],
+      expectedCasesHandler: (status) {},
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>> userByToken({
+    required UserByTokenParameters parameters,
+  }) async {
+    final response = await _client.post(
+      uri: Uri.parse(ApiEndPoint.userByToken),
+      headers: {
+        "Authorization": 'Bearer ${parameters.token}',
+      },
+    );
+
+    return _responseHandler.handle<Map<String, dynamic>>(
+      response: response,
+      expectedCases: [200],
+      expectedCasesHandler: (status) {
+        final jsonResponse = Map<String, dynamic>.from(
+          jsonDecode(response.body) as Map,
+        );
+
+        return Map<String, dynamic>.from(jsonResponse['data'] as Map);
+      },
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>> update({
+    required ProfileModificationData data,
+  }) async {
+    final response = await _client.patch(
+      uri: Uri.parse(ApiEndPoint.update(data)),
+      body: ProfileModificationDataDTO.fromEntity(data).toMap()
+        ..removeWhere((key, value) => value == null),
+    );
+
+    return _responseHandler.handle<Map<String, dynamic>>(
+      response: response,
+      expectedCases: [200, 202],
+      expectedCasesHandler: (state) {
+        final jsonResponse = Map<String, dynamic>.from(
+          jsonDecode(response.body) as Map,
+        );
+
+        final data = Map<String, dynamic>.from(jsonResponse['data'] as Map);
+        return Map<String, dynamic>.from(data['items'] as Map);
+      },
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>> verifyAccount({
+    required VerifyAccountParameters parameters,
+  }) async {
+    final response = await _client.post(
+      uri: Uri.parse(ApiEndPoint.verifyAccount),
+      body: VerifyAccountParametersDTO.fromEntity(parameters).toMap(),
+    );
+
+    return _responseHandler.handle<Map<String, dynamic>>(
+      response: response,
+      expectedCases: [200],
+      expectedCasesHandler: (status) {
+        final jsonResponse = Map<String, dynamic>.from(
+          jsonDecode(response.body) as Map,
+        );
+
+        return Map<String, dynamic>.from(jsonResponse['data'] as Map);
+      },
+    );
+  }
+
+  @override
+  Future<bool> toggleNotification({
+    required ToggleNotificationParameters parameters,
+  }) async {
+    final response = await _client.put(
+      uri: Uri.parse(ApiEndPoint.toggleNotification(parameters)),
+      body: ToggleNotificationParametersDto.fromEntity(parameters).toMap(),
+    );
+
+    return _responseHandler.handle<bool>(
+      response: response,
+      expectedCases: [200, 201, 202],
+      expectedCasesHandler: (status) {
+        final jsonResponse = Map<String, dynamic>.from(
+          jsonDecode(response.body) as Map,
+        );
+        return jsonResponse['data'] == 0 ? false : true;
+      },
+    );
+  }
+}

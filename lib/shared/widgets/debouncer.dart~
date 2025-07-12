@@ -1,0 +1,41 @@
+import 'dart:async';
+
+class Debouncer {
+  final Duration duration;
+  Timer? _timer;
+
+  Debouncer({required this.duration});
+
+  /// Debounces the given action.
+  ///
+  /// If [cancelPrevious] is true (default), cancels any pending execution and
+  /// starts a new timer. If false, allows the pending execution to complete
+  /// before starting a new timer.
+  void run(void Function() action, {bool cancelPrevious = true}) {
+    if (cancelPrevious) {
+      _timer?.cancel();
+    }
+
+    _timer = Timer(duration, action);
+  }
+
+  /// Returns true if there is a pending debounced action.
+  bool get isRunning => _timer?.isActive ?? false;
+
+  /// Cancels any pending debounced action.
+  void cancel() {
+    _timer?.cancel();
+    _timer = null;
+  }
+
+  /// Disposes of the debouncer, canceling any pending action.
+  void dispose() {
+    cancel();
+  }
+
+  /// Executes the action immediately and cancels any pending execution.
+  void runImmediately(void Function() action) {
+    cancel();
+    action();
+  }
+}

@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:management/core/extension/extension_helper.dart';
+import '../../core/style/app_colors.dart';
+
+class MyBackButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final double size;
+  final double elevation;
+  final IconData? iconData;
+  final Color? color;
+  final EdgeInsets margin;
+
+  const MyBackButton({
+    super.key,
+    this.onPressed,
+    this.size = 40.0,
+    this.elevation = 4.0,
+    this.iconData,
+    this.color,
+    this.margin = const EdgeInsets.all(8.0),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: elevation,
+      margin: margin,
+      shape: CircleBorder(),
+      clipBehavior: Clip.antiAlias,
+      child: Material(
+        color: context.isDark ? AppColors.darkItemBG2 : AppColors.white,
+        elevation: 0,
+        shape: CircleBorder(),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onPressed ?? () => Navigator.of(context).pop(),
+          child: Center(
+            child: Icon(
+              iconData ?? Icons.chevron_left,
+              color: color ?? AppColors.black,
+              size: size * 0.6,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -6,6 +6,8 @@ import '../../feature/auth/presentation/view/register.dart';
 import '../../feature/auth/presentation/view/reset_password.dart';
 import '../../feature/dash_board/presentation/dash_board.dart';
 import '../../feature/distribution/presentation/view/distribution_view.dart';
+import '../../feature/family_follow_up/presentation/FridayMeetingScreen.dart';
+import '../../feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
 import '../../feature/family_follow_up/presentation/family_follow_up.dart';
 import '../../feature/parent/home/presentation/home_parents.dart';
 import '../../feature/people_data/presentation/cubit/edit_user_cubit.dart';
@@ -118,6 +120,10 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => SettingsScreen(),);
       case FamilyFollowUpScreen.routeName:
         return buildRoute(builder: (context) => FamilyFollowUpScreen(),);
+      case QuranSchoolsScreen.routeName:
+        return buildRoute(builder: (context) => QuranSchoolsScreen(),);
+      case FridayMeetingScreen.routeName:
+        return buildRoute(builder: (context) => FridayMeetingScreen(),);
 
 
 

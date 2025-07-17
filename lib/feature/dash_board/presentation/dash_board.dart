@@ -3,6 +3,7 @@ import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../distribution/presentation/view/distribution_view.dart';
 import '../../drawer/presentation/view/drawer.dart';
+import '../../family_follow_up/presentation/family_follow_up.dart';
 import '../../setting/presentation/view/setting.dart';
 import 'widgets/service_card.dart';
 
@@ -55,6 +56,15 @@ class DashboardScreen extends StatelessWidget {
         icon: Icons.account_balance,
         color: Color(0xFFFFD700),
       ),
+      ServiceItem(
+        title: 'متابعة الاسرة',
+        icon: Icons.groups,
+        color: Color(0xFFDC3545),
+        onTap: () {
+          Navigator.pushNamed(context, FamilyFollowUpScreen.routeName);
+        },
+      ),
+
     ];
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F5),

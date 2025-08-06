@@ -9,6 +9,7 @@ class SettingsScreen extends StatelessWidget {
       color: Color(0xFF4ECDC4),
     ),
     SettingItem(
+
       title: 'صلاحيات المستخدمين',
       icon: Icons.person_add,
       color: Color(0xFF4ECDC4),
@@ -196,7 +197,9 @@ class SettingItem {
   final IconData icon;
   final Color color;
 
-  SettingItem({required this.title, required this.icon, required this.color});
+
+  SettingItem({required this.title, required this.icon, required this.color,
+  });
 }
 
 // صفحة إضافية لعرض تفاصيل كل إعداد

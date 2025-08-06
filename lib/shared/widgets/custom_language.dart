@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:management/core/extension/extension_helper.dart';
 import 'package:management/l10n/l10n.dart';
-import 'dart:math' show cos, sin, pi;
 import '../../../../../shared/cubits/language/language_cubit.dart';
 import '../../../../../shared/widgets/main_text.dart';
 
@@ -53,8 +52,8 @@ class _LanguageSelectorSectionState extends State<LanguageSelectorSection>
 
   String _getFlagEmoji(String flagCode) {
     return String.fromCharCode(
-      (0x1F1E6 + flagCode.codeUnitAt(0) - 'a'.codeUnitAt(0)),
-    ) +
+          (0x1F1E6 + flagCode.codeUnitAt(0) - 'a'.codeUnitAt(0)),
+        ) +
         String.fromCharCode(
           (0x1F1E6 + flagCode.codeUnitAt(1) - 'a'.codeUnitAt(0)),
         );
@@ -205,9 +204,9 @@ class _LanguageSelectorSectionState extends State<LanguageSelectorSection>
                                     _languages[index]['name'],
                                     fontSize: isSelected ? 12 : 11,
                                     fontWeight:
-                                    isSelected
-                                        ? FontWeight.bold
-                                        : FontWeight.normal,
+                                        isSelected
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
                                     color: _languages[index]['color'],
                                   ),
                                 ],

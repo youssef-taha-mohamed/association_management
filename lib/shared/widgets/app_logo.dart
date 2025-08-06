@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../core/resources/images.dart';
 import '../../core/style/app_colors.dart';
-import 'main_text.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key});
@@ -23,12 +23,7 @@ class AppLogo extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: MainText(
-            'إدارة',
-            color: AppColors.primaryColor,
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-          ),
+          child: Image.asset(ImagesAssets.logo, width: 180, height: 90),
         ),
       ),
     );

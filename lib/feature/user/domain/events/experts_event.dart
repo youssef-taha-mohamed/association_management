@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 enum ExpertsEvent {
-  expertStatus('expert-status'),;
+  expertStatus('expert-status');
 
   const ExpertsEvent(this.name);
 
@@ -25,22 +25,21 @@ class ExpertEventPayload {
     required this.isFast,
   });
   factory ExpertEventPayload.fromMap(
-      Map<String, dynamic> json, ExpertsEvent event) {
+    Map<String, dynamic> json,
+    ExpertsEvent event,
+  ) {
     switch (event) {
       case ExpertsEvent.expertStatus:
         return ExpertEventPayload(
           event: event,
           id: json['expert_id'] as int,
           // ignore: avoid_bool_literals_in_conditional_expressions
-          isOnline: json['is_online']==1?true:false,
+          isOnline: json['is_online'] == 1 ? true : false,
           // ignore: avoid_bool_literals_in_conditional_expressions
-          isBusy: json['is_busy']==1?true:false,
+          isBusy: json['is_busy'] == 1 ? true : false,
           // ignore: avoid_bool_literals_in_conditional_expressions
-          isFast: json['allow_fast_dreams'] ==1?true:false,
+          isFast: json['allow_fast_dreams'] == 1 ? true : false,
         );
-     
-      default:
-        throw ArgumentError('Invalid ExpertsEvent: $event');
     }
   }
 }

@@ -140,11 +140,11 @@ abstract class AppLocalizations {
   /// **'Search by name or address'**
   String get search_by_name_or_address;
 
-  /// No description provided for @welcome_to_konoz.
+  /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Konoz'**
-  String get welcome_to_konoz;
+  /// **'Charity Management Application'**
+  String get welcome;
 
   /// No description provided for @holy_quran_education_platform.
   ///

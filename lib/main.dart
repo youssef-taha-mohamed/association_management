@@ -56,56 +56,55 @@ class KonozBlocObserver extends BlocObserver {
 
 Future<void> main() async {
   // تهيئة كل شيء داخل منطقة واحدة (zone) باستخدام runZonedGuarded
-  runZonedGuarded(() async {
-    // تهيئة Flutter bindings أولاً
-    WidgetsFlutterBinding.ensureInitialized();
+  runZonedGuarded(
+    () async {
+      // تهيئة Flutter bindings أولاً
+      WidgetsFlutterBinding.ensureInitialized();
 
-    // إعداد مراقب الأخطاء في Flutter
-    FlutterError.onError = (FlutterErrorDetails details) {
-      FirebaseCrashlytics.instance.recordFlutterFatalError(details);
-    };
+      // إعداد مراقب الأخطاء في Flutter
+      FlutterError.onError = (FlutterErrorDetails details) {
+        FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+      };
 
-    // Initialize Firebase
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+      // Initialize Firebase
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
 
-    // تهيئة Crashlytics للتعامل مع الأخطاء
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      // تهيئة Crashlytics للتعامل مع الأخطاء
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
-    // Initialize Hive before creating any cubits
-    await HiveDatabase.init();
+      // Initialize Hive before creating any cubits
+      await HiveDatabase.init();
 
-    // إعداد حقن التبعيات
-    DependencyInjector.setup();
+      // إعداد حقن التبعيات
+      DependencyInjector.setup();
 
-    AuthenticationProvider.injectDelegate(
-      delegate: DependencyInjector.authenticationDelegateWithRxdart,
-    );
+      AuthenticationProvider.injectDelegate(
+        delegate: DependencyInjector.authenticationDelegateWithRxdart,
+      );
 
-    // تعيين مراقب Bloc المحسن
-    Bloc.observer = KonozBlocObserver();
+      // تعيين مراقب Bloc المحسن
+      Bloc.observer = KonozBlocObserver();
 
-    runApp(
-      MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => ThemeCubit(),
+      runApp(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => ThemeCubit()),
+            BlocProvider(create: (context) => LanguageCubit()),
+          ],
+          child: DevicePreview(
+            enabled: false,
+            builder: (context) => ManagementApp(),
           ),
-          BlocProvider(
-            create: (context) => LanguageCubit(),
-          ),
-        ],
-        child: DevicePreview(
-          enabled: false,
-          builder: (context) => ManagementApp(),
         ),
-      ),
-    );
-  }, (error, stack) {
-    // تسجيل الأخطاء غير المعالجة في Firebase Crashlytics
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    log('Fatal error occurred: $error');
-    log(stack.toString());
-  });
+      );
+    },
+    (error, stack) {
+      // تسجيل الأخطاء غير المعالجة في Firebase Crashlytics
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      log('Fatal error occurred: $error');
+      log(stack.toString());
+    },
+  );
 }

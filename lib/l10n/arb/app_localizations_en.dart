@@ -30,7 +30,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search_by_name_or_address => 'Search by name or address';
 
   @override
-  String get welcome_to_konoz => 'Welcome to Konoz';
+  String get welcome => 'Charity Management Application';
 
   @override
   String get holy_quran_education_platform => 'Education Platform';

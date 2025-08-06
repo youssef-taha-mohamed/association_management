@@ -31,7 +31,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search_by_name_or_address => 'ابحث عن الاسم او العنوان';
 
   @override
-  String get welcome_to_konoz => 'مرحباً بك في كنوز';
+  String get welcome => 'تطبيق إدارة الجمعيات الخيرية';
 
   @override
   String get holy_quran_education_platform => 'منصة تعليميه';

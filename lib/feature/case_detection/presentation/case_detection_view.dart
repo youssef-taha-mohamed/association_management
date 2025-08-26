@@ -14,12 +14,24 @@ class _CaseDetectionState extends State<CaseDetection> {
   List<Coin> _data = [];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: MainText('CaseDetection')),
-      body: _buildUI(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _showAddForm,
-        child: Icon(Icons.add),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text("برنامج ادارة الجمعيات الخيرية"),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              // افتح القائمة الجانبية
+            },
+          ),
+        ),
+        body: _buildUI(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _showAddForm,
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }

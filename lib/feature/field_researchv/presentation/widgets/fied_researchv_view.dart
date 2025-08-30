@@ -5,6 +5,7 @@ import 'package:management/feature/field_researchv/presentation/widgets/add_case
 
 class FiedResearchvView extends StatefulWidget {
   static const String routeName = '/field_research';
+
   const FiedResearchvView({super.key});
 
   @override

@@ -161,19 +161,19 @@ abstract class AppLocalizations {
   /// No description provided for @email_userName.
   ///
   /// In en, this message translates to:
-  /// **'Username / Email'**
+  /// **'Username'**
   String get email_userName;
 
   /// No description provided for @email_validation.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your email/username.'**
+  /// **'Please enter your username.'**
   String get email_validation;
 
   /// No description provided for @email_validation_error.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a valid Email/ Username.'**
+  /// **'Please enter a valid Username.'**
   String get email_validation_error;
 
   /// No description provided for @password.

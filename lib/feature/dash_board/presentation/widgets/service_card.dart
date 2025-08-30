@@ -15,27 +15,27 @@ class ServiceCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 2,
-              blurRadius: 8,
-              offset: Offset(0, 2),
+              color: Colors.black.withValues(alpha: 0.05),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: Offset(0, 4),
             ),
           ],
         ),
         child: Material(
           color: Colors.transparent,
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               spacing: 16,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 50,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: service.color,
                     borderRadius: BorderRadius.circular(12),
@@ -45,9 +45,8 @@ class ServiceCard extends StatelessWidget {
                 MainText(
                   service.title,
                   textAlign: TextAlign.center,
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF2C3E50),
                 ),
               ],
             ),

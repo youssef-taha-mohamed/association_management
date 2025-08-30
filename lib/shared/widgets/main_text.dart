@@ -101,7 +101,7 @@ class MainText extends StatelessWidget {
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
-        fontFamily: fontFamily,
+        fontFamily: 'Cairo',
         fontStyle: fontStyle,
         shadows: shadows,
         letterSpacing: letterSpacing,

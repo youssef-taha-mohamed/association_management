@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "F:/association_management-1/windows"
+  "cmake.sourceDirectory": "F:/association_management-1/windows",
+  "dart.flutterSdkPath": ".fvm/versions/3.32.2"
 }

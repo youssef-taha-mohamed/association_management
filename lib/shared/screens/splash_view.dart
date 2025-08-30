@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!context.mounted) {
       return;
     }
-    print('state: $state');
+    debugPrint('state: $state');
     switch (state) {
       case SplashState.notOpenedAppBefore:
       case SplashState.notLoggedIn:
@@ -79,40 +79,33 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        alignment: Alignment.center,
         children: [
-          // EnhancedIslamicBackground(
-          //   primaryColor: AppColors.darkGreen,
-          //   secondaryColor: Colors.white,
-          //   opacity: 0.1,
-          // ),
-          Container(color: AppColors.primaryColor),
-          Stack(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      ImagesAssets.logo,
-                      width: 180,
-                      height: 90,
-                    ),
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: 20,
-                child: const JumpingDotsProgressIndicator(
-                  color: AppColors.goldAccent,
-                  dotSpacing: 2,
-                  milliseconds: 100,
-                  numberOfDots: 5,
+              Center(
+                child: Image.asset(
+                  ImagesAssets.logo,
+                  width: 180,
+                  height: 90,
                 ),
               ),
             ],
+          ),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: const JumpingDotsProgressIndicator(
+                color: AppColors.goldAccent,
+                dotSpacing: 2,
+                milliseconds: 100,
+                numberOfDots: 5,
+              ),
+            ),
           ),
         ],
       ),

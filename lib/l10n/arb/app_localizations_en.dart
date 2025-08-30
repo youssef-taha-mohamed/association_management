@@ -39,13 +39,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Log In';
 
   @override
-  String get email_userName => 'Username / Email';
+  String get email_userName => 'Username';
 
   @override
-  String get email_validation => 'Please enter your email/username.';
+  String get email_validation => 'Please enter your username.';
 
   @override
-  String get email_validation_error => 'Please enter a valid Email/ Username.';
+  String get email_validation_error => 'Please enter a valid Username.';
 
   @override
   String get password => 'Password';

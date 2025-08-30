@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:management/feature/dash_board/presentation/dash_board.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../../../core/resources/images.dart';
 import '../../../../shared/widgets/main_text.dart';
+import '../../../case_detection/presentation/case_detection_view.dart';
+import '../../../field_researchv/presentation/widgets/fied_researchv_view.dart';
 import '../../../people_data/presentation/view/people_data_view.dart';
 import '../cubit/drawer_cubit.dart';
 import 'widgets/drawer_item.dart';
@@ -15,6 +19,7 @@ class CustomDrawer extends StatelessWidget {
     return BlocProvider(
       create: (context) => DrawerCubit(),
       child: Drawer(
+        width: MediaQuery.of(context).size.width * 0.7,
         child: Container(
           color: const Color(0xFF2C3E50),
           child: BlocBuilder<DrawerCubit, DrawerState>(
@@ -23,17 +28,47 @@ class CustomDrawer extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 children: [
                   // Header
-                  DrawerHeader(
-                    decoration: const BoxDecoration(color: Color(0xFF2E7D8A)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  // DrawerHeader(
+                  //   decoration: const BoxDecoration(color: Color(0xFF2E7D8A)),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       MainText(
+                  //         context.l10n.home_screen,
+                  //         color: Colors.white,
+                  //         fontSize: 18,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, DashboardScreen.routeName);
+                    },
+                    child: Row(
                       children: [
-                        MainText(
-                          context.l10n.home_screen,
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              ImagesAssets.logo,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 140,
+                            decoration: const BoxDecoration(color: Color(0xFF2E7D8A)),
+                            alignment: Alignment.center,
+                            child: MainText(
+                              context.l10n.home_screen,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -103,14 +138,14 @@ class CustomDrawer extends StatelessWidget {
                     icon: Icons.description,
                     title: context.l10n.case_report,
                     onTap: () {
-                      // Navigator.pushNamed(context, SettingsScreen.routeName);
+                      Navigator.pushNamed(context, CaseDetection.routeName);
                     },
                   ),
                   DrawerItem(
                     icon: Icons.person_search,
                     title: context.l10n.field_research,
                     onTap: () {
-                      // Navigator.pushNamed(context, SettingsScreen.routeName);
+                      Navigator.pushNamed(context, FiedResearchvView.routeName);
                     },
                   ),
                   DrawerExpandedItem(

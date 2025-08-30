@@ -10,6 +10,7 @@ import '../../feature/distribution/presentation/view/distribution_view.dart';
 import '../../feature/family_follow_up/presentation/FridayMeetingScreen.dart';
 import '../../feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
 import '../../feature/family_follow_up/presentation/family_follow_up.dart';
+import '../../feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import '../../feature/parent/home/presentation/home_parents.dart';
 import '../../feature/people_data/presentation/cubit/edit_user_cubit.dart';
 import '../../feature/people_data/presentation/view/edit_user.dart';
@@ -26,7 +27,7 @@ abstract final class AppRouter {
     final currentUser = AuthenticationProvider.instance.currentUser;
     final routeName = routeSettings.name;
     final argument = routeSettings.arguments;
-    print('routeName: $routeName');
+    debugPrint('routeName: $routeName');
     if (_authenticatedViews.contains(routeName) && currentUser == null) {
       return generateRoute(const RouteSettings(name: LoginView.routeName));
     }
@@ -74,13 +75,14 @@ abstract final class AppRouter {
         );
       case DistributionScreen.routeName:
         return buildRoute(builder: (context) => const DistributionScreen());
+        case FiedResearchvView.routeName:
+        return buildRoute(builder: (context) => const FiedResearchvView());
       case ResetPasswordView.routeName:
         return buildRoute(builder: (context) => const ResetPasswordView());
       case OtpVerificationView.routeName:
         return buildRoute(builder: (context) => OtpVerificationView());
       case SettingsScreen.routeName:
         return buildRoute(builder: (context) => SettingsScreen());
-        return buildRoute(builder: (context) => SettingsScreen(),);
       case FamilyFollowUpScreen.routeName:
         return buildRoute(builder: (context) => FamilyFollowUpScreen(),);
       case QuranSchoolsScreen.routeName:

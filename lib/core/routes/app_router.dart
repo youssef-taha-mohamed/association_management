@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import '../../feature/auth/presentation/view/forget_password_email.dart';
 import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
@@ -46,7 +47,7 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => const HomeParentsView());
       case PeopleDataView.routeName:
         return buildRoute(builder: (context) => const PeopleDataView());
-     
+
       case RegisterView.routeName:
         return buildRoute(
           builder: (context) {
@@ -60,7 +61,7 @@ abstract final class AppRouter {
             return EditUserFullScreen(user: arg);
           },
         );
-     
+
       case CaseDetection.routeName:
         return buildRoute(
           builder: (context) {
@@ -80,13 +81,16 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => OtpVerificationView());
       case SettingsScreen.routeName:
         return buildRoute(builder: (context) => SettingsScreen());
-        return buildRoute(builder: (context) => SettingsScreen(),);
+        return buildRoute(builder: (context) => SettingsScreen());
       case FamilyFollowUpScreen.routeName:
-        return buildRoute(builder: (context) => FamilyFollowUpScreen(),);
+        return buildRoute(builder: (context) => FamilyFollowUpScreen());
+
       case QuranSchoolsScreen.routeName:
-        return buildRoute(builder: (context) => QuranSchoolsScreen(),);
+        return buildRoute(builder: (context) => QuranSchoolsScreen());
       case FridayMeetingScreen.routeName:
-        return buildRoute(builder: (context) => FridayMeetingScreen(),);
+        return buildRoute(builder: (context) => FridayMeetingScreen());
+      case FiedResearchvView.routeName:
+        return buildRoute(builder: (context) => FiedResearchvView());
       default:
         throw UnimplementedError();
     }

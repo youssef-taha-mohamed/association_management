@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+import 'package:management/feature/field_researchv/data/db/database_helper.dart';
+import 'package:management/feature/field_researchv/data/model/case_model.dart';
+
+class AddCasePage extends StatefulWidget {
+  const AddCasePage({super.key});
+
+  @override
+  State<AddCasePage> createState() => _AddCasePageState();
+}
+
+class _AddCasePageState extends State<AddCasePage> {
+  final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController nameCtrl = TextEditingController();
+  final TextEditingController ageCtrl = TextEditingController();
+  final TextEditingController phoneCtrl = TextEditingController();
+  final TextEditingController addressCtrl = TextEditingController();
+  final TextEditingController governorateCtrl = TextEditingController();
+  final TextEditingController areaCtrl = TextEditingController();
+  final TextEditingController categoryCtrl = TextEditingController();
+  final TextEditingController criteriaCtrl = TextEditingController();
+  final TextEditingController donationCtrl = TextEditingController();
+  final TextEditingController statusCtrl = TextEditingController();
+
+  bool hasProject = false;
+  bool isActive = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("إضافة حالة جديدة")),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              _buildTextField(nameCtrl, "اسم المستحق"),
+              _buildTextField(ageCtrl, "العمر", isNumber: true),
+              _buildTextField(phoneCtrl, "رقم الموبايل"),
+              _buildTextField(addressCtrl, "العنوان"),
+              _buildTextField(governorateCtrl, "المحافظة"),
+              _buildTextField(areaCtrl, "المنطقة"),
+              _buildTextField(categoryCtrl, "الفئة الأساسية"),
+              _buildTextField(criteriaCtrl, "عدد المعايير", isNumber: true),
+              _buildTextField(donationCtrl, "قيمة التبرعات", isNumber: true),
+              SwitchListTile(
+                title: const Text("لديه مشروع"),
+                value: hasProject,
+                onChanged: (val) => setState(() => hasProject = val),
+              ),
+              _buildTextField(statusCtrl, "الحالة"),
+              SwitchListTile(
+                title: const Text("مفعل"),
+                value: isActive,
+                onChanged: (val) => setState(() => isActive = val),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final caseModel = CaseModel(
+                      name: nameCtrl.text,
+                      age: int.parse(ageCtrl.text),
+                      phone: phoneCtrl.text,
+                      address: addressCtrl.text,
+                      governorate: governorateCtrl.text,
+                      area: areaCtrl.text,
+                      category: categoryCtrl.text,
+                      criteriaCount: int.parse(criteriaCtrl.text),
+                      donationValue: double.parse(donationCtrl.text),
+                      hasProject: hasProject,
+                      status: statusCtrl.text,
+                      isActive: isActive,
+                    );
+                    await DatabaseHelper.instance.insertCase(caseModel);
+                    Navigator.pop(context, true);
+                  }
+                },
+                child: const Text("حفظ"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+    TextEditingController controller,
+    String label, {
+    bool isNumber = false,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+        decoration: InputDecoration(
+          labelText: label,
+          border: const OutlineInputBorder(),
+        ),
+        validator: (val) => val == null || val.isEmpty ? "مطلوب" : null,
+      ),
+    );
+  }
+}

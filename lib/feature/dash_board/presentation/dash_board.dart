@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../case_detection/presentation/case_detection_view.dart';
@@ -44,6 +45,9 @@ class DashboardScreen extends StatelessWidget {
         title: 'بحث ميداني',
         icon: Icons.person_search,
         color: Color(0xFF4ECDC4),
+        onTap: () {
+          Navigator.pushNamed(context, FiedResearchvView.routeName);
+        },
       ),
       ServiceItem(
         title: 'متابعة البرنامج',
@@ -68,7 +72,6 @@ class DashboardScreen extends StatelessWidget {
           Navigator.pushNamed(context, FamilyFollowUpScreen.routeName);
         },
       ),
-
     ];
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F5),

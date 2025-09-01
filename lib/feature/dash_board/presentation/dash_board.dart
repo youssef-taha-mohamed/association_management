@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
+import 'package:management/feature/small_projects/view/small_projects_page.dart';
+
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../case_detection/presentation/case_detection_view.dart';
@@ -58,6 +60,9 @@ class DashboardScreen extends StatelessWidget {
         title: 'المشاريع الصغيرة',
         icon: Icons.star,
         color: Color(0xFFFFD700),
+        onTap: () {
+          Navigator.pushNamed(context, SmallProjectsPage.routeName);
+        },
       ),
       ServiceItem(
         title: 'القرض الحسن',

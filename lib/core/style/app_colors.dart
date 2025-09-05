@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // اللون الرئيسي الجديد بدرجاته (لون إسلامي هادئ يناسب تعليم القرآن)
+  // اللون الرئيسي الجديد بدرجاته (لون أخضر هادئ يناسب تعليم القرآن)
   static const MaterialColor defaultColor = MaterialColor(
     _defaultColorPrimaryValue,
     <int, Color>{
-      50: Color(0xFFE3F4F4),
-      100: Color(0xFFBAE4E4),
-      200: Color(0xFF8FD3D2),
-      300: Color(0xFF64C1C1),
-      400: Color(0xFF45B3B3),
+      50: Color(0xFFE8F5E9),
+      100: Color(0xFFC8E6C9),
+      200: Color(0xFFA5D6A7),
+      300: Color(0xFF81C784),
+      400: Color(0xFF66BB6A),
       500: Color(_defaultColorPrimaryValue), // اللون الرئيسي
-      600: Color(0xFF278F8F),
-      700: Color(0xFF228484),
-      800: Color(0xFF1D7A7A),
-      900: Color(0xFF136868),
+      600: Color(0xFF43A047),
+      700: Color(0xFF388E3C),
+      800: Color(0xFF2E7D32),
+      900: Color(0xFF1B5E20),
     },
   );
-  static const int _defaultColorPrimaryValue = 0xFF2C7A7B;
+  static const int _defaultColorPrimaryValue = 0xFF4CAF50;
 
   static const primaryColor = defaultColor;
 
   // ألوان إضافية متناسقة
-  static const Color secondaryColor = Color(0xFFB4D9C2); // لون فاتح مريح
-  static const Color tertiaryColor = Color(0xFF5A9F8E);  // لون مكمل مائل للأزرق الأخضر
+  static const Color secondaryColor = Color(0xFFB2DFDB); // لون أخضر فاتح مريح
+  static const Color tertiaryColor = Color(0xFF2E7D32); // لون مكمل داكن
 
   // ألوان جميلة إضافية
   static const Color goldAccent = Color(0xFFE4B95B); // لون ذهبي ناعم
-  static const Color darkGreen = Color(0xFF1E4D4D);  // لون داكن يستخدم في الوضع الغامق
+  static const Color darkGreen = Color(0xFF1B4332); // أخضر داكن للوضع الغامق
 
   // الوضع الغامق / الفاتح
-  static const Color darkThemeBg = Color(0xFF1B1E23);
-  static const Color lightThemeBg = Color(0xFFFDFDFD);
+  static const Color darkThemeBg = Color(0xFF121212);
+  static const Color lightThemeBg = Color(0xFFFFFFFF);
 
   // الخلفية العامة
-  static const Color background = Color(0xFFF4F4F5);
+  static const Color background = Color(0xFFF4F7F4);
 
-  // باقي الألوان القديمة كما هي بدون تغيير
+  // باقي الألوان القديمة كما هي بدون تغيير (لمنع أي كونفليكت)
   static const Color colorTheme = Color(0xFFEFB287);
   static const Color colorDark = Color(0xFFEDA674);
   static const Color colorLight = Color(0xFFF2D1B7);
@@ -60,6 +60,7 @@ class AppColors {
   static const Color grey3 = Color(0xffA0A0A0);
   static const Color chatColor = Color(0xffCCCCCC);
   static const Color chatColor2 = Color(0xffE9E9E9);
+  static const Color textColor = Color(0xFF2C3E50);
   static const Color colorCard = Color(0xffDDDDDD);
   static const Color textCard = Color(0xff717171);
   static const Color buttonProfile = Color(0xffA0A0A0);
@@ -100,33 +101,22 @@ class AppColors {
 
   static const color3 = Color(0xff476D8E);
   static const color8 = Color(0xff0b2235);
-  static const Color error = Color(0xFFDC3545); // A standard error red color
+  static const Color error = Color(0xFFDC3545);
 
-
-// new colors
+  // new colors
   static const Color islamicGold = Color(0xFFDAAA33);
+  static const Color lightTeal = Color(0xFF80CBC4); // أخضر فاتح مائل للتركواز
+  static const Color deepGreen = Color(0xFF174D4D); // أخضر داكن لإضافة العمق
 
-  // لون أخضر مائل للأزرق بدرجة أفتح قليلا
-  static const Color lightTeal = Color(0xFF3DACAC);
+  static const Color textDark = Color(0xFF1A3830);
+  static const Color textLight = Color(0xFFF9FFF9);
 
-  // لون أخضر داكن لإضافة العمق
-  static const Color deepGreen = Color(0xFF174D4D);
+  static const Color lightBackground = Color(0xFFF0F7F0);
 
-  // درجات لون الخط المناسبة للتطبيق
-  static const Color textDark = Color(0xFF1A3838);
-  static const Color textLight = Color(0xFFF9FFFF);
+  static const Color verseBackground = Color(0xFFF8FDF5);
+  static const Color verseBorder = Color(0xFFB6E0B6);
 
-  // لون خلفية بديل للوضع الفاتح
-  static const Color lightBackground = Color(0xFFF0F7F7);
-
-  // ألوان مناسبة لعناصر الآيات القرآنية
-  static const Color verseBackground = Color(0xFFF8F4E9);
-  static const Color verseBorder = Color(0xFFD1C9B0);
-
-  // ألوان تمييز أحكام التجويد
   static const Color tajweedRed = Color(0xFFD13A3A);
   static const Color tajweedBlue = Color(0xFF3A64D1);
-  static const Color tajweedGreen = Color(0xFF3AD15A);
-
-
+  static const Color tajweedGreen = Color(0xFF2ECC71);
 }

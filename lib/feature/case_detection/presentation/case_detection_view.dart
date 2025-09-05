@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/case_detection/data/coin.dart' show Coin;
 import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
+
+import '../../../core/style/app_colors.dart';
 
 class CaseDetection extends StatefulWidget {
   const CaseDetection({super.key});
@@ -18,13 +21,20 @@ class _CaseDetectionState extends State<CaseDetection> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("برنامج ادارة الجمعيات الخيرية"),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // افتح القائمة الجانبية
+          backgroundColor: AppColors.primaryColor,
+          title: MainText(
+            "برنامج ادارة الجمعيات الخيرية",
+            color: AppColors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
             },
+            child: Icon(Icons.arrow_back, color: AppColors.white),
           ),
         ),
         body: _buildUI(),
@@ -116,46 +126,29 @@ class _CaseDetectionState extends State<CaseDetection> {
           title: Text('إضافة حالة جديدة'),
           content: SingleChildScrollView(
             child: Column(
+              spacing: 8,
               children: [
-                TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(labelText: 'الاسم'),
-                ),
-                TextField(
+                MainTextField(controller: nameController, label: 'الاسم'),
+                MainTextField(
                   controller: ageController,
-                  decoration: InputDecoration(labelText: 'العمر'),
+                  label: 'العمر',
                   keyboardType: TextInputType.number,
                 ),
-                TextField(
-                  controller: phoneController,
-                  decoration: InputDecoration(labelText: 'رقم الهاتف'),
-                ),
-                TextField(
-                  controller: addressController,
-                  decoration: InputDecoration(labelText: 'العنوان'),
-                ),
-                TextField(
-                  controller: areaController,
-                  decoration: InputDecoration(labelText: 'المنطقة'),
-                ),
-                TextField(
-                  controller: categoryController,
-                  decoration: InputDecoration(labelText: 'الفئة'),
-                ),
-                TextField(
+                MainTextField(controller: phoneController, label: 'رقم الهاتف'),
+                MainTextField(controller: addressController, label: 'العنوان'),
+                MainTextField(controller: areaController, label: 'المنطقة'),
+                MainTextField(controller: categoryController, label: 'الفئة'),
+                MainTextField(
                   controller: incomeController,
-                  decoration: InputDecoration(labelText: 'صافي الدخل'),
+                  label: 'صافي الدخل',
                   keyboardType: TextInputType.number,
                 ),
-                TextField(
+                MainTextField(
                   controller: donationController,
-                  decoration: InputDecoration(labelText: 'التبرعات'),
+                  label: 'التبرعات',
                   keyboardType: TextInputType.number,
                 ),
-                TextField(
-                  controller: statusController,
-                  decoration: InputDecoration(labelText: 'الحالة'),
-                ),
+                MainTextField(controller: statusController, label: 'الحالة'),
                 SwitchListTile(
                   title: Text("هل لديه مشروع؟"),
                   value: hasProject,

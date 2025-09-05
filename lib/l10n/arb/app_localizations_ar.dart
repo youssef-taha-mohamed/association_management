@@ -40,14 +40,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
-  String get email_userName => 'اسم المستخدم / البريد الإلكتروني';
+  String get email_userName => 'اسم المستخدم';
 
   @override
-  String get email_validation => 'الرجاء إدخال البريد الإلكتروني / اسم مستخدم';
+  String get email_validation => 'الرجاء إدخال اسم مستخدم';
 
   @override
-  String get email_validation_error =>
-      'الرجاء إدخال  بريد إلكتروني / اسم مستخدم صحيح';
+  String get email_validation_error => 'الرجاء إدخال اسم مستخدم صحيح';
 
   @override
   String get password => 'كلمة المرور';

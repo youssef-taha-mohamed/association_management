@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:management/core/style/app_colors.dart';
+import 'package:management/shared/widgets/main_text.dart';
 import '../cubit/distribution_cubit.dart';
-
 
 class DistributionScreen extends StatelessWidget {
   const DistributionScreen({super.key});
@@ -43,18 +44,22 @@ class _DistributionViewState extends State<DistributionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: const Text(
+        backgroundColor: AppColors.primaryColor,
+        title: MainText(
           'مؤشرات البحث',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          color: AppColors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
         ),
-        backgroundColor: Colors.green[600],
         centerTitle: true,
-        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.white),
+        ),
       ),
       body: BlocBuilder<DistributionCubit, DistributionState>(
         builder: (context, state) {
@@ -137,7 +142,10 @@ class _DistributionViewState extends State<DistributionView> {
                         final region = _regionController.text.trim();
 
                         if (count > 0 && region.isNotEmpty) {
-                          context.read<DistributionCubit>().searchPeople(count, region);
+                          context.read<DistributionCubit>().searchPeople(
+                            count,
+                            region,
+                          );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -172,7 +180,10 @@ class _DistributionViewState extends State<DistributionView> {
     );
   }
 
-  Widget _buildSearchResults(BuildContext context, DistributionSearchResult state) {
+  Widget _buildSearchResults(
+    BuildContext context,
+    DistributionSearchResult state,
+  ) {
     return Column(
       children: [
         Container(
@@ -196,10 +207,7 @@ class _DistributionViewState extends State<DistributionView> {
               ),
               Text(
                 'المنطقة: ${state.searchRegion}',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.green[600],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.green[600]),
               ),
             ],
           ),
@@ -273,7 +281,10 @@ class _DistributionViewState extends State<DistributionView> {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.green[100],
                           borderRadius: BorderRadius.circular(12),
@@ -342,7 +353,10 @@ class _DistributionViewState extends State<DistributionView> {
     );
   }
 
-  Widget _buildBagAssignment(BuildContext context, DistributionBagAssignment state) {
+  Widget _buildBagAssignment(
+    BuildContext context,
+    DistributionBagAssignment state,
+  ) {
     return Column(
       children: [
         Container(
@@ -403,11 +417,16 @@ class _DistributionViewState extends State<DistributionView> {
                 child: ElevatedButton(
                   onPressed: () {
                     final content = _contentController.text.trim();
-                    final quantity = int.tryParse(_quantityController.text) ?? 0;
+                    final quantity =
+                        int.tryParse(_quantityController.text) ?? 0;
                     final size = _sizeController.text.trim();
 
                     if (content.isNotEmpty && quantity > 0 && size.isNotEmpty) {
-                      context.read<DistributionCubit>().addBagItem(content, quantity, size);
+                      context.read<DistributionCubit>().addBagItem(
+                        content,
+                        quantity,
+                        size,
+                      );
                       _contentController.clear();
                       _quantityController.clear();
                       _sizeController.clear();
@@ -446,13 +465,15 @@ class _DistributionViewState extends State<DistributionView> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    ...state.availableBags.map((bag) => Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: Text(
-                        '• ${bag.content} - العدد: ${bag.quantity} - الحجم: ${bag.size}',
-                        style: const TextStyle(fontSize: 13),
+                    ...state.availableBags.map(
+                      (bag) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          '• ${bag.content} - العدد: ${bag.quantity} - الحجم: ${bag.size}',
+                          style: const TextStyle(fontSize: 13),
+                        ),
                       ),
-                    )),
+                    ),
                   ],
                 ),
               ),
@@ -505,10 +526,16 @@ class _DistributionViewState extends State<DistributionView> {
                 ),
                 child: ExpansionTile(
                   leading: CircleAvatar(
-                    backgroundColor: person.bags.isNotEmpty ? Colors.green[100] : Colors.grey[200],
+                    backgroundColor:
+                        person.bags.isNotEmpty
+                            ? Colors.green[100]
+                            : Colors.grey[200],
                     child: Icon(
                       person.bags.isNotEmpty ? Icons.check : Icons.person,
-                      color: person.bags.isNotEmpty ? Colors.green[700] : Colors.grey[600],
+                      color:
+                          person.bags.isNotEmpty
+                              ? Colors.green[700]
+                              : Colors.grey[600],
                     ),
                   ),
                   title: Text(
@@ -531,19 +558,25 @@ class _DistributionViewState extends State<DistributionView> {
                               ),
                             ),
                             const SizedBox(height: 8),
-                            ...person.bags.map((bag) => Padding(
-                              padding: const EdgeInsets.only(bottom: 4),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.inventory, size: 16, color: Colors.green[600]),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    '${bag.content} - ${bag.quantity} - ${bag.size}',
-                                    style: const TextStyle(fontSize: 13),
-                                  ),
-                                ],
+                            ...person.bags.map(
+                              (bag) => Padding(
+                                padding: const EdgeInsets.only(bottom: 4),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.inventory,
+                                      size: 16,
+                                      color: Colors.green[600],
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      '${bag.content} - ${bag.quantity} - ${bag.size}',
+                                      style: const TextStyle(fontSize: 13),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            )),
+                            ),
                           ],
                         ),
                       )
@@ -593,7 +626,8 @@ class _DistributionViewState extends State<DistributionView> {
           textAlign: TextAlign.right,
           decoration: InputDecoration(
             hintText: hint,
-            prefixIcon: icon != null ? Icon(icon, color: Colors.grey[500]) : null,
+            prefixIcon:
+                icon != null ? Icon(icon, color: Colors.grey[500]) : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.grey[300]!),
@@ -602,7 +636,10 @@ class _DistributionViewState extends State<DistributionView> {
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.green[400]!),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 12,
+            ),
             filled: true,
             fillColor: Colors.white,
           ),

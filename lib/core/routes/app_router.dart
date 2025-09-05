@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import 'package:management/feature/small_projects/view/small_projects_page.dart';
-
 import '../../feature/auth/presentation/view/forget_password_email.dart';
 import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
@@ -13,7 +12,6 @@ import '../../feature/distribution/presentation/view/distribution_view.dart';
 import '../../feature/family_follow_up/presentation/FridayMeetingScreen.dart';
 import '../../feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
 import '../../feature/family_follow_up/presentation/family_follow_up.dart';
-import '../../feature/parent/home/presentation/home_parents.dart';
 import '../../feature/people_data/presentation/cubit/edit_user_cubit.dart';
 import '../../feature/people_data/presentation/view/edit_user.dart';
 import '../../feature/people_data/presentation/view/people_data_view.dart';
@@ -29,7 +27,7 @@ abstract final class AppRouter {
     final currentUser = AuthenticationProvider.instance.currentUser;
     final routeName = routeSettings.name;
     final argument = routeSettings.arguments;
-    print('routeName: $routeName');
+    debugPrint('routeName: $routeName');
     if (_authenticatedViews.contains(routeName) && currentUser == null) {
       return generateRoute(const RouteSettings(name: LoginView.routeName));
     }
@@ -44,9 +42,6 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => const LoginView());
       case DashboardScreen.routeName:
         return buildRoute(builder: (context) => DashboardScreen());
-      // region parents routed
-      case HomeParentsView.routeName:
-        return buildRoute(builder: (context) => const HomeParentsView());
       case PeopleDataView.routeName:
         return buildRoute(builder: (context) => const PeopleDataView());
 
@@ -77,6 +72,8 @@ abstract final class AppRouter {
         );
       case DistributionScreen.routeName:
         return buildRoute(builder: (context) => const DistributionScreen());
+      case FiedResearchvView.routeName:
+        return buildRoute(builder: (context) => const FiedResearchvView());
       case ResetPasswordView.routeName:
         return buildRoute(builder: (context) => const ResetPasswordView());
       case OtpVerificationView.routeName:
@@ -89,8 +86,6 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => QuranSchoolsScreen());
       case FridayMeetingScreen.routeName:
         return buildRoute(builder: (context) => FridayMeetingScreen());
-      case FiedResearchvView.routeName:
-        return buildRoute(builder: (context) => FiedResearchvView());
       case SmallProjectsPage.routeName:
         return buildRoute(builder: (context) => SmallProjectsPage());
       default:

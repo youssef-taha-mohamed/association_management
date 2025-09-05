@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import 'package:management/feature/small_projects/view/small_projects_page.dart';
 
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import '../../../core/resources/images.dart';
 import '../../case_detection/presentation/case_detection_view.dart';
 import '../../distribution/presentation/view/distribution_view.dart';
 import '../../drawer/presentation/view/drawer.dart';
@@ -79,9 +81,8 @@ class DashboardScreen extends StatelessWidget {
       ),
     ];
     return Scaffold(
-      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFF2E7D8A),
+        backgroundColor: AppColors.primaryColor,
         centerTitle: false,
         title: MainText(
           'برنامج إدارة الجمعيات الخيرية',
@@ -89,15 +90,28 @@ class DashboardScreen extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(ImagesAssets.logo, width: 180, height: 90),
+              ),
+            );
+          },
+        ),
       ),
       drawer: CustomDrawer(),
       body: GridView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-          childAspectRatio: 1.0,
+          crossAxisSpacing: 14,
+          mainAxisSpacing: 14,
+          childAspectRatio: 1.2,
         ),
         itemCount: services.length,
         itemBuilder: (context, index) {
@@ -112,10 +126,11 @@ class DashboardScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(10),
         color: Color(0xFF2C3E50),
-        child: Text(
+        child: MainText(
           'كل الحقوق محفوظة لصالح مركة سوبرنوفا جروب © 2024',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 12),
+          color: Colors.white,
+          fontSize: 12,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/small_projects/data/model/small_model.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 import 'add_project_dialog.dart';
 
@@ -78,11 +79,14 @@ class _SmallProjectsPageState extends State<SmallProjectsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: MainText(
           'برنامج إدارة الجمعيات الخيرية',
-          style: TextStyle(fontSize: 20),
+          fontSize: 20,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
         ),
-        backgroundColor: Colors.blue,
+
+        backgroundColor: Color(0xFF2E7D8A),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -18,8 +18,13 @@ class _CaseDetectionState extends State<CaseDetection> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("برنامج ادارة الجمعيات الخيرية"),
+          backgroundColor: Color(0xFF2E7D8A),
+          title: MainText(
+            "برنامج ادارة الجمعيات الخيرية",
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
           leading: IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:management/feature/field_researchv/data/db/database_helper.dart';
 import 'package:management/feature/field_researchv/data/model/case_model.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/add_case_page.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 class FiedResearchvView extends StatefulWidget {
   static const String routeName = '/field_research';
@@ -34,8 +35,13 @@ class _FiedResearchvViewState extends State<FiedResearchvView> {
       textDirection: TextDirection.rtl, // اتجاه عربي
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("برنامج ادارة الجمعيات الخيرية"),
+          backgroundColor: Color(0xFF2E7D8A),
+          title: MainText(
+            "برنامج ادارة الجمعيات الخيرية",
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
           leading: IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {

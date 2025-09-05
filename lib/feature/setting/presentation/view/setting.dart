@@ -53,15 +53,14 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1976D2),
+        backgroundColor: Color(0xFF2E7D8A),
         elevation: 0,
-        title: Text(
+        title: MainText(
           'الإعدادات',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
         ),
         centerTitle: true,
         actions: [
@@ -72,7 +71,7 @@ class SettingsScreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 12,right: 12,top: 12,bottom: 12),
+        padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -82,8 +81,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           itemCount: settingItems.length,
           itemBuilder: (context, index) {
-            return SettingCard(item: settingItems[index],
-            );
+            return SettingCard(item: settingItems[index]);
           },
         ),
       ),

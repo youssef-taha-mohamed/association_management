@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
 import 'package:management/feature/small_projects/view/small_projects_page.dart';
 
@@ -81,7 +82,7 @@ class DashboardScreen extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF2E7D8A),
+        backgroundColor: AppColors.primaryColor,
         centerTitle: false,
         title: MainText(
           'برنامج إدارة الجمعيات الخيرية',

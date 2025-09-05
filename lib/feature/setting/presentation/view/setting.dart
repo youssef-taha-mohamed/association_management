@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import '../../../../core/style/app_colors.dart';
 import 'widgets/setting_item.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -53,22 +54,22 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF2E7D8A),
+        backgroundColor: AppColors.primaryColor,
         elevation: 0,
         title: MainText(
           'الإعدادات',
-
-          color: Colors.white,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+          color: AppColors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
         ),
         centerTitle: true,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.settings, color: Colors.white, size: 28),
-          ),
-        ],
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.white),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),

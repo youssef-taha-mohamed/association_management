@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:management/core/style/app_colors.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../cubit/distribution_cubit.dart';
 
@@ -43,18 +44,22 @@ class _DistributionViewState extends State<DistributionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        backgroundColor: Color(0xFF2E7D8A),
+        backgroundColor: AppColors.primaryColor,
         title: MainText(
           'مؤشرات البحث',
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-          fontSize: 18,
+          color: AppColors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
         ),
-
         centerTitle: true,
-        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.white),
+        ),
       ),
       body: BlocBuilder<DistributionCubit, DistributionState>(
         builder: (context, state) {

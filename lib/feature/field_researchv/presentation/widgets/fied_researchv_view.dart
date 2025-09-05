@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
 import 'package:management/feature/field_researchv/data/db/database_helper.dart';
 import 'package:management/feature/field_researchv/data/model/case_model.dart';
 import 'package:management/feature/field_researchv/presentation/widgets/add_case_page.dart';
@@ -35,18 +36,20 @@ class _FiedResearchvViewState extends State<FiedResearchvView> {
       textDirection: TextDirection.rtl, // اتجاه عربي
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF2E7D8A),
+          backgroundColor: AppColors.primaryColor,
           title: MainText(
             "برنامج ادارة الجمعيات الخيرية",
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+            color: AppColors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // افتح القائمة الجانبية
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
             },
+            child: Icon(Icons.arrow_back, color: AppColors.white),
           ),
         ),
         body: SingleChildScrollView(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
 import 'package:management/feature/field_researchv/data/db/database_helper.dart';
 import 'package:management/feature/field_researchv/data/model/case_model.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 
 class AddCasePage extends StatefulWidget {
   const AddCasePage({super.key});
@@ -30,7 +32,24 @@ class _AddCasePageState extends State<AddCasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: MainText("إضافة حالة جديدة")),
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
+        title: MainText(
+          "إضافة حالة جديدة",
+          color: AppColors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.white),
+        ),
+      ),
+
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Form(
@@ -94,13 +113,10 @@ class _AddCasePageState extends State<AddCasePage> {
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
-      child: TextFormField(
+      child: MainTextField(
         controller: controller,
         keyboardType: isNumber ? TextInputType.number : TextInputType.text,
-        decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-        ),
+        label: label,
         validator: (val) => val == null || val.isEmpty ? "مطلوب" : null,
       ),
     );

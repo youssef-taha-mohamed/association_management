@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/auth/presentation/view/login.dart';
-import '../../../../core/authentication/provider.dart';
-import '../../../../shared/enum/user_role.dart';
 import '../../core/resources/images.dart';
 import '../../core/style/app_colors.dart';
 import '../../feature/dash_board/presentation/dash_board.dart';
-import '../../feature/parent/home/presentation/home_parents.dart';
 import '../view_model/splash_view_model.dart';
 import '../view_model/state.dart';
 import '../widgets/jumping_dots_progress_indicator.dart';
@@ -45,21 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
         );
       case SplashState.loggedIn:
         // FlutterAppBadge.count(0);
-        final user = AuthenticationProvider.instance.currentUser?.details;
 
-        if (user!.role == UserRole.partner) {
-          await Navigator.pushNamedAndRemoveUntil(
-            context,
-            HomeParentsView.routeName,
-            (route) => false,
-          );
-        } else {
-          await Navigator.pushNamedAndRemoveUntil(
-            context,
-            DashboardScreen.routeName,
-            (route) => false,
-          );
-        }
+        await Navigator.pushNamedAndRemoveUntil(
+          context,
+          DashboardScreen.routeName,
+          (route) => false,
+        );
+
       case SplashState.complete:
       // await Navigator.pushNamedAndRemoveUntil(
       //   context,
@@ -86,11 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Center(
-                child: Image.asset(
-                  ImagesAssets.logo,
-                  width: 180,
-                  height: 90,
-                ),
+                child: Image.asset(ImagesAssets.logo, width: 180, height: 90),
               ),
             ],
           ),

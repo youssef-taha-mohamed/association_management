@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/field_researchv/data/db/database_helper.dart';
 import 'package:management/feature/field_researchv/data/model/case_model.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 class AddCasePage extends StatefulWidget {
   const AddCasePage({super.key});
@@ -29,7 +30,7 @@ class _AddCasePageState extends State<AddCasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("إضافة حالة جديدة")),
+      appBar: AppBar(title: MainText("إضافة حالة جديدة")),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Form(
@@ -46,13 +47,13 @@ class _AddCasePageState extends State<AddCasePage> {
               _buildTextField(criteriaCtrl, "عدد المعايير", isNumber: true),
               _buildTextField(donationCtrl, "قيمة التبرعات", isNumber: true),
               SwitchListTile(
-                title: const Text("لديه مشروع"),
+                title: const MainText("لديه مشروع"),
                 value: hasProject,
                 onChanged: (val) => setState(() => hasProject = val),
               ),
               _buildTextField(statusCtrl, "الحالة"),
               SwitchListTile(
-                title: const Text("مفعل"),
+                title: const MainText("مفعل"),
                 value: isActive,
                 onChanged: (val) => setState(() => isActive = val),
               ),
@@ -77,7 +78,7 @@ class _AddCasePageState extends State<AddCasePage> {
                     Navigator.pop(context, true);
                   }
                 },
-                child: const Text("حفظ"),
+                child: const MainText("حفظ"),
               ),
             ],
           ),

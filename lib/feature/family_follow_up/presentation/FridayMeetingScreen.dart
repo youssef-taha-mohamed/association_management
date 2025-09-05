@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 class FridayMeetingScreen extends StatelessWidget {
   static const routeName = '/friday_meeting';
@@ -7,7 +8,7 @@ class FridayMeetingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1976D2),
+        backgroundColor: Color(0xFF2E7D8A),
         elevation: 0,
         leadingWidth: 180,
         leading: Builder(
@@ -17,7 +18,7 @@ class FridayMeetingScreen extends StatelessWidget {
             return Container(
               margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Color(0xFF1976D2),
+                color: Color(0xFF2E7D8A),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: InkWell(
@@ -32,13 +33,13 @@ class FridayMeetingScreen extends StatelessWidget {
                       if (screenWidth > 360) ...[
                         SizedBox(width: 4),
                         Flexible(
-                          child: Text(
+                          child: MainText(
                             'الرجوع للصفحة الرئيسية',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -53,13 +54,12 @@ class FridayMeetingScreen extends StatelessWidget {
         centerTitle: false,
         title: Align(
           alignment: Alignment.centerRight,
-          child: Text(
+          child: MainText(
             'لقاء الجمعة',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
@@ -69,12 +69,7 @@ class FridayMeetingScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          ' لقاء الجمعة',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: Center(child: MainText(' لقاء الجمعة', fontSize: 20)),
     );
   }
 }

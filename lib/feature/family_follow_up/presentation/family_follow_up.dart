@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
-import 'package:management/feature/family_follow_up/presentation/FridayMeetingScreen.dart'; // لو عندك شاشة لقاء الجمعة
+import 'package:management/feature/family_follow_up/presentation/FridayMeetingScreen.dart';
+import 'package:management/shared/widgets/main_text.dart'; // لو عندك شاشة لقاء الجمعة
 
 class FollowUpItem {
   final String title;
@@ -45,7 +46,7 @@ class FamilyFollowUpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF8F9FA),
       appBar: AppBar(
-        backgroundColor: Color(0xFF1976D2),
+        backgroundColor: Color(0xFF2E7D8A),
         elevation: 0,
         leadingWidth: 180,
         leading: Builder(
@@ -55,7 +56,7 @@ class FamilyFollowUpScreen extends StatelessWidget {
             return Container(
               margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Color(0xFF1976D2),
+                color: Color(0xFF2E7D8A),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: InkWell(
@@ -70,13 +71,13 @@ class FamilyFollowUpScreen extends StatelessWidget {
                       if (screenWidth > 360) ...[
                         SizedBox(width: 4),
                         Flexible(
-                          child: Text(
+                          child: MainText(
                             'الرجوع للصفحة الرئيسية',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -91,13 +92,12 @@ class FamilyFollowUpScreen extends StatelessWidget {
         centerTitle: false,
         title: Align(
           alignment: Alignment.centerRight,
-          child: Text(
+          child: MainText(
             'متابعة الاسرة',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
@@ -195,7 +195,7 @@ class FamilyFollowUpScreen extends StatelessWidget {
   void _handleTap(String title, BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('تم النقر على: $title', textAlign: TextAlign.right),
+        content: MainText('تم النقر على: $title', textAlign: TextAlign.right),
         backgroundColor: Color(0xFF4ECDC4),
         duration: Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,

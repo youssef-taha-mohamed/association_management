@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/feature/small_projects/data/model/small_model.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 class AddProjectDialog extends StatefulWidget {
   final Function(SmallModel) onSave;
@@ -29,7 +30,7 @@ class _AddProjectDialogState extends State<AddProjectDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       scrollable: true,
-      title: const Text("إضافة مشروع جديد"),
+      title: const MainText("إضافة مشروع جديد"),
       content: Form(
         key: _formKey,
         child: Column(
@@ -58,7 +59,7 @@ class _AddProjectDialogState extends State<AddProjectDialog> {
           child: const Text("إلغاء"),
           onPressed: () => Navigator.pop(context),
         ),
-        ElevatedButton(child: const Text("حفظ"), onPressed: _saveProject),
+        ElevatedButton(child: const MainText("حفظ"), onPressed: _saveProject),
       ],
     );
   }

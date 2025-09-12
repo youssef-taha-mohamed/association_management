@@ -1,6 +1,7 @@
-import 'package:management/feature/field_researchv/data/model/case_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../model/case_model.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();

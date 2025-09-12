@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:management/feature/small_projects/data/model/small_model.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import '../data/model/small_model.dart';
 
 class AddProjectDialog extends StatefulWidget {
-  final Function(SmallModel) onSave;
+  final Function(Projects) onSave;
 
   const AddProjectDialog({super.key, required this.onSave});
 
@@ -20,7 +20,7 @@ class _AddProjectDialogState extends State<AddProjectDialog> {
   void _saveProject() {
     if (_formKey.currentState!.validate()) {
       widget.onSave(
-        SmallModel(name: _name, income: _income, beneficiary: _beneficiary),
+        Projects(name: _name, income: _income, beneficiary: _beneficiary),
       );
       Navigator.pop(context);
     }

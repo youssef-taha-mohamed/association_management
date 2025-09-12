@@ -319,4 +319,67 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get micro_projects => 'المشاريع المصغرة';
+
+  @override
+  String get the_area => 'المنطقة';
+
+  @override
+  String get category => 'الفئة';
+
+  @override
+  String get donations => 'التبرعات';
+
+  @override
+  String get the_condition => 'الحالة';
+
+  @override
+  String get does_he_have_a_project => 'هل لدية مشروع ؟';
+
+  @override
+  String get is_activated => 'هل مفعل؟';
+
+  @override
+  String get add_new => 'اضافة حالة جديدة';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get name_required => 'حقل الاسم مطلوب';
+
+  @override
+  String get age_required => 'ادخل العمر';
+
+  @override
+  String get phone_number_required => 'ادخل رقم الهاتف';
+
+  @override
+  String get address_required => 'ادخل العنوان';
+
+  @override
+  String get the_area_required => 'ادخل اسم المنطقة';
+
+  @override
+  String get net_income_required => 'ادخل صافي الدخل  ';
+
+  @override
+  String get category_required => 'ادخل الفئة';
+
+  @override
+  String get donations_required => 'ادخل حجم التبرعات';
+
+  @override
+  String get the_condition_required => 'ادخل الحالة';
+
+  @override
+  String get governorate_required => 'ادخل المحافظة';
+
+  @override
+  String get number_criteria_required => 'ادخل عدد المعايير';
+
+  @override
+  String get number_of_criteria => 'عدد المعايير';
+
+  @override
+  String get name => 'الأسم';
 }

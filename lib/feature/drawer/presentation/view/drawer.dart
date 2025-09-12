@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:management/feature/dash_board/presentation/dash_board.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../../../core/resources/images.dart';
 import '../../../../shared/widgets/main_text.dart';
-import '../../../case_detection/presentation/case_detection_view.dart';
-import '../../../field_researchv/presentation/widgets/fied_researchv_view.dart';
+import '../../../dash_board/presentation/dash_board.dart';
+import '../../../fined_research/presentation/widgets/fined_research_view.dart';
 import '../../../people_data/presentation/view/people_data_view.dart';
+import '../../../statement/presentation/statement_view.dart';
 import '../cubit/drawer_cubit.dart';
 import 'widgets/drawer_item.dart';
 
@@ -52,15 +52,15 @@ class CustomDrawer extends StatelessWidget {
                         Expanded(
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              ImagesAssets.logo,
-                            ),
+                            child: Image.asset(ImagesAssets.logo),
                           ),
                         ),
                         Expanded(
                           child: Container(
                             height: 140,
-                            decoration: const BoxDecoration(color: Color(0xFF2E7D8A)),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF2E7D8A),
+                            ),
                             alignment: Alignment.center,
                             child: MainText(
                               context.l10n.home_screen,
@@ -138,14 +138,14 @@ class CustomDrawer extends StatelessWidget {
                     icon: Icons.description,
                     title: context.l10n.case_report,
                     onTap: () {
-                      Navigator.pushNamed(context, CaseDetection.routeName);
+                      Navigator.pushNamed(context, StatementScreen.routeName);
                     },
                   ),
                   DrawerItem(
                     icon: Icons.person_search,
                     title: context.l10n.field_research,
                     onTap: () {
-                      Navigator.pushNamed(context, FiedResearchvView.routeName);
+                      Navigator.pushNamed(context, FinedResearchView.routeName);
                     },
                   ),
                   DrawerExpandedItem(

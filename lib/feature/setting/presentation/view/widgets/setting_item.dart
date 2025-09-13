@@ -6,8 +6,9 @@ class SettingItem {
   final String title;
   final IconData icon;
   final Color color;
+  final VoidCallback? onTap;
 
-  SettingItem({required this.title, required this.icon, required this.color});
+  SettingItem({required this.title, required this.icon, required this.color,required this.onTap,});
 }
 
 // صفحة إضافية لعرض تفاصيل كل إعداد
@@ -54,10 +55,9 @@ class SettingDetailScreen extends StatelessWidget {
 }
 
 class SettingCard extends StatelessWidget {
-  const SettingCard({super.key, required this.item,this.onTap,});
+  const SettingCard({super.key, required this.item,});
 
   final SettingItem item;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +78,9 @@ class SettingCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: onTap,
+          onTap: item.onTap,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical:10),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               spacing: 16,
               mainAxisAlignment: MainAxisAlignment.center,

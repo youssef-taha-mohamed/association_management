@@ -1,57 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../../../core/style/app_colors.dart';
+import '../../../people_data/presentation/view/people_data_view.dart';
 import 'widgets/setting_item.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings';
-  final List<SettingItem> settingItems = [
-    SettingItem(
-      title: 'بيانات المستخدمين',
-      icon: Icons.person,
-      color: Color(0xFF4ECDC4),
-    ),
-    SettingItem(
-      title: 'صلاحيات المستخدمين',
-      icon: Icons.person_add,
-      color: Color(0xFF4ECDC4),
-    ),
-    SettingItem(
-      title: 'جهات عمل الموظفين',
-      icon: Icons.business,
-      color: Color(0xFF4ECDC4),
-    ),
-    SettingItem(
-      title: 'بيانات المستحقين والمعالين',
-      icon: Icons.people,
-      color: Color(0xFF4ECDC4),
-    ),
-    SettingItem(
-      title: 'انواع التبرعات',
-      icon: Icons.volunteer_activism,
-      color: Color(0xFF90EE90),
-    ),
-    SettingItem(
-      title: 'فئات المستحقين',
-      icon: Icons.category,
-      color: Color(0xFFFFE082),
-    ),
-    SettingItem(
-      title: 'بيانات الموزعين',
-      icon: Icons.delivery_dining,
-      color: Color(0xFFFFD54F),
-    ),
-    SettingItem(
-      title: 'بيانات المناطق',
-      icon: Icons.location_on,
-      color: Color(0xFFFF8A65),
-    ),
-  ];
-
-  SettingsScreen({super.key});
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final List<SettingItem> settingItems = [
+      SettingItem(
+        title: 'بيانات المستخدمين',
+        icon: Icons.person,
+        color: Color(0xFF4ECDC4),
+        onTap: () {
+          Navigator.pushNamed(context, PeopleDataView.routeName);
+        },
+      ),
+      SettingItem(
+          title: 'صلاحيات المستخدمين',
+          icon: Icons.person_add,
+          color: Color(0xFF4ECDC4),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'جهات عمل الموظفين',
+          icon: Icons.business,
+          color: Color(0xFF4ECDC4),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'بيانات المستحقين والمعالين',
+          icon: Icons.people,
+          color: Color(0xFF4ECDC4),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'انواع التبرعات',
+          icon: Icons.volunteer_activism,
+          color: Color(0xFF90EE90),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'فئات المستحقين',
+          icon: Icons.category,
+          color: Color(0xFFFFE082),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'بيانات الموزعين',
+          icon: Icons.delivery_dining,
+          color: Color(0xFFFFD54F),
+          onTap: (){}
+      ),
+      SettingItem(
+          title: 'بيانات المناطق',
+          icon: Icons.location_on,
+          color: Color(0xFFFF8A65),
+          onTap: (){}
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
@@ -82,7 +93,9 @@ class SettingsScreen extends StatelessWidget {
           ),
           itemCount: settingItems.length,
           itemBuilder: (context, index) {
-            return SettingCard(item: settingItems[index]);
+            return SettingCard(
+              item: settingItems[index],
+            );
           },
         ),
       ),

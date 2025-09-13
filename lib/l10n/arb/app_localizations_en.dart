@@ -382,5 +382,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get number_of_criteria => 'Number of criteria';
 
   @override
+  String get password_required => 'Please enter your password';
+
+  @override
+  String get type_of_validity => 'Type of validity';
+
+  @override
+  String get enter_the_project_name => 'Enter the project name';
+
+  @override
+  String get income_value_income => 'income value income';
+
+  @override
+  String get cancellation => 'cancellation';
+
+  @override
+  String get there_are_no_projects =>
+      'There are no projects yet, click + to add.';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get activation => 'activation';
+
+  @override
+  String get complete_the_data => 'Complete the data';
+
+  @override
+  String get he_has_a_project => 'He has a project';
+
+  @override
+  String get he_has_no_project => 'He has no project';
+
+  @override
   String get name => 'Name';
 }

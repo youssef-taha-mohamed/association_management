@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../data/model/small_model.dart';
 
@@ -30,36 +31,36 @@ class _AddProjectDialogState extends State<AddProjectDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       scrollable: true,
-      title: const MainText("إضافة مشروع جديد"),
+      title:  MainText(context.l10n.add_new_project),
       content: Form(
         key: _formKey,
         child: Column(
           children: [
             TextFormField(
-              decoration: const InputDecoration(labelText: "اسم المشروع"),
+              decoration:  InputDecoration(labelText:context.l10n.project_name ),
               onChanged: (val) => _name = val,
-              validator: (val) => val!.isEmpty ? "أدخل اسم المشروع" : null,
+              validator: (val) => val!.isEmpty ? context.l10n.enter_the_project_name : null,
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: "دخل المشروع"),
+              decoration:  InputDecoration(labelText: context.l10n.project_income),
               keyboardType: TextInputType.number,
               onChanged: (val) => _income = val,
-              validator: (val) => val!.isEmpty ? "أدخل الدخل" : null,
+              validator: (val) => val!.isEmpty ? context.l10n.income_value_income : null,
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: "اسم المستحق"),
+              decoration:  InputDecoration(labelText: context.l10n.name),
               onChanged: (val) => _beneficiary = val,
-              validator: (val) => val!.isEmpty ? "أدخل اسم المستحق" : null,
+              validator: (val) => val!.isEmpty ? context.l10n.name_required : null,
             ),
           ],
         ),
       ),
       actions: [
         TextButton(
-          child: const Text("إلغاء"),
+          child:  MainText(context.l10n.cancellation),
           onPressed: () => Navigator.pop(context),
         ),
-        ElevatedButton(child: const MainText("حفظ"), onPressed: _saveProject),
+        ElevatedButton(child:  MainText(context.l10n.save), onPressed: _saveProject),
       ],
     );
   }

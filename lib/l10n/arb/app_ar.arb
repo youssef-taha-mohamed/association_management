@@ -123,5 +123,15 @@
   "number_criteria_required": "ادخل عدد المعايير",
   "number_of_criteria": "عدد المعايير",
   "active": "مفعل",
+  "password_required": "يرجى إدخال كلمة السر",
+  "type_of_validity": "نوع الصلاحية",
+  "enter_the_project_name": "أدخل اسم المشروع",
+  "income_value_income": "اخل قيمة الدخل",
+  "cancellation": "ألغاء",
+  "there_are_no_projects": "لا توجد مشاريع بعد، اضغط على + للإضافة.",
+  "activation": "تفعيل",
+  "complete_the_data": "استكمال البيانات",
+  "he_has_a_project": "لديه مشروع",
+  "he_has_no_project": "ليس لديه مشروع",
   "name": "الأسم"
 }

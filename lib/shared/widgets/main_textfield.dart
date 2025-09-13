@@ -7,18 +7,22 @@ class MainTextField extends StatefulWidget {
   final String? hint;
   final String? label;
   final TextStyle? textStyle;
+  final TextStyle? lableStyle;
   final Widget? prefixIcon;
+  final IconData? prefixIcons;
   final Widget? suffix;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final int? maxLines;
+  final int? minLines;
   final int? maxLength;
   final bool isDense;
   final EdgeInsetsGeometry? contentPadding;
   final bool readOnly;
   final bool enabled;
   final FocusNode? currentFocusNode;
+  final FocusNode? nextFocusNode;
   final bool unFocusWhenTapOutside;
   final VoidCallback? onTap;
   final ValueChanged<String>? onChanged;
@@ -31,8 +35,9 @@ class MainTextField extends StatefulWidget {
   final String? helperText;
   final Function(CountryCode)? onCounteryCodeChange;
   final String? autofillHints;
-  final TextDirection? textDirection;
   final bool showClearButton;
+  final bool autofocus;
+  final TextDirection? textDirection;
 
   const MainTextField({
     super.key,
@@ -45,6 +50,7 @@ class MainTextField extends StatefulWidget {
     this.keyboardType,
     this.textInputAction,
     this.maxLines = 1,
+    this.minLines = 1,
     this.maxLength,
     this.isDense = true,
     this.contentPadding,
@@ -63,8 +69,12 @@ class MainTextField extends StatefulWidget {
     this.helperText,
     this.prefixIconConstraints,
     this.autofillHints,
-    this.textDirection,
     this.showClearButton = true,
+    this.autofocus = false,
+    this.lableStyle,
+    this.textDirection,
+    this.prefixIcons,
+    this.nextFocusNode,
   });
 
   @override
@@ -137,6 +147,7 @@ class _MainTextFieldState extends State<MainTextField> {
     super.dispose();
   }
 
+  // إنشاء أيقونة للحقل
   Widget? _buildSuffixIcon() {
     if (widget.isPassword) {
       return IconButton(
@@ -168,28 +179,24 @@ class _MainTextFieldState extends State<MainTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       autofillHints:
-          widget.autofillHints != null ? [widget.autofillHints!] : null,
-      controller: widget.controller,
-      focusNode: widget.currentFocusNode,
-      textDirection: widget.textDirection,
+      widget.autofillHints != null ? [widget.autofillHints!] : null,
+      controller: _controller,
+      focusNode: _focusNode,
       style: widget.textStyle ??
-          const TextStyle(
-            fontSize: 16,
+          Theme.of(context).textTheme.bodyMedium!.copyWith(
+            fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: AppColors.black,
           ),
+      textDirection: widget.textDirection,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       maxLines: widget.maxLines,
+      minLines: widget.minLines,
       maxLength: widget.maxLength,
       readOnly: widget.readOnly,
       enabled: widget.enabled,
       obscureText: _obscureText,
-      onChanged: (value) {
-        if (widget.onChanged != null) {
-          widget.onChanged!(value);
-        }
-      },
+      autofocus: widget.autofocus,
       validator: (value) {
         if (widget.validator != null) {
           _wasValidated = true;
@@ -201,7 +208,15 @@ class _MainTextFieldState extends State<MainTextField> {
         }
         return null;
       },
-      onFieldSubmitted: widget.onSubmitted,
+      onChanged: (value) {
+        if (widget.onChanged != null) {
+          widget.onChanged!(value);
+        }
+      },
+      onFieldSubmitted: widget.onSubmitted ??
+              (String value) {
+            FocusScope.of(context).requestFocus(widget.nextFocusNode);
+          },
       onTap: widget.onTap,
       onTapOutside: (event) {
         if (widget.unFocusWhenTapOutside) {
@@ -209,62 +224,107 @@ class _MainTextFieldState extends State<MainTextField> {
         }
       },
       decoration: InputDecoration(
-        labelText: widget.label,
+        label: widget.label != null
+            ? Text(
+          widget.label!,
+          style: widget.lableStyle ??
+              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).hintColor),
+        )
+            : null,
+        labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
         helperText: widget.helperText,
+        errorText: _errorMessage,
         prefixIconConstraints: widget.prefixIconConstraints,
         isDense: widget.isDense,
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         prefixIcon: widget.prefixIcon != null
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: widget.prefixIcon,
-              )
+            ? Container(
+          margin: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: AppColors.primaryColor.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: widget.prefixIcons == null
+              ? widget.prefixIcon
+              : Icon(
+            widget.prefixIcons,
+            color: AppColors.primaryColor,
+            size: 20,
+          ),
+        )
             : null,
         suffixIcon: _buildSuffixIcon(),
+        suffixIconConstraints: BoxConstraints(minWidth: 40),
+        suffix: widget.suffix,
+        hintText: widget.hint,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-              color: _errorMessage != null
-                  ? AppColors.error
-                  : _isFocused
-                      ? AppColors.primaryColor
-                      : AppColors.grey,
-              width: 1.5),
+            color: _errorMessage != null
+                ? AppColors.error
+                : _isFocused
+                ? AppColors.primaryColor
+                : AppColors.grey,
+            width: 1.5,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-              color:
-                  _errorMessage != null ? AppColors.error : AppColors.grey300,
-              width: 1.5),
+            color: _errorMessage != null ? AppColors.error : AppColors.grey,
+            width: 1.5,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-              color: _errorMessage != null
-                  ? AppColors.error
-                  : AppColors.primaryColor,
-              width: 1.5),
+            color: _errorMessage != null
+                ? AppColors.error
+                : AppColors.primaryColor,
+            width: 1.5,
+          ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
             color: AppColors.error,
             width: 1.5,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
             color: AppColors.error,
-            width: 2,
+            width: 1.5,
           ),
         ),
-        suffix: widget.suffix,
-        hintText: widget.hint,
-        counterText: '', // Removes the character counter
       ),
+      // بناء عداد النص إذا كان هناك حد أقصى
+      buildCounter: widget.maxLength != null
+          ? (
+          context, {
+            required currentLength,
+            required isFocused,
+            required maxLength,
+          }) {
+        return Text(
+          '$currentLength/${widget.maxLength}',
+          style: TextStyle(
+            color: currentLength >= widget.maxLength!
+                ? Colors.red
+                : Colors.grey,
+          ),
+        );
+      }
+          : null,
     );
   }
 }

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
-import 'package:management/feature/field_researchv/data/db/database_helper.dart';
-import 'package:management/feature/field_researchv/data/model/case_model.dart';
-import 'package:management/feature/field_researchv/presentation/widgets/add_case_page.dart';
 import 'package:management/shared/widgets/main_text.dart';
 
-class FiedResearchvView extends StatefulWidget {
-  static const String routeName = '/field_research';
+import '../../data/db/database_helper.dart';
+import '../../data/model/case_model.dart';
+import 'add_case_page.dart';
 
-  const FiedResearchvView({super.key});
+class FinedResearchView extends StatefulWidget {
+  static const String routeName = '/find-research-view';
+
+  const FinedResearchView({super.key});
 
   @override
-  State<FiedResearchvView> createState() => _FiedResearchvViewState();
+  State<FinedResearchView> createState() => _FinedResearchViewState();
 }
 
-class _FiedResearchvViewState extends State<FiedResearchvView> {
+class _FinedResearchViewState extends State<FinedResearchView> {
   List<CaseModel> cases = [];
 
   @override
@@ -150,10 +151,12 @@ class _FiedResearchvViewState extends State<FiedResearchvView> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            final result = await Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const AddCasePage()),
-            );
+            final result = await Navigator.pushNamed(context, AddCasePage.routeName);
+
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (_) =>  AddCasePage()),
+            // );
             if (result == true) {
               _loadCases();
             }

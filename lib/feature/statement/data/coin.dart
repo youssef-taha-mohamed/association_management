@@ -1,4 +1,4 @@
-class Coin {
+class StatementModel {
   int? id;
   String name;
   int age;
@@ -12,7 +12,7 @@ class Coin {
   String status;
   bool isActive;
 
-  Coin({
+  StatementModel({
     this.id,
     required this.name,
     required this.age,

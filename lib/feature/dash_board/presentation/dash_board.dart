@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
-import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
-import 'package:management/feature/small_projects/view/small_projects_page.dart';
-
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../../core/resources/images.dart';
-import '../../case_detection/presentation/case_detection_view.dart';
 import '../../distribution/presentation/view/distribution_view.dart';
 import '../../drawer/presentation/view/drawer.dart';
 import '../../family_follow_up/presentation/family_follow_up.dart';
+import '../../fined_research/presentation/widgets/fined_research_view.dart';
+import '../../projects/view/projects_screen.dart';
 import '../../setting/presentation/view/setting.dart';
+import '../../statement/presentation/statement_view.dart';
 import 'widgets/service_card.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -42,7 +41,7 @@ class DashboardScreen extends StatelessWidget {
         icon: Icons.description,
         color: Color(0xFF4ECDC4),
         onTap: () {
-          Navigator.pushNamed(context, CaseDetection.routeName);
+          Navigator.pushNamed(context, StatementScreen.routeName);
         },
       ),
       ServiceItem(
@@ -50,7 +49,7 @@ class DashboardScreen extends StatelessWidget {
         icon: Icons.person_search,
         color: Color(0xFF4ECDC4),
         onTap: () {
-          Navigator.pushNamed(context, FiedResearchvView.routeName);
+          Navigator.pushNamed(context, FinedResearchView.routeName);
         },
       ),
       ServiceItem(
@@ -63,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
         icon: Icons.star,
         color: Color(0xFFFFD700),
         onTap: () {
-          Navigator.pushNamed(context, SmallProjectsPage.routeName);
+          Navigator.pushNamed(context, ProjectsScreen.routeName);
         },
       ),
       ServiceItem(

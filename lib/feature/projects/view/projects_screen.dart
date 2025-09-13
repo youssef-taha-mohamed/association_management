@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
-import 'package:management/feature/small_projects/data/model/small_model.dart';
-import 'package:management/shared/widgets/main_text.dart';
-
+import '../../../shared/widgets/main_text.dart';
+import '../data/model/small_model.dart';
 import 'add_project_dialog.dart';
 
-class SmallProjectsPage extends StatefulWidget {
-  static const String routeName = '/small_paojects';
-  const SmallProjectsPage({super.key});
+class ProjectsScreen extends StatefulWidget {
+  static const String routeName = '/projects-screen';
+  const ProjectsScreen({super.key});
 
   @override
-  State<SmallProjectsPage> createState() => _SmallProjectsPageState();
+  State<ProjectsScreen> createState() => _ProjectsScreenState();
 }
 
-class _SmallProjectsPageState extends State<SmallProjectsPage> {
-  final List<SmallModel> _projects = [];
+class _ProjectsScreenState extends State<ProjectsScreen> {
+  final List<Projects> _projects = [];
 
   void _openAddProjectDialog() {
     showDialog(

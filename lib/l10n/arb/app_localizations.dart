@@ -709,6 +709,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Micro Projects'**
   String get micro_projects;
+
+  /// No description provided for @the_area.
+  ///
+  /// In en, this message translates to:
+  /// **'The area'**
+  String get the_area;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @donations.
+  ///
+  /// In en, this message translates to:
+  /// **'Donations'**
+  String get donations;
+
+  /// No description provided for @the_condition.
+  ///
+  /// In en, this message translates to:
+  /// **'The condition'**
+  String get the_condition;
+
+  /// No description provided for @does_he_have_a_project.
+  ///
+  /// In en, this message translates to:
+  /// **'Does he have a project?'**
+  String get does_he_have_a_project;
+
+  /// No description provided for @is_activated.
+  ///
+  /// In en, this message translates to:
+  /// **'Is it activated?'**
+  String get is_activated;
+
+  /// No description provided for @add_new.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a new case'**
+  String get add_new;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'save'**
+  String get save;
+
+  /// No description provided for @name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Name is required'**
+  String get name_required;
+
+  /// No description provided for @age_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Age is required'**
+  String get age_required;
+
+  /// No description provided for @phone_number_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Phone number is required'**
+  String get phone_number_required;
+
+  /// No description provided for @address_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Address is required'**
+  String get address_required;
+
+  /// No description provided for @the_area_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field The area is required'**
+  String get the_area_required;
+
+  /// No description provided for @net_income_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Net income is required'**
+  String get net_income_required;
+
+  /// No description provided for @category_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Category is required'**
+  String get category_required;
+
+  /// No description provided for @donations_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field Donations is required'**
+  String get donations_required;
+
+  /// No description provided for @the_condition_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field The Condition is required'**
+  String get the_condition_required;
+
+  /// No description provided for @governorate_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field the Governorate is required'**
+  String get governorate_required;
+
+  /// No description provided for @number_criteria_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Field the Number Criteria is required'**
+  String get number_criteria_required;
+
+  /// No description provided for @number_of_criteria.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of criteria'**
+  String get number_of_criteria;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
 }
 
 class _AppLocalizationsDelegate

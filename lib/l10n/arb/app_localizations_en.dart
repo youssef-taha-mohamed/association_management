@@ -319,4 +319,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get micro_projects => 'Micro Projects';
+
+  @override
+  String get the_area => 'The area';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get donations => 'Donations';
+
+  @override
+  String get the_condition => 'The condition';
+
+  @override
+  String get does_he_have_a_project => 'Does he have a project?';
+
+  @override
+  String get is_activated => 'Is it activated?';
+
+  @override
+  String get add_new => 'Add a new case';
+
+  @override
+  String get save => 'save';
+
+  @override
+  String get name_required => 'Field Name is required';
+
+  @override
+  String get age_required => 'Field Age is required';
+
+  @override
+  String get phone_number_required => 'Field Phone number is required';
+
+  @override
+  String get address_required => 'Field Address is required';
+
+  @override
+  String get the_area_required => 'Field The area is required';
+
+  @override
+  String get net_income_required => 'Field Net income is required';
+
+  @override
+  String get category_required => 'Field Category is required';
+
+  @override
+  String get donations_required => 'Field Donations is required';
+
+  @override
+  String get the_condition_required => 'Field The Condition is required';
+
+  @override
+  String get governorate_required => 'Field the Governorate is required';
+
+  @override
+  String get number_criteria_required =>
+      'Field the Number Criteria is required';
+
+  @override
+  String get number_of_criteria => 'Number of criteria';
+
+  @override
+  String get name => 'Name';
 }

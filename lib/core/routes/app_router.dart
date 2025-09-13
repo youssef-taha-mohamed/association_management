@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:management/feature/field_researchv/presentation/widgets/fied_researchv_view.dart';
-import 'package:management/feature/small_projects/view/small_projects_page.dart';
 import '../../feature/auth/presentation/view/forget_password_email.dart';
 import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
 import '../../feature/auth/presentation/view/register.dart';
 import '../../feature/auth/presentation/view/reset_password.dart';
-import '../../feature/case_detection/presentation/case_detection_view.dart';
 import '../../feature/dash_board/presentation/dash_board.dart';
 import '../../feature/distribution/presentation/view/distribution_view.dart';
 import '../../feature/family_follow_up/presentation/FridayMeetingScreen.dart';
 import '../../feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
 import '../../feature/family_follow_up/presentation/family_follow_up.dart';
+import '../../feature/fined_research/presentation/widgets/add_case_page.dart';
+import '../../feature/fined_research/presentation/widgets/fined_research_view.dart';
 import '../../feature/people_data/presentation/cubit/edit_user_cubit.dart';
 import '../../feature/people_data/presentation/view/edit_user.dart';
 import '../../feature/people_data/presentation/view/people_data_view.dart';
+import '../../feature/projects/view/projects_screen.dart';
 import '../../feature/setting/presentation/view/setting.dart';
+import '../../feature/statement/presentation/statement_view.dart';
 import '../authentication/provider.dart';
 
 abstract final class AppRouter {
@@ -59,10 +60,10 @@ abstract final class AppRouter {
           },
         );
 
-      case CaseDetection.routeName:
+      case StatementScreen.routeName:
         return buildRoute(
           builder: (context) {
-            return const CaseDetection();
+            return const StatementScreen();
           },
         );
 
@@ -72,10 +73,12 @@ abstract final class AppRouter {
         );
       case DistributionScreen.routeName:
         return buildRoute(builder: (context) => const DistributionScreen());
-      case FiedResearchvView.routeName:
-        return buildRoute(builder: (context) => const FiedResearchvView());
+      case FinedResearchView.routeName:
+        return buildRoute(builder: (context) => const FinedResearchView());
       case ResetPasswordView.routeName:
         return buildRoute(builder: (context) => const ResetPasswordView());
+        case AddCasePage.routeName:
+        return buildRoute(builder: (context) => const AddCasePage());
       case OtpVerificationView.routeName:
         return buildRoute(builder: (context) => OtpVerificationView());
       case SettingsScreen.routeName:
@@ -86,8 +89,8 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => QuranSchoolsScreen());
       case FridayMeetingScreen.routeName:
         return buildRoute(builder: (context) => FridayMeetingScreen());
-      case SmallProjectsPage.routeName:
-        return buildRoute(builder: (context) => SmallProjectsPage());
+      case ProjectsScreen.routeName:
+        return buildRoute(builder: (context) => ProjectsScreen());
       default:
         throw UnimplementedError();
     }

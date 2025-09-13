@@ -1,7 +1,8 @@
-import 'package:management/feature/case_detection/data/coin.dart' show Coin;
 
-List<Coin> coins = [
-  Coin(
+import 'coin.dart';
+
+List<StatementModel> coins = [
+  StatementModel(
     name: 'أحمد علي',
     age: 35,
     phone: '01012345678',
@@ -14,7 +15,7 @@ List<Coin> coins = [
     hasProject: true,
     status: 'نشط',
   ),
-  Coin(
+  StatementModel(
     name: 'حسن علي',
     age: 55,
     phone: '01112345678',
@@ -27,7 +28,7 @@ List<Coin> coins = [
     hasProject: false,
     status: 'نشط',
   ),
-  Coin(
+  StatementModel(
     name: 'عفاف السيد',
     age: 60,
     phone: '01212665678',
@@ -40,7 +41,7 @@ List<Coin> coins = [
     hasProject: true,
     status: 'نشط',
   ),
-  Coin(
+  StatementModel(
     name: 'مريم الحسن',
     age: 40,
     phone: '01512245430',

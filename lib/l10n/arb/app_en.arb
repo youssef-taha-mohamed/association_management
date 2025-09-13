@@ -122,6 +122,16 @@
   "governorate_required": "Field the Governorate is required",
   "number_criteria_required": "Field the Number Criteria is required",
   "number_of_criteria": "Number of criteria",
+  "password_required": "Please enter your password",
+  "type_of_validity": "Type of validity",
+  "enter_the_project_name": "Enter the project name",
+  "income_value_income": "income value income",
+  "cancellation": "cancellation",
+  "there_are_no_projects": "There are no projects yet, click + to add.",
   "active": "Active",
+  "activation": "activation",
+  "complete_the_data": "Complete the data",
+  "he_has_a_project": "He has a project",
+  "he_has_no_project": "He has no project",
   "name": "Name"
 }

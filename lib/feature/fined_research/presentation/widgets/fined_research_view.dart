@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
+import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 
 import '../../data/db/database_helper.dart';
@@ -89,22 +90,92 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                 ),
                 DataTable(
                   border: TableBorder.all(color: Colors.black, width: 1),
-                  columns: const [
-                    DataColumn(label: MainText("الاسم")),
-                    DataColumn(label: MainText("العمر")),
-                    DataColumn(label: MainText("الموبايل")),
-                    DataColumn(label: MainText("العنوان")),
-                    DataColumn(label: MainText("المحافظة")),
-                    DataColumn(label: MainText("المنطقة")),
-                    DataColumn(label: MainText("الفئة")),
-                    DataColumn(label: MainText("عدد المعايير")),
-                    DataColumn(label: MainText("قيمة التبرعات")),
-                    DataColumn(label: MainText("المشروع")),
-                    DataColumn(label: MainText("الحالة")),
-                    DataColumn(label: MainText("تفعيل")),
-                    DataColumn(label: MainText("استكمال البيانات")),
+                  columns:  [
+                    DataColumn(
+                      label: MainText(context.l10n.name,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(
+                        label: MainText(
+                            context.l10n.age,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                    DataColumn(
+                        label: MainText(
+                            context.l10n.phone_number,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                    DataColumn(
+                        label: MainText(
+                            context.l10n.address,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.governorate,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.the_area,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.category,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                    context.l10n.number_of_criteria,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.donations ,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.project_name,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.the_condition,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.activation,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                    DataColumn(label: MainText(
+                      context.l10n.complete_the_data,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
                   ],
+
                   rows:
+
                       cases.map((c) {
                         return DataRow(
                           cells: [
@@ -119,7 +190,7 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                             DataCell(MainText("${c.donationValue}")),
                             DataCell(
                               MainText(
-                                c.hasProject ? "لديه مشروع" : "ليس لديه مشروع",
+                                c.hasProject ? context.l10n.he_has_a_project : context.l10n.he_has_no_project,
 
                                 color: c.hasProject ? Colors.green : Colors.red,
                                 fontWeight: FontWeight.bold,

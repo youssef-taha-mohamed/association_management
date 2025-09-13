@@ -39,111 +39,115 @@ class _StatementScreenState extends State<StatementScreen> {
             child: Icon(Icons.arrow_back, color: AppColors.white),
           ),
         ),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: DataTable(
-              border: TableBorder.all(color: Colors.black, width: 1),
-              columns: [
-                DataColumn(
-                  label: MainText(
-                    context.l10n.name,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+        body: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding:  EdgeInsets.all(8.0),
+                child: DataTable(
+                  border: TableBorder.all(color: Colors.black, width: 1),
+                  columns: [
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.name,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.age,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.phone_number,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.address,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.region,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.category,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.net_income,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.donations,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.project_name,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.the_condition,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.active,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                  rows:
+                      _data.map((caseItem) {
+                        return DataRow(
+                          cells: [
+                            DataCell(Text(caseItem.name)),
+                            DataCell(Text(caseItem.age.toString())),
+                            DataCell(Text(caseItem.phone)),
+                            DataCell(Text(caseItem.address)),
+                            DataCell(Text(caseItem.area)),
+                            DataCell(Text(caseItem.category)),
+                            DataCell(Text(caseItem.income.toString())),
+                            DataCell(Text(caseItem.donation.toString())),
+                            DataCell(Text(caseItem.hasProject ? "نعم" : "لا")),
+                            DataCell(Text(caseItem.status)),
+                            DataCell(Text(caseItem.isActive ? "نعم" : "لا")),
+                          ],
+                        );
+                      }).toList(),
                 ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.age,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.phone_number,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.address,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.region,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.category,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.net_income,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.donations,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.project_name,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.the_condition,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                DataColumn(
-                  label: MainText(
-                    context.l10n.active,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-              rows:
-                  _data.map((caseItem) {
-                    return DataRow(
-                      cells: [
-                        DataCell(Text(caseItem.name)),
-                        DataCell(Text(caseItem.age.toString())),
-                        DataCell(Text(caseItem.phone)),
-                        DataCell(Text(caseItem.address)),
-                        DataCell(Text(caseItem.area)),
-                        DataCell(Text(caseItem.category)),
-                        DataCell(Text(caseItem.income.toString())),
-                        DataCell(Text(caseItem.donation.toString())),
-                        DataCell(Text(caseItem.hasProject ? "نعم" : "لا")),
-                        DataCell(Text(caseItem.status)),
-                        DataCell(Text(caseItem.isActive ? "نعم" : "لا")),
-                      ],
-                    );
-                  }).toList(),
+              ),
             ),
-          ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {

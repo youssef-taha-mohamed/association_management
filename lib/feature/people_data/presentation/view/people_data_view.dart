@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_text.dart';
 
 import '../cubit/edit_user_cubit.dart';
 import 'edit_user.dart';
@@ -61,13 +64,13 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                 child: Icon(Icons.close, color: Colors.grey[600], size: 24),
               ),
             ),
-            Text(
+            MainText(
               'بيانات المستخدمين',
-              style: TextStyle(
+
                 color: Colors.black87,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-              ),
+
             ),
             Container(
               padding: EdgeInsets.all(8),
@@ -95,13 +98,13 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                   child: ElevatedButton.icon(
                     onPressed: () => _showAddUserBottomSheet(context),
                     icon: Icon(Icons.person_add, color: Colors.white, size: 20),
-                    label: Text(
+                    label: MainText(
                       'إضافة مستخدم جديد',
-                      style: TextStyle(
+
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                      ),
+
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
@@ -403,13 +406,13 @@ class _PeopleDataViewState extends State<PeopleDataView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(Icons.edit, color: Colors.blue),
-                Text(
+                MainText(
                   'تعديل المستخدم',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  fontSize: 18, fontWeight: FontWeight.w600
                 ),
               ],
             ),
-            content: Text(
+            content: MainText(
               'سيتم فتح شاشة تعديل المستخدم: ${user.name}',
               textAlign: TextAlign.right,
             ),
@@ -433,7 +436,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                     }
                   });
                 },
-                child: Text('موافق'),
+                child:MainText('موافق'),
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -495,17 +498,16 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                 size: 24,
                               ),
                             ),
-                            Text(
+                            MainText(
                               'إدخال بيانات المستخدمين',
-                              style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                              ),
+
                             ),
                             Icon(
                               Icons.person_add,
-                              color: Colors.white,
+                              color: AppColors.white,
                               size: 24,
                             ),
                           ],
@@ -524,11 +526,11 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                 // Username Field
                                 _buildFormField(
                                   controller: _nameController,
-                                  label: 'اسم المستخدم',
+                                  label: context.l10n.name,
                                   icon: Icons.person_outline,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'يرجى إدخال اسم المستخدم';
+                                      return context.l10n.name_required;
                                     }
                                     return null;
                                   },
@@ -538,12 +540,12 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                 // Password Field
                                 _buildFormField(
                                   controller: _passwordController,
-                                  label: 'كلمة السر',
+                                  label: context.l10n.password,
                                   icon: Icons.lock_outline,
                                   isPassword: true,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'يرجى إدخال كلمة السر';
+                                      return context.l10n.password_required;
                                     }
                                     if (value.length < 4) {
                                       return 'كلمة السر يجب أن تكون 4 أحرف على الأقل';
@@ -556,7 +558,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                 // Role Dropdown
                                 _buildDropdownField(
                                   value: _selectedRole,
-                                  label: 'نوع الصلاحية',
+                                  label: context.l10n.type_of_validity,
                                   icon: Icons.admin_panel_settings_outlined,
                                   items: ['Operator', 'Admin', 'User'],
                                   onChanged: (value) {

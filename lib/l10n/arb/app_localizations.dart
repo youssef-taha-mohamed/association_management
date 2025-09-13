@@ -830,6 +830,72 @@ abstract class AppLocalizations {
   /// **'Number of criteria'**
   String get number_of_criteria;
 
+  /// No description provided for @password_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get password_required;
+
+  /// No description provided for @type_of_validity.
+  ///
+  /// In en, this message translates to:
+  /// **'Type of validity'**
+  String get type_of_validity;
+
+  /// No description provided for @enter_the_project_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the project name'**
+  String get enter_the_project_name;
+
+  /// No description provided for @income_value_income.
+  ///
+  /// In en, this message translates to:
+  /// **'income value income'**
+  String get income_value_income;
+
+  /// No description provided for @cancellation.
+  ///
+  /// In en, this message translates to:
+  /// **'cancellation'**
+  String get cancellation;
+
+  /// No description provided for @there_are_no_projects.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no projects yet, click + to add.'**
+  String get there_are_no_projects;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @activation.
+  ///
+  /// In en, this message translates to:
+  /// **'activation'**
+  String get activation;
+
+  /// No description provided for @complete_the_data.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete the data'**
+  String get complete_the_data;
+
+  /// No description provided for @he_has_a_project.
+  ///
+  /// In en, this message translates to:
+  /// **'He has a project'**
+  String get he_has_a_project;
+
+  /// No description provided for @he_has_no_project.
+  ///
+  /// In en, this message translates to:
+  /// **'He has no project'**
+  String get he_has_no_project;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

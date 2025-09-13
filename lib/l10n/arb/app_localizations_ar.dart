@@ -381,5 +381,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get number_of_criteria => 'عدد المعايير';
 
   @override
+  String get password_required => 'يرجى إدخال كلمة السر';
+
+  @override
+  String get type_of_validity => 'نوع الصلاحية';
+
+  @override
+  String get enter_the_project_name => 'أدخل اسم المشروع';
+
+  @override
+  String get income_value_income => 'اخل قيمة الدخل';
+
+  @override
+  String get cancellation => 'ألغاء';
+
+  @override
+  String get there_are_no_projects => 'لا توجد مشاريع بعد، اضغط على + للإضافة.';
+
+  @override
+  String get active => 'مفعل';
+
+  @override
+  String get activation => 'تفعيل';
+
+  @override
+  String get complete_the_data => 'استكمال البيانات';
+
+  @override
+  String get he_has_a_project => 'لديه مشروع';
+
+  @override
+  String get he_has_no_project => 'ليس لديه مشروع';
+
+  @override
   String get name => 'الأسم';
 }

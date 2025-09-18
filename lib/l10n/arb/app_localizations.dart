@@ -944,6 +944,12 @@ abstract class AppLocalizations {
   /// **'Types Donations'**
   String get types_donations;
 
+  /// No description provided for @add_user.
+  ///
+  /// In en, this message translates to:
+  /// **'Add User'**
+  String get add_user;
+
   /// No description provided for @under_development.
   ///
   /// In en, this message translates to:

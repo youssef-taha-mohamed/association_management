@@ -438,11 +438,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get types_donations => 'أنواع التبرعات';
 
   @override
-  String get under_development => 'قيد التطوير...';
-
-  @override
-  String get page => 'صفحة';
-
-  @override
   String get name => 'الأسم';
 }

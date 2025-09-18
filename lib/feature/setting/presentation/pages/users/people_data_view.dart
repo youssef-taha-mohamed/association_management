@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
+import 'package:management/feature/setting/presentation/pages/users/widgets/user_item.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 import '../../cubits/people_data/edit_user_cubit.dart' show User;
 import 'edit_user.dart';
 
@@ -49,128 +51,47 @@ class _PeopleDataViewState extends State<PeopleDataView> {
         }).toList();
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.5,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                padding: EdgeInsets.all(8),
-                child: Icon(Icons.close, color: Colors.grey[600], size: 24),
-              ),
-            ),
-            MainText(
-              'بيانات المستخدمين',
-
-                color: Colors.black87,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-
-            ),
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.blue[50],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(Icons.person, color: Colors.blue, size: 24),
-            ),
-          ],
+        backgroundColor: AppColors.primaryColor,
+        elevation: 0,
+        title: MainText(
+          context.l10n.user_data,
+          color: AppColors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
         ),
+        centerTitle: true,
         automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.white),
+        ),
       ),
       body: Column(
         children: [
-          // Header Section
+          SizedBox(height: 16),
+          // Search Bar
           Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                // Add User Button
-                Container(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () => _showAddUserBottomSheet(context),
-                    icon: Icon(Icons.person_add, color: Colors.white, size: 20),
-                    label: MainText(
-                      'إضافة مستخدم جديد',
-
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 2,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                // Search Bar
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[50],
-                    border: Border.all(color: Colors.grey[300]!),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: TextField(
-                    controller: _searchController,
-                    textAlign: TextAlign.right,
-                    onChanged: (value) {
-                      setState(() {
-                        _searchQuery = value;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'انتقال الى...',
-                      hintStyle: TextStyle(
-                        color: Colors.grey[500],
-                        fontSize: 14,
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey[500],
-                        size: 20,
-                      ),
-                      suffixIcon:
-                          _searchQuery.isNotEmpty
-                              ? IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _searchController.clear();
-                                    _searchQuery = '';
-                                  });
-                                },
-                                icon: Icon(
-                                  Icons.clear,
-                                  color: Colors.grey[500],
-                                  size: 18,
-                                ),
-                              )
-                              : null,
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 14,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              border: Border.all(color: Colors.grey[300]!),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: MainTextField(
+              controller: _searchController,
+              textAlign: TextAlign.right,
+              onChanged: (value) {
+                setState(() {
+                  _searchQuery = value;
+                });
+              },
+              hint: context.l10n.search,
             ),
           ),
-
-          // Users List - Card Style for Mobile
+          SizedBox(height: 16),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -178,159 +99,14 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                 itemCount: filteredUsers.length,
                 itemBuilder: (context, index) {
                   final user = filteredUsers[index];
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.grey[200]!),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          // Header Row - Name and Edit
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () => _editUser(user),
-                                child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue[50],
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: Colors.blue,
-                                    size: 18,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  user.name,
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  textAlign: TextAlign.right,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 16),
-
-                          // User Details
-                          _buildDetailRow('كلمة السر', user.password),
-                          SizedBox(height: 12),
-                          _buildDetailRow(
-                            'نوع الصلاحية',
-                            '',
-                            badge: Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color:
-                                    user.role == 'Admin'
-                                        ? Colors.orange[100]
-                                        : Colors.blue[100],
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color:
-                                      user.role == 'Admin'
-                                          ? Colors.orange[300]!
-                                          : Colors.blue[300]!,
-                                ),
-                              ),
-                              child: Text(
-                                user.role,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color:
-                                      user.role == 'Admin'
-                                          ? Colors.orange[800]
-                                          : Colors.blue[800],
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 12),
-                          _buildDetailRow('اسم الجهة', user.department),
-                          SizedBox(height: 12),
-                          _buildDetailRow(
-                            'حالة التفعيل',
-                            '',
-                            badge: Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color:
-                                    user.isActive
-                                        ? Colors.green[100]
-                                        : Colors.red[100],
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color:
-                                      user.isActive
-                                          ? Colors.green[300]!
-                                          : Colors.red[300]!,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    user.isActive
-                                        ? Icons.check_circle
-                                        : Icons.cancel,
-                                    size: 16,
-                                    color:
-                                        user.isActive
-                                            ? Colors.green[700]
-                                            : Colors.red[700],
-                                  ),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    user.isActive ? 'مفعل' : 'غير مفعل',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color:
-                                          user.isActive
-                                              ? Colors.green[800]
-                                              : Colors.red[800],
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  return UserItem(
+                    user: user,
+                    editUser: _editUser,
                   );
                 },
               ),
             ),
           ),
-
           // Footer
           Container(
             padding: EdgeInsets.all(16),
@@ -365,31 +141,16 @@ class _PeopleDataViewState extends State<PeopleDataView> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildDetailRow(String label, String value, {Widget? badge}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        badge ??
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[700],
-                letterSpacing: value.contains('••') ? 2 : 0,
-              ),
-            ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Colors.grey[600],
-          ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => _showAddUserBottomSheet(context),
+        label: Row(
+          spacing: 8,
+          children: [
+            MainText(context.l10n.add_user),
+            Icon(Icons.person_add, color: Colors.white, size: 20,),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -407,7 +168,8 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                 Icon(Icons.edit, color: Colors.blue),
                 MainText(
                   'تعديل المستخدم',
-                  fontSize: 18, fontWeight: FontWeight.w600
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ],
             ),
@@ -427,7 +189,9 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                     if (updatedUser != null) {
                       setState(() {
                         // Update the user in your users list
-                        int index = users.indexWhere((u) => u.id == updatedUser.id);
+                        int index = users.indexWhere(
+                          (u) => u.id == updatedUser.id,
+                        );
                         if (index != -1) {
                           users[index] = updatedUser;
                         }
@@ -435,7 +199,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                     }
                   });
                 },
-                child:MainText('موافق'),
+                child: MainText('موافق'),
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -499,10 +263,9 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                             ),
                             MainText(
                               'إدخال بيانات المستخدمين',
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
                             ),
                             Icon(
                               Icons.person_add,

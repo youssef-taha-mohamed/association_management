@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:management/feature/setting/presentation/screens/beneficiaries_dependents/beneficiaries_dep_screen.dart';
 import '../../feature/auth/presentation/view/forget_password_email.dart';
 import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
@@ -12,10 +11,17 @@ import '../../feature/family_follow_up/presentation/QuranSchoolsScreen.dart';
 import '../../feature/family_follow_up/presentation/family_follow_up.dart';
 import '../../feature/fined_research/presentation/widgets/add_case_page.dart';
 import '../../feature/fined_research/presentation/widgets/fined_research_view.dart';
-import '../../feature/people_data/presentation/cubit/edit_user_cubit.dart';
-import '../../feature/people_data/presentation/view/edit_user.dart';
-import '../../feature/people_data/presentation/view/people_data_view.dart';
 import '../../feature/projects/view/projects_screen.dart';
+import '../../feature/setting/presentation/cubits/people_data/edit_user_cubit.dart';
+import '../../feature/setting/presentation/pages/beneficiaries_dependents/beneficiaries_dep.dart';
+import '../../feature/setting/presentation/pages/beneficiary_categories/beneficiary_categories.dart';
+import '../../feature/setting/presentation/pages/distributors/distributors.dart';
+import '../../feature/setting/presentation/pages/donation_types/donation_types.dart';
+import '../../feature/setting/presentation/pages/regions/regions.dart';
+import '../../feature/setting/presentation/pages/users/edit_user.dart';
+import '../../feature/setting/presentation/pages/users/people_data_view.dart';
+import '../../feature/setting/presentation/pages/user_permissions/user_permissions.dart';
+import '../../feature/setting/presentation/pages/workplaces/workplaces.dart';
 import '../../feature/setting/presentation/view/setting.dart';
 import '../../feature/statement/presentation/statement_view.dart';
 import '../authentication/provider.dart';
@@ -73,25 +79,37 @@ abstract final class AppRouter {
           builder: (context) => const ForgetPasswordEmailView(),
         );
       case DistributionScreen.routeName:
-        return buildRoute(builder: (context) => const DistributionScreen());
+        return buildRoute(builder: (context) => const DistributionScreen(),);
       case FinedResearchView.routeName:
         return buildRoute(builder: (context) => const FinedResearchView());
       case ResetPasswordView.routeName:
-        return buildRoute(builder: (context) => const ResetPasswordView());
+        return buildRoute(builder: (context) => const ResetPasswordView(),);
       case AddCasePage.routeName:
-        return buildRoute(builder: (context) => const AddCasePage());
+        return buildRoute(builder: (context) => const AddCasePage(),);
       case OtpVerificationView.routeName:
-        return buildRoute(builder: (context) => OtpVerificationView());
+        return buildRoute(builder: (context) => OtpVerificationView(),);
       case SettingsScreen.routeName:
-        return buildRoute(builder: (context) => SettingsScreen());
+        return buildRoute(builder: (context) => SettingsScreen(),);
       case FamilyFollowUpScreen.routeName:
-        return buildRoute(builder: (context) => FamilyFollowUpScreen());
+        return buildRoute(builder: (context) => FamilyFollowUpScreen(),);
       case QuranSchoolsScreen.routeName:
-        return buildRoute(builder: (context) => QuranSchoolsScreen());
+        return buildRoute(builder: (context) => QuranSchoolsScreen(),);
       case FridayMeetingScreen.routeName:
-        return buildRoute(builder: (context) => FridayMeetingScreen());
-      case BeneficiariesDepScreen.routeName:
-        return buildRoute(builder: (context) => BeneficiariesDepScreen());
+        return buildRoute(builder: (context) => FridayMeetingScreen(),);
+      case BeneficiariesDepPage.routeName:
+        return buildRoute(builder: (context) => BeneficiariesDepPage(),);
+        case UserPermissionsPage.routeName:
+        return buildRoute(builder: (context) => UserPermissionsPage(),);
+        case WorkplacesPage.routeName:
+        return buildRoute(builder: (context) => WorkplacesPage(),);
+        case BeneficiaryCategoriesPage.routeName:
+        return buildRoute(builder: (context) => BeneficiaryCategoriesPage(),);
+        case DonationTypesPage.routeName:
+        return buildRoute(builder: (context) => DonationTypesPage(),);
+        case RegionsPages.routeName:
+        return buildRoute(builder: (context) => RegionsPages(),);
+        case DistributorsPage.routeName:
+        return buildRoute(builder: (context) => DistributorsPage(),);
       case ProjectsScreen.routeName:
         return buildRoute(builder: (context) => ProjectsScreen());
       default:

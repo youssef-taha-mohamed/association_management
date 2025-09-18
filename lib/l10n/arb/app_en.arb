@@ -141,5 +141,7 @@
   "eligible_categories":"Eligible categories",
   "employers":"employers",
   "types_donations":"Types Donations",
+  "under_development":"Under development...",
+  "page":"page",
   "name": "Name"
 }

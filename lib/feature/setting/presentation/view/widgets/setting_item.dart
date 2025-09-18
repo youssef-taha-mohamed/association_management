@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:management/core/style/app_colors.dart';
+import 'package:management/l10n/l10n.dart';
 
 import '../../../../../shared/widgets/main_text.dart';
 
@@ -8,7 +10,12 @@ class SettingItem {
   final Color color;
   final VoidCallback? onTap;
 
-  SettingItem({required this.title, required this.icon, required this.color,required this.onTap,});
+  SettingItem({
+    required this.title,
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
 }
 
 // صفحة إضافية لعرض تفاصيل كل إعداد
@@ -21,10 +28,10 @@ class SettingDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1976D2),
-        title: Text(title, style: TextStyle(color: Colors.white)),
+        backgroundColor: AppColors.blue2,
+        title: MainText(title, color: AppColors.white),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: AppColors.white),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -34,18 +41,17 @@ class SettingDetailScreen extends StatelessWidget {
           children: [
             Icon(Icons.construction, size: 100, color: Colors.grey),
             SizedBox(height: 20),
-            Text(
-              'صفحة $title',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C3E50),
-              ),
+            MainText(
+              '${context.l10n.page} $title',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textColor,
             ),
             SizedBox(height: 10),
-            Text(
-              'قيد التطوير...',
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            MainText(
+              context.l10n.under_development,
+              fontSize: 16,
+              color: AppColors.grey600,
             ),
           ],
         ),
@@ -55,7 +61,7 @@ class SettingDetailScreen extends StatelessWidget {
 }
 
 class SettingCard extends StatelessWidget {
-  const SettingCard({super.key, required this.item,});
+  const SettingCard({super.key, required this.item});
 
   final SettingItem item;
 
@@ -63,7 +69,7 @@ class SettingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -75,7 +81,7 @@ class SettingCard extends StatelessWidget {
         ],
       ),
       child: Material(
-        color: Colors.transparent,
+        color: AppColors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
           onTap: item.onTap,
@@ -101,7 +107,7 @@ class SettingCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(item.icon, color: Colors.white, size: 35),
+                  child: Icon(item.icon, color: AppColors.white, size: 35),
                 ),
                 FittedBox(
                   fit: BoxFit.scaleDown,

@@ -133,5 +133,13 @@
   "complete_the_data": "Complete the data",
   "he_has_a_project": "He has a project",
   "he_has_no_project": "He has no project",
+  "case_detection": "Case detection",
+  "project_schedule": "Project schedule",
+  "beneficiary_data": "Beneficiary data",
+  "data_beneficiaries_dependents":"Data of beneficiaries and dependents",
+  "data_places":"Data places",
+  "eligible_categories":"Eligible categories",
+  "employers":"employers",
+  "types_donations":"Types Donations",
   "name": "Name"
 }

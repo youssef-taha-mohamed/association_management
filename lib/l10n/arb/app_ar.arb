@@ -133,5 +133,13 @@
   "complete_the_data": "استكمال البيانات",
   "he_has_a_project": "لديه مشروع",
   "he_has_no_project": "ليس لديه مشروع",
+  "case_detection": "كشف الحالات",
+  "project_schedule": "جدول المشاريع",
+  "beneficiary_data":"بيانات المستحقين",
+  "data_beneficiaries_dependents":"بيانات المستحقين والمعالين",
+  "data_places":"بيانات المناطق",
+  "eligible_categories":"فئات المستحقين",
+  "employers":"جهات عمل الموظفين",
+  "types_donations":"أنواع التبرعات",
   "name": "الأسم"
 }

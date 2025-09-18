@@ -414,5 +414,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get he_has_no_project => 'ليس لديه مشروع';
 
   @override
+  String get case_detection => 'كشف الحالات';
+
+  @override
+  String get project_schedule => 'جدول المشاريع';
+
+  @override
+  String get beneficiary_data => 'بيانات المستحقين';
+
+  @override
+  String get data_beneficiaries_dependents => 'بيانات المستحقين والمعالين';
+
+  @override
+  String get data_places => 'بيانات المناطق';
+
+  @override
+  String get eligible_categories => 'فئات المستحقين';
+
+  @override
+  String get employers => 'جهات عمل الموظفين';
+
+  @override
+  String get types_donations => 'أنواع التبرعات';
+
+  @override
   String get name => 'الأسم';
 }

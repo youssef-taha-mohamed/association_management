@@ -10,7 +10,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final List<SettingItem> settingItems = [
       SettingItem(
         title: 'بيانات المستخدمين',
@@ -21,46 +20,46 @@ class SettingsScreen extends StatelessWidget {
         },
       ),
       SettingItem(
-          title: 'صلاحيات المستخدمين',
-          icon: Icons.person_add,
-          color: Color(0xFF4ECDC4),
-          onTap: (){}
+        title: 'صلاحيات المستخدمين',
+        icon: Icons.person_add,
+        color: Color(0xFF4ECDC4),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'جهات عمل الموظفين',
-          icon: Icons.business,
-          color: Color(0xFF4ECDC4),
-          onTap: (){}
+        title: 'جهات عمل الموظفين',
+        icon: Icons.business,
+        color: Color(0xFF4ECDC4),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'بيانات المستحقين والمعالين',
-          icon: Icons.people,
-          color: Color(0xFF4ECDC4),
-          onTap: (){}
+        title: 'بيانات المستحقين والمعالين',
+        icon: Icons.people,
+        color: Color(0xFF4ECDC4),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'انواع التبرعات',
-          icon: Icons.volunteer_activism,
-          color: Color(0xFF90EE90),
-          onTap: (){}
+        title: 'انواع التبرعات',
+        icon: Icons.volunteer_activism,
+        color: Color(0xFF90EE90),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'فئات المستحقين',
-          icon: Icons.category,
-          color: Color(0xFFFFE082),
-          onTap: (){}
+        title: 'فئات المستحقين',
+        icon: Icons.category,
+        color: Color(0xFFFFE082),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'بيانات الموزعين',
-          icon: Icons.delivery_dining,
-          color: Color(0xFFFFD54F),
-          onTap: (){}
+        title: 'بيانات الموزعين',
+        icon: Icons.delivery_dining,
+        color: Color(0xFFFFD54F),
+        onTap: () {},
       ),
       SettingItem(
-          title: 'بيانات المناطق',
-          icon: Icons.location_on,
-          color: Color(0xFFFF8A65),
-          onTap: (){}
+        title: 'بيانات المناطق',
+        icon: Icons.location_on,
+        color: Color(0xFFFF8A65),
+        onTap: () {},
       ),
     ];
     return Scaffold(
@@ -93,23 +92,9 @@ class SettingsScreen extends StatelessWidget {
           ),
           itemCount: settingItems.length,
           itemBuilder: (context, index) {
-            return SettingCard(
-              item: settingItems[index],
-            );
+            return SettingCard(item: settingItems[index]);
           },
         ),
-      ),
-    );
-  }
-
-  void _handleSettingTap(String title, BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('تم النقر على: $title', textAlign: TextAlign.right),
-        backgroundColor: Color(0xFF4ECDC4),
-        duration: Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }

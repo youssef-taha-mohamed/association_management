@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../core/style/app_colors.dart';
+import 'main_text.dart';
 
 class MainTextField extends StatefulWidget {
   final String? hint;
@@ -38,6 +39,7 @@ class MainTextField extends StatefulWidget {
   final bool showClearButton;
   final bool autofocus;
   final TextDirection? textDirection;
+  final TextAlign textAlign;
 
   const MainTextField({
     super.key,
@@ -75,6 +77,7 @@ class MainTextField extends StatefulWidget {
     this.textDirection,
     this.prefixIcons,
     this.nextFocusNode,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -165,10 +168,7 @@ class _MainTextFieldState extends State<MainTextField> {
             widget.onChanged!('');
           }
         },
-        icon: const Icon(
-          CupertinoIcons.clear_circled_solid,
-          size: 20,
-        ),
+        icon: const Icon(CupertinoIcons.clear_circled_solid, size: 20),
       );
     } else {
       return widget.suffixIcon;
@@ -179,14 +179,16 @@ class _MainTextFieldState extends State<MainTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       autofillHints:
-      widget.autofillHints != null ? [widget.autofillHints!] : null,
+          widget.autofillHints != null ? [widget.autofillHints!] : null,
       controller: _controller,
       focusNode: _focusNode,
-      style: widget.textStyle ??
+      style:
+          widget.textStyle ??
           Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
+      textAlign: widget.textAlign,
       textDirection: widget.textDirection,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
@@ -213,8 +215,9 @@ class _MainTextFieldState extends State<MainTextField> {
           widget.onChanged!(value);
         }
       },
-      onFieldSubmitted: widget.onSubmitted ??
-              (String value) {
+      onFieldSubmitted:
+          widget.onSubmitted ??
+          (String value) {
             FocusScope.of(context).requestFocus(widget.nextFocusNode);
           },
       onTap: widget.onTap,
@@ -224,16 +227,19 @@ class _MainTextFieldState extends State<MainTextField> {
         }
       },
       decoration: InputDecoration(
-        label: widget.label != null
-            ? Text(
-          widget.label!,
-          style: widget.lableStyle ??
-              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: Theme.of(context).hintColor),
-        )
-            : null,
+        label:
+            widget.label != null
+                ? Text(
+                  widget.label!,
+                  style:
+                      widget.lableStyle ??
+                      Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).hintColor,
+                      ),
+                )
+                : null,
         labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
           fontSize: 14,
           fontWeight: FontWeight.w400,
@@ -242,25 +248,28 @@ class _MainTextFieldState extends State<MainTextField> {
         errorText: _errorMessage,
         prefixIconConstraints: widget.prefixIconConstraints,
         isDense: widget.isDense,
-        contentPadding: widget.contentPadding ??
+        contentPadding:
+            widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-        prefixIcon: widget.prefixIcon != null
-            ? Container(
-          margin: const EdgeInsets.all(8),
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: widget.prefixIcons == null
-              ? widget.prefixIcon
-              : Icon(
-            widget.prefixIcons,
-            color: AppColors.primaryColor,
-            size: 20,
-          ),
-        )
-            : null,
+        prefixIcon:
+            widget.prefixIcon != null
+                ? Container(
+                  margin: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child:
+                      widget.prefixIcons == null
+                          ? widget.prefixIcon
+                          : Icon(
+                            widget.prefixIcons,
+                            color: AppColors.primaryColor,
+                            size: 20,
+                          ),
+                )
+                : null,
         suffixIcon: _buildSuffixIcon(),
         suffixIconConstraints: BoxConstraints(minWidth: 40),
         suffix: widget.suffix,
@@ -268,63 +277,59 @@ class _MainTextFieldState extends State<MainTextField> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: _errorMessage != null
-                ? AppColors.error
-                : _isFocused
-                ? AppColors.primaryColor
-                : AppColors.grey,
-            width: 1.5,
+            color:
+                _errorMessage != null
+                    ? AppColors.error
+                    : _isFocused
+                    ? AppColors.primaryColor
+                    : AppColors.grey,
+            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
             color: _errorMessage != null ? AppColors.error : AppColors.grey,
-            width: 1.5,
+            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: _errorMessage != null
-                ? AppColors.error
-                : AppColors.primaryColor,
-            width: 1.5,
+            color:
+                _errorMessage != null
+                    ? AppColors.error
+                    : AppColors.primaryColor,
+            width: 1,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: AppColors.error,
-            width: 1.5,
-          ),
+          borderSide: BorderSide(color: AppColors.error, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: AppColors.error,
-            width: 1.5,
-          ),
+          borderSide: BorderSide(color: AppColors.error, width: 1),
         ),
       ),
       // بناء عداد النص إذا كان هناك حد أقصى
-      buildCounter: widget.maxLength != null
-          ? (
-          context, {
-            required currentLength,
-            required isFocused,
-            required maxLength,
-          }) {
-        return Text(
-          '$currentLength/${widget.maxLength}',
-          style: TextStyle(
-            color: currentLength >= widget.maxLength!
-                ? Colors.red
-                : Colors.grey,
-          ),
-        );
-      }
-          : null,
+      buildCounter:
+          widget.maxLength != null
+              ? (
+                context, {
+                required currentLength,
+                required isFocused,
+                required maxLength,
+              }) {
+                return MainText(
+                  '$currentLength/${widget.maxLength}',
+                  color:
+                      currentLength >= widget.maxLength!
+                          ? Colors.red
+                          : Colors.grey,
+                );
+              }
+              : null,
     );
   }
 }
@@ -403,11 +408,9 @@ class _MainMultiLinesTextFieldState extends State<MainMultiLinesTextField> {
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
       validator: widget.validator,
-      style: widget.style ??
-          const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
+      style:
+          widget.style ??
+          const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       onChanged: widget.onChanged,
       onTap: widget.onTap,
       onTapOutside: (event) {

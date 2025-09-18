@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/edit_user_cubit.dart';
+import '../../cubits/people_data/edit_user_cubit.dart';
 
 class EditUserFullScreen extends StatefulWidget {
   final User user;

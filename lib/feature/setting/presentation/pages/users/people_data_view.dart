@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:management/core/style/app_colors.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
-
-import '../cubit/edit_user_cubit.dart';
+import '../../cubits/people_data/edit_user_cubit.dart' show User;
 import 'edit_user.dart';
 
 class PeopleDataView extends StatefulWidget {
   const PeopleDataView({super.key});
 
-  static const routeName = '/people_data';
+  static const routeName = '/users';
 
   @override
   State<PeopleDataView> createState() => _PeopleDataViewState();

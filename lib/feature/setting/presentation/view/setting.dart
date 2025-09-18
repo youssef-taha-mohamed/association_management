@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../../../core/style/app_colors.dart';
-import '../../../people_data/presentation/view/people_data_view.dart';
+import '../pages/beneficiaries_dependents/beneficiaries_dep.dart';
+import '../pages/beneficiary_categories/beneficiary_categories.dart';
+import '../pages/distributors/distributors.dart';
+import '../pages/donation_types/donation_types.dart';
+import '../pages/regions/regions.dart';
+import '../pages/user_permissions/user_permissions.dart';
+import '../pages/users/people_data_view.dart';
+import '../pages/workplaces/workplaces.dart';
 import 'widgets/setting_item.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -23,43 +30,57 @@ class SettingsScreen extends StatelessWidget {
         title: 'صلاحيات المستخدمين',
         icon: Icons.person_add,
         color: Color(0xFF4ECDC4),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, UserPermissionsPage.routeName);
+        },
       ),
       SettingItem(
         title: 'جهات عمل الموظفين',
         icon: Icons.business,
         color: Color(0xFF4ECDC4),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, WorkplacesPage.routeName);
+        },
       ),
       SettingItem(
         title: 'بيانات المستحقين والمعالين',
         icon: Icons.people,
         color: Color(0xFF4ECDC4),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, BeneficiariesDepPage.routeName);
+        },
       ),
       SettingItem(
         title: 'انواع التبرعات',
         icon: Icons.volunteer_activism,
         color: Color(0xFF90EE90),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, DonationTypesPage.routeName);
+        },
       ),
       SettingItem(
         title: 'فئات المستحقين',
         icon: Icons.category,
         color: Color(0xFFFFE082),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, BeneficiaryCategoriesPage.routeName);
+        },
       ),
       SettingItem(
         title: 'بيانات الموزعين',
         icon: Icons.delivery_dining,
         color: Color(0xFFFFD54F),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, DistributorsPage.routeName);
+        },
       ),
       SettingItem(
         title: 'بيانات المناطق',
         icon: Icons.location_on,
         color: Color(0xFFFF8A65),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, RegionsPages.routeName);
+        },
       ),
     ];
     return Scaffold(

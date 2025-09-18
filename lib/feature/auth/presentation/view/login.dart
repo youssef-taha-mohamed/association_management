@@ -180,7 +180,6 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                     ),
-                    8.ph,
                     // زر إنشاء حساب جديد
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.center,
@@ -206,8 +205,8 @@ class _LoginViewState extends State<LoginView> {
                     //   ],
                     // ),
                     //LanguageSelectorSection(),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

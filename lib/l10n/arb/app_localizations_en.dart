@@ -416,5 +416,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get he_has_no_project => 'He has no project';
 
   @override
+  String get case_detection => 'Case detection';
+
+  @override
+  String get project_schedule => 'Project schedule';
+
+  @override
+  String get beneficiary_data => 'Beneficiary data';
+
+  @override
+  String get data_beneficiaries_dependents =>
+      'Data of beneficiaries and dependents';
+
+  @override
+  String get data_places => 'Data places';
+
+  @override
+  String get eligible_categories => 'Eligible categories';
+
+  @override
+  String get employers => 'employers';
+
+  @override
+  String get types_donations => 'Types Donations';
+
+  @override
   String get name => 'Name';
 }

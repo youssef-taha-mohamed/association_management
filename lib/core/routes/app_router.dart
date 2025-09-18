@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/feature/setting/presentation/screens/beneficiaries_dependents/beneficiaries_dep_screen.dart';
 import '../../feature/auth/presentation/view/forget_password_email.dart';
 import '../../feature/auth/presentation/view/login.dart';
 import '../../feature/auth/presentation/view/otp_verification_password.dart';
@@ -77,7 +78,7 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => const FinedResearchView());
       case ResetPasswordView.routeName:
         return buildRoute(builder: (context) => const ResetPasswordView());
-        case AddCasePage.routeName:
+      case AddCasePage.routeName:
         return buildRoute(builder: (context) => const AddCasePage());
       case OtpVerificationView.routeName:
         return buildRoute(builder: (context) => OtpVerificationView());
@@ -89,6 +90,8 @@ abstract final class AppRouter {
         return buildRoute(builder: (context) => QuranSchoolsScreen());
       case FridayMeetingScreen.routeName:
         return buildRoute(builder: (context) => FridayMeetingScreen());
+      case BeneficiariesDepScreen.routeName:
+        return buildRoute(builder: (context) => BeneficiariesDepScreen());
       case ProjectsScreen.routeName:
         return buildRoute(builder: (context) => ProjectsScreen());
       default:

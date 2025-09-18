@@ -6,7 +6,8 @@ import '../../../../core/resources/images.dart';
 import '../../../../shared/widgets/main_text.dart';
 import '../../../dash_board/presentation/dash_board.dart';
 import '../../../fined_research/presentation/widgets/fined_research_view.dart';
-import '../../../people_data/presentation/view/people_data_view.dart';
+import '../../../people_data/presentation/view/people_data_view.dart'
+    show PeopleDataView;
 import '../../../statement/presentation/statement_view.dart';
 import '../cubit/drawer_cubit.dart';
 import 'widgets/drawer_item.dart';

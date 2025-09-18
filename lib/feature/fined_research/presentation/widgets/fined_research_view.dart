@@ -40,7 +40,7 @@ class _FinedResearchViewState extends State<FinedResearchView> {
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           title: MainText(
-            "برنامج ادارة الجمعيات الخيرية",
+            context.l10n.charity_management_program,
             color: AppColors.white,
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -68,19 +68,18 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                       Container(
                         padding: const EdgeInsets.all(6),
                         decoration: const BoxDecoration(
-                          color: Colors.blue,
+                          color: AppColors.blue,
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: AppColors.white,
                           size: 20,
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const MainText(
-                        "بيانات المستحقين",
-
+                       MainText(
+                        context.l10n.beneficiary_data,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
@@ -90,92 +89,101 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                 ),
                 DataTable(
                   border: TableBorder.all(color: Colors.black, width: 1),
-                  columns:  [
+                  columns: [
                     DataColumn(
-                      label: MainText(context.l10n.name,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                    DataColumn(
-                        label: MainText(
-                            context.l10n.age,
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      label: MainText(
+                        context.l10n.name,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     DataColumn(
-                        label: MainText(
-                            context.l10n.phone_number,
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      label: MainText(
+                        context.l10n.age,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     DataColumn(
-                        label: MainText(
-                            context.l10n.address,
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      label: MainText(
+                        context.l10n.phone_number,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    DataColumn(label: MainText(
-                      context.l10n.governorate,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.address,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.governorate,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    DataColumn(label: MainText(
-                      context.l10n.the_area,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.the_area,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.category,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    DataColumn(label: MainText(
-                      context.l10n.category,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.number_of_criteria,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.donations,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    DataColumn(label: MainText(
-                    context.l10n.number_of_criteria,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.project_name,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.the_condition,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    DataColumn(label: MainText(
-                      context.l10n.donations ,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.activation,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    ),
-                    DataColumn(label: MainText(
-                      context.l10n.project_name,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                    DataColumn(label: MainText(
-                      context.l10n.the_condition,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                    DataColumn(label: MainText(
-                      context.l10n.activation,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                    DataColumn(label: MainText(
-                      context.l10n.complete_the_data,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    DataColumn(
+                      label: MainText(
+                        context.l10n.complete_the_data,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
 
                   rows:
-
                       cases.map((c) {
                         return DataRow(
                           cells: [
@@ -190,7 +198,9 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                             DataCell(MainText("${c.donationValue}")),
                             DataCell(
                               MainText(
-                                c.hasProject ? context.l10n.he_has_a_project : context.l10n.he_has_no_project,
+                                c.hasProject
+                                    ? context.l10n.he_has_a_project
+                                    : context.l10n.he_has_no_project,
 
                                 color: c.hasProject ? Colors.green : Colors.red,
                                 fontWeight: FontWeight.bold,
@@ -222,7 +232,10 @@ class _FinedResearchViewState extends State<FinedResearchView> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            final result = await Navigator.pushNamed(context, AddCasePage.routeName);
+            final result = await Navigator.pushNamed(
+              context,
+              AddCasePage.routeName,
+            );
 
             // Navigator.push(
             //   context,

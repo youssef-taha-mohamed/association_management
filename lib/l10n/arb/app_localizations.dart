@@ -896,6 +896,54 @@ abstract class AppLocalizations {
   /// **'He has no project'**
   String get he_has_no_project;
 
+  /// No description provided for @case_detection.
+  ///
+  /// In en, this message translates to:
+  /// **'Case detection'**
+  String get case_detection;
+
+  /// No description provided for @project_schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Project schedule'**
+  String get project_schedule;
+
+  /// No description provided for @beneficiary_data.
+  ///
+  /// In en, this message translates to:
+  /// **'Beneficiary data'**
+  String get beneficiary_data;
+
+  /// No description provided for @data_beneficiaries_dependents.
+  ///
+  /// In en, this message translates to:
+  /// **'Data of beneficiaries and dependents'**
+  String get data_beneficiaries_dependents;
+
+  /// No description provided for @data_places.
+  ///
+  /// In en, this message translates to:
+  /// **'Data places'**
+  String get data_places;
+
+  /// No description provided for @eligible_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Eligible categories'**
+  String get eligible_categories;
+
+  /// No description provided for @employers.
+  ///
+  /// In en, this message translates to:
+  /// **'employers'**
+  String get employers;
+
+  /// No description provided for @types_donations.
+  ///
+  /// In en, this message translates to:
+  /// **'Types Donations'**
+  String get types_donations;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

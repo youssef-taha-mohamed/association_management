@@ -25,7 +25,7 @@ class _StatementScreenState extends State<StatementScreen> {
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           title: MainText(
-            "كشف الحالات",
+            context.l10n.case_detection,
             color: AppColors.white,
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -40,7 +40,34 @@ class _StatementScreenState extends State<StatementScreen> {
           ),
         ),
         body: Column(
+          crossAxisAlignment:CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: const BoxDecoration(
+                      color: AppColors.blue,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.description,
+                      color: AppColors.white,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  MainText(
+                    "جدول الحالات",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(

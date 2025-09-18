@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
 import '../../../../core/style/app_colors.dart';
 import '../../../people_data/presentation/view/people_data_view.dart';
@@ -12,53 +13,53 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<SettingItem> settingItems = [
       SettingItem(
-        title: 'بيانات المستخدمين',
+        title: context.l10n.user_data,
         icon: Icons.person,
-        color: Color(0xFF4ECDC4),
+        color: AppColors.appGreenG2,
         onTap: () {
           Navigator.pushNamed(context, PeopleDataView.routeName);
         },
       ),
       SettingItem(
-        title: 'صلاحيات المستخدمين',
+        title: context.l10n.user_permissions,
         icon: Icons.person_add,
-        color: Color(0xFF4ECDC4),
+        color: AppColors.appGreenG2,
         onTap: () {},
       ),
       SettingItem(
-        title: 'جهات عمل الموظفين',
+        title: context.l10n.employers,
         icon: Icons.business,
-        color: Color(0xFF4ECDC4),
+        color: AppColors.appGreenG2,
         onTap: () {},
       ),
       SettingItem(
-        title: 'بيانات المستحقين والمعالين',
+        title: context.l10n.data_beneficiaries_dependents,
         icon: Icons.people,
-        color: Color(0xFF4ECDC4),
+        color: AppColors.appGreenG2,
         onTap: () {},
       ),
       SettingItem(
-        title: 'انواع التبرعات',
+        title: context.l10n.types_donations,
         icon: Icons.volunteer_activism,
-        color: Color(0xFF90EE90),
+        color: AppColors.green1,
         onTap: () {},
       ),
       SettingItem(
-        title: 'فئات المستحقين',
+        title: context.l10n.eligible_categories,
         icon: Icons.category,
-        color: Color(0xFFFFE082),
+        color: AppColors.yellowG1,
         onTap: () {},
       ),
       SettingItem(
-        title: 'بيانات الموزعين',
+        title: context.l10n.distributor_data,
         icon: Icons.delivery_dining,
-        color: Color(0xFFFFD54F),
+        color: AppColors.yellowG2,
         onTap: () {},
       ),
       SettingItem(
-        title: 'بيانات المناطق',
+        title: context.l10n.data_places,
         icon: Icons.location_on,
-        color: Color(0xFFFF8A65),
+        color: AppColors.orangeG1,
         onTap: () {},
       ),
     ];
@@ -67,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
         elevation: 0,
         title: MainText(
-          'الإعدادات',
+          context.l10n.settings,
           color: AppColors.white,
           fontSize: 20,
           fontWeight: FontWeight.w600,

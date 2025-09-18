@@ -441,5 +441,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get types_donations => 'Types Donations';
 
   @override
+  String get under_development => 'Under development...';
+
+  @override
+  String get page => 'page';
+
+  @override
   String get name => 'Name';
 }

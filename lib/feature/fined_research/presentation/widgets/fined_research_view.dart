@@ -40,7 +40,7 @@ class _FinedResearchViewState extends State<FinedResearchView> {
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           title: MainText(
-            context.l10n.charity_management_program,
+            "برنامج ادارة الجمعيات الخيرية",
             color: AppColors.white,
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -64,6 +64,7 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    spacing: 8,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(6),
@@ -77,9 +78,8 @@ class _FinedResearchViewState extends State<FinedResearchView> {
                           size: 20,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                       MainText(
-                        context.l10n.beneficiary_data,
+                      const MainText(
+                        "بيانات المستحقين",
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,

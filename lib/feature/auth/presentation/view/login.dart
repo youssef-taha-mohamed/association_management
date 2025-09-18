@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_area_handler/keyboard_area_handler.dart';
 import 'package:management/core/extension/extension_helper.dart';
-import 'package:management/feature/auth/presentation/view/register.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_textfield.dart';
 import '../../../../core/style/app_colors.dart';
@@ -181,31 +180,34 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                     ),
-                  ),
-                  8.ph,
-                  // // زر إنشاء حساب جديد
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     Text(
-                  //       context.l10n.do_not_have_account,
-                  //       style: TextStyle(fontSize: 16),
-                  //     ),
-                  //     TextButton(
-                  //       onPressed: () {
-                  //         Navigator.pushNamed(context, RegisterView.routeName);
-                  //       },
-                  //       child: MainText(
-                  //         context.l10n.create_account,
-                  //         color: AppColors.goldAccent,
-                  //         fontSize: 16,
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  // //LanguageSelectorSection(),
-                ],
+                    8.ph,
+                    // زر إنشاء حساب جديد
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Text(
+                    //       context.l10n.do_not_have_account,
+                    //       style: TextStyle(fontSize: 16),
+                    //     ),
+                    //     TextButton(
+                    //       onPressed: () {
+                    //         Navigator.pushNamed(
+                    //           context,
+                    //           RegisterView.routeName,
+                    //         );
+                    //       },
+                    //       child: MainText(
+                    //         context.l10n.create_account,
+                    //         color: AppColors.goldAccent,
+                    //         fontSize: 16,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    //LanguageSelectorSection(),
+                  ],
+                ),
               ),
             ),
           ),

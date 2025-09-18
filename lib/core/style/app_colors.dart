@@ -73,6 +73,10 @@ class AppColors {
   static const Color whiteOpacity5 = Color(0x80FFFFFF);
   static Color red700 = Colors.red.shade700;
   static const Color grey = Colors.grey;
+  static const Color green1 = Color(0xFF90EE90);
+  static const Color yellowG1 = Color(0xFFFFE082);
+  static const Color yellowG2 = Color(0xFFFFD54F);
+  static const Color orangeG1 = Color(0xFFFF8A65);
   static const Color itemBHome = Color(0xff4D4D4D);
   static const Color blackOpacity700 = Color(0xB3000000);
   static const Color colorShimmerCard = Color(0xFF112637);
@@ -82,7 +86,9 @@ class AppColors {
   static const Color textThree = Color(0xff4E4E4E);
   static const Color darkBlue = Color(0xff454F54);
   static const Color appGreen = Color(0xff56EEC5);
+  static const Color appGreenG2 = Color(0xFF4ECDC4);
   static const Color blue = Colors.blue;
+  static const Color blue2 = Color(0xFF1976D2);
   static const Color itemBG = Color(0xFFE8E7E7);
   static const Color darkItemBG = Color(0xFF2B2B2B);
   static const Color darkItemBG2 = Color(0xFF24292D);
@@ -98,7 +104,7 @@ class AppColors {
   static const grey500 = Color(0xFF9E9E9E);
   static const grey600 = Color(0xFF757575);
   static const grey700 = Color(0xFF616161);
-
+  static const transparent = Colors.transparent;
   static const color3 = Color(0xff476D8E);
   static const color8 = Color(0xff0b2235);
   static const Color error = Color(0xFFDC3545);

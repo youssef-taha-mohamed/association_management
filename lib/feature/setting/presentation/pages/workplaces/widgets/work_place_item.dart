@@ -3,22 +3,29 @@ import 'package:flutter/material.dart';
 import '../workplaces.dart';
 
 class WorkplaceCard extends StatelessWidget {
-  const WorkplaceCard({super.key, required this.workplace});
+  const WorkplaceCard({
+    super.key,
+    required this.workplace,
+    required this.onEdit,
+    required this.onViewEmployees,
+  });
 
   final Workplace workplace;
+  final Function(Workplace) onEdit;
+  final Function(Workplace) onViewEmployees;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -26,11 +33,12 @@ class WorkplaceCard extends StatelessWidget {
         onTap: () => _showWorkplaceDetails(context, workplace),
         borderRadius: BorderRadius.circular(12),
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     width: 48,
@@ -38,7 +46,7 @@ class WorkplaceCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: _getTypeColor(
                         workplace.type,
-                      ).withValues(alpha: 0.2),
+                      ).withOpacity(0.2),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
@@ -47,7 +55,7 @@ class WorkplaceCard extends StatelessWidget {
                       size: 24,
                     ),
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +65,7 @@ class WorkplaceCard extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 workplace.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black87,
@@ -69,19 +77,19 @@ class WorkplaceCard extends StatelessWidget {
                               height: 8,
                               decoration: BoxDecoration(
                                 color:
-                                    workplace.isActive
-                                        ? Colors.green
-                                        : Colors.red,
+                                workplace.isActive
+                                    ? Colors.green
+                                    : Colors.red,
                                 shape: BoxShape.circle,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 6,
                                 vertical: 2,
                               ),
@@ -91,14 +99,14 @@ class WorkplaceCard extends StatelessWidget {
                               ),
                               child: Text(
                                 workplace.type,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 11,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            SizedBox(width: 6),
+                            const SizedBox(width: 6),
                             Text(
                               'Est. ${workplace.establishedYear}',
                               style: TextStyle(
@@ -115,65 +123,63 @@ class WorkplaceCard extends StatelessWidget {
                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
                     itemBuilder:
                         (context) => [
-                          PopupMenuItem(
-                            value: 'view',
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.visibility,
-                                  size: 20,
-                                  color: Colors.blue,
-                                ),
-                                SizedBox(width: 8),
-                                Text('View Details'),
-                              ],
+                      const PopupMenuItem(
+                        value: 'view',
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.visibility,
+                              size: 20,
+                              color: Colors.blue,
                             ),
-                          ),
-                          PopupMenuItem(
-                            value: 'edit',
-                            child: Row(
-                              children: [
-                                Icon(Icons.edit, size: 20, color: Colors.green),
-                                SizedBox(width: 8),
-                                Text('Edit'),
-                              ],
+                            SizedBox(width: 8),
+                            Text('View Details'),
+                          ],
+                        ),
+                      ),
+                      const PopupMenuItem(
+                        value: 'edit',
+                        child: Row(
+                          children: [
+                            Icon(Icons.edit, size: 20, color: Colors.green),
+                            SizedBox(width: 8),
+                            Text('Edit'),
+                          ],
+                        ),
+                      ),
+                      const PopupMenuItem(
+                        value: 'employees',
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.people,
+                              size: 20,
+                              color: Colors.orange,
                             ),
-                          ),
-                          PopupMenuItem(
-                            value: 'employees',
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.people,
-                                  size: 20,
-                                  color: Colors.orange,
-                                ),
-                                SizedBox(width: 8),
-                                Text('View Employees'),
-                              ],
-                            ),
-                          ),
-                        ],
+                            SizedBox(width: 8),
+                            Text('View Employees'),
+                          ],
+                        ),
+                      ),
+                    ],
                     onSelected: (value) {
                       if (value == 'view') {
                         _showWorkplaceDetails(context, workplace);
                       }
-                      if (value == 'edit') _editWorkplace(context,workplace);
-                      if (value == 'employees') {
-                        _viewEmployees(context, workplace);
-                      }
+                      if (value == 'edit') onEdit(workplace);
+                      if (value == 'employees') onViewEmployees(workplace);
                     },
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
                 workplace.description,
                 style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 children: [
                   Icon(
@@ -181,7 +187,7 @@ class WorkplaceCard extends StatelessWidget {
                     size: 16,
                     color: Colors.grey.shade500,
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Expanded(
                     child: Text(
                       workplace.location,
@@ -189,22 +195,23 @@ class WorkplaceCard extends StatelessWidget {
                         color: Colors.grey.shade600,
                         fontSize: 13,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Row(
                 children: [
                   Icon(Icons.people, size: 16, color: Colors.grey.shade500),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Text(
                     '${workplace.employeeCount} employees',
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Icon(Icons.person, size: 16, color: Colors.grey.shade500),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Text(
                     workplace.contactPerson,
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
@@ -253,59 +260,59 @@ class WorkplaceCard extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text(workplace.name),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildDetailRow('Type', workplace.type),
-                  _buildDetailRow(
-                    'Status',
-                    workplace.isActive ? 'Active' : 'Inactive',
-                  ),
-                  _buildDetailRow('Location', workplace.location),
-                  _buildDetailRow(
-                    'Employees',
-                    workplace.employeeCount.toString(),
-                  ),
-                  _buildDetailRow(
-                    'Established',
-                    workplace.establishedYear.toString(),
-                  ),
-                  _buildDetailRow('Contact Person', workplace.contactPerson),
-                  _buildDetailRow('Phone', workplace.phone),
-                  _buildDetailRow('Email', workplace.email),
-                  SizedBox(height: 8),
-                  Text(
-                    'Description:',
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(height: 4),
-                  Text(workplace.description),
-                ],
+        title: Text(workplace.name),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildDetailRow('Type', workplace.type),
+              _buildDetailRow(
+                'Status',
+                workplace.isActive ? 'Active' : 'Inactive',
               ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
+              _buildDetailRow('Location', workplace.location),
+              _buildDetailRow(
+                'Employees',
+                workplace.employeeCount.toString(),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _editWorkplace(context, workplace);
-                },
-                child: Text('Edit'),
+              _buildDetailRow(
+                'Established',
+                workplace.establishedYear.toString(),
               ),
+              _buildDetailRow('Contact Person', workplace.contactPerson),
+              _buildDetailRow('Phone', workplace.phone),
+              _buildDetailRow('Email', workplace.email),
+              const SizedBox(height: 8),
+              const Text(
+                'Description:',
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 4),
+              Text(workplace.description),
             ],
           ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              onEdit(workplace);
+            },
+            child: const Text('Edit'),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildDetailRow(String label, String value) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -319,25 +326,9 @@ class WorkplaceCard extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: Text(value, style: TextStyle(color: Colors.black87))),
+          Expanded(child: Text(value, style: const TextStyle(color: Colors.black87))),
         ],
       ),
-    );
-  }
-
-  void _viewEmployees(BuildContext context, Workplace workplace) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'View employees for ${workplace.name} - Feature coming soon',
-        ),
-      ),
-    );
-  }
-
-  void _editWorkplace(BuildContext context, Workplace workplace) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Edit ${workplace.name} - Feature coming soon')),
     );
   }
 }

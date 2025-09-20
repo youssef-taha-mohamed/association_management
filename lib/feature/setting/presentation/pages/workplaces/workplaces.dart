@@ -3,6 +3,7 @@ import 'package:management/l10n/l10n.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../shared/widgets/main_text.dart';
 import 'add_workplace.dart';
+import 'edit_work_place.dart';
 import 'widgets/work_place_item.dart';
 
 class WorkplacesPage extends StatefulWidget {
@@ -98,11 +99,11 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.sort),
+            icon: const Icon(Icons.sort),
             onPressed: _showSortDialog,
           ),
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],
@@ -119,7 +120,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddWorkplaceForm,
         backgroundColor: Colors.purple.shade600,
-        child: Icon(Icons.add_business, color: Colors.white),
+        child: const Icon(Icons.add_business, color: Colors.white),
       ),
     );
   }
@@ -127,7 +128,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
   Widget _buildSearchAndStats() {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           TextField(
@@ -137,7 +138,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
               prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
-                icon: Icon(Icons.clear),
+                icon: const Icon(Icons.clear),
                 onPressed: () {
                   _searchController.clear();
                   setState(() {});
@@ -161,7 +162,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
             ),
             onChanged: (value) => setState(() {}),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
@@ -172,7 +173,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
                   Colors.blue,
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
                   'Active',
@@ -181,7 +182,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
                   Colors.green,
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
                   'Employees',
@@ -199,16 +200,16 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
 
   Widget _buildStatCard(String title, String value, IconData icon, Color color) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withValues(alpha: 0.2)),
+        border: Border.all(color: color.withOpacity(0.2)),
       ),
       child: Column(
         children: [
           Icon(icon, color: color, size: 20),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             value,
             style: TextStyle(
@@ -232,14 +233,14 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
   Widget _buildTypeFilter() {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: workplaceTypes.map((type) {
             final isSelected = selectedType == type;
             return Container(
-              margin: EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 8),
               child: FilterChip(
                 label: Text(type),
                 selected: isSelected,
@@ -274,7 +275,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.business_center_outlined, size: 64, color: Colors.grey.shade400),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'No workplaces found',
               style: TextStyle(
@@ -283,7 +284,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Try adjusting your search or filters',
               style: TextStyle(color: Colors.grey.shade500),
@@ -294,10 +295,15 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       itemCount: filteredWorkplaces.length,
       itemBuilder: (context, index) {
-        return WorkplaceCard(workplace: filteredWorkplaces[index],);
+        final workplace = filteredWorkplaces[index];
+        return WorkplaceCard(
+          workplace: workplace,
+          onEdit: (wp) => _editWorkplace(wp),
+          onViewEmployees: (wp) => _viewEmployees(wp),
+        );
       },
     );
   }
@@ -306,12 +312,12 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Sort Workplaces'),
+        title: const Text('Sort Workplaces'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: Text('Name (A-Z)'),
+              title: const Text('Name (A-Z)'),
               onTap: () {
                 setState(() {
                   workplaces.sort((a, b) => a.name.compareTo(b.name));
@@ -320,7 +326,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
               },
             ),
             ListTile(
-              title: Text('Employee Count'),
+              title: const Text('Employee Count'),
               onTap: () {
                 setState(() {
                   workplaces.sort((a, b) => b.employeeCount.compareTo(a.employeeCount));
@@ -329,7 +335,7 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
               },
             ),
             ListTile(
-              title: Text('Established Year'),
+              title: const Text('Established Year'),
               onTap: () {
                 setState(() {
                   workplaces.sort((a, b) => b.establishedYear.compareTo(a.establishedYear));
@@ -343,13 +349,51 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
     );
   }
 
-
-
-  void _showAddWorkplaceForm() {
-    Navigator.push(
+  void _showAddWorkplaceForm() async {
+    final newWorkplace = await Navigator.push<Workplace>(
       context,
       MaterialPageRoute(
-        builder: (context) => AddWorkplaceForm(),
+        builder: (context) => const AddWorkplaceForm(),
+      ),
+    );
+
+    if (newWorkplace != null) {
+      setState(() {
+        workplaces.add(newWorkplace);
+      });
+    }
+  }
+
+  void _editWorkplace(Workplace workplace) async {
+    final updatedWorkplace = await Navigator.push<Workplace>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditWorkplaceForm(workplace: workplace),
+      ),
+    );
+
+    if (updatedWorkplace != null) {
+      setState(() {
+        final index = workplaces.indexWhere((w) => w.id == updatedWorkplace.id);
+        if (index != -1) {
+          workplaces[index] = updatedWorkplace;
+        }
+      });
+    }
+  }
+
+  void _viewEmployees(Workplace workplace) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Employees at ${workplace.name}'),
+        content: Text('Viewing the list of ${workplace.employeeCount} employees is a feature that will be available soon.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
       ),
     );
   }

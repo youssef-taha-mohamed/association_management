@@ -1,40 +1,36 @@
 import 'package:flutter/material.dart';
-import 'workplaces.dart'; // Import the Workplace model
+import 'regions.dart';
 
-class AddWorkplaceForm extends StatefulWidget {
-  const AddWorkplaceForm({super.key});
+class AddRegionForm extends StatefulWidget {
+  const AddRegionForm({super.key});
 
   @override
-  State<AddWorkplaceForm> createState() => _AddWorkplaceFormState();
+  State<AddRegionForm> createState() => _AddRegionFormState();
 }
 
-class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
+class _AddRegionFormState extends State<AddRegionForm> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _locationController = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _contactPersonController = TextEditingController();
+  final _coordinatorController = TextEditingController();
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
-  final _establishedYearController = TextEditingController();
-  final _employeeCountController = TextEditingController(); // Added controller
+  final _addressController = TextEditingController();
+  final _districtsController = TextEditingController();
 
-  String selectedType = 'NGO';
+  String selectedType = 'Urban';
+  String selectedPriority = 'Medium';
   bool isActive = true;
 
-  List<String> workplaceTypes = [
-    'NGO',
-    'Association',
-    'Charity',
-    'Organization'
-  ];
+  final List<String> regionTypes = ['Metropolitan', 'Urban', 'Rural', 'Agricultural', 'Remote'];
+  final List<String> priorities = ['Low', 'Medium', 'High', 'Critical'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text('Add Workplace'),
+        title: const Text('Add Region'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         elevation: 0,
@@ -46,7 +42,6 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Basic Information Card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -76,15 +71,15 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                     TextFormField(
                       controller: _nameController,
                       decoration: InputDecoration(
-                        labelText: 'Workplace Name',
+                        labelText: 'Region Name',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        prefixIcon: const Icon(Icons.business),
+                        prefixIcon: const Icon(Icons.location_on),
                       ),
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
-                          return 'Please enter workplace name';
+                          return 'Please enter region name';
                         }
                         return null;
                       },
@@ -102,11 +97,10 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                               ),
                               prefixIcon: const Icon(Icons.category),
                             ),
-                            items: workplaceTypes.map((type) =>
-                                DropdownMenuItem(
-                                  value: type,
-                                  child: Text(type),
-                                )).toList(),
+                            items: regionTypes.map((type) => DropdownMenuItem(
+                              value: type,
+                              child: Text(type),
+                            )).toList(),
                             onChanged: (value) {
                               setState(() {
                                 selectedType = value!;
@@ -116,45 +110,27 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                         ),
                         const SizedBox(width: 12),
                         Expanded(
-                          child: TextFormField(
-                            controller: _establishedYearController,
+                          child: DropdownButtonFormField<String>(
+                            value: selectedPriority,
                             decoration: InputDecoration(
-                              labelText: 'Established Year',
+                              labelText: 'Priority',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              prefixIcon: const Icon(Icons.calendar_today),
+                              prefixIcon: const Icon(Icons.priority_high),
                             ),
-                            keyboardType: TextInputType.number,
-                            validator: (value) {
-                              if (value?.isEmpty ?? true) {
-                                return 'Please enter year';
-                              }
-                              if (int.tryParse(value!) == null) {
-                                return 'Invalid year';
-                              }
-                              return null;
+                            items: priorities.map((priority) => DropdownMenuItem(
+                              value: priority,
+                              child: Text(priority),
+                            )).toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPriority = value!;
+                              });
                             },
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _locationController,
-                      decoration: InputDecoration(
-                        labelText: 'Location/Address',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        prefixIcon: const Icon(Icons.location_on),
-                      ),
-                      validator: (value) {
-                        if (value?.isEmpty ?? true) {
-                          return 'Please enter location';
-                        }
-                        return null;
-                      },
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -174,48 +150,10 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _employeeCountController,
-                      decoration: InputDecoration(
-                        labelText: 'Number of Employees',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        prefixIcon: const Icon(Icons.people_outline),
-                      ),
-                      keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter number of employees';
-                        }
-                        if (int.tryParse(value) == null) {
-                          return 'Please enter a valid number';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        const Text('Active Status: '),
-                        Switch(
-                          value: isActive,
-                          onChanged: (value) {
-                            setState(() {
-                              isActive = value;
-                            });
-                          },
-                          activeColor: Colors.green,
-                        ),
-                        Text(isActive ? 'Active' : 'Inactive'),
-                      ],
-                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 16),
-              // Contact Information Card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -234,7 +172,7 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Contact Information',
+                      'Coordinator Information',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -243,9 +181,9 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
-                      controller: _contactPersonController,
+                      controller: _coordinatorController,
                       decoration: InputDecoration(
-                        labelText: 'Contact Person',
+                        labelText: 'Coordinator Name',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -253,7 +191,7 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                       ),
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
-                          return 'Please enter contact person';
+                          return 'Please enter coordinator name';
                         }
                         return null;
                       },
@@ -297,6 +235,87 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                         return null;
                       },
                     ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _addressController,
+                      decoration: InputDecoration(
+                        labelText: 'Office Address',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        prefixIcon: const Icon(Icons.location_city),
+                      ),
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter office address';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Coverage Area',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _districtsController,
+                      decoration: InputDecoration(
+                        labelText: 'Districts (comma separated)',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        prefixIcon: const Icon(Icons.map),
+                        hintText: 'e.g., District 1, District 2, District 3',
+                      ),
+                      maxLines: 2,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter at least one district';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        const Text('Active Status: '),
+                        Switch(
+                          value: isActive,
+                          onChanged: (value) {
+                            setState(() {
+                              isActive = value;
+                            });
+                          },
+                          activeColor: Colors.green,
+                        ),
+                        Text(isActive ? 'Active' : 'Inactive'),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -319,16 +338,16 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: _saveWorkplace,
+                      onPressed: _saveRegion,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple.shade600,
+                        backgroundColor: Colors.teal.shade600,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: const Text('Save Workplace'),
+                      child: const Text('Save Region'),
                     ),
                   ),
                 ],
@@ -340,42 +359,47 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
     );
   }
 
-  void _saveWorkplace() {
+  void _saveRegion() {
     if (_formKey.currentState?.validate() ?? false) {
-      final newWorkplace = Workplace(
+      final newRegion = Region(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         name: _nameController.text,
         type: selectedType,
-        location: _locationController.text,
         description: _descriptionController.text,
-        employeeCount: int.parse(_employeeCountController.text),
-        isActive: isActive,
-        establishedYear: int.parse(_establishedYearController.text),
-        contactPerson: _contactPersonController.text,
+        coordinator: _coordinatorController.text,
         phone: _phoneController.text,
         email: _emailController.text,
+        address: _addressController.text,
+        isActive: isActive,
+        priority: selectedPriority,
+        districts: _districtsController.text.split(',').map((e) => e.trim()).toList(),
+        lastActivity: DateTime.now(),
+        // Default values for fields not in the form
+        beneficiaryCount: 0,
+        distributorCount: 0,
+        activeProjects: 0,
+        coverage: 0.0,
       );
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Workplace saved successfully!'),
+          content: Text('Region saved successfully!'),
           backgroundColor: Colors.green,
         ),
       );
-      Navigator.pop(context, newWorkplace);
+      Navigator.pop(context, newRegion);
     }
   }
 
   @override
   void dispose() {
     _nameController.dispose();
-    _locationController.dispose();
     _descriptionController.dispose();
-    _contactPersonController.dispose();
+    _coordinatorController.dispose();
     _phoneController.dispose();
     _emailController.dispose();
-    _establishedYearController.dispose();
-    _employeeCountController.dispose();
+    _addressController.dispose();
+    _districtsController.dispose();
     super.dispose();
   }
 }

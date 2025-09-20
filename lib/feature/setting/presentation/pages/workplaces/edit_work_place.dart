@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'workplaces.dart'; // Import the Workplace model
 
-class AddWorkplaceForm extends StatefulWidget {
-  const AddWorkplaceForm({super.key});
+class EditWorkplaceForm extends StatefulWidget {
+  final Workplace workplace;
+
+  const EditWorkplaceForm({super.key, required this.workplace});
 
   @override
-  State<AddWorkplaceForm> createState() => _AddWorkplaceFormState();
+  State<EditWorkplaceForm> createState() => _EditWorkplaceFormState();
 }
 
-class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
+class _EditWorkplaceFormState extends State<EditWorkplaceForm> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _locationController = TextEditingController();
-  final _descriptionController = TextEditingController();
-  final _contactPersonController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _establishedYearController = TextEditingController();
-  final _employeeCountController = TextEditingController(); // Added controller
+  late final TextEditingController _nameController;
+  late final TextEditingController _locationController;
+  late final TextEditingController _descriptionController;
+  late final TextEditingController _contactPersonController;
+  late final TextEditingController _phoneController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _establishedYearController;
+  late final TextEditingController _employeeCountController;
 
-  String selectedType = 'NGO';
-  bool isActive = true;
+  late String selectedType;
+  late bool isActive;
 
-  List<String> workplaceTypes = [
+  final List<String> workplaceTypes = [
     'NGO',
     'Association',
     'Charity',
@@ -30,11 +32,27 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    final wp = widget.workplace;
+    _nameController = TextEditingController(text: wp.name);
+    _locationController = TextEditingController(text: wp.location);
+    _descriptionController = TextEditingController(text: wp.description);
+    _contactPersonController = TextEditingController(text: wp.contactPerson);
+    _phoneController = TextEditingController(text: wp.phone);
+    _emailController = TextEditingController(text: wp.email);
+    _establishedYearController = TextEditingController(text: wp.establishedYear.toString());
+    _employeeCountController = TextEditingController(text: wp.employeeCount.toString());
+    selectedType = wp.type;
+    isActive = wp.isActive;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text('Add Workplace'),
+        title: const Text('Edit Workplace'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         elevation: 0,
@@ -328,7 +346,7 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: const Text('Save Workplace'),
+                      child: const Text('Save Changes'),
                     ),
                   ),
                 ],
@@ -342,8 +360,8 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
 
   void _saveWorkplace() {
     if (_formKey.currentState?.validate() ?? false) {
-      final newWorkplace = Workplace(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
+      final updatedWorkplace = Workplace(
+        id: widget.workplace.id, // Keep original ID
         name: _nameController.text,
         type: selectedType,
         location: _locationController.text,
@@ -358,11 +376,11 @@ class _AddWorkplaceFormState extends State<AddWorkplaceForm> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Workplace saved successfully!'),
+          content: Text('Workplace updated successfully!'),
           backgroundColor: Colors.green,
         ),
       );
-      Navigator.pop(context, newWorkplace);
+      Navigator.pop(context, updatedWorkplace);
     }
   }
 

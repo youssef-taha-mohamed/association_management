@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../../shared/widgets/main_text.dart';
 import '../beneficiary_categories.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -8,11 +7,13 @@ class CategoryCard extends StatelessWidget {
     required this.category,
     required this.deleteCategory,
     required this.toggleCategoryStatus,
+    required this.editCategory,
   });
 
   final BeneficiaryCategory category;
-  final Function(BeneficiaryCategory) deleteCategory;
-  final Function(BeneficiaryCategory) toggleCategoryStatus;
+  final VoidCallback deleteCategory;
+  final VoidCallback toggleCategoryStatus;
+  final VoidCallback editCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -150,11 +151,25 @@ class CategoryCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  PopupMenuButton(
+                  PopupMenuButton<String>(
                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
+                    onSelected: (value) {
+                      if (value == 'view') {
+                        _showCategoryDetails(context, category);
+                      }
+                      if (value == 'edit') {
+                        editCategory(); // استدعاء الدالة الجديدة
+                      }
+                      if (value == 'toggle') {
+                        toggleCategoryStatus();
+                      }
+                      if (value == 'delete') {
+                        deleteCategory();
+                      }
+                    },
                     itemBuilder:
                         (context) => [
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             value: 'view',
                             child: Row(
                               children: [
@@ -168,7 +183,7 @@ class CategoryCard extends StatelessWidget {
                               ],
                             ),
                           ),
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             value: 'edit',
                             child: Row(
                               children: [
@@ -192,14 +207,14 @@ class CategoryCard extends StatelessWidget {
                                           ? Colors.orange
                                           : Colors.green,
                                 ),
-                                SizedBox(width: 8),
+                                const SizedBox(width: 8),
                                 Text(
                                   category.isActive ? 'Deactivate' : 'Activate',
                                 ),
                               ],
                             ),
                           ),
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             value: 'delete',
                             child: Row(
                               children: [
@@ -210,14 +225,6 @@ class CategoryCard extends StatelessWidget {
                             ),
                           ),
                         ],
-                    onSelected: (value) {
-                      if (value == 'view') {
-                        _showCategoryDetails(context, category);
-                      }
-                      if (value == 'edit') _editCategory(context, category);
-                      if (value == 'toggle') toggleCategoryStatus(category);
-                      if (value == 'delete') deleteCategory(category);
-                    },
                   ),
                 ],
               ),
@@ -230,75 +237,6 @@ class CategoryCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  // Function to show category details
-  void _showCategoryDetails(
-    BuildContext context,
-    BeneficiaryCategory category,
-  ) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                category.name,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: category.color,
-                ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                category.description,
-                style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
-              ),
-              Divider(height: 32),
-              Text(
-                'Criteria:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
-              SizedBox(height: 8),
-              ...category.criteria.map(
-                (criterion) => ListTile(
-                  leading: Icon(
-                    Icons.check_box_outline_blank,
-                    color: category.color,
-                  ),
-                  title: Text(criterion),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 48),
-                ),
-                child: MainText('Close'),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  // Function to edit a category (placeholder)
-  void _editCategory(BuildContext context, BeneficiaryCategory category) {
-    // In a real app, this would navigate to an edit screen.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Editing category: ${category.name}')),
     );
   }
 
@@ -333,4 +271,256 @@ class CategoryCard extends StatelessWidget {
       return '${(difference / 30).floor()} months ago';
     }
   }
+
+  void _showCategoryDetails(
+    BuildContext context,
+    BeneficiaryCategory category,
+  ) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: category.color.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(category.icon, color: category.color, size: 20),
+                ),
+                SizedBox(width: 12),
+                Expanded(child: Text(category.name)),
+              ],
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildDetailRow(
+                    'Status',
+                    category.isActive ? 'Active' : 'Inactive',
+                  ),
+                  _buildDetailRow('Priority', category.priority),
+                  _buildDetailRow(
+                    'Beneficiaries',
+                    category.beneficiaryCount.toString(),
+                  ),
+                  _buildDetailRow(
+                    'Last Updated',
+                    _formatDate(category.lastUpdated),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Description:',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(height: 4),
+                  Text(category.description),
+                  SizedBox(height: 12),
+                  Text(
+                    'Criteria:',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(height: 4),
+                  ...category.criteria.map(
+                    (criterion) => Padding(
+                      padding: EdgeInsets.only(bottom: 4),
+                      child: Text('• $criterion'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  editCategory;
+                },
+                child: Text('Edit'),
+              ),
+            ],
+          ),
+    );
+  }
+
+  Widget _buildDetailRow(String label, String value) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              '$label:',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade700,
+              ),
+            ),
+          ),
+          Expanded(child: Text(value, style: TextStyle(color: Colors.black87))),
+        ],
+      ),
+    );
+  }
 }
+
+//
+//
+// import 'package:flutter/material.dart';
+// import '../beneficiary_categories.dart';
+//
+// class CategoryCard extends StatelessWidget {
+//   const CategoryCard({
+//     super.key,
+//     required this.category,
+//     required this.deleteCategory,
+//     required this.toggleCategoryStatus,
+//     required this.editCategory, // تمت الإضافة
+//   });
+//
+//   final BeneficiaryCategory category;
+//   final VoidCallback deleteCategory;
+//   final VoidCallback toggleCategoryStatus;
+//   final VoidCallback editCategory; // تمت الإضافة
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: const EdgeInsets.only(bottom: 12),
+//       decoration: BoxDecoration(
+//         // ... The rest of the decoration is unchanged
+//       ),
+//       child: InkWell(
+//         onTap: () => _showCategoryDetails(context, category),
+//         borderRadius: BorderRadius.circular(12),
+//         child: Padding(
+//           padding: const EdgeInsets.all(16),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Row(
+//                 children: [
+//                   // ... The icon, name, description part is unchanged
+//                   Expanded(
+//                     // ...
+//                   ),
+//                   PopupMenuButton<String>(
+//                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
+//                     onSelected: (value) {
+//                       if (value == 'view') {
+//                         _showCategoryDetails(context, category);
+//                       }
+//                       if (value == 'edit') {
+//                         editCategory(); // استدعاء الدالة الجديدة
+//                       }
+//                       if (value == 'toggle') {
+//                         toggleCategoryStatus();
+//                       }
+//                       if (value == 'delete') {
+//                         deleteCategory();
+//                       }
+//                     },
+//                     itemBuilder: (context) => [
+//                       const PopupMenuItem(
+//                         value: 'view',
+//                         child: Row(children: [
+//                           Icon(Icons.visibility, size: 20, color: Colors.blue),
+//                           SizedBox(width: 8),
+//                           Text('View Details'),
+//                         ]),
+//                       ),
+//                       const PopupMenuItem(
+//                         value: 'edit',
+//                         child: Row(children: [
+//                           Icon(Icons.edit, size: 20, color: Colors.green),
+//                           SizedBox(width: 8),
+//                           Text('Edit'),
+//                         ]),
+//                       ),
+//                       PopupMenuItem(
+//                         value: 'toggle',
+//                         child: Row(children: [
+//                           Icon(
+//                             category.isActive
+//                                 ? Icons.pause
+//                                 : Icons.play_arrow,
+//                             size: 20,
+//                             color: category.isActive
+//                                 ? Colors.orange
+//                                 : Colors.green,
+//                           ),
+//                           const SizedBox(width: 8),
+//                           Text(category.isActive
+//                               ? 'Deactivate'
+//                               : 'Activate'),
+//                         ]),
+//                       ),
+//                       const PopupMenuItem(
+//                         value: 'delete',
+//                         child: Row(children: [
+//                           Icon(Icons.delete, size: 20, color: Colors.red),
+//                           SizedBox(width: 8),
+//                           Text('Delete'),
+//                         ]),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(height: 12),
+//               Text(
+//                 'Updated ${_formatDate(category.lastUpdated)}',
+//                 style: TextStyle(
+//                   color: Colors.grey.shade500,
+//                   fontSize: 12,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   // The rest of the functions (_getPriorityColor, _formatDate,
+//   // _showCategoryDetails, _buildDetailRow) remain unchanged.
+//   // Make sure to call editCategory() in the details dialog as well.
+//   void _showCategoryDetails(
+//       BuildContext context, BeneficiaryCategory category) {
+//     showDialog(
+//       context: context,
+//       builder: (context) => AlertDialog(
+//         // ... title and content are unchanged
+//         actions: [
+//           TextButton(
+//             onPressed: () => Navigator.pop(context),
+//             child: const Text('Close'),
+//           ),
+//           ElevatedButton(
+//             onPressed: () {
+//               Navigator.pop(context);
+//               editCategory(); // Call the edit function
+//             },
+//             child: const Text('Edit'),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   // Other helper methods
+//   Color _getPriorityColor(String priority) { /* ... */ return Colors.grey; }
+//   String _formatDate(DateTime date) { /* ... */ return ""; }
+//   Widget _buildDetailRow(String label, String value) { /* ... */ return Container(); }
+// }

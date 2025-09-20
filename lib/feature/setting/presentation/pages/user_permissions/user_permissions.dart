@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
 import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 
 import '../../../../../core/style/app_colors.dart';
 import 'widgets/roal_card.dart';
@@ -18,34 +19,34 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
   List<UserRole> roles = [
     UserRole(
       id: '1',
-      name: 'Administrator',
-      description: 'Full access to all features',
+      name: 'مسؤول النظام',
+      description: 'وصول كامل إلى جميع المزايا',
       userCount: 5,
-      permissions: ['All Permissions'],
+      permissions: ['جميع الصلاحيات'],
       color: Colors.red.shade100,
     ),
     UserRole(
       id: '2',
-      name: 'Manager',
-      description: 'Manage operations and staff',
+      name: 'مدير',
+      description: 'إدارة العمليات والموظفين',
       userCount: 12,
-      permissions: ['Manage Users', 'View Reports', 'Manage Donations'],
+      permissions: ['إدارة المستخدمين', 'عرض التقارير', 'إدارة التبرعات'],
       color: Colors.blue.shade100,
     ),
     UserRole(
       id: '3',
-      name: 'Staff',
-      description: 'Handle daily operations',
+      name: 'موظف',
+      description: 'التعامل مع العمليات اليومية',
       userCount: 35,
-      permissions: ['Manage Beneficiaries', 'Record Distributions'],
+      permissions: ['إدارة المستفيدين', 'تسجيل التوزيعات'],
       color: Colors.green.shade100,
     ),
     UserRole(
       id: '4',
-      name: 'Volunteer',
-      description: 'Assist with distributions',
+      name: 'متطوع',
+      description: 'المساعدة في التوزيعات',
       userCount: 128,
-      permissions: ['View Beneficiaries', 'Record Distributions'],
+      permissions: ['عرض المستفيدين', 'تسجيل التوزيعات'],
       color: Colors.orange.shade100,
     ),
   ];
@@ -71,23 +72,30 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
           child: Icon(Icons.arrow_back, color: AppColors.white),
         ),
         actions: [
-          IconButton(icon: Icon(Icons.search, color: AppColors.white), onPressed: () {}),
-          IconButton(icon: Icon(Icons.more_vert,color: AppColors.white), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.search, color: AppColors.white),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.more_vert, color: AppColors.white),
+            onPressed: () {},
+          ),
         ],
       ),
       body: Column(
         children: [
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: EdgeInsets.all(16),
             child: Row(
               children: [
                 Icon(Icons.info_outline, color: Colors.blue, size: 20),
                 SizedBox(width: 8),
                 Expanded(
-                  child: Text(
-                    'Manage roles and permissions for your organization',
-                    style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+                  child: MainText(
+                    context.l10n.manage_roles_permissions_your_organization,
+                    color: Colors.grey.shade600,
+                    fontSize: 14,
                   ),
                 ),
               ],
@@ -110,7 +118,7 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddRoleDialog(),
         backgroundColor: Colors.blue.shade600,
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: AppColors.white),
       ),
     );
   }
@@ -123,24 +131,19 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Add New Role'),
+            title: MainText(context.l10n.add_new_role),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextField(
+                MainTextField(
                   controller: nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Role Name',
-                    border: OutlineInputBorder(),
-                  ),
+
+                  label: context.l10n.role_name,
                 ),
                 SizedBox(height: 16),
-                TextField(
+                MainTextField(
                   controller: descController,
-                  decoration: InputDecoration(
-                    labelText: 'Description',
-                    border: OutlineInputBorder(),
-                  ),
+                  label: context.l10n.description,
                   maxLines: 2,
                 ),
               ],
@@ -148,7 +151,7 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: MainText(context.l10n.cancel),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -168,7 +171,7 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
                     Navigator.pop(context);
                   }
                 },
-                child: Text('Add'),
+                child: MainText(context.l10n.add),
               ),
             ],
           ),

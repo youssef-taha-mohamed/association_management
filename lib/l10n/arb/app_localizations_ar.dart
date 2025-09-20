@@ -447,5 +447,102 @@ class AppLocalizationsAr extends AppLocalizations {
   String get page => 'صفحة';
 
   @override
+  String get families_in_need => 'العائلات المحتاجة';
+
+  @override
+  String get no_beneficiaries_found => 'لم يتم العثور على مستفيدين';
+
+  @override
+  String get try_adjusting_search_filters => 'حاول تعديل بحثك أو المرشحات';
+
+  @override
+  String get filter_beneficiaries => 'تصفية المستفيدين';
+
+  @override
+  String get apply => 'يتقدم';
+
+  @override
+  String get add_beneficiary => 'إضافة المستفيد';
+
+  @override
+  String get personal_information => 'معلومات شخصية';
+
+  @override
+  String get please_enter_full_name => 'الرجاء إدخال الاسم الكامل';
+
+  @override
+  String get location_address => 'الموقع/العنوان';
+
+  @override
+  String get please_enter_location => 'الرجاء إدخال الموقع';
+
+  @override
+  String get status => 'حالة';
+
+  @override
+  String get financial_information => 'المعلومات المالية';
+
+  @override
+  String get monthly_income => ' الدخل الشهري';
+
+  @override
+  String get please_enter_income => 'الرجاء إدخال الدخل';
+
+  @override
+  String get number_dependents => 'عدد المعالين';
+
+  @override
+  String get please_enter_dependents_count => 'الرجاء إدخال عدد المعالين';
+
+  @override
+  String get cancel => 'الغاء';
+
+  @override
+  String get save_beneficiary => 'حفظ المستفيد';
+
+  @override
+  String get beneficiary_saved_successfully => 'تم حفظ المستفيد بنجاح!';
+
+  @override
+  String get search_beneficiaries => 'البحث عن المستفيدين...';
+
+  @override
+  String get total => 'المجموع';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get manage_roles_permissions_your_organization =>
+      'إدارة الأدوار والأذونات لمنظمتك';
+
+  @override
+  String get add_new_role => 'إضافة دور جديد';
+
+  @override
+  String get role_name => 'اسم الدور';
+
+  @override
+  String get description => 'وصف';
+
+  @override
+  String get add => 'يضيف';
+
+  @override
+  String get edit => 'تحرر';
+
+  @override
+  String get close => 'يغلق';
+
+  @override
+  String get delete => 'يمسح';
+
+  @override
+  String get edit_user => 'تعديل المستخدم';
+
+  @override
+  String get addition => 'إضافة';
+
+  @override
   String get name => 'الأسم';
 }

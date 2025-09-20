@@ -450,5 +450,104 @@ class AppLocalizationsEn extends AppLocalizations {
   String get page => 'page';
 
   @override
+  String get families_in_need => 'Families in Need';
+
+  @override
+  String get no_beneficiaries_found => 'No beneficiaries found';
+
+  @override
+  String get try_adjusting_search_filters =>
+      'Try adjusting your search or filters';
+
+  @override
+  String get filter_beneficiaries => 'Filter Beneficiaries';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get add_beneficiary => 'Add Beneficiary';
+
+  @override
+  String get personal_information => 'Personal Information';
+
+  @override
+  String get please_enter_full_name => 'Please enter full name';
+
+  @override
+  String get location_address => 'Location/Address';
+
+  @override
+  String get please_enter_location => 'Please enter location';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get financial_information => 'Financial Information';
+
+  @override
+  String get monthly_income => 'Monthly Income';
+
+  @override
+  String get please_enter_income => 'Please enter income';
+
+  @override
+  String get number_dependents => 'Number of Dependents';
+
+  @override
+  String get please_enter_dependents_count => 'Please enter dependents count';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get save_beneficiary => 'Save Beneficiary';
+
+  @override
+  String get beneficiary_saved_successfully =>
+      'Beneficiary saved successfully!';
+
+  @override
+  String get search_beneficiaries => 'Search beneficiaries...';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get manage_roles_permissions_your_organization =>
+      'Manage roles and permissions for your organization';
+
+  @override
+  String get add_new_role => 'Add New Role';
+
+  @override
+  String get role_name => 'Role Name';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get edit_user => 'Edit User';
+
+  @override
+  String get addition => 'Addition';
+
+  @override
   String get name => 'Name';
 }

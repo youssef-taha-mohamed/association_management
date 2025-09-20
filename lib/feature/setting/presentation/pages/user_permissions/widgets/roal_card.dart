@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_text.dart';
+import '../../../../../../core/style/app_colors.dart';
 import '../user_permissions.dart';
 
 class RoleCardWidget extends StatelessWidget {
@@ -16,11 +19,11 @@ class RoleCardWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: AppColors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: Offset(0, 2),
           ),
@@ -54,21 +57,17 @@ class RoleCardWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        MainText(
                           role.name,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black87,
-                          ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
                         ),
                         SizedBox(height: 4),
-                        Text(
+                        MainText(
                           role.description,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey.shade600,
-                          ),
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
                         ),
                       ],
                     ),
@@ -78,29 +77,29 @@ class RoleCardWidget extends StatelessWidget {
                     itemBuilder:
                         (context) => [
                           PopupMenuItem(
-                            value: 'edit',
+                            value: context.l10n.edit,
                             child: Row(
                               children: [
                                 Icon(Icons.edit, size: 20, color: Colors.blue),
                                 SizedBox(width: 8),
-                                Text('Edit'),
+                                MainText(context.l10n.edit),
                               ],
                             ),
                           ),
                           PopupMenuItem(
-                            value: 'delete',
+                            value: context.l10n.delete,
                             child: Row(
                               children: [
                                 Icon(Icons.delete, size: 20, color: Colors.red),
                                 SizedBox(width: 8),
-                                Text('Delete'),
+                                MainText(context.l10n.delete),
                               ],
                             ),
                           ),
                         ],
                     onSelected: (value) {
-                      if (value == 'edit') _editRole(context, role);
-                      if (value == 'delete') deleteRole(role);
+                      if (value == context.l10n.edit) _editRole(context, role);
+                      if (value == context.l10n.delete) deleteRole(role);
                     },
                   ),
                 ],
@@ -114,13 +113,12 @@ class RoleCardWidget extends StatelessWidget {
                       color: Colors.blue.shade50,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(
+                    child: MainText(
                       '${role.userCount} users',
-                      style: TextStyle(
-                        color: Colors.blue.shade700,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
+
+                      color: Colors.blue.shade700,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(width: 8),
@@ -130,21 +128,20 @@ class RoleCardWidget extends StatelessWidget {
                       color: Colors.green.shade50,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(
+                    child: MainText(
                       '${role.permissions.length} permissions',
-                      style: TextStyle(
-                        color: Colors.green.shade700,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      color: Colors.green.shade700,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 12),
-              Text(
+              MainText(
                 'Permissions: ${role.permissions.join(", ")}',
-                style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
+                fontSize: 13,
+                color: Colors.grey.shade600,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -157,13 +154,13 @@ class RoleCardWidget extends StatelessWidget {
 
   IconData _getRoleIcon(String roleName) {
     switch (roleName.toLowerCase()) {
-      case 'administrator':
+      case 'مسؤول النظام':
         return Icons.admin_panel_settings;
-      case 'manager':
+      case 'مدير':
         return Icons.business_center;
-      case 'staff':
+      case 'موظف':
         return Icons.person;
-      case 'volunteer':
+      case 'متطوع':
         return Icons.volunteer_activism;
       default:
         return Icons.person;
@@ -172,13 +169,13 @@ class RoleCardWidget extends StatelessWidget {
 
   Color _getRoleIconColor(String roleName) {
     switch (roleName.toLowerCase()) {
-      case 'administrator':
+      case 'مسؤول النظام':
         return Colors.red.shade600;
-      case 'manager':
+      case 'مدير':
         return Colors.blue.shade600;
-      case 'staff':
+      case 'موظف':
         return Colors.green.shade600;
-      case 'volunteer':
+      case 'متطوع':
         return Colors.orange.shade600;
       default:
         return Colors.grey.shade600;
@@ -195,25 +192,25 @@ class RoleCardWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Description: ${role.description}'),
+                MainText('Description: ${role.description}'),
                 SizedBox(height: 8),
-                Text('Users: ${role.userCount}'),
+                MainText('Users: ${role.userCount}'),
                 SizedBox(height: 8),
-                Text('Permissions:'),
-                ...role.permissions.map((p) => Text('• $p')),
+                MainText('Permissions:'),
+                ...role.permissions.map((p) => MainText('• $p')),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
+                child: MainText(context.l10n.close),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                   _editRole(context, role);
                 },
-                child: Text('Edit'),
+                child: MainText(context.l10n.edit),
               ),
             ],
           ),
@@ -223,7 +220,7 @@ class RoleCardWidget extends StatelessWidget {
   void _editRole(BuildContext context, UserRole role) {
     // Implementation for editing role
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Edit ${role.name} - Feature coming soon')),
+      SnackBar(content: MainText('Edit ${role.name} - Feature coming soon')),
     );
   }
 }

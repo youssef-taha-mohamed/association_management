@@ -99,10 +99,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                 itemCount: filteredUsers.length,
                 itemBuilder: (context, index) {
                   final user = filteredUsers[index];
-                  return UserItem(
-                    user: user,
-                    editUser: _editUser,
-                  );
+                  return UserItem(user: user, editUser: _editUser);
                 },
               ),
             ),
@@ -123,18 +120,17 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                     color: Colors.blue[50],
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Text(
+                  child: MainText(
                     'إجمالي: ${filteredUsers.length}',
-                    style: TextStyle(
-                      color: Colors.blue[700],
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    color: Colors.blue[700],
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
+                MainText(
                   '${filteredUsers.length} - 1',
-                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                  color: Colors.grey[600],
+                  fontSize: 14,
                 ),
               ],
             ),
@@ -147,7 +143,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
           spacing: 8,
           children: [
             MainText(context.l10n.add_user),
-            Icon(Icons.person_add, color: Colors.white, size: 20,),
+            Icon(Icons.person_add, color: Colors.white, size: 20),
           ],
         ),
       ),
@@ -167,7 +163,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
               children: [
                 Icon(Icons.edit, color: Colors.blue),
                 MainText(
-                  'تعديل المستخدم',
+                  context.l10n.edit_user,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
@@ -456,7 +452,8 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                                     ),
                                                   ],
                                                 ),
-                                                backgroundColor: Colors.green,
+                                                backgroundColor:
+                                                    AppColors.green,
                                                 behavior:
                                                     SnackBarBehavior.floating,
                                                 shape: RoundedRectangleBorder(
@@ -468,16 +465,15 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                             );
                                           }
                                         },
-                                        child: Text(
-                                          'إضافة',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                        child: MainText(
+                                          context.l10n.addition,
+
+                                          color: AppColors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.blue,
+                                          backgroundColor: AppColors.blue,
                                           padding: EdgeInsets.symmetric(
                                             vertical: 16,
                                           ),
@@ -557,21 +553,21 @@ class _PeopleDataViewState extends State<PeopleDataView> {
       style: TextStyle(fontSize: 16, color: Colors.black87),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.grey[600], fontSize: 16),
-        prefixIcon: Icon(icon, color: Colors.grey[500], size: 22),
+        labelStyle: TextStyle(color: AppColors.grey600, fontSize: 16),
+        prefixIcon: Icon(icon, color: AppColors.grey500, size: 22),
         filled: true,
         fillColor: Colors.grey[50],
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.grey[300]!),
+          borderSide: BorderSide(color: AppColors.grey300),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.blue, width: 2),
+          borderSide: BorderSide(color: AppColors.blue, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.grey[300]!),
+          borderSide: BorderSide(color: AppColors.grey300),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       ),
@@ -579,11 +575,7 @@ class _PeopleDataViewState extends State<PeopleDataView> {
           items.map((String item) {
             return DropdownMenuItem<String>(
               value: item,
-              child: Text(
-                item,
-                textAlign: TextAlign.right,
-                style: TextStyle(fontSize: 16),
-              ),
+              child: MainText(item, textAlign: TextAlign.right, fontSize: 16),
             );
           }).toList(),
     );

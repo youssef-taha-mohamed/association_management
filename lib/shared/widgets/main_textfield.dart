@@ -234,14 +234,14 @@ class _MainTextFieldState extends State<MainTextField> {
                   style:
                       widget.lableStyle ??
                       Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                         color: Theme.of(context).hintColor,
                       ),
                 )
                 : null,
         labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontSize: 14,
+          fontSize: 12,
           fontWeight: FontWeight.w400,
         ),
         helperText: widget.helperText,

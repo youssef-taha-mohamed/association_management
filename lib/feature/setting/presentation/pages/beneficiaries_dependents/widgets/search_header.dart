@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import '../../../../../../core/style/app_colors.dart';
 import '../../../../../../shared/widgets/main_textfield.dart';
 import '../beneficiaries_dep.dart';
 
@@ -23,7 +25,7 @@ class SearchAndStatsWidgets extends StatelessWidget {
         children: [
           MainTextField(
             controller: searchController,
-            hint: 'Search beneficiaries...',
+            hint: context.l10n.search_beneficiaries,
             prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
             // suffixIcon:
             //     searchController.text.isNotEmpty
@@ -42,28 +44,28 @@ class SearchAndStatsWidgets extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Total',
+                  context.l10n.total,
                   beneficiaries.length.toString(),
                   Icons.people,
-                  Colors.blue,
+                  AppColors.blue,
                 ),
               ),
               SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   beneficiaries
                       .where((b) => b.status == 'Active')
                       .length
                       .toString(),
                   Icons.check_circle,
-                  Colors.green,
+                  AppColors.green,
                 ),
               ),
               SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Pending',
+                  context.l10n.pending,
                   beneficiaries
                       .where((b) => b.status == 'Pending')
                       .length

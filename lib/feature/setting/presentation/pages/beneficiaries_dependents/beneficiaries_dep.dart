@@ -23,41 +23,41 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
   List<Beneficiary> beneficiaries = [
     Beneficiary(
       id: '1',
-      name: 'Ahmad Hassan',
-      category: 'Family',
-      status: 'Active',
+      name: 'أحمد حسن',
+      category: 'أسرة',
+      status: 'نشط',
       dependents: 4,
-      location: 'Cairo',
+      location: 'القاهرة',
       phone: '+20 12 3456 7890',
       monthlyIncome: 1200.0,
       lastDistribution: DateTime.now().subtract(Duration(days: 15)),
     ),
     Beneficiary(
       id: '2',
-      name: 'Fatima Ali',
-      category: 'Elderly',
-      status: 'Active',
+      name: 'فاطمة علي',
+      category: 'مسن',
+      status: 'نشط',
       dependents: 0,
-      location: 'Alexandria',
+      location: 'الإسكندرية',
       phone: '+20 11 2345 6789',
       monthlyIncome: 800.0,
       lastDistribution: DateTime.now().subtract(Duration(days: 8)),
     ),
     Beneficiary(
       id: '3',
-      name: 'Omar Mohammed',
-      category: 'Orphan',
-      status: 'Pending',
+      name: 'عمر محمد',
+      category: 'يتيم',
+      status: 'قيد المراجعة',
       dependents: 0,
-      location: 'Giza',
+      location: 'الجيزة',
       phone: '+20 10 1234 5678',
       monthlyIncome: 0.0,
       lastDistribution: null,
     ),
   ];
 
-  List<String> categories = ['All', 'Family', 'Elderly', 'Orphan', 'Disabled'];
-  List<String> statuses = ['All', 'Active', 'Pending', 'Inactive'];
+  List<String> categories = ['All', 'أسرة', 'مسن', 'يتيم', 'ذوي الإعاقة'];
+  List<String> statuses = ['All', 'نشط', 'قيد المراجعة', 'غير نشط'];
 
   @override
   Widget build(BuildContext context) {
@@ -104,14 +104,14 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddBeneficiaryForm,
         backgroundColor: Colors.green.shade600,
-        child: Icon(Icons.person_add, color: Colors.white),
+        child: Icon(Icons.person_add, color: AppColors.white),
       ),
     );
   }
 
   Widget _buildFilterChips() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Row(
         children: [
@@ -171,18 +171,17 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
           children: [
             Icon(Icons.search_off, size: 64, color: Colors.grey.shade400),
             SizedBox(height: 16),
-            Text(
-              'No beneficiaries found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            MainText(
+              context.l10n.no_beneficiaries_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
             SizedBox(height: 8),
-            Text(
-              'Try adjusting your search or filters',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_search_filters,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -198,13 +197,12 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
     );
   }
 
-
   void _showFilterDialog() {
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Filter Beneficiaries'),
+            title: MainText(context.l10n.filter_beneficiaries),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -216,7 +214,7 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
                           .map(
                             (status) => DropdownMenuItem(
                               value: status,
-                              child: Text(status),
+                              child: MainText(status),
                             ),
                           )
                           .toList(),
@@ -231,7 +229,7 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Apply'),
+                child: MainText(context.l10n.apply),
               ),
             ],
           ),
@@ -244,7 +242,6 @@ class _BeneficiariesDepPageState extends State<BeneficiariesDepPage> {
       MaterialPageRoute(builder: (context) => AddBeneficiaryForm()),
     );
   }
-
 }
 
 class Beneficiary {

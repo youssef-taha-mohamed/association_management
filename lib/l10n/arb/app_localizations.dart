@@ -962,6 +962,198 @@ abstract class AppLocalizations {
   /// **'page'**
   String get page;
 
+  /// No description provided for @families_in_need.
+  ///
+  /// In en, this message translates to:
+  /// **'Families in Need'**
+  String get families_in_need;
+
+  /// No description provided for @no_beneficiaries_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No beneficiaries found'**
+  String get no_beneficiaries_found;
+
+  /// No description provided for @try_adjusting_search_filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your search or filters'**
+  String get try_adjusting_search_filters;
+
+  /// No description provided for @filter_beneficiaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Beneficiaries'**
+  String get filter_beneficiaries;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @add_beneficiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Beneficiary'**
+  String get add_beneficiary;
+
+  /// No description provided for @personal_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Information'**
+  String get personal_information;
+
+  /// No description provided for @please_enter_full_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter full name'**
+  String get please_enter_full_name;
+
+  /// No description provided for @location_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Location/Address'**
+  String get location_address;
+
+  /// No description provided for @please_enter_location.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter location'**
+  String get please_enter_location;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @financial_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Information'**
+  String get financial_information;
+
+  /// No description provided for @monthly_income.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Income'**
+  String get monthly_income;
+
+  /// No description provided for @please_enter_income.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter income'**
+  String get please_enter_income;
+
+  /// No description provided for @number_dependents.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Dependents'**
+  String get number_dependents;
+
+  /// No description provided for @please_enter_dependents_count.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter dependents count'**
+  String get please_enter_dependents_count;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @save_beneficiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Beneficiary'**
+  String get save_beneficiary;
+
+  /// No description provided for @beneficiary_saved_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Beneficiary saved successfully!'**
+  String get beneficiary_saved_successfully;
+
+  /// No description provided for @search_beneficiaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Search beneficiaries...'**
+  String get search_beneficiaries;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pending;
+
+  /// No description provided for @manage_roles_permissions_your_organization.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage roles and permissions for your organization'**
+  String get manage_roles_permissions_your_organization;
+
+  /// No description provided for @add_new_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Role'**
+  String get add_new_role;
+
+  /// No description provided for @role_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Role Name'**
+  String get role_name;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @edit_user.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit User'**
+  String get edit_user;
+
+  /// No description provided for @addition.
+  ///
+  /// In en, this message translates to:
+  /// **'Addition'**
+  String get addition;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

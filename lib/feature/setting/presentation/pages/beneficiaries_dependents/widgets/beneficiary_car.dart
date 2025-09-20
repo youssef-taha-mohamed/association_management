@@ -23,7 +23,7 @@ class BeneficiaryCard extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        onTap: () => _showBeneficiaryDetails(context,beneficiary),
+        onTap: () => _showBeneficiaryDetails(context, beneficiary),
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: EdgeInsets.all(16),
@@ -112,6 +112,7 @@ class BeneficiaryCard extends StatelessWidget {
                     itemBuilder:
                         (context) => [
                           PopupMenuItem(
+                            value: 'view',
                             child: Row(
                               children: [
                                 Icon(
@@ -123,9 +124,9 @@ class BeneficiaryCard extends StatelessWidget {
                                 Text('View Details'),
                               ],
                             ),
-                            value: 'view',
                           ),
                           PopupMenuItem(
+                            value: 'edit',
                             child: Row(
                               children: [
                                 Icon(Icons.edit, size: 20, color: Colors.green),
@@ -133,9 +134,9 @@ class BeneficiaryCard extends StatelessWidget {
                                 Text('Edit'),
                               ],
                             ),
-                            value: 'edit',
                           ),
                           PopupMenuItem(
+                            value: 'distribute',
                             child: Row(
                               children: [
                                 Icon(
@@ -147,13 +148,15 @@ class BeneficiaryCard extends StatelessWidget {
                                 Text('Add Distribution'),
                               ],
                             ),
-                            value: 'distribute',
                           ),
                         ],
                     onSelected: (value) {
-                      if (value == 'view') _showBeneficiaryDetails(context,beneficiary);
-                      if (value == 'edit') _editBeneficiary(context,beneficiary);
-                      if (value == 'distribute') _addDistribution(context,beneficiary);
+                      if (value == 'view')
+                        _showBeneficiaryDetails(context, beneficiary);
+                      if (value == 'edit')
+                        _editBeneficiary(context, beneficiary);
+                      if (value == 'distribute')
+                        _addDistribution(context, beneficiary);
                     },
                   ),
                 ],
@@ -233,11 +236,11 @@ class BeneficiaryCard extends StatelessWidget {
 
   Color _getCategoryColor(String category) {
     switch (category.toLowerCase()) {
-      case 'family':
+      case 'أسرة':
         return Colors.blue.shade600;
-      case 'elderly':
+      case 'مسن':
         return Colors.purple.shade600;
-      case 'orphan':
+      case 'يتيم':
         return Colors.orange.shade600;
       case 'disabled':
         return Colors.teal.shade600;
@@ -248,9 +251,9 @@ class BeneficiaryCard extends StatelessWidget {
 
   Color _getStatusColor(String status) {
     switch (status.toLowerCase()) {
-      case 'active':
+      case 'نشط':
         return Colors.green.shade600;
-      case 'pending':
+      case 'قيد المراجعة':
         return Colors.orange.shade600;
       case 'inactive':
         return Colors.red.shade600;
@@ -298,7 +301,7 @@ class BeneficiaryCard extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  _editBeneficiary(context,beneficiary);
+                  _editBeneficiary(context, beneficiary);
                 },
                 child: Text('Edit'),
               ),
@@ -322,6 +325,7 @@ class BeneficiaryCard extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildDetailRow(String label, String value) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4),

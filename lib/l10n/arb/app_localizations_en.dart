@@ -1018,5 +1018,100 @@ class AppLocalizationsEn extends AppLocalizations {
   String get coverage_area => 'Coverage Area';
 
   @override
+  String get disttricts => 'Districts :';
+
+  @override
+  String get projects => 'Projects';
+
+  @override
+  String get coverage => 'Coverage';
+
+  @override
+  String get view_distributors => 'View Distributors';
+
+  @override
+  String get map => 'Map';
+
+  @override
+  String get search_workplaces => 'Search workplaces...';
+
+  @override
+  String get employees => 'Employees';
+
+  @override
+  String get no_workplaces_found => 'No workplaces found';
+
+  @override
+  String get sort_workplaces => 'Sort Workplaces';
+
+  @override
+  String get employee_count => 'Employee Count';
+
+  @override
+  String get established_year => 'Established Year';
+
+  @override
+  String get employees_at => 'Employees at';
+
+  @override
+  String get viewing_the_ist_of => 'Viewing the list of';
+
+  @override
+  String get employees_is_a_feature_that_will_be_available_soon =>
+      'employees is a feature that will be available soon.';
+
+  @override
+  String get oK => 'Ok';
+
+  @override
+  String get add_workplace => 'Add Workplace';
+
+  @override
+  String get workplace_name => 'Workplace Name';
+
+  @override
+  String get please_enter_workplace_name => 'Please enter workplace name';
+
+  @override
+  String get please_enter_year => 'Please enter year';
+
+  @override
+  String get invalid_year => 'Invalid year';
+
+  @override
+  String get number_of_employees => 'Number of Employees';
+
+  @override
+  String get please_enter_number_of_employees =>
+      'Please enter number of employees';
+
+  @override
+  String get please_enter_a_valid_number => 'Please enter a valid number';
+
+  @override
+  String get contact_person => 'Contact Person';
+
+  @override
+  String get please_enter_contact_person => 'Please enter contact person';
+
+  @override
+  String get please_enter_a_valid_email => 'Please enter a valid email';
+
+  @override
+  String get save_workpiace => 'Save Workpiace';
+
+  @override
+  String get workplace_saved_successfully => 'Workplace saved successfully !';
+
+  @override
+  String get established => 'Established';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get view_employees => 'View Employees';
+
+  @override
   String get name => 'Name';
 }

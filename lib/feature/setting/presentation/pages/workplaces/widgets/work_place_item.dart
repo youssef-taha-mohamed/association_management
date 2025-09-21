@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
 
+import '../../../../../../core/style/app_colors.dart';
+import '../../../../../../shared/widgets/main_text.dart';
 import '../workplaces.dart';
 
 class WorkplaceCard extends StatelessWidget {
@@ -44,9 +47,7 @@ class WorkplaceCard extends StatelessWidget {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: _getTypeColor(
-                        workplace.type,
-                      ).withOpacity(0.2),
+                      color: _getTypeColor(workplace.type).withOpacity(0.2),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
@@ -63,13 +64,12 @@ class WorkplaceCard extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: Text(
+                              child: MainText(
                                 workplace.name,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black87,
-                                ),
+
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
                               ),
                             ),
                             Container(
@@ -77,9 +77,9 @@ class WorkplaceCard extends StatelessWidget {
                               height: 8,
                               decoration: BoxDecoration(
                                 color:
-                                workplace.isActive
-                                    ? Colors.green
-                                    : Colors.red,
+                                    workplace.isActive
+                                        ? Colors.green
+                                        : Colors.red,
                                 shape: BoxShape.circle,
                               ),
                             ),
@@ -97,22 +97,20 @@ class WorkplaceCard extends StatelessWidget {
                                 color: _getTypeColor(workplace.type),
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
+                              child: MainText(
                                 workplace.type,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                ),
+
+                                color: AppColors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             const SizedBox(width: 6),
-                            Text(
+                            MainText(
                               'Est. ${workplace.establishedYear}',
-                              style: TextStyle(
-                                color: Colors.grey.shade500,
-                                fontSize: 12,
-                              ),
+
+                              color: Colors.grey.shade500,
+                              fontSize: 12,
                             ),
                           ],
                         ),
@@ -123,59 +121,61 @@ class WorkplaceCard extends StatelessWidget {
                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
                     itemBuilder:
                         (context) => [
-                      const PopupMenuItem(
-                        value: 'view',
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.visibility,
-                              size: 20,
-                              color: Colors.blue,
+                          PopupMenuItem(
+                            value: context.l10n.view,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.visibility,
+                                  size: 20,
+                                  color: AppColors.blue,
+                                ),
+                                SizedBox(width: 8),
+                                MainText(context.l10n.view_details),
+                              ],
                             ),
-                            SizedBox(width: 8),
-                            Text('View Details'),
-                          ],
-                        ),
-                      ),
-                      const PopupMenuItem(
-                        value: 'edit',
-                        child: Row(
-                          children: [
-                            Icon(Icons.edit, size: 20, color: Colors.green),
-                            SizedBox(width: 8),
-                            Text('Edit'),
-                          ],
-                        ),
-                      ),
-                      const PopupMenuItem(
-                        value: 'employees',
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.people,
-                              size: 20,
-                              color: Colors.orange,
+                          ),
+                          PopupMenuItem(
+                            value: context.l10n.edit,
+                            child: Row(
+                              children: [
+                                Icon(Icons.edit, size: 20, color: Colors.green),
+                                SizedBox(width: 8),
+                                MainText(context.l10n.edit),
+                              ],
                             ),
-                            SizedBox(width: 8),
-                            Text('View Employees'),
-                          ],
-                        ),
-                      ),
-                    ],
+                          ),
+                          PopupMenuItem(
+                            value: context.l10n.employees,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.people,
+                                  size: 20,
+                                  color: Colors.orange,
+                                ),
+                                SizedBox(width: 8),
+                                MainText(context.l10n.view_employees),
+                              ],
+                            ),
+                          ),
+                        ],
                     onSelected: (value) {
-                      if (value == 'view') {
+                      if (value == context.l10n.view) {
                         _showWorkplaceDetails(context, workplace);
                       }
-                      if (value == 'edit') onEdit(workplace);
-                      if (value == 'employees') onViewEmployees(workplace);
+                      if (value == context.l10n.edit) onEdit(workplace);
+                      if (value == context.l10n.employees)
+                        onViewEmployees(workplace);
                     },
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              Text(
+              MainText(
                 workplace.description,
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+                color: Colors.grey.shade600,
+                fontSize: 14,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -189,12 +189,12 @@ class WorkplaceCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Expanded(
-                    child: Text(
+                    child: MainText(
                       workplace.location,
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 13,
-                      ),
+
+                      color: Colors.grey.shade600,
+                      fontSize: 13,
+
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -205,10 +205,12 @@ class WorkplaceCard extends StatelessWidget {
                 children: [
                   Icon(Icons.people, size: 16, color: Colors.grey.shade500),
                   const SizedBox(width: 4),
-                  Text(
-                    '${workplace.employeeCount} employees',
-                    style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                  MainText(
+                    '${workplace.employeeCount} ${context.l10n.employees}',
+                    color: Colors.grey.shade600,
+                    fontSize: 13,
                   ),
+
                   const Spacer(),
                   Icon(Icons.person, size: 16, color: Colors.grey.shade500),
                   const SizedBox(width: 4),
@@ -227,13 +229,13 @@ class WorkplaceCard extends StatelessWidget {
 
   Color _getTypeColor(String type) {
     switch (type.toLowerCase()) {
-      case 'ngo':
+      case 'منظمة غير حكومية':
         return Colors.blue.shade600;
-      case 'association':
+      case 'منظمة':
         return Colors.green.shade600;
-      case 'charity':
+      case 'صدقة':
         return Colors.purple.shade600;
-      case 'organization':
+      case 'تنظيم':
         return Colors.orange.shade600;
       default:
         return Colors.grey.shade600;
@@ -242,13 +244,13 @@ class WorkplaceCard extends StatelessWidget {
 
   IconData _getTypeIcon(String type) {
     switch (type.toLowerCase()) {
-      case 'ngo':
+      case 'منظمة غير حكومية':
         return Icons.public;
-      case 'association':
+      case 'منظمة':
         return Icons.groups;
-      case 'charity':
+      case 'صدقة':
         return Icons.favorite;
-      case 'organization':
+      case 'تنظيم':
         return Icons.business;
       default:
         return Icons.business;
@@ -260,53 +262,59 @@ class WorkplaceCard extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-        title: Text(workplace.name),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildDetailRow('Type', workplace.type),
-              _buildDetailRow(
-                'Status',
-                workplace.isActive ? 'Active' : 'Inactive',
+            title: MainText(workplace.name),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildDetailRow(context.l10n.type, workplace.type),
+                  _buildDetailRow(
+                    context.l10n.status,
+                    workplace.isActive
+                        ? context.l10n.active
+                        : context.l10n.inactive,
+                  ),
+                  _buildDetailRow(context.l10n.location, workplace.location),
+                  _buildDetailRow(
+                    context.l10n.employees,
+                    workplace.employeeCount.toString(),
+                  ),
+                  _buildDetailRow(
+                    context.l10n.established,
+                    workplace.establishedYear.toString(),
+                  ),
+                  _buildDetailRow(
+                    context.l10n.contact_person,
+                    workplace.contactPerson,
+                  ),
+                  _buildDetailRow(context.l10n.phone, workplace.phone),
+                  _buildDetailRow(context.l10n.email, workplace.email),
+                  const SizedBox(height: 8),
+                  MainText(
+                    context.l10n.description,
+                    fontWeight: FontWeight.w500,
+                  ),
+
+                  const SizedBox(height: 4),
+                  MainText(workplace.description),
+                ],
               ),
-              _buildDetailRow('Location', workplace.location),
-              _buildDetailRow(
-                'Employees',
-                workplace.employeeCount.toString(),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.close),
               ),
-              _buildDetailRow(
-                'Established',
-                workplace.establishedYear.toString(),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  onEdit(workplace);
+                },
+                child: MainText(context.l10n.edit),
               ),
-              _buildDetailRow('Contact Person', workplace.contactPerson),
-              _buildDetailRow('Phone', workplace.phone),
-              _buildDetailRow('Email', workplace.email),
-              const SizedBox(height: 8),
-              const Text(
-                'Description:',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(height: 4),
-              Text(workplace.description),
             ],
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              onEdit(workplace);
-            },
-            child: const Text('Edit'),
-          ),
-        ],
-      ),
     );
   }
 
@@ -318,15 +326,16 @@ class WorkplaceCard extends StatelessWidget {
         children: [
           SizedBox(
             width: 100,
-            child: Text(
+            child: MainText(
               '$label:',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey.shade700,
-              ),
+
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade700,
             ),
           ),
-          Expanded(child: Text(value, style: const TextStyle(color: Colors.black87))),
+          Expanded(
+            child: Text(value, style: const TextStyle(color: Colors.black87)),
+          ),
         ],
       ),
     );

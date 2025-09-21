@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../shared/widgets/main_text.dart';
+import '../../../../../shared/widgets/main_textfield.dart';
 import 'add_workplace.dart';
 import 'edit_work_place.dart';
 import 'widgets/work_place_item.dart';
@@ -22,59 +23,65 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
   List<Workplace> workplaces = [
     Workplace(
       id: '1',
-      name: 'Hope Foundation',
-      type: 'NGO',
-      location: 'Cairo, Egypt',
-      description: 'Non-profit organization focused on child welfare and education',
+      name: 'مؤسسة الأمل',
+      type: 'منظمة غير حكومية',
+      location: 'القاهرة، مصر',
+      description: 'منظمة غير ربحية تركز على رعاية الأطفال والتعليم',
       employeeCount: 45,
       isActive: true,
       establishedYear: 2018,
-      contactPerson: 'Ahmed Hassan',
+      contactPerson: 'أحمد حسن',
       phone: '+20 12 3456 7890',
       email: 'info@hopefoundation.org',
     ),
     Workplace(
       id: '2',
-      name: 'Community Care Center',
-      type: 'Association',
-      location: 'Alexandria, Egypt',
-      description: 'Local community center providing healthcare and social services',
+      name: 'مركز رعاية المجتمع',
+      type: 'جمعية',
+      location: 'الإسكندرية، مصر',
+      description: 'مركز مجتمعي محلي يقدم خدمات صحية واجتماعية',
       employeeCount: 23,
       isActive: true,
       establishedYear: 2015,
-      contactPerson: 'Fatima Ali',
+      contactPerson: 'فاطمة علي',
       phone: '+20 11 2345 6789',
       email: 'contact@communitycare.org',
     ),
     Workplace(
       id: '3',
-      name: 'Relief Organization',
-      type: 'Charity',
-      location: 'Giza, Egypt',
-      description: 'Emergency relief and disaster response organization',
+      name: 'منظمة الإغاثة',
+      type: 'مؤسسة خيرية',
+      location: 'الجيزة، مصر',
+      description: 'منظمة للإغاثة الطارئة والاستجابة للكوارث',
       employeeCount: 67,
       isActive: true,
       establishedYear: 2012,
-      contactPerson: 'Omar Mohammed',
+      contactPerson: 'عمر محمد',
       phone: '+20 10 1234 5678',
       email: 'help@relieforg.org',
     ),
     Workplace(
       id: '4',
-      name: 'Youth Development Hub',
-      type: 'Organization',
-      location: 'Luxor, Egypt',
-      description: 'Youth empowerment and skills development programs',
+      name: 'مركز تنمية الشباب',
+      type: 'منظمة',
+      location: 'الأقصر، مصر',
+      description: 'برامج لتمكين الشباب وتنمية المهارات',
       employeeCount: 18,
       isActive: false,
       establishedYear: 2020,
-      contactPerson: 'Sara Ahmed',
+      contactPerson: 'سارة أحمد',
       phone: '+20 15 9876 5432',
       email: 'info@youthhub.org',
     ),
   ];
 
-  List<String> workplaceTypes = ['All', 'NGO', 'Association', 'Charity', 'Organization'];
+  List<String> workplaceTypes = [
+    'الكل',
+    'منظمة غير حكومية',
+    'جمعية',
+    'مؤسسة خيرية',
+    'منظمة',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -98,23 +105,15 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
           child: Icon(Icons.arrow_back, color: AppColors.white),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.sort),
-            onPressed: _showSortDialog,
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
+          IconButton(icon: const Icon(Icons.sort), onPressed: _showSortDialog),
+          IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
         ],
       ),
       body: Column(
         children: [
           _buildSearchAndStats(),
           _buildTypeFilter(),
-          Expanded(
-            child: _buildWorkplacesList(),
-          ),
+          Expanded(child: _buildWorkplacesList()),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -127,39 +126,26 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
 
   Widget _buildSearchAndStats() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          MainTextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search workplaces...',
-              prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  _searchController.clear();
-                  setState(() {});
-                },
-              )
-                  : null,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.purple.shade600),
-              ),
-              filled: true,
-              fillColor: Colors.grey.shade50,
-            ),
+
+            hint: context.l10n.search_workplaces,
+            prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+            suffixIcon:
+                _searchController.text.isNotEmpty
+                    ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                    )
+                    : null,
+
             onChanged: (value) => setState(() {}),
           ),
           const SizedBox(height: 16),
@@ -167,26 +153,28 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Total',
+                  context.l10n.total,
                   workplaces.length.toString(),
                   Icons.business,
-                  Colors.blue,
+                  AppColors.blue,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   workplaces.where((w) => w.isActive).length.toString(),
                   Icons.check_circle,
-                  Colors.green,
+                  AppColors.green,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Employees',
-                  workplaces.fold(0, (sum, w) => sum + w.employeeCount).toString(),
+                  context.l10n.employees,
+                  workplaces
+                      .fold(0, (sum, w) => sum + w.employeeCount)
+                      .toString(),
                   Icons.people,
                   Colors.orange,
                 ),
@@ -198,7 +186,12 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -210,21 +203,14 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
         children: [
           Icon(icon, color: color, size: 20),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey.shade600,
-            ),
-          ),
+          MainText(title, fontSize: 12, color: Colors.grey.shade600),
         ],
       ),
     );
@@ -232,62 +218,72 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
 
   Widget _buildTypeFilter() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: workplaceTypes.map((type) {
-            final isSelected = selectedType == type;
-            return Container(
-              margin: const EdgeInsets.only(right: 8),
-              child: FilterChip(
-                label: Text(type),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    selectedType = type;
-                  });
-                },
-                backgroundColor: Colors.grey.shade100,
-                selectedColor: Colors.purple.shade100,
-                checkmarkColor: Colors.purple.shade600,
-              ),
-            );
-          }).toList(),
+          children:
+              workplaceTypes.map((type) {
+                final isSelected = selectedType == type;
+                return Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  child: FilterChip(
+                    label: MainText(type),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        selectedType = type;
+                      });
+                    },
+                    backgroundColor: Colors.grey.shade100,
+                    selectedColor: Colors.purple.shade100,
+                    checkmarkColor: Colors.purple.shade600,
+                  ),
+                );
+              }).toList(),
         ),
       ),
     );
   }
 
   Widget _buildWorkplacesList() {
-    List<Workplace> filteredWorkplaces = workplaces.where((w) {
-      final matchesSearch = w.name.toLowerCase().contains(_searchController.text.toLowerCase()) ||
-          w.location.toLowerCase().contains(_searchController.text.toLowerCase());
-      final matchesType = selectedType == 'All' || w.type == selectedType;
+    List<Workplace> filteredWorkplaces =
+        workplaces.where((w) {
+          final matchesSearch =
+              w.name.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              ) ||
+              w.location.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              );
+          final matchesType = selectedType == 'All' || w.type == selectedType;
 
-      return matchesSearch && matchesType;
-    }).toList();
+          return matchesSearch && matchesType;
+        }).toList();
 
     if (filteredWorkplaces.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.business_center_outlined, size: 64, color: Colors.grey.shade400),
-            const SizedBox(height: 16),
-            Text(
-              'No workplaces found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            Icon(
+              Icons.business_center_outlined,
+              size: 64,
+              color: Colors.grey.shade400,
+            ),
+            SizedBox(height: 16),
+            MainText(
+              context.l10n.no_workplaces_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your search or filters',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_your_search_or_filters,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -311,50 +307,54 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
   void _showSortDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Sort Workplaces'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: const Text('Name (A-Z)'),
-              onTap: () {
-                setState(() {
-                  workplaces.sort((a, b) => a.name.compareTo(b.name));
-                });
-                Navigator.pop(context);
-              },
+      builder:
+          (context) => AlertDialog(
+            title: MainText(context.l10n.sort_workplaces),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  title: MainText(context.l10n.name),
+                  onTap: () {
+                    setState(() {
+                      workplaces.sort((a, b) => a.name.compareTo(b.name));
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: MainText(context.l10n.employee_count),
+                  onTap: () {
+                    setState(() {
+                      workplaces.sort(
+                        (a, b) => b.employeeCount.compareTo(a.employeeCount),
+                      );
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: MainText(context.l10n.established_year),
+                  onTap: () {
+                    setState(() {
+                      workplaces.sort(
+                        (a, b) =>
+                            b.establishedYear.compareTo(a.establishedYear),
+                      );
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              title: const Text('Employee Count'),
-              onTap: () {
-                setState(() {
-                  workplaces.sort((a, b) => b.employeeCount.compareTo(a.employeeCount));
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Established Year'),
-              onTap: () {
-                setState(() {
-                  workplaces.sort((a, b) => b.establishedYear.compareTo(a.establishedYear));
-                });
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+          ),
     );
   }
 
   void _showAddWorkplaceForm() async {
     final newWorkplace = await Navigator.push<Workplace>(
       context,
-      MaterialPageRoute(
-        builder: (context) => const AddWorkplaceForm(),
-      ),
+      MaterialPageRoute(builder: (context) => const AddWorkplaceForm()),
     );
 
     if (newWorkplace != null) {
@@ -385,16 +385,19 @@ class _WorkplacesPageState extends State<WorkplacesPage> {
   void _viewEmployees(Workplace workplace) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Employees at ${workplace.name}'),
-        content: Text('Viewing the list of ${workplace.employeeCount} employees is a feature that will be available soon.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      builder:
+          (context) => AlertDialog(
+            title: MainText('${context.l10n.employees_at} ${workplace.name}'),
+            content: MainText(
+              '${context.l10n.viewing_the_ist_of} ${workplace.employeeCount} ${context.l10n.employees_is_a_feature_that_will_be_available_soon}',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.oK),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }

@@ -1015,5 +1015,99 @@ class AppLocalizationsAr extends AppLocalizations {
   String get coverage_area => 'منطقة التغطية';
 
   @override
+  String get disttricts => 'المناطق:';
+
+  @override
+  String get projects => 'مشاريع';
+
+  @override
+  String get coverage => 'التغطية';
+
+  @override
+  String get view_distributors => 'عرض الموزعين';
+
+  @override
+  String get map => 'رسم خريطة';
+
+  @override
+  String get search_workplaces => 'البحث عن أماكن العمل...';
+
+  @override
+  String get employees => 'موظفين';
+
+  @override
+  String get no_workplaces_found => 'لم يتم العثور على أماكن عمل';
+
+  @override
+  String get sort_workplaces => 'فرز أماكن العمل';
+
+  @override
+  String get employee_count => 'عدد الموظفين';
+
+  @override
+  String get established_year => 'سنة التأسيس';
+
+  @override
+  String get employees_at => 'الموظفين في';
+
+  @override
+  String get viewing_the_ist_of => 'عرض قائمة';
+
+  @override
+  String get employees_is_a_feature_that_will_be_available_soon =>
+      'الموظفين هي ميزة ستكون متاحة قريبًا.';
+
+  @override
+  String get oK => 'نعم';
+
+  @override
+  String get add_workplace => 'إضافة مكان العمل';
+
+  @override
+  String get workplace_name => 'اسم مكان العمل';
+
+  @override
+  String get please_enter_workplace_name => 'الرجاء إدخال اسم مكان العمل';
+
+  @override
+  String get please_enter_year => 'الرجاء إدخال السنة';
+
+  @override
+  String get invalid_year => 'سنة غير صالحة';
+
+  @override
+  String get number_of_employees => 'عدد الموظفين';
+
+  @override
+  String get please_enter_number_of_employees => 'الرجاء إدخال عدد الموظفين';
+
+  @override
+  String get please_enter_a_valid_number => 'الرجاء إدخال رقم صالح';
+
+  @override
+  String get contact_person => 'الشخص الذي يمكن الاتصال به';
+
+  @override
+  String get please_enter_contact_person => 'الرجاء إدخال جهة الاتصال';
+
+  @override
+  String get please_enter_a_valid_email => 'الرجاء إدخال بريد إلكتروني صالح';
+
+  @override
+  String get save_workpiace => 'حفظ مساحة العمل';
+
+  @override
+  String get workplace_saved_successfully => 'تم حفظ مكان العمل بنجاح!';
+
+  @override
+  String get established => 'مقرر';
+
+  @override
+  String get location => 'موقع';
+
+  @override
+  String get view_employees => 'عرض الموظفين';
+
+  @override
   String get name => 'الأسم';
 }

@@ -2066,6 +2066,192 @@ abstract class AppLocalizations {
   /// **'Coverage Area'**
   String get coverage_area;
 
+  /// No description provided for @disttricts.
+  ///
+  /// In en, this message translates to:
+  /// **'Districts :'**
+  String get disttricts;
+
+  /// No description provided for @projects.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get projects;
+
+  /// No description provided for @coverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coverage'**
+  String get coverage;
+
+  /// No description provided for @view_distributors.
+  ///
+  /// In en, this message translates to:
+  /// **'View Distributors'**
+  String get view_distributors;
+
+  /// No description provided for @map.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get map;
+
+  /// No description provided for @search_workplaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Search workplaces...'**
+  String get search_workplaces;
+
+  /// No description provided for @employees.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get employees;
+
+  /// No description provided for @no_workplaces_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No workplaces found'**
+  String get no_workplaces_found;
+
+  /// No description provided for @sort_workplaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Workplaces'**
+  String get sort_workplaces;
+
+  /// No description provided for @employee_count.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee Count'**
+  String get employee_count;
+
+  /// No description provided for @established_year.
+  ///
+  /// In en, this message translates to:
+  /// **'Established Year'**
+  String get established_year;
+
+  /// No description provided for @employees_at.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees at'**
+  String get employees_at;
+
+  /// No description provided for @viewing_the_ist_of.
+  ///
+  /// In en, this message translates to:
+  /// **'Viewing the list of'**
+  String get viewing_the_ist_of;
+
+  /// No description provided for @employees_is_a_feature_that_will_be_available_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'employees is a feature that will be available soon.'**
+  String get employees_is_a_feature_that_will_be_available_soon;
+
+  /// No description provided for @oK.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get oK;
+
+  /// No description provided for @add_workplace.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Workplace'**
+  String get add_workplace;
+
+  /// No description provided for @workplace_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Workplace Name'**
+  String get workplace_name;
+
+  /// No description provided for @please_enter_workplace_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter workplace name'**
+  String get please_enter_workplace_name;
+
+  /// No description provided for @please_enter_year.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter year'**
+  String get please_enter_year;
+
+  /// No description provided for @invalid_year.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid year'**
+  String get invalid_year;
+
+  /// No description provided for @number_of_employees.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Employees'**
+  String get number_of_employees;
+
+  /// No description provided for @please_enter_number_of_employees.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter number of employees'**
+  String get please_enter_number_of_employees;
+
+  /// No description provided for @please_enter_a_valid_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid number'**
+  String get please_enter_a_valid_number;
+
+  /// No description provided for @contact_person.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Person'**
+  String get contact_person;
+
+  /// No description provided for @please_enter_contact_person.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter contact person'**
+  String get please_enter_contact_person;
+
+  /// No description provided for @please_enter_a_valid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get please_enter_a_valid_email;
+
+  /// No description provided for @save_workpiace.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Workpiace'**
+  String get save_workpiace;
+
+  /// No description provided for @workplace_saved_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Workplace saved successfully !'**
+  String get workplace_saved_successfully;
+
+  /// No description provided for @established.
+  ///
+  /// In en, this message translates to:
+  /// **'Established'**
+  String get established;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @view_employees.
+  ///
+  /// In en, this message translates to:
+  /// **'View Employees'**
+  String get view_employees;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
 
+import '../../../../../../core/style/app_colors.dart';
 import '../../../../../../shared/widgets/main_text.dart';
 import '../donation_types.dart';
 
@@ -24,7 +26,7 @@ class DonationTypeCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -90,7 +92,7 @@ class DonationTypeCard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: MainText(
-                                  'INACTIVE',
+                                  context.l10n.inactive,
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey.shade600,
@@ -153,22 +155,22 @@ class DonationTypeCard extends StatelessWidget {
                   PopupMenuButton<String>(
                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
                     onSelected: (value) {
-                      if (value == 'view') {
+                      if (value == context.l10n.view) {
                         _showDonationTypeDetails(context, donationType);
-                      } else if (value == 'edit') {
+                      } else if (value == context.l10n.edit) {
                         editDonationType(); // استدعاء الدالة الجديدة
-                      } else if (value == 'duplicate') {
+                      } else if (value == context.l10n.duplicate) {
                         duplicateDonationType();
-                      } else if (value == 'toggle') {
+                      } else if (value == context.l10n.toggle) {
                         toggleDonationTypeStatus();
-                      } else if (value == 'delete') {
+                      } else if (value == context.l10n.delete) {
                         deleteDonationType();
                       }
                     },
                     itemBuilder:
                         (context) => [
-                          const PopupMenuItem(
-                            value: 'view',
+                          PopupMenuItem(
+                            value: context.l10n.view,
                             child: Row(
                               spacing: 8,
                               children: [
@@ -177,22 +179,22 @@ class DonationTypeCard extends StatelessWidget {
                                   size: 20,
                                   color: Colors.blue,
                                 ),
-                                MainText('View Details'),
+                                MainText(context.l10n.view_details),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
-                            value: 'edit',
+                          PopupMenuItem(
+                            value: context.l10n.edit,
                             child: Row(
                               spacing: 8,
                               children: [
                                 Icon(Icons.edit, size: 20, color: Colors.green),
-                                MainText('Edit'),
+                                MainText(context.l10n.edit),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
-                            value: 'duplicate',
+                          PopupMenuItem(
+                            value: context.l10n.duplicate,
                             child: Row(
                               spacing: 8,
                               children: [
@@ -201,12 +203,12 @@ class DonationTypeCard extends StatelessWidget {
                                   size: 20,
                                   color: Colors.orange,
                                 ),
-                                MainText('Duplicate'),
+                                MainText(context.l10n.duplicate),
                               ],
                             ),
                           ),
                           PopupMenuItem(
-                            value: 'toggle',
+                            value: context.l10n.toggle,
                             child: Row(
                               spacing: 8,
                               children: [
@@ -222,19 +224,23 @@ class DonationTypeCard extends StatelessWidget {
                                 ),
                                 MainText(
                                   donationType.isActive
-                                      ? 'Deactivate'
-                                      : 'Activate',
+                                      ? context.l10n.deactivate
+                                      : context.l10n.activate,
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
-                            value: 'delete',
+                          PopupMenuItem(
+                            value: context.l10n.delete,
                             child: Row(
                               spacing: 8,
                               children: [
-                                Icon(Icons.delete, size: 20, color: Colors.red),
-                                MainText('Delete'),
+                                Icon(
+                                  Icons.delete,
+                                  size: 20,
+                                  color: AppColors.red,
+                                ),
+                                MainText(context.l10n.delete),
                               ],
                             ),
                           ),
@@ -248,13 +254,13 @@ class DonationTypeCard extends StatelessWidget {
                   Icon(Icons.favorite, size: 16, color: Colors.grey.shade500),
                   SizedBox(width: 4),
                   MainText(
-                    '${donationType.donationsCount} donations',
+                    '${donationType.donationsCount} ${context.l10n.donations}',
                     color: Colors.grey.shade600,
                     fontSize: 13,
                   ),
                   Spacer(),
                   MainText(
-                    'Last: ${_formatDate(donationType.lastDonation)}',
+                    '${context.l10n.last}${_formatDate(donationType.lastDonation)}',
                     color: Colors.grey.shade600,
                     fontSize: 13,
                   ),
@@ -262,7 +268,7 @@ class DonationTypeCard extends StatelessWidget {
               ),
               SizedBox(height: 8),
               MainText(
-                'Items: ${donationType.items.take(3).join(", ")}${donationType.items.length > 3 ? "..." : ""}',
+                '${context.l10n.items} ${donationType.items.take(3).join(", ")}${donationType.items.length > 3 ? "..." : ""}',
                 color: Colors.grey.shade600,
                 fontSize: 12,
               ),
@@ -305,41 +311,43 @@ class DonationTypeCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildDetailRow('Category', donationType.category),
+                  _buildDetailRow(context.l10n.category, donationType.category),
                   _buildDetailRow(
-                    'Status',
-                    donationType.isActive ? 'Active' : 'Inactive',
+                    context.l10n.status,
+                    donationType.isActive
+                        ? context.l10n.active
+                        : context.l10n.inactive,
                   ),
-                  _buildDetailRow('Unit', donationType.unit),
+                  _buildDetailRow(context.l10n.unit, donationType.unit),
                   _buildDetailRow(
-                    'Estimated Value',
+                    context.l10n.estimated_value,
                     '\${donationType.estimatedValue.toStringAsFixed(2)}',
                   ),
                   _buildDetailRow(
-                    'Total Donations',
+                    context.l10n.total_donations,
                     donationType.donationsCount.toString(),
                   ),
                   _buildDetailRow(
-                    'Last Donation',
+                    context.l10n.last_donation,
                     _formatDate(donationType.lastDonation),
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    'Description:',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                  MainText(
+                    context.l10n.description,
+                    fontWeight: FontWeight.w500,
                   ),
                   SizedBox(height: 4),
-                  Text(donationType.description),
+                  MainText(donationType.description),
                   SizedBox(height: 12),
-                  Text(
-                    'Typical Items:',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                  MainText(
+                    context.l10n.typical_items,
+                    fontWeight: FontWeight.w500,
                   ),
                   SizedBox(height: 4),
                   ...donationType.items.map(
                     (item) => Padding(
                       padding: EdgeInsets.only(bottom: 4),
-                      child: Text('• $item'),
+                      child: MainText('• $item'),
                     ),
                   ),
                 ],
@@ -348,14 +356,14 @@ class DonationTypeCard extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
+                child: MainText(context.l10n.close),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                   editDonationType();
                 },
-                child: Text('Edit'),
+                child: MainText(context.l10n.edit),
               ),
             ],
           ),
@@ -377,7 +385,7 @@ class DonationTypeCard extends StatelessWidget {
             ),
           ),
 
-          Expanded(child: MainText(value, color: Colors.black87,),),
+          Expanded(child: MainText(value, color: Colors.black87)),
         ],
       ),
     );
@@ -397,5 +405,4 @@ class DonationTypeCard extends StatelessWidget {
       return '${(difference.inDays / 7).floor()}w ago';
     }
   }
-
 }

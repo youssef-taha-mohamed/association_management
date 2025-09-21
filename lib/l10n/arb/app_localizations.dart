@@ -1154,6 +1154,918 @@ abstract class AppLocalizations {
   /// **'Addition'**
   String get addition;
 
+  /// No description provided for @permissions.
+  ///
+  /// In en, this message translates to:
+  /// **'Permissions:'**
+  String get permissions;
+
+  /// No description provided for @users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get users;
+
+  /// No description provided for @feature_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature coming soon - '**
+  String get feature_coming_soon;
+
+  /// No description provided for @delete_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Role'**
+  String get delete_role;
+
+  /// No description provided for @are_sure_want_delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete'**
+  String get are_sure_want_delete;
+
+  /// No description provided for @edit_category.
+  ///
+  /// In en, this message translates to:
+  /// **' Edit Category'**
+  String get edit_category;
+
+  /// No description provided for @category_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Name'**
+  String get category_name;
+
+  /// No description provided for @add_distributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Distributor'**
+  String get add_distributor;
+
+  /// No description provided for @contact_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contact_information;
+
+  /// No description provided for @email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get email_address;
+
+  /// No description provided for @please_enter_email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter email address'**
+  String get please_enter_email_address;
+
+  /// No description provided for @please_enter_valid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get please_enter_valid_email;
+
+  /// No description provided for @emergency_contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency Contact'**
+  String get emergency_contact;
+
+  /// No description provided for @please_enter_emergency_contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter emergency contact'**
+  String get please_enter_emergency_contact;
+
+  /// No description provided for @work_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Work Information'**
+  String get work_information;
+
+  /// No description provided for @experience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience '**
+  String get experience;
+
+  /// No description provided for @please_enter_experience.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter experience'**
+  String get please_enter_experience;
+
+  /// No description provided for @skills_languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills & Languages'**
+  String get skills_languages;
+
+  /// No description provided for @languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages :'**
+  String get languages;
+
+  /// No description provided for @specializations.
+  ///
+  /// In en, this message translates to:
+  /// **'Specializations :'**
+  String get specializations;
+
+  /// No description provided for @save_distributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Distributor'**
+  String get save_distributor;
+
+  /// No description provided for @distributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Distributor'**
+  String get distributor;
+
+  /// No description provided for @added_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Added Successfully!'**
+  String get added_successfully;
+
+  /// No description provided for @available.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get available;
+
+  /// No description provided for @please_select_at_least_one_specialization.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select at least one specialization'**
+  String get please_select_at_least_one_specialization;
+
+  /// No description provided for @please_select_at_least_one_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select at least one language'**
+  String get please_select_at_least_one_language;
+
+  /// No description provided for @changes_for.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes for'**
+  String get changes_for;
+
+  /// No description provided for @saved_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'saved successfully!'**
+  String get saved_successfully;
+
+  /// No description provided for @please_select_at_least_one_language_and_specialization.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select at least one language and specialization'**
+  String get please_select_at_least_one_language_and_specialization;
+
+  /// No description provided for @save_changes.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get save_changes;
+
+  /// No description provided for @edit_distributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Distributor'**
+  String get edit_distributor;
+
+  /// No description provided for @distributors.
+  ///
+  /// In en, this message translates to:
+  /// **'Distributors'**
+  String get distributors;
+
+  /// No description provided for @search_distributors.
+  ///
+  /// In en, this message translates to:
+  /// **'Search distributors...'**
+  String get search_distributors;
+
+  /// No description provided for @avg_rating.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg Rating'**
+  String get avg_rating;
+
+  /// No description provided for @no_distributors_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No distributors found'**
+  String get no_distributors_found;
+
+  /// No description provided for @try_adjusting_your_search_or_filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your search or filters'**
+  String get try_adjusting_your_search_or_filters;
+
+  /// No description provided for @advanced_filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced Filters'**
+  String get advanced_filters;
+
+  /// No description provided for @additional_filtering_options_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional filtering options coming soon...'**
+  String get additional_filtering_options_coming_soon;
+
+  /// No description provided for @filter_by_rating.
+  ///
+  /// In en, this message translates to:
+  /// **'• Filter by rating'**
+  String get filter_by_rating;
+
+  /// No description provided for @filter_by_experience.
+  ///
+  /// In en, this message translates to:
+  /// **'• Filter by experience'**
+  String get filter_by_experience;
+
+  /// No description provided for @filter_by_specialization.
+  ///
+  /// In en, this message translates to:
+  /// **'• Filter by specialization'**
+  String get filter_by_specialization;
+
+  /// No description provided for @filter_by_vehicle_type.
+  ///
+  /// In en, this message translates to:
+  /// **'• Filter by vehicle type'**
+  String get filter_by_vehicle_type;
+
+  /// No description provided for @available_now.
+  ///
+  /// In en, this message translates to:
+  /// **'Available Now'**
+  String get available_now;
+
+  /// No description provided for @total_deliveries.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Deliveries'**
+  String get total_deliveries;
+
+  /// No description provided for @top_performer.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Performer'**
+  String get top_performer;
+
+  /// No description provided for @average_rating.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Rating'**
+  String get average_rating;
+
+  /// No description provided for @active_rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Rate'**
+  String get active_rate;
+
+  /// No description provided for @total_distributors.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Distributors'**
+  String get total_distributors;
+
+  /// No description provided for @distributor_analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Distributor Analytics'**
+  String get distributor_analytics;
+
+  /// No description provided for @delivery_scheduled_for.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery scheduled for'**
+  String get delivery_scheduled_for;
+
+  /// No description provided for @on.
+  ///
+  /// In en, this message translates to:
+  /// **'on'**
+  String get on;
+
+  /// No description provided for @call.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call;
+
+  /// No description provided for @contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contact;
+
+  /// No description provided for @calling.
+  ///
+  /// In en, this message translates to:
+  /// **'Calling'**
+  String get calling;
+
+  /// No description provided for @opening_email_to.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening email to'**
+  String get opening_email_to;
+
+  /// No description provided for @calling_emergency_contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Calling emergency contact...'**
+  String get calling_emergency_contact;
+
+  /// No description provided for @deactivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate'**
+  String get deactivate;
+
+  /// No description provided for @has_been_deactivated.
+  ///
+  /// In en, this message translates to:
+  /// **'has been deactivated'**
+  String get has_been_deactivated;
+
+  /// No description provided for @unavailable.
+  ///
+  /// In en, this message translates to:
+  /// **' Unavailable'**
+  String get unavailable;
+
+  /// No description provided for @inactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get inactive;
+
+  /// No description provided for @are_you_sure_you_want_to_deactivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to deactivate'**
+  String get are_you_sure_you_want_to_deactivate;
+
+  /// No description provided for @deactivate_distributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate Distributor'**
+  String get deactivate_distributor;
+
+  /// No description provided for @distributor_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Distributor Profile'**
+  String get distributor_profile;
+
+  /// No description provided for @avatar.
+  ///
+  /// In en, this message translates to:
+  /// **'avatar_'**
+  String get avatar;
+
+  /// No description provided for @rating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get rating;
+
+  /// No description provided for @deliveries.
+  ///
+  /// In en, this message translates to:
+  /// **'Deliveries'**
+  String get deliveries;
+
+  /// No description provided for @contact_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact & Details'**
+  String get contact_details;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @vehicle_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle Type'**
+  String get vehicle_type;
+
+  /// No description provided for @join_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Date'**
+  String get join_date;
+
+  /// No description provided for @performance_statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance Statistics'**
+  String get performance_statistics;
+
+  /// No description provided for @last_delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Delivery'**
+  String get last_delivery;
+
+  /// No description provided for @specializations_languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Specializations & Languages'**
+  String get specializations_languages;
+
+  /// No description provided for @search_donation_types.
+  ///
+  /// In en, this message translates to:
+  /// **'Search donation types...'**
+  String get search_donation_types;
+
+  /// No description provided for @types.
+  ///
+  /// In en, this message translates to:
+  /// **'Types'**
+  String get types;
+
+  /// No description provided for @total_donations.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Donations'**
+  String get total_donations;
+
+  /// No description provided for @avg_value.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. Value'**
+  String get avg_value;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @no_donation_types_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No donation types found'**
+  String get no_donation_types_found;
+
+  /// No description provided for @no_data_available_for_analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available for analytics.'**
+  String get no_data_available_for_analytics;
+
+  /// No description provided for @donation_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation type'**
+  String get donation_type;
+
+  /// No description provided for @deleted_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'deleted successfully'**
+  String get deleted_successfully;
+
+  /// No description provided for @are_you_sure_you_want_to_delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete ?'**
+  String get are_you_sure_you_want_to_delete;
+
+  /// No description provided for @this_action_cannot_be_undone.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone.'**
+  String get this_action_cannot_be_undone;
+
+  /// No description provided for @delete_donation_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Donation Type'**
+  String get delete_donation_type;
+
+  /// No description provided for @activated.
+  ///
+  /// In en, this message translates to:
+  /// **'activated'**
+  String get activated;
+
+  /// No description provided for @deactivated.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivated'**
+  String get deactivated;
+
+  /// No description provided for @duplicated_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'duplicated successfully!'**
+  String get duplicated_successfully;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copy;
+
+  /// No description provided for @updated_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'updated successfully!'**
+  String get updated_successfully;
+
+  /// No description provided for @donation_analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation Analytics'**
+  String get donation_analytics;
+
+  /// No description provided for @most_popular.
+  ///
+  /// In en, this message translates to:
+  /// **'Most Popular'**
+  String get most_popular;
+
+  /// No description provided for @highest_value.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest Value'**
+  String get highest_value;
+
+  /// No description provided for @total_value.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Value'**
+  String get total_value;
+
+  /// No description provided for @active_types.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Types'**
+  String get active_types;
+
+  /// No description provided for @please_enter_a_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a name'**
+  String get please_enter_a_name;
+
+  /// No description provided for @edit_donation_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Donation Type'**
+  String get edit_donation_type;
+
+  /// No description provided for @unit.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit (e.g., Package)'**
+  String get unit;
+
+  /// No description provided for @estimated_value.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated Value (\$)'**
+  String get estimated_value;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items (comma separated)'**
+  String get items;
+
+  /// No description provided for @e_g_Rice_Oil_Sugar.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Rice, Oil, Sugar'**
+  String get e_g_Rice_Oil_Sugar;
+
+  /// No description provided for @select_icon.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Icon:'**
+  String get select_icon;
+
+  /// No description provided for @select_color.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Color:'**
+  String get select_color;
+
+  /// No description provided for @add_donation_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Donation Type'**
+  String get add_donation_type;
+
+  /// No description provided for @typical_items.
+  ///
+  /// In en, this message translates to:
+  /// **'Typical Items:'**
+  String get typical_items;
+
+  /// No description provided for @last_donation.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Donation'**
+  String get last_donation;
+
+  /// No description provided for @last.
+  ///
+  /// In en, this message translates to:
+  /// **'Last:'**
+  String get last;
+
+  /// No description provided for @activate.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate'**
+  String get activate;
+
+  /// No description provided for @toggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle'**
+  String get toggle;
+
+  /// No description provided for @duplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'Duplicate'**
+  String get duplicate;
+
+  /// No description provided for @view_details.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get view_details;
+
+  /// No description provided for @view.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get view;
+
+  /// No description provided for @search_regions.
+  ///
+  /// In en, this message translates to:
+  /// **'Search regions...'**
+  String get search_regions;
+
+  /// No description provided for @total_regions.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Regions'**
+  String get total_regions;
+
+  /// No description provided for @beneficiaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Beneficiaries'**
+  String get beneficiaries;
+
+  /// No description provided for @interactive_map_view.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive Map View'**
+  String get interactive_map_view;
+
+  /// No description provided for @map_integration.
+  ///
+  /// In en, this message translates to:
+  /// **'Map Integration'**
+  String get map_integration;
+
+  /// No description provided for @interactive_map_showing.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive map showing all regions with their\ncoverage areas and activity status'**
+  String get interactive_map_showing;
+
+  /// No description provided for @map_integration_feature_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'تكامل الخريطة - الميزة قادمة قريبًا'**
+  String get map_integration_feature_coming_soon;
+
+  /// No description provided for @open_full_map.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Full Map'**
+  String get open_full_map;
+
+  /// No description provided for @no_regions_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No regions found'**
+  String get no_regions_found;
+
+  /// No description provided for @this_region_has.
+  ///
+  /// In en, this message translates to:
+  /// **'This region has '**
+  String get this_region_has;
+
+  /// No description provided for @distributors_covering_the_following_districts.
+  ///
+  /// In en, this message translates to:
+  /// **'distributors covering the following districts:'**
+  String get distributors_covering_the_following_districts;
+
+  /// No description provided for @distributors_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Distributors in'**
+  String get distributors_in;
+
+  /// No description provided for @view_on_map.
+  ///
+  /// In en, this message translates to:
+  /// **'View on Map:'**
+  String get view_on_map;
+
+  /// No description provided for @showing_details_for.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing details for'**
+  String get showing_details_for;
+
+  /// No description provided for @full_map_integration_is_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'\n\nFull map integration is coming soon.'**
+  String get full_map_integration_is_coming_soon;
+
+  /// No description provided for @best_coverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Coverage'**
+  String get best_coverage;
+
+  /// No description provided for @largest_region.
+  ///
+  /// In en, this message translates to:
+  /// **'Largest Region'**
+  String get largest_region;
+
+  /// No description provided for @most_active.
+  ///
+  /// In en, this message translates to:
+  /// **'Most Active'**
+  String get most_active;
+
+  /// No description provided for @regional_analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Regional Analytics'**
+  String get regional_analytics;
+
+  /// No description provided for @total_coverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Coverage'**
+  String get total_coverage;
+
+  /// No description provided for @highest_priority.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest Priority'**
+  String get highest_priority;
+
+  /// No description provided for @add_region.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Region'**
+  String get add_region;
+
+  /// No description provided for @basic_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Information'**
+  String get basic_information;
+
+  /// No description provided for @region_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Region Name'**
+  String get region_name;
+
+  /// No description provided for @please_enter_region_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter region name'**
+  String get please_enter_region_name;
+
+  /// No description provided for @type.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// No description provided for @priority.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get priority;
+
+  /// No description provided for @please_enter_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter description'**
+  String get please_enter_description;
+
+  /// No description provided for @coordinator_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Coordinator Information'**
+  String get coordinator_information;
+
+  /// No description provided for @coordinator_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Coordinator Name'**
+  String get coordinator_name;
+
+  /// No description provided for @please_enter_coordinator_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter coordinator name'**
+  String get please_enter_coordinator_name;
+
+  /// No description provided for @office_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Office Address'**
+  String get office_address;
+
+  /// No description provided for @please_enter_office_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter office address'**
+  String get please_enter_office_address;
+
+  /// No description provided for @region_saved_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Region saved successfully!'**
+  String get region_saved_successfully;
+
+  /// No description provided for @save_region.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Region'**
+  String get save_region;
+
+  /// No description provided for @active_status.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Status: '**
+  String get active_status;
+
+  /// No description provided for @districts.
+  ///
+  /// In en, this message translates to:
+  /// **'Districts (comma separated)'**
+  String get districts;
+
+  /// No description provided for @e_district.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., District 1, District 2, District 3'**
+  String get e_district;
+
+  /// No description provided for @please_enter_at_least_one_district.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter at least one district'**
+  String get please_enter_at_least_one_district;
+
+  /// No description provided for @coverage_area.
+  ///
+  /// In en, this message translates to:
+  /// **'Coverage Area'**
+  String get coverage_area;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

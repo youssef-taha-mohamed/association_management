@@ -114,7 +114,7 @@ class RoleCardWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: MainText(
-                      '${role.userCount} users',
+                      '${role.userCount} ${context.l10n.users}',
 
                       color: Colors.blue.shade700,
                       fontSize: 12,
@@ -129,7 +129,7 @@ class RoleCardWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: MainText(
-                      '${role.permissions.length} permissions',
+                      '${role.permissions.length} ${context.l10n.permissions}',
                       color: Colors.green.shade700,
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -139,7 +139,7 @@ class RoleCardWidget extends StatelessWidget {
               ),
               SizedBox(height: 12),
               MainText(
-                'Permissions: ${role.permissions.join(", ")}',
+                '${context.l10n.permissions} ${role.permissions.join(", ")}',
                 fontSize: 13,
                 color: Colors.grey.shade600,
                 maxLines: 2,
@@ -192,11 +192,11 @@ class RoleCardWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MainText('Description: ${role.description}'),
+                MainText('${context.l10n.description}: ${role.description}'),
                 SizedBox(height: 8),
-                MainText('Users: ${role.userCount}'),
+                MainText('${context.l10n.users}: ${role.userCount}'),
                 SizedBox(height: 8),
-                MainText('Permissions:'),
+                MainText(context.l10n.permissions),
                 ...role.permissions.map((p) => MainText('• $p')),
               ],
             ),
@@ -220,7 +220,11 @@ class RoleCardWidget extends StatelessWidget {
   void _editRole(BuildContext context, UserRole role) {
     // Implementation for editing role
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: MainText('Edit ${role.name} - Feature coming soon')),
+      SnackBar(
+        content: MainText(
+          '${context.l10n.edit} ${role.name} ${context.l10n.feature_coming_soon}',
+        ),
+      ),
     );
   }
 }

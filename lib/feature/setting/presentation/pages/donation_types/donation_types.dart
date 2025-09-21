@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../shared/widgets/main_text.dart';
 import 'add_donation.dart';
@@ -22,108 +23,103 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
   List<DonationType> donationTypes = [
     DonationType(
       id: '1',
-      name: 'Food Packages',
-      category: 'Food',
-      description: 'Monthly food packages containing essential items',
-      unit: 'Package',
+      name: 'طرود غذائية',
+      category: 'غذاء',
+      description: 'طرود غذائية شهرية تحتوي على المواد الأساسية',
+      unit: 'طرد',
       estimatedValue: 50.0,
       icon: Icons.local_grocery_store,
-      color: Colors.green,
+      color: AppColors.green,
       isActive: true,
       donationsCount: 1245,
       lastDonation: DateTime.now().subtract(const Duration(hours: 2)),
-      items: ['Rice', 'Oil', 'Sugar', 'Flour', 'Lentils', 'Canned goods'],
+      items: ['أرز', 'زيت', 'سكر', 'دقيق', 'عدس', 'معلبات'],
     ),
     DonationType(
       id: '2',
-      name: 'Cash Assistance',
-      category: 'Money',
-      description: 'Direct financial support for families in need',
-      unit: 'USD',
+      name: 'مساعدات نقدية',
+      category: 'مال',
+      description: 'دعم مالي مباشر للأسر المحتاجة',
+      unit: 'دولار',
       estimatedValue: 100.0,
       icon: Icons.attach_money,
-      color: Colors.blue,
+      color: AppColors.blue,
       isActive: true,
       donationsCount: 823,
       lastDonation: DateTime.now().subtract(const Duration(minutes: 30)),
-      items: [
-        'Emergency funds',
-        'Rent assistance',
-        'Utility bills',
-        'Medical expenses',
-      ],
+      items: ['أموال طارئة', 'مساعدة في الإيجار', 'فواتير خدمات', 'نفقات طبية'],
     ),
     DonationType(
       id: '3',
-      name: 'Winter Clothing',
-      category: 'Clothes',
-      description: 'Warm clothing for winter season',
-      unit: 'Set',
+      name: 'ملابس شتوية',
+      category: 'ملابس',
+      description: 'ملابس دافئة لفصل الشتاء',
+      unit: 'طقم',
       estimatedValue: 75.0,
       icon: Icons.checkroom,
       color: Colors.orange,
       isActive: true,
       donationsCount: 456,
       lastDonation: DateTime.now().subtract(const Duration(days: 1)),
-      items: ['Jackets', 'Blankets', 'Warm shoes', 'Hats', 'Gloves'],
+      items: ['معاطف', 'بطاطين', 'أحذية دافئة', 'قبعات', 'قفازات'],
     ),
     DonationType(
       id: '4',
-      name: 'Medical Supplies',
-      category: 'Medicine',
-      description: 'Basic medical supplies and medications',
-      unit: 'Kit',
+      name: 'مستلزمات طبية',
+      category: 'دواء',
+      description: 'مستلزمات طبية وأدوية أساسية',
+      unit: 'حقيبة',
       estimatedValue: 120.0,
       icon: Icons.medical_services,
-      color: Colors.red,
+      color: AppColors.red,
       isActive: true,
       donationsCount: 234,
       lastDonation: DateTime.now().subtract(const Duration(hours: 6)),
       items: [
-        'First aid supplies',
-        'Basic medications',
-        'Medical equipment',
-        'Hygiene items',
+        'أدوات إسعاف أولي',
+        'أدوية أساسية',
+        'معدات طبية',
+        'مستلزمات نظافة',
       ],
     ),
     DonationType(
       id: '5',
-      name: 'School Supplies',
-      category: 'Education',
-      description: 'Educational materials for children',
-      unit: 'Set',
+      name: 'مستلزمات مدرسية',
+      category: 'تعليم',
+      description: 'مواد تعليمية للأطفال',
+      unit: 'طقم',
       estimatedValue: 30.0,
       icon: Icons.school,
       color: Colors.purple,
       isActive: true,
       donationsCount: 678,
       lastDonation: DateTime.now().subtract(const Duration(days: 3)),
-      items: ['Notebooks', 'Pens', 'Books', 'Backpacks', 'Calculators'],
+      items: ['كراريس', 'أقلام', 'كتب', 'حقائب مدرسية', 'آلات حاسبة'],
     ),
     DonationType(
       id: '6',
-      name: 'Electronics',
-      category: 'Technology',
-      description: 'Used electronics and devices',
-      unit: 'Item',
+      name: 'إلكترونيات',
+      category: 'تقنية',
+      description: 'إلكترونيات وأجهزة مستعملة',
+      unit: 'جهاز',
       estimatedValue: 200.0,
       icon: Icons.devices,
       color: Colors.teal,
       isActive: false,
       donationsCount: 89,
       lastDonation: DateTime.now().subtract(const Duration(days: 15)),
-      items: ['Phones', 'Tablets', 'Laptops', 'Chargers'],
+      items: ['هواتف', 'أجهزة لوحية', 'حاسبات محمولة', 'شواحن'],
     ),
   ];
 
   List<String> categories = [
-    'All',
-    'Food',
-    'Money',
-    'Clothes',
-    'Medicine',
-    'Education',
-    'Technology',
+    'الكل',
+    'غذاء',
+    'مال',
+    'ملابس',
+    'دواء',
+    'تعليم',
+    'تقنية',
   ];
 
   @override
@@ -148,7 +144,10 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
           child: Icon(Icons.arrow_back, color: AppColors.white),
         ),
         actions: [
-          IconButton(icon: const Icon(Icons.analytics), onPressed: _showAnalytics),
+          IconButton(
+            icon: const Icon(Icons.analytics),
+            onPressed: _showAnalytics,
+          ),
           IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
         ],
       ),
@@ -169,39 +168,26 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
 
   Widget _buildSearchAndStats() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          MainTextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search donation types...',
-              prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  _searchController.clear();
-                  setState(() {});
-                },
-              )
-                  : null,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.cyan.shade600),
-              ),
-              filled: true,
-              fillColor: Colors.grey.shade50,
-            ),
+
+            hint: context.l10n.search_donation_types,
+            prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+            suffixIcon:
+                _searchController.text.isNotEmpty
+                    ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                    )
+                    : null,
+
             onChanged: (value) => setState(() {}),
           ),
           const SizedBox(height: 16),
@@ -209,36 +195,36 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Types',
+                  context.l10n.types,
                   donationTypes.length.toString(),
                   Icons.category,
-                  Colors.blue,
+                  AppColors.blue,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   donationTypes.where((d) => d.isActive).length.toString(),
                   Icons.check_circle,
-                  Colors.green,
+                  AppColors.green,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Total Donations',
+                  context.l10n.total_donations,
                   donationTypes
                       .fold(0, (sum, d) => sum + d.donationsCount)
                       .toString(),
                   Icons.favorite,
-                  Colors.red,
+                  AppColors.red,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Avg. Value',
+                  context.l10n.avg_value,
                   '\$${(donationTypes.fold(0.0, (sum, d) => sum + d.estimatedValue) / (donationTypes.isEmpty ? 1 : donationTypes.length)).toStringAsFixed(0)}',
                   Icons.attach_money,
                   Colors.orange,
@@ -252,11 +238,11 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
   }
 
   Widget _buildStatCard(
-      String title,
-      String value,
-      IconData icon,
-      Color color,
-      ) {
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -268,17 +254,17 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
         children: [
           Icon(icon, color: color, size: 18),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
-          Text(
+          MainText(
             title,
-            style: TextStyle(fontSize: 10, color: Colors.grey.shade600),
+            fontSize: 10,
+            color: Colors.grey.shade600,
             textAlign: TextAlign.center,
           ),
         ],
@@ -288,47 +274,50 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
 
   Widget _buildCategoryFilter() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: categories.map((category) {
-            final isSelected = selectedCategory == category;
-            return Container(
-              margin: const EdgeInsets.only(right: 8),
-              child: FilterChip(
-                label: Text(category),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    selectedCategory = category;
-                  });
-                },
-                backgroundColor: Colors.grey.shade100,
-                selectedColor: Colors.cyan.shade100,
-                checkmarkColor: Colors.cyan.shade600,
-              ),
-            );
-          }).toList(),
+          children:
+              categories.map((category) {
+                final isSelected = selectedCategory == category;
+                return Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  child: FilterChip(
+                    label: MainText(category),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        selectedCategory = category;
+                      });
+                    },
+                    backgroundColor: Colors.grey.shade100,
+                    selectedColor: Colors.cyan.shade100,
+                    checkmarkColor: Colors.cyan.shade600,
+                  ),
+                );
+              }).toList(),
         ),
       ),
     );
   }
 
   Widget _buildDonationTypesList() {
-    List<DonationType> filteredTypes = donationTypes.where((d) {
-      final matchesSearch = d.name
-          .toLowerCase()
-          .contains(_searchController.text.toLowerCase()) ||
-          d.description
-              .toLowerCase()
-              .contains(_searchController.text.toLowerCase());
-      final matchesCategory =
-          selectedCategory == 'All' || d.category == selectedCategory;
+    List<DonationType> filteredTypes =
+        donationTypes.where((d) {
+          final matchesSearch =
+              d.name.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              ) ||
+              d.description.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              );
+          final matchesCategory =
+              selectedCategory == 'All' || d.category == selectedCategory;
 
-      return matchesSearch && matchesCategory;
-    }).toList();
+          return matchesSearch && matchesCategory;
+        }).toList();
 
     if (filteredTypes.isEmpty) {
       return Center(
@@ -341,18 +330,17 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
               color: Colors.grey.shade400,
             ),
             const SizedBox(height: 16),
-            Text(
-              'No donation types found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            MainText(
+              context.l10n.no_donation_types_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your search or filters',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_your_search_or_filters,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -368,8 +356,8 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
           donationType: donationType,
           duplicateDonationType: () => _duplicateDonationType(donationType),
           deleteDonationType: () => _deleteDonationType(donationType),
-          toggleDonationTypeStatus: () =>
-              _toggleDonationTypeStatus(donationType),
+          toggleDonationTypeStatus:
+              () => _toggleDonationTypeStatus(donationType),
           editDonationType: () => _navigateToEditDonationTypePage(donationType),
         );
       },
@@ -378,45 +366,51 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
 
   void _showAnalytics() {
     if (donationTypes.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No data available for analytics."),
-        backgroundColor: Colors.orange,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: MainText(context.l10n.no_data_available_for_analytics),
+          backgroundColor: Colors.orange,
+        ),
+      );
       return;
     }
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Donation Analytics'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildAnalyticRow(
-              'Most Popular',
-              donationTypes
-                  .reduce((a, b) => a.donationsCount > b.donationsCount ? a : b)
-                  .name,
+      builder:
+          (context) => AlertDialog(
+            title: MainText(context.l10n.donation_analytics),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildAnalyticRow(
+                  context.l10n.most_popular,
+                  donationTypes
+                      .reduce(
+                        (a, b) => a.donationsCount > b.donationsCount ? a : b,
+                      )
+                      .name,
+                ),
+                _buildAnalyticRow(
+                  context.l10n.highest_value,
+                  '\$${donationTypes.reduce((a, b) => a.estimatedValue > b.estimatedValue ? a : b).estimatedValue.toStringAsFixed(0)}',
+                ),
+                _buildAnalyticRow(
+                  context.l10n.total_value,
+                  '\$${donationTypes.fold(0.0, (sum, d) => sum + (d.estimatedValue * d.donationsCount)).toStringAsFixed(0)}',
+                ),
+                _buildAnalyticRow(
+                  context.l10n.active_types,
+                  '${donationTypes.where((d) => d.isActive).length}/${donationTypes.length}',
+                ),
+              ],
             ),
-            _buildAnalyticRow(
-                'Highest Value',
-                '\$${donationTypes.reduce((a, b) => a.estimatedValue > b.estimatedValue ? a : b).estimatedValue.toStringAsFixed(0)}'),
-            _buildAnalyticRow(
-              'Total Value',
-              '\$${donationTypes.fold(0.0, (sum, d) => sum + (d.estimatedValue * d.donationsCount)).toStringAsFixed(0)}',
-            ),
-            _buildAnalyticRow(
-              'Active Types',
-              '${donationTypes.where((d) => d.isActive).length}/${donationTypes.length}',
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.close),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -437,7 +431,11 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
     final newDonationType = await Navigator.push<DonationType>(
       context,
       MaterialPageRoute(
-        builder: (context) => AddDonationTypePage(categories: categories.where((c) => c != 'All').toList()),
+        builder:
+            (context) => AddDonationTypePage(
+              categories:
+                  categories.where((c) => c != context.l10n.all).toList(),
+            ),
       ),
     );
 
@@ -448,8 +446,9 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Donation type "${newDonationType.name}" added successfully!'),
-          backgroundColor: Colors.green,
+            '${context.l10n.donation_type}"${newDonationType.name}" ${context.l10n.added_successfully}',
+          ),
+          backgroundColor: AppColors.green,
         ),
       );
     }
@@ -459,26 +458,30 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
     final updatedDonationType = await Navigator.push<DonationType>(
       context,
       MaterialPageRoute(
-        builder: (context) => EditDonationTypePage(
-          donationType: donationType,
-          categories: categories.where((c) => c != 'All').toList(),
-        ),
+        builder:
+            (context) => EditDonationTypePage(
+              donationType: donationType,
+              categories:
+                  categories.where((c) => c != context.l10n.all).toList(),
+            ),
       ),
     );
 
     if (updatedDonationType != null) {
       setState(() {
-        final index =
-        donationTypes.indexWhere((d) => d.id == updatedDonationType.id);
+        final index = donationTypes.indexWhere(
+          (d) => d.id == updatedDonationType.id,
+        );
         if (index != -1) {
           donationTypes[index] = updatedDonationType;
         }
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-              'Donation type "${updatedDonationType.name}" updated successfully!'),
-          backgroundColor: Colors.green,
+          content: MainText(
+            '${context.l10n.donation_type}"${updatedDonationType.name}" ${context.l10n.updated_successfully}',
+          ),
+          backgroundColor: AppColors.green,
         ),
       );
     }
@@ -487,7 +490,7 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
   void _duplicateDonationType(DonationType donationType) {
     final newDonationType = DonationType(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      name: '${donationType.name} (Copy)',
+      name: '${donationType.name} (${context.l10n.copy})',
       category: donationType.category,
       description: donationType.description,
       unit: donationType.unit,
@@ -505,8 +508,10 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('${donationType.name} duplicated successfully!'),
-        backgroundColor: Colors.green,
+        content: MainText(
+          '${donationType.name} ${context.l10n.duplicated_successfully}',
+        ),
+        backgroundColor: AppColors.green,
       ),
     );
   }
@@ -535,7 +540,7 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          '${donationType.name} ${!donationType.isActive ? 'activated' : 'deactivated'}',
+          '${donationType.name} ${!donationType.isActive ? context.l10n.activated : context.l10n.deactivated}',
         ),
         backgroundColor: !donationType.isActive ? Colors.green : Colors.orange,
       ),
@@ -545,38 +550,40 @@ class _DonationTypesPageState extends State<DonationTypesPage> {
   void _deleteDonationType(DonationType donationType) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete Donation Type'),
-        content: Text(
-          'Are you sure you want to delete "${donationType.name}"? This action cannot be undone.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
+      builder:
+          (context) => AlertDialog(
+            title: MainText(context.l10n.delete_donation_type),
+            content: MainText(
+              '${context.l10n.are_you_sure_you_want_to_delete}"${donationType.name}"${context.l10n.this_action_cannot_be_undone}',
             ),
-            onPressed: () {
-              setState(() {
-                donationTypes.removeWhere((d) => d.id == donationType.id);
-              });
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                      'Donation type "${donationType.name}" deleted successfully'),
-                  backgroundColor: Colors.red,
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.cancel),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.red,
+                  foregroundColor: AppColors.white,
                 ),
-              );
-            },
-            child: const Text('Delete'),
+                onPressed: () {
+                  setState(() {
+                    donationTypes.removeWhere((d) => d.id == donationType.id);
+                  });
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: MainText(
+                        '${context.l10n.donation_type} "${donationType.name}" ${context.l10n.deleted_successfully}',
+                      ),
+                      backgroundColor: AppColors.red,
+                    ),
+                  );
+                },
+                child: MainText(context.l10n.delete),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }

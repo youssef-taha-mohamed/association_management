@@ -549,5 +549,474 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addition => 'Addition';
 
   @override
+  String get permissions => 'Permissions:';
+
+  @override
+  String get users => 'Users';
+
+  @override
+  String get feature_coming_soon => 'Feature coming soon - ';
+
+  @override
+  String get delete_role => 'Delete Role';
+
+  @override
+  String get are_sure_want_delete => 'Are you sure you want to delete';
+
+  @override
+  String get edit_category => ' Edit Category';
+
+  @override
+  String get category_name => 'Category Name';
+
+  @override
+  String get add_distributor => 'Add Distributor';
+
+  @override
+  String get contact_information => 'Contact Information';
+
+  @override
+  String get email_address => 'Email Address';
+
+  @override
+  String get please_enter_email_address => 'Please enter email address';
+
+  @override
+  String get please_enter_valid_email => 'Please enter a valid email';
+
+  @override
+  String get emergency_contact => 'Emergency Contact';
+
+  @override
+  String get please_enter_emergency_contact => 'Please enter emergency contact';
+
+  @override
+  String get work_information => 'Work Information';
+
+  @override
+  String get experience => 'Experience ';
+
+  @override
+  String get please_enter_experience => 'Please enter experience';
+
+  @override
+  String get skills_languages => 'Skills & Languages';
+
+  @override
+  String get languages => 'Languages :';
+
+  @override
+  String get specializations => 'Specializations :';
+
+  @override
+  String get save_distributor => 'Save Distributor';
+
+  @override
+  String get distributor => 'Distributor';
+
+  @override
+  String get added_successfully => 'Added Successfully!';
+
+  @override
+  String get available => 'Available';
+
+  @override
+  String get please_select_at_least_one_specialization =>
+      'Please select at least one specialization';
+
+  @override
+  String get please_select_at_least_one_language =>
+      'Please select at least one language';
+
+  @override
+  String get changes_for => 'Changes for';
+
+  @override
+  String get saved_successfully => 'saved successfully!';
+
+  @override
+  String get please_select_at_least_one_language_and_specialization =>
+      'Please select at least one language and specialization';
+
+  @override
+  String get save_changes => 'Save Changes';
+
+  @override
+  String get edit_distributor => 'Edit Distributor';
+
+  @override
+  String get distributors => 'Distributors';
+
+  @override
+  String get search_distributors => 'Search distributors...';
+
+  @override
+  String get avg_rating => 'Avg Rating';
+
+  @override
+  String get no_distributors_found => 'No distributors found';
+
+  @override
+  String get try_adjusting_your_search_or_filters =>
+      'Try adjusting your search or filters';
+
+  @override
+  String get advanced_filters => 'Advanced Filters';
+
+  @override
+  String get additional_filtering_options_coming_soon =>
+      'Additional filtering options coming soon...';
+
+  @override
+  String get filter_by_rating => '• Filter by rating';
+
+  @override
+  String get filter_by_experience => '• Filter by experience';
+
+  @override
+  String get filter_by_specialization => '• Filter by specialization';
+
+  @override
+  String get filter_by_vehicle_type => '• Filter by vehicle type';
+
+  @override
+  String get available_now => 'Available Now';
+
+  @override
+  String get total_deliveries => 'Total Deliveries';
+
+  @override
+  String get top_performer => 'Top Performer';
+
+  @override
+  String get average_rating => 'Average Rating';
+
+  @override
+  String get active_rate => 'Active Rate';
+
+  @override
+  String get total_distributors => 'Total Distributors';
+
+  @override
+  String get distributor_analytics => 'Distributor Analytics';
+
+  @override
+  String get delivery_scheduled_for => 'Delivery scheduled for';
+
+  @override
+  String get on => 'on';
+
+  @override
+  String get call => 'Call';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get calling => 'Calling';
+
+  @override
+  String get opening_email_to => 'Opening email to';
+
+  @override
+  String get calling_emergency_contact => 'Calling emergency contact...';
+
+  @override
+  String get deactivate => 'Deactivate';
+
+  @override
+  String get has_been_deactivated => 'has been deactivated';
+
+  @override
+  String get unavailable => ' Unavailable';
+
+  @override
+  String get inactive => 'Inactive';
+
+  @override
+  String get are_you_sure_you_want_to_deactivate =>
+      'Are you sure you want to deactivate';
+
+  @override
+  String get deactivate_distributor => 'Deactivate Distributor';
+
+  @override
+  String get distributor_profile => 'Distributor Profile';
+
+  @override
+  String get avatar => 'avatar_';
+
+  @override
+  String get rating => 'Rating';
+
+  @override
+  String get deliveries => 'Deliveries';
+
+  @override
+  String get contact_details => 'Contact & Details';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get vehicle_type => 'Vehicle Type';
+
+  @override
+  String get join_date => 'Join Date';
+
+  @override
+  String get performance_statistics => 'Performance Statistics';
+
+  @override
+  String get last_delivery => 'Last Delivery';
+
+  @override
+  String get specializations_languages => 'Specializations & Languages';
+
+  @override
+  String get search_donation_types => 'Search donation types...';
+
+  @override
+  String get types => 'Types';
+
+  @override
+  String get total_donations => 'Total Donations';
+
+  @override
+  String get avg_value => 'Avg. Value';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get no_donation_types_found => 'No donation types found';
+
+  @override
+  String get no_data_available_for_analytics =>
+      'No data available for analytics.';
+
+  @override
+  String get donation_type => 'Donation type';
+
+  @override
+  String get deleted_successfully => 'deleted successfully';
+
+  @override
+  String get are_you_sure_you_want_to_delete =>
+      'Are you sure you want to delete ?';
+
+  @override
+  String get this_action_cannot_be_undone => 'This action cannot be undone.';
+
+  @override
+  String get delete_donation_type => 'Delete Donation Type';
+
+  @override
+  String get activated => 'activated';
+
+  @override
+  String get deactivated => 'Deactivated';
+
+  @override
+  String get duplicated_successfully => 'duplicated successfully!';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get updated_successfully => 'updated successfully!';
+
+  @override
+  String get donation_analytics => 'Donation Analytics';
+
+  @override
+  String get most_popular => 'Most Popular';
+
+  @override
+  String get highest_value => 'Highest Value';
+
+  @override
+  String get total_value => 'Total Value';
+
+  @override
+  String get active_types => 'Active Types';
+
+  @override
+  String get please_enter_a_name => 'Please enter a name';
+
+  @override
+  String get edit_donation_type => 'Edit Donation Type';
+
+  @override
+  String get unit => 'Unit (e.g., Package)';
+
+  @override
+  String get estimated_value => 'Estimated Value (\$)';
+
+  @override
+  String get items => 'Items (comma separated)';
+
+  @override
+  String get e_g_Rice_Oil_Sugar => 'e.g., Rice, Oil, Sugar';
+
+  @override
+  String get select_icon => 'Select Icon:';
+
+  @override
+  String get select_color => 'Select Color:';
+
+  @override
+  String get add_donation_type => 'Add Donation Type';
+
+  @override
+  String get typical_items => 'Typical Items:';
+
+  @override
+  String get last_donation => 'Last Donation';
+
+  @override
+  String get last => 'Last:';
+
+  @override
+  String get activate => 'Activate';
+
+  @override
+  String get toggle => 'Toggle';
+
+  @override
+  String get duplicate => 'Duplicate';
+
+  @override
+  String get view_details => 'View Details';
+
+  @override
+  String get view => 'View';
+
+  @override
+  String get search_regions => 'Search regions...';
+
+  @override
+  String get total_regions => 'Total Regions';
+
+  @override
+  String get beneficiaries => 'Beneficiaries';
+
+  @override
+  String get interactive_map_view => 'Interactive Map View';
+
+  @override
+  String get map_integration => 'Map Integration';
+
+  @override
+  String get interactive_map_showing =>
+      'Interactive map showing all regions with their\ncoverage areas and activity status';
+
+  @override
+  String get map_integration_feature_coming_soon =>
+      'تكامل الخريطة - الميزة قادمة قريبًا';
+
+  @override
+  String get open_full_map => 'Open Full Map';
+
+  @override
+  String get no_regions_found => 'No regions found';
+
+  @override
+  String get this_region_has => 'This region has ';
+
+  @override
+  String get distributors_covering_the_following_districts =>
+      'distributors covering the following districts:';
+
+  @override
+  String get distributors_in => 'Distributors in';
+
+  @override
+  String get view_on_map => 'View on Map:';
+
+  @override
+  String get showing_details_for => 'Showing details for';
+
+  @override
+  String get full_map_integration_is_coming_soon =>
+      '\n\nFull map integration is coming soon.';
+
+  @override
+  String get best_coverage => 'Best Coverage';
+
+  @override
+  String get largest_region => 'Largest Region';
+
+  @override
+  String get most_active => 'Most Active';
+
+  @override
+  String get regional_analytics => 'Regional Analytics';
+
+  @override
+  String get total_coverage => 'Total Coverage';
+
+  @override
+  String get highest_priority => 'Highest Priority';
+
+  @override
+  String get add_region => 'Add Region';
+
+  @override
+  String get basic_information => 'Basic Information';
+
+  @override
+  String get region_name => 'Region Name';
+
+  @override
+  String get please_enter_region_name => 'Please enter region name';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get priority => 'Priority';
+
+  @override
+  String get please_enter_description => 'Please enter description';
+
+  @override
+  String get coordinator_information => 'Coordinator Information';
+
+  @override
+  String get coordinator_name => 'Coordinator Name';
+
+  @override
+  String get please_enter_coordinator_name => 'Please enter coordinator name';
+
+  @override
+  String get office_address => 'Office Address';
+
+  @override
+  String get please_enter_office_address => 'Please enter office address';
+
+  @override
+  String get region_saved_successfully => 'Region saved successfully!';
+
+  @override
+  String get save_region => 'Save Region';
+
+  @override
+  String get active_status => 'Active Status: ';
+
+  @override
+  String get districts => 'Districts (comma separated)';
+
+  @override
+  String get e_district => 'e.g., District 1, District 2, District 3';
+
+  @override
+  String get please_enter_at_least_one_district =>
+      'Please enter at least one district';
+
+  @override
+  String get coverage_area => 'Coverage Area';
+
+  @override
   String get name => 'Name';
 }

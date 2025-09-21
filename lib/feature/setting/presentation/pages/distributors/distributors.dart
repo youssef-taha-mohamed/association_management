@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
+import '../../../../../core/style/app_colors.dart';
 import '../../../domain/entities/distributors.dart';
 import 'add_distribute.dart';
 import 'distributors_details.dart';
@@ -22,10 +26,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
   List<Distributor> distributors = [
     Distributor(
       id: '1',
-      name: 'Ahmed Hassan',
+      name: 'أحمد حسن',
       email: 'ahmed.hassan@charity.org',
       phone: '+20 12 3456 7890',
-      region: 'Greater Cairo',
+      region: 'القاهرة الكبرى',
       status: 'Active',
       experience: '3 years',
       rating: 4.8,
@@ -43,10 +47,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
     ),
     Distributor(
       id: '2',
-      name: 'Fatima Al-Zahra',
+      name: 'فاطمة الزهراء',
       email: 'fatima.zahra@charity.org',
       phone: '+20 11 2345 6789',
-      region: 'Alexandria Coastal',
+      region: 'ساحل الإسكندرية',
       status: 'Active',
       experience: '2 years',
       rating: 4.6,
@@ -64,10 +68,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
     ),
     Distributor(
       id: '3',
-      name: 'Omar Mohammed',
+      name: 'عمر محمد',
       email: 'omar.mohammed@charity.org',
       phone: '+20 10 1234 5678',
-      region: 'Upper Egypt Rural',
+      region: 'صعيد مصر الريفي',
       status: 'Active',
       experience: '5 years',
       rating: 4.9,
@@ -85,10 +89,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
     ),
     Distributor(
       id: '4',
-      name: 'Sara Ahmed',
+      name: 'سارة احمد',
       email: 'sara.ahmed@charity.org',
       phone: '+20 15 9876 5432',
-      region: 'Delta Region',
+      region: 'منطقة الدلتا',
       status: 'On Leave',
       experience: '1.5 years',
       rating: 4.4,
@@ -106,10 +110,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
     ),
     Distributor(
       id: '5',
-      name: 'Khaled Mahmoud',
+      name: 'خالد محمود',
       email: 'khaled.mahmoud@charity.org',
       phone: '+20 12 5555 0000',
-      region: 'Red Sea Coast',
+      region: 'ساحل البحر الأحمر',
       status: 'Inactive',
       experience: '4 years',
       rating: 4.2,
@@ -127,10 +131,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
     ),
     Distributor(
       id: '6',
-      name: 'Mona Ibrahim',
+      name: 'مني ابراهيم',
       email: 'mona.ibrahim@charity.org',
       phone: '+20 10 8888 7777',
-      region: 'Greater Cairo',
+      region: 'القاهرة الكبرى',
       status: 'Active',
       experience: '2.5 years',
       rating: 4.7,
@@ -147,15 +151,14 @@ class _DistributorsPageState extends State<DistributorsPage> {
       nextScheduledDistribution: DateTime.now().add(const Duration(days: 3)),
     ),
   ];
-
-  List<String> statuses = ['All', 'Active', 'On Leave', 'Inactive'];
+  List<String> statuses = ['الكل', 'نشط', 'في إجازة', 'غير نشط'];
   List<String> regions = [
-    'All',
-    'Greater Cairo',
-    'Alexandria Coastal',
-    'Upper Egypt Rural',
-    'Delta Region',
-    'Red Sea Coast',
+    'الكل',
+    'القاهرة الكبرى',
+    'ساحل الإسكندرية',
+    'صعيد مصر الريفي',
+    'منطقة الدلتا',
+    'ساحل البحر الأحمر',
   ];
 
   @override
@@ -163,11 +166,8 @@ class _DistributorsPageState extends State<DistributorsPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text(
-          'Distributors',
-          style: TextStyle(fontWeight: FontWeight.w600),
-        ),
-        backgroundColor: Colors.white,
+        title: MainText(context.l10n.distributors, fontWeight: FontWeight.w600),
+        backgroundColor: AppColors.white,
         foregroundColor: Colors.black87,
         elevation: 0,
         actions: [
@@ -203,36 +203,22 @@ class _DistributorsPageState extends State<DistributorsPage> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          MainTextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search distributors...',
-              prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-              suffixIcon:
-                  _searchController.text.isNotEmpty
-                      ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          _searchController.clear();
-                          setState(() {});
-                        },
-                      )
-                      : null,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.deepPurple.shade600),
-              ),
-              filled: true,
-              fillColor: Colors.grey.shade50,
-            ),
+
+            hint: context.l10n.search_distributors,
+            prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+            suffixIcon:
+                _searchController.text.isNotEmpty
+                    ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                    )
+                    : null,
+
             onChanged: (value) => setState(() {}),
           ),
           const SizedBox(height: 16),
@@ -240,28 +226,28 @@ class _DistributorsPageState extends State<DistributorsPage> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Total',
+                  context.l10n.total,
                   distributors.length.toString(),
                   Icons.people,
-                  Colors.blue,
+                  AppColors.blue,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   distributors
                       .where((d) => d.status == 'Active')
                       .length
                       .toString(),
                   Icons.check_circle,
-                  Colors.green,
+                  AppColors.green,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Available',
+                  context.l10n.available,
                   distributors
                       .where((d) => d.availabilityStatus == 'Available')
                       .length
@@ -273,7 +259,7 @@ class _DistributorsPageState extends State<DistributorsPage> {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Avg Rating',
+                  context.l10n.avg_rating,
                   (distributors.fold(0.0, (sum, d) => sum + d.rating) /
                           distributors.length)
                       .toStringAsFixed(1),
@@ -305,17 +291,17 @@ class _DistributorsPageState extends State<DistributorsPage> {
         children: [
           Icon(icon, color: color, size: 18),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
-          Text(
+          MainText(
             title,
-            style: TextStyle(fontSize: 10, color: Colors.grey.shade600),
+            fontSize: 10,
+            color: Colors.grey.shade600,
             textAlign: TextAlign.center,
           ),
         ],
@@ -325,7 +311,7 @@ class _DistributorsPageState extends State<DistributorsPage> {
 
   Widget _buildFilters() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         children: [
@@ -364,9 +350,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
             children: [
               Icon(Icons.location_on, size: 16, color: Colors.grey.shade600),
               const SizedBox(width: 4),
-              Text(
-                'Region: ',
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+              MainText(
+                context.l10n.region,
+                color: Colors.grey.shade600,
+                fontSize: 12,
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -432,18 +419,18 @@ class _DistributorsPageState extends State<DistributorsPage> {
           children: [
             Icon(Icons.person_search, size: 64, color: Colors.grey.shade400),
             const SizedBox(height: 16),
-            Text(
-              'No distributors found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            MainText(
+              context.l10n.no_distributors_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
+
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your search or filters',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_your_search_or_filters,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -472,23 +459,23 @@ class _DistributorsPageState extends State<DistributorsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Advanced Filters'),
-            content: const Column(
+            title: MainText(context.l10n.advanced_filters),
+            content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Additional filtering options coming soon...'),
+                MainText(context.l10n.additional_filtering_options_coming_soon),
                 SizedBox(height: 16),
-                Text('• Filter by rating'),
-                Text('• Filter by experience'),
-                Text('• Filter by vehicle type'),
-                Text('• Filter by specialization'),
+                MainText(context.l10n.filter_by_rating),
+                MainText(context.l10n.filter_by_experience),
+                MainText(context.l10n.filter_by_vehicle_type),
+                MainText(context.l10n.filter_by_specialization),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: MainText(context.l10n.close),
               ),
             ],
           ),
@@ -500,27 +487,27 @@ class _DistributorsPageState extends State<DistributorsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Distributor Analytics'),
+            title: MainText(context.l10n.distributor_analytics),
             content: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildAnalyticRow(
-                    'Total Distributors',
+                    context.l10n.total_distributors,
                     distributors.length.toString(),
                   ),
                   _buildAnalyticRow(
-                    'Active Rate',
-                    '${((distributors.where((d) => d.status == 'Active').length / distributors.length) * 100).toStringAsFixed(1)}%',
+                    context.l10n.active_rate,
+                    '${((distributors.where((d) => d.status == context.l10n.active).length / distributors.length) * 100).toStringAsFixed(1)}%',
                   ),
                   _buildAnalyticRow(
-                    'Average Rating',
+                    context.l10n.average_rating,
                     (distributors.fold(0.0, (sum, d) => sum + d.rating) /
                             distributors.length)
                         .toStringAsFixed(1),
                   ),
                   _buildAnalyticRow(
-                    'Top Performer',
+                    context.l10n.top_performer,
                     distributors
                         .reduce(
                           (a, b) =>
@@ -531,15 +518,17 @@ class _DistributorsPageState extends State<DistributorsPage> {
                         .name,
                   ),
                   _buildAnalyticRow(
-                    'Total Deliveries',
+                    context.l10n.total_deliveries,
                     distributors
                         .fold(0, (sum, d) => sum + d.totalDistributions)
                         .toString(),
                   ),
                   _buildAnalyticRow(
-                    'Available Now',
+                    context.l10n.available_now,
                     distributors
-                        .where((d) => d.availabilityStatus == 'Available')
+                        .where(
+                          (d) => d.availabilityStatus == context.l10n.available,
+                        )
                         .length
                         .toString(),
                   ),
@@ -549,7 +538,7 @@ class _DistributorsPageState extends State<DistributorsPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: MainText(context.l10n.close),
               ),
             ],
           ),
@@ -622,10 +611,10 @@ class _DistributorsPageState extends State<DistributorsPage> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(
-              'Delivery scheduled for ${distributor.name} on ${pickedDate.toLocal().toString().split(' ')[0]}',
+            content: MainText(
+              '${context.l10n.delivery_scheduled_for} ${context.l10n.on}${distributor.name} on ${pickedDate.toLocal().toString().split(' ')[0]}',
             ),
-            backgroundColor: Colors.green,
+            backgroundColor: AppColors.green,
           ),
         );
       }
@@ -637,33 +626,35 @@ class _DistributorsPageState extends State<DistributorsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Contact ${distributor.name}'),
+            title: MainText('${context.l10n.contact} ${distributor.name}'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
-                  leading: Icon(Icons.phone, color: Colors.green),
-                  title: const Text('Call'),
-                  subtitle: Text(distributor.phone),
+                  leading: Icon(Icons.phone, color: AppColors.green),
+                  title: MainText(context.l10n.call),
+                  subtitle: MainText(distributor.phone),
                   onTap: () {
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Calling ${distributor.phone}...'),
+                        content: MainText(
+                          '${context.l10n.calling} ${distributor.phone}...',
+                        ),
                       ),
                     );
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.email, color: Colors.blue),
-                  title: const Text('Email'),
-                  subtitle: Text(distributor.email),
+                  title: MainText(context.l10n.email),
+                  subtitle: MainText(distributor.email),
                   onTap: () {
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                          'Opening email to ${distributor.email}...',
+                        content: MainText(
+                          '${context.l10n.opening_email_to} ${distributor.email}...',
                         ),
                       ),
                     );
@@ -671,13 +662,15 @@ class _DistributorsPageState extends State<DistributorsPage> {
                 ),
                 ListTile(
                   leading: Icon(Icons.emergency, color: Colors.red),
-                  title: const Text('Emergency Contact'),
-                  subtitle: Text(distributor.emergencyContact),
+                  title: MainText(context.l10n.emergency_contact),
+                  subtitle: MainText(distributor.emergencyContact),
                   onTap: () {
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Calling emergency contact...'),
+                      SnackBar(
+                        content: MainText(
+                          context.l10n.calling_emergency_contact,
+                        ),
                       ),
                     );
                   },
@@ -687,7 +680,7 @@ class _DistributorsPageState extends State<DistributorsPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: MainText(context.l10n.close),
               ),
             ],
           ),
@@ -699,34 +692,37 @@ class _DistributorsPageState extends State<DistributorsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Deactivate Distributor'),
-            content: Text(
-              'Are you sure you want to deactivate ${distributor.name}?',
+            title: MainText(context.l10n.deactivate_distributor),
+            content: MainText(
+              '${context.l10n.are_you_sure_you_want_to_deactivate} ${distributor.name}?',
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
+
+                child: MainText(context.l10n.cancel),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
+                  backgroundColor: AppColors.red,
+                  foregroundColor: AppColors.white,
                 ),
                 onPressed: () {
                   setState(() {
-                    distributor.status = 'Inactive';
-                    distributor.availabilityStatus = 'Unavailable';
+                    distributor.status = context.l10n.inactive;
+                    distributor.availabilityStatus = context.l10n.unavailable;
                   });
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('${distributor.name} has been deactivated'),
-                      backgroundColor: Colors.red,
+                      content: MainText(
+                        '${distributor.name} ${context.l10n.has_been_deactivated}',
+                      ),
+                      backgroundColor: AppColors.red,
                     ),
                   );
                 },
-                child: const Text('Deactivate'),
+                child: MainText(context.l10n.deactivate),
               ),
             ],
           ),

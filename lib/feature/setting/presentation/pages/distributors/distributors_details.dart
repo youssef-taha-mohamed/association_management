@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
 
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../shared/widgets/main_text.dart';
 import '../../../domain/entities/distributors.dart';
 import 'edit_distributor.dart';
-
 
 class DistributorDetailsPage extends StatelessWidget {
   final Distributor distributor;
@@ -14,8 +16,8 @@ class DistributorDetailsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text('Distributor Profile'),
-        backgroundColor: Colors.white,
+        title: MainText(context.l10n.distributor_profile),
+        backgroundColor: AppColors.white,
         foregroundColor: Colors.black87,
         elevation: 0,
         actions: [
@@ -25,7 +27,9 @@ class DistributorDetailsPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditDistributorForm(distributor: distributor),
+                  builder:
+                      (context) =>
+                          EditDistributorForm(distributor: distributor),
                 ),
               );
             },
@@ -58,7 +62,7 @@ class DistributorDetailsPage extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -69,71 +73,82 @@ class DistributorDetailsPage extends StatelessWidget {
         child: Column(
           children: [
             Hero(
-              tag: 'avatar_${distributor.id}',
+              tag: '${context.l10n.avatar}${distributor.id}',
               child: CircleAvatar(
                 radius: 50,
-                backgroundColor: _getStatusColor(distributor.status).withOpacity(0.2),
-                child: Text(
+                backgroundColor: _getStatusColor(
+                  distributor.status,
+                ).withOpacity(0.2),
+                child: MainText(
                   distributor.avatar,
-                  style: TextStyle(
-                    color: _getStatusColor(distributor.status),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
+
+                  color: _getStatusColor(distributor.status),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
                 ),
               ),
             ),
             const SizedBox(height: 16),
-            Text(
+            MainText(
               distributor.name,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
+
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
             const SizedBox(height: 4),
-            Text(
+            MainText(
               distributor.region,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey.shade600,
-              ),
+              fontSize: 16,
+              color: Colors.grey.shade600,
             ),
+
             const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: _getStatusColor(distributor.status),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Text(
+                  child: MainText(
                     distributor.status,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
+
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(width: 12),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: _getAvailabilityColor(distributor.availabilityStatus).withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: _getAvailabilityColor(distributor.availabilityStatus)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
                   ),
-                  child: Text(
-                    distributor.availabilityStatus,
-                    style: TextStyle(
-                      color: _getAvailabilityColor(distributor.availabilityStatus),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                  decoration: BoxDecoration(
+                    color: _getAvailabilityColor(
+                      distributor.availabilityStatus,
+                    ).withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: _getAvailabilityColor(
+                        distributor.availabilityStatus,
+                      ),
                     ),
+                  ),
+                  child: MainText(
+                    distributor.availabilityStatus,
+
+                    color: _getAvailabilityColor(
+                      distributor.availabilityStatus,
+                    ),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
@@ -142,9 +157,24 @@ class DistributorDetailsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildProfileStat('Rating', distributor.rating.toString(), Icons.star, Colors.amber),
-                _buildProfileStat('Experience', distributor.experience, Icons.work, Colors.blue),
-                _buildProfileStat('Deliveries', distributor.totalDistributions.toString(), Icons.delivery_dining, Colors.green),
+                _buildProfileStat(
+                  context.l10n.rating,
+                  distributor.rating.toString(),
+                  Icons.star,
+                  Colors.amber,
+                ),
+                _buildProfileStat(
+                  context.l10n.experience,
+                  distributor.experience,
+                  Icons.work,
+                  AppColors.blue,
+                ),
+                _buildProfileStat(
+                  context.l10n.deliveries,
+                  distributor.totalDistributions.toString(),
+                  Icons.delivery_dining,
+                  AppColors.green,
+                ),
               ],
             ),
           ],
@@ -153,26 +183,24 @@ class DistributorDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileStat(String label, String value, IconData icon, Color color) {
+  Widget _buildProfileStat(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Column(
       children: [
         Icon(icon, color: color, size: 24),
         const SizedBox(height: 4),
-        Text(
+        MainText(
           value,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
+
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black87,
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey.shade600,
-          ),
-        ),
+        MainText(label, fontSize: 12, color: Colors.grey.shade600),
       ],
     );
   }
@@ -182,11 +210,11 @@ class DistributorDetailsPage extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -195,21 +223,32 @@ class DistributorDetailsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Contact & Details',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.contact_details,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
           const SizedBox(height: 16),
-          _buildInfoRow('Email', distributor.email, Icons.email),
-          _buildInfoRow('Phone', distributor.phone, Icons.phone),
-          _buildInfoRow('Address', distributor.address, Icons.home),
-          _buildInfoRow('Vehicle Type', distributor.vehicleType, Icons.directions_car),
-          _buildInfoRow('Emergency Contact', distributor.emergencyContact, Icons.emergency),
-          _buildInfoRow('Join Date', _formatJoinDate(distributor.joinDate), Icons.calendar_today),
+          _buildInfoRow(context.l10n.email, distributor.email, Icons.email),
+          _buildInfoRow(context.l10n.phone, distributor.phone, Icons.phone),
+          _buildInfoRow(context.l10n.address, distributor.address, Icons.home),
+          _buildInfoRow(
+            context.l10n.vehicle_type,
+            distributor.vehicleType,
+            Icons.directions_car,
+          ),
+          _buildInfoRow(
+            context.l10n.emergency_contact,
+            distributor.emergencyContact,
+            Icons.emergency,
+          ),
+          _buildInfoRow(
+            context.l10n.join_date,
+            _formatJoinDate(distributor.joinDate),
+            Icons.calendar_today,
+          ),
         ],
       ),
     );
@@ -226,21 +265,15 @@ class DistributorDetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                MainText(
                   label,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                    fontWeight: FontWeight.w500,
-                  ),
+
+                  fontSize: 12,
+                  color: Colors.grey.shade600,
+                  fontWeight: FontWeight.w500,
                 ),
-                Text(
-                  value,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                  ),
-                ),
+
+                MainText(value, fontSize: 14, color: Colors.black87),
               ],
             ),
           ),
@@ -258,7 +291,7 @@ class DistributorDetailsPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -267,23 +300,30 @@ class DistributorDetailsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Performance Statistics',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.performance_statistics,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
           const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
-                child: _buildStatCard('Total Deliveries', distributor.totalDistributions.toString(), Colors.blue),
+                child: _buildStatCard(
+                  context.l10n.total_deliveries,
+                  distributor.totalDistributions.toString(),
+                  Colors.blue,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: _buildStatCard('Average Rating', distributor.rating.toString(), Colors.amber),
+                child: _buildStatCard(
+                  context.l10n.average_rating,
+                  distributor.rating.toString(),
+                  Colors.amber,
+                ),
               ),
             ],
           ),
@@ -291,11 +331,19 @@ class DistributorDetailsPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: _buildStatCard('Experience', distributor.experience, Colors.green),
+                child: _buildStatCard(
+                  context.l10n.experience,
+                  distributor.experience,
+                  Colors.green,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: _buildStatCard('Last Delivery', _formatLastDelivery(distributor.lastDistribution), Colors.purple),
+                child: _buildStatCard(
+                  context.l10n.last_delivery,
+                  _formatLastDelivery(distributor.lastDistribution),
+                  Colors.purple,
+                ),
               ),
             ],
           ),
@@ -315,22 +363,20 @@ class DistributorDetailsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          MainText(
             title,
-            style: TextStyle(
-              fontSize: 12,
-              color: color.withOpacity(0.8),
-              fontWeight: FontWeight.w500,
-            ),
+
+            fontSize: 12,
+            color: color.withOpacity(0.8),
+            fontWeight: FontWeight.w500,
           ),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 18,
-              color: color,
-              fontWeight: FontWeight.bold,
-            ),
+
+            fontSize: 18,
+            color: color,
+            fontWeight: FontWeight.bold,
           ),
         ],
       ),
@@ -342,11 +388,11 @@ class DistributorDetailsPage extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -355,73 +401,85 @@ class DistributorDetailsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Specializations & Languages',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.specializations_languages,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
           const SizedBox(height: 16),
-          Text(
-            'Specializations:',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade700,
-            ),
+          MainText(
+            context.l10n.specializations,
+
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700,
           ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: distributor.specialization.map((spec) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.blue.shade200),
-              ),
-              child: Text(
-                spec,
-                style: TextStyle(
-                  color: Colors.blue.shade700,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            )).toList(),
+            children:
+                distributor.specialization
+                    .map(
+                      (spec) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade50,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.blue.shade200),
+                        ),
+                        child: MainText(
+                          spec,
+
+                          color: Colors.blue.shade700,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                    .toList(),
           ),
           const SizedBox(height: 16),
-          Text(
-            'Languages:',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade700,
-            ),
+          MainText(
+            context.l10n.languages,
+
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700,
           ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: distributor.languages.map((lang) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.green.shade50,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.green.shade200),
-              ),
-              child: Text(
-                lang,
-                style: TextStyle(
-                  color: Colors.green.shade700,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            )).toList(),
+            children:
+                distributor.languages
+                    .map(
+                      (lang) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade50,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.green.shade200),
+                        ),
+                        child: Text(
+                          lang,
+                          style: TextStyle(
+                            color: Colors.green.shade700,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
           ),
         ],
       ),
@@ -437,14 +495,18 @@ class DistributorDetailsPage extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Calling ${distributor.phone}...')),
+                  SnackBar(
+                    content: MainText(
+                      '${context.l10n.calling} ${distributor.phone}...',
+                    ),
+                  ),
                 );
               },
               icon: const Icon(Icons.phone),
-              label: const Text('Call'),
+              label: MainText(context.l10n.call),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                foregroundColor: Colors.white,
+                backgroundColor: AppColors.green,
+                foregroundColor: AppColors.white,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -457,14 +519,18 @@ class DistributorDetailsPage extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Opening email to ${distributor.email}...')),
+                  SnackBar(
+                    content: MainText(
+                      '${context.l10n.opening_email_to}${distributor.email}...',
+                    ),
+                  ),
                 );
               },
               icon: const Icon(Icons.email),
-              label: const Text('Email'),
+              label: MainText(context.l10n.email),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
+                backgroundColor: AppColors.blue,
+                foregroundColor: AppColors.white,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -479,11 +545,11 @@ class DistributorDetailsPage extends StatelessWidget {
 
   Color _getStatusColor(String status) {
     switch (status.toLowerCase()) {
-      case 'active':
+      case 'نشيط':
         return Colors.green.shade600;
-      case 'on leave':
+      case 'في إجازة':
         return Colors.orange.shade600;
-      case 'inactive':
+      case 'غير نشط':
         return Colors.red.shade600;
       default:
         return Colors.grey.shade600;
@@ -492,13 +558,13 @@ class DistributorDetailsPage extends StatelessWidget {
 
   Color _getAvailabilityColor(String availability) {
     switch (availability.toLowerCase()) {
-      case 'available':
+      case 'متاح':
         return Colors.green;
-      case 'busy':
+      case 'مشغول':
         return Colors.orange;
-      case 'on leave':
+      case 'في إجازة':
         return Colors.blue;
-      case 'unavailable':
+      case 'غير متاح':
         return Colors.red;
       default:
         return Colors.grey;

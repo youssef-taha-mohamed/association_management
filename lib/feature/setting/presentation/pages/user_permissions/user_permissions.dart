@@ -183,12 +183,14 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Delete Role'),
-            content: Text('Are you sure you want to delete "${role.name}"?'),
+            title: MainText(context.l10n.delete_role),
+            content: MainText(
+              '${context.l10n.are_sure_want_delete} "${role.name}"?',
+            ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: MainText(context.l10n.cancel),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -201,7 +203,7 @@ class _UserPermissionsPageState extends State<UserPermissionsPage> {
                   });
                   Navigator.pop(context);
                 },
-                child: Text('Delete'),
+                child: MainText(context.l10n.delete),
               ),
             ],
           ),

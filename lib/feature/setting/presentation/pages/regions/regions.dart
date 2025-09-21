@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../shared/widgets/main_text.dart';
 import 'add_region.dart';
@@ -23,97 +24,104 @@ class _RegionsPagesState extends State<RegionsPages> {
   List<Region> regions = [
     Region(
       id: '1',
-      name: 'Greater Cairo',
-      type: 'Metropolitan',
-      description: 'Major metropolitan area including Cairo and surrounding districts',
+      name: 'القاهرة الكبرى',
+      type: 'حضرية كبرى',
+      description: 'منطقة حضرية كبرى تشمل القاهرة والمناطق المحيطة',
       beneficiaryCount: 1245,
       distributorCount: 15,
       activeProjects: 8,
       coverage: 85.5,
-      coordinator: 'Ahmed Hassan',
+      coordinator: 'أحمد حسن',
       phone: '+20 12 3456 7890',
       email: 'cairo@charity.org',
-      address: '123 Tahrir Square, Cairo',
+      address: '١٢٣ ميدان التحرير، القاهرة',
       isActive: true,
-      priority: 'High',
+      priority: 'عالية',
       lastActivity: DateTime.now().subtract(const Duration(hours: 2)),
-      districts: ['Cairo Center', 'Giza', 'Shubra', 'Heliopolis', 'Maadi'],
+      districts: ['وسط القاهرة', 'الجيزة', 'شبرا', 'مصر الجديدة', 'المعادي'],
     ),
     Region(
       id: '2',
-      name: 'Alexandria Coastal',
-      type: 'Urban',
-      description: 'Coastal region covering Alexandria and nearby coastal areas',
+      name: 'ساحل الإسكندرية',
+      type: 'حضري',
+      description: 'منطقة ساحلية تشمل الإسكندرية والمناطق الساحلية المجاورة',
       beneficiaryCount: 678,
       distributorCount: 8,
       activeProjects: 5,
       coverage: 78.2,
-      coordinator: 'Fatima Ali',
+      coordinator: 'فاطمة علي',
       phone: '+20 11 2345 6789',
       email: 'alex@charity.org',
-      address: '456 Corniche Street, Alexandria',
+      address: '٤٥٦ شارع الكورنيش، الإسكندرية',
       isActive: true,
-      priority: 'Medium',
+      priority: 'متوسطة',
       lastActivity: DateTime.now().subtract(const Duration(hours: 5)),
-      districts: ['Alexandria Center', 'Montaza', 'Amreya', 'Borg El Arab'],
+      districts: ['وسط الإسكندرية', 'المنتزه', 'العامرية', 'برج العرب'],
     ),
     Region(
       id: '3',
-      name: 'Upper Egypt Rural',
-      type: 'Rural',
-      description: 'Rural areas in southern Egypt including Luxor, Aswan, and surrounding villages',
+      name: 'صعيد مصر الريفي',
+      type: 'ريفي',
+      description: 'مناطق ريفية في جنوب مصر تشمل الأقصر وأسوان والقرى المحيطة',
       beneficiaryCount: 2156,
       distributorCount: 12,
       activeProjects: 12,
       coverage: 65.8,
-      coordinator: 'Omar Mohammed',
+      coordinator: 'عمر محمد',
       phone: '+20 10 1234 5678',
       email: 'upperegypt@charity.org',
-      address: '789 Nile Valley Road, Luxor',
+      address: '٧٨٩ طريق وادي النيل، الأقصر',
       isActive: true,
-      priority: 'Critical',
+      priority: 'حرجة',
       lastActivity: DateTime.now().subtract(const Duration(hours: 8)),
-      districts: ['Luxor', 'Aswan', 'Qena', 'Sohag', 'Minya'],
+      districts: ['الأقصر', 'أسوان', 'قنا', 'سوهاج', 'المنيا'],
     ),
     Region(
       id: '4',
-      name: 'Delta Region',
-      type: 'Agricultural',
-      description: 'Agricultural delta region with farming communities',
+      name: 'منطقة الدلتا',
+      type: 'زراعية',
+      description: 'منطقة دلتا زراعية تضم المجتمعات الزراعية',
       beneficiaryCount: 987,
       distributorCount: 6,
       activeProjects: 4,
       coverage: 72.1,
-      coordinator: 'Sara Ahmed',
+      coordinator: 'سارة أحمد',
       phone: '+20 15 9876 5432',
       email: 'delta@charity.org',
-      address: '321 Delta Fields, Mansoura',
+      address: '٣٢١ حقول الدلتا، المنصورة',
       isActive: true,
-      priority: 'Medium',
+      priority: 'متوسطة',
       lastActivity: DateTime.now().subtract(const Duration(days: 1)),
-      districts: ['Mansoura', 'Tanta', 'Zagazig', 'Damanhur', 'Kafr El Sheikh'],
+      districts: ['المنصورة', 'طنطا', 'الزقازيق', 'دمنهور', 'كفر الشيخ'],
     ),
     Region(
       id: '5',
-      name: 'Red Sea Coast',
-      type: 'Remote',
-      description: 'Remote coastal and desert areas along the Red Sea',
+      name: 'ساحل البحر الأحمر',
+      type: 'نائية',
+      description: 'مناطق ساحلية وصحراوية نائية على طول البحر الأحمر',
       beneficiaryCount: 234,
       distributorCount: 3,
       activeProjects: 2,
       coverage: 45.3,
-      coordinator: 'Khaled Mahmoud',
+      coordinator: 'خالد محمود',
       phone: '+20 12 5555 0000',
       email: 'redsea@charity.org',
-      address: '555 Desert Highway, Hurghada',
+      address: '٥٥٥ طريق الصحراء، الغردقة',
       isActive: false,
-      priority: 'Low',
+      priority: 'منخفضة',
       lastActivity: DateTime.now().subtract(const Duration(days: 7)),
-      districts: ['Hurghada', 'Marsa Alam', 'Safaga'],
+      districts: ['الغردقة', 'مرسى علم', 'سفاجا'],
     ),
   ];
 
-  List<String> regionTypes = ['All', 'Metropolitan', 'Urban', 'Rural', 'Agricultural', 'Remote'];
+  List<String> regionTypes = [
+    'الكل',
+    'حضرية كبرى',
+    'حضري',
+    'ريفي',
+    'زراعية',
+    'نائية',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -155,9 +163,7 @@ class _RegionsPagesState extends State<RegionsPages> {
         children: [
           _buildSearchAndStats(),
           _buildTypeFilter(),
-          Expanded(
-            child: showMapView ? _buildMapView() : _buildRegionsList(),
-          ),
+          Expanded(child: showMapView ? _buildMapView() : _buildRegionsList()),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -174,35 +180,22 @@ class _RegionsPagesState extends State<RegionsPages> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          MainTextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search regions...',
-              prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  _searchController.clear();
-                  setState(() {});
-                },
-              )
-                  : null,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.teal.shade600),
-              ),
-              filled: true,
-              fillColor: Colors.grey.shade50,
-            ),
+
+            hint: context.l10n.search_regions,
+            prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+            suffixIcon:
+                _searchController.text.isNotEmpty
+                    ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                    )
+                    : null,
+
             onChanged: (value) => setState(() {}),
           ),
           const SizedBox(height: 16),
@@ -210,26 +203,28 @@ class _RegionsPagesState extends State<RegionsPages> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Total Regions',
+                  context.l10n.total_regions,
                   regions.length.toString(),
                   Icons.location_on,
-                  Colors.blue,
+                  AppColors.blue,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   regions.where((r) => r.isActive).length.toString(),
                   Icons.check_circle,
-                  Colors.green,
+                  AppColors.green,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Beneficiaries',
-                  regions.fold(0, (sum, r) => sum + r.beneficiaryCount).toString(),
+                  context.l10n.beneficiaries,
+                  regions
+                      .fold(0, (sum, r) => sum + r.beneficiaryCount)
+                      .toString(),
                   Icons.people,
                   Colors.orange,
                 ),
@@ -237,8 +232,10 @@ class _RegionsPagesState extends State<RegionsPages> {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Distributors',
-                  regions.fold(0, (sum, r) => sum + r.distributorCount).toString(),
+                  context.l10n.distributors,
+                  regions
+                      .fold(0, (sum, r) => sum + r.distributorCount)
+                      .toString(),
                   Icons.delivery_dining,
                   Colors.purple,
                 ),
@@ -250,7 +247,12 @@ class _RegionsPagesState extends State<RegionsPages> {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -262,20 +264,17 @@ class _RegionsPagesState extends State<RegionsPages> {
         children: [
           Icon(icon, color: color, size: 18),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
-          Text(
+          MainText(
             title,
-            style: TextStyle(
-              fontSize: 10,
-              color: Colors.grey.shade600,
-            ),
+            fontSize: 10,
+            color: Colors.grey.shade600,
             textAlign: TextAlign.center,
           ),
         ],
@@ -285,29 +284,30 @@ class _RegionsPagesState extends State<RegionsPages> {
 
   Widget _buildTypeFilter() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: regionTypes.map((type) {
-            final isSelected = selectedType == type;
-            return Container(
-              margin: const EdgeInsets.only(right: 8),
-              child: FilterChip(
-                label: Text(type),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    selectedType = type;
-                  });
-                },
-                backgroundColor: Colors.grey.shade100,
-                selectedColor: Colors.teal.shade100,
-                checkmarkColor: Colors.teal.shade600,
-              ),
-            );
-          }).toList(),
+          children:
+              regionTypes.map((type) {
+                final isSelected = selectedType == type;
+                return Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  child: FilterChip(
+                    label: MainText(type),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        selectedType = type;
+                      });
+                    },
+                    backgroundColor: Colors.grey.shade100,
+                    selectedColor: Colors.teal.shade100,
+                    checkmarkColor: Colors.teal.shade600,
+                  ),
+                );
+              }).toList(),
         ),
       ),
     );
@@ -317,11 +317,11 @@ class _RegionsPagesState extends State<RegionsPages> {
     return Container(
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -333,19 +333,20 @@ class _RegionsPagesState extends State<RegionsPages> {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.teal.shade50,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
+              ),
             ),
             child: Row(
               children: [
                 Icon(Icons.map, color: Colors.teal.shade600),
                 const SizedBox(width: 8),
-                Text(
-                  'Interactive Map View',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.teal.shade800,
-                  ),
+                MainText(
+                  context.l10n.interactive_map_view,
+
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.teal.shade800,
                 ),
               ],
             ),
@@ -362,32 +363,34 @@ class _RegionsPagesState extends State<RegionsPages> {
                     color: Colors.teal.shade200,
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    'Map Integration',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.teal.shade600,
-                    ),
+                  MainText(
+                    context.l10n.map_integration,
+
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.teal.shade600,
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    'Interactive map showing all regions with their\ncoverage areas and activity status',
+                  MainText(
+                    context.l10n.interactive_map_showing,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontSize: 16,
-                    ),
+                    color: Colors.grey.shade600,
+                    fontSize: 16,
                   ),
+
                   const SizedBox(height: 16),
                   ElevatedButton.icon(
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Map integration - Feature coming soon')),
+                        SnackBar(
+                          content: MainText(
+                            context.l10n.map_integration_feature_coming_soon,
+                          ),
+                        ),
                       );
                     },
                     icon: const Icon(Icons.fullscreen),
-                    label: const Text('Open Full Map'),
+                    label: MainText(context.l10n.open_full_map),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal.shade600,
                       foregroundColor: Colors.white,
@@ -403,13 +406,19 @@ class _RegionsPagesState extends State<RegionsPages> {
   }
 
   Widget _buildRegionsList() {
-    List<Region> filteredRegions = regions.where((r) {
-      final matchesSearch = r.name.toLowerCase().contains(_searchController.text.toLowerCase()) ||
-          r.description.toLowerCase().contains(_searchController.text.toLowerCase());
-      final matchesType = selectedType == 'All' || r.type == selectedType;
+    List<Region> filteredRegions =
+        regions.where((r) {
+          final matchesSearch =
+              r.name.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              ) ||
+              r.description.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              );
+          final matchesType = selectedType == 'All' || r.type == selectedType;
 
-      return matchesSearch && matchesType;
-    }).toList();
+          return matchesSearch && matchesType;
+        }).toList();
 
     if (filteredRegions.isEmpty) {
       return Center(
@@ -418,18 +427,17 @@ class _RegionsPagesState extends State<RegionsPages> {
           children: [
             Icon(Icons.location_off, size: 64, color: Colors.grey.shade400),
             const SizedBox(height: 16),
-            Text(
-              'No regions found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            MainText(
+              context.l10n.no_regions_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your search or filters',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_your_search_or_filters,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -454,27 +462,56 @@ class _RegionsPagesState extends State<RegionsPages> {
   void _showRegionAnalytics() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Regional Analytics'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildAnalyticRow('Total Coverage', '${(regions.fold(0.0, (sum, r) => sum + r.coverage) / regions.length).toStringAsFixed(1)}%'),
-              _buildAnalyticRow('Highest Priority', regions.where((r) => r.priority == 'Critical').isNotEmpty ? 'Critical regions found' : 'No critical regions'),
-              _buildAnalyticRow('Most Active', regions.reduce((a, b) => a.activeProjects > b.activeProjects ? a : b).name),
-              _buildAnalyticRow('Largest Region', regions.reduce((a, b) => a.beneficiaryCount > b.beneficiaryCount ? a : b).name),
-              _buildAnalyticRow('Best Coverage', regions.reduce((a, b) => a.coverage > b.coverage ? a : b).name),
+      builder:
+          (context) => AlertDialog(
+            title: MainText(context.l10n.regional_analytics),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildAnalyticRow(
+                    context.l10n.total_coverage,
+                    '${(regions.fold(0.0, (sum, r) => sum + r.coverage) / regions.length).toStringAsFixed(1)}%',
+                  ),
+                  _buildAnalyticRow(
+                    context.l10n.highest_priority,
+                    regions.where((r) => r.priority == 'Critical').isNotEmpty
+                        ? 'Critical regions found'
+                        : 'No critical regions',
+                  ),
+                  _buildAnalyticRow(
+                    context.l10n.most_active,
+                    regions
+                        .reduce(
+                          (a, b) => a.activeProjects > b.activeProjects ? a : b,
+                        )
+                        .name,
+                  ),
+                  _buildAnalyticRow(
+                    context.l10n.largest_region,
+                    regions
+                        .reduce(
+                          (a, b) =>
+                              a.beneficiaryCount > b.beneficiaryCount ? a : b,
+                        )
+                        .name,
+                  ),
+                  _buildAnalyticRow(
+                    context.l10n.best_coverage,
+                    regions
+                        .reduce((a, b) => a.coverage > b.coverage ? a : b)
+                        .name,
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.close),
+              ),
             ],
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
     );
   }
 
@@ -486,9 +523,9 @@ class _RegionsPagesState extends State<RegionsPages> {
         children: [
           Text(label, style: const TextStyle(fontWeight: FontWeight.w500)),
           Expanded(
-            child: Text(
+            child: MainText(
               value,
-              style: TextStyle(color: Colors.teal.shade600),
+              color: Colors.teal.shade600,
               textAlign: TextAlign.right,
             ),
           ),
@@ -500,9 +537,7 @@ class _RegionsPagesState extends State<RegionsPages> {
   void _showAddRegionDialog() async {
     final newRegion = await Navigator.push<Region>(
       context,
-      MaterialPageRoute(
-        builder: (context) => const AddRegionForm(),
-      ),
+      MaterialPageRoute(builder: (context) => const AddRegionForm()),
     );
 
     if (newRegion != null) {
@@ -515,9 +550,7 @@ class _RegionsPagesState extends State<RegionsPages> {
   void _editRegion(Region region) async {
     final updatedRegion = await Navigator.push<Region>(
       context,
-      MaterialPageRoute(
-        builder: (context) => EditRegionForm(region: region),
-      ),
+      MaterialPageRoute(builder: (context) => EditRegionForm(region: region)),
     );
 
     if (updatedRegion != null) {
@@ -533,42 +566,48 @@ class _RegionsPagesState extends State<RegionsPages> {
   void _viewOnMap(Region region) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('View on Map: ${region.name}'),
-        content: Text('Showing details for ${region.name} at:\n\n${region.address}\n\nFull map integration is coming soon.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+      builder:
+          (context) => AlertDialog(
+            title: MainText('${context.l10n.view_on_map} ${region.name}'),
+            content: MainText(
+              '${context.l10n.showing_details_for} ${region.name} at:\n\n${region.address}${context.l10n.full_map_integration_is_coming_soon}',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.close),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
   void _viewDistributors(Region region) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Distributors in ${region.name}'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('This region has ${region.distributorCount} distributors covering the following districts:'),
-              const SizedBox(height: 10),
-              ...region.districts.map((d) => Text('• $d')).toList(),
+      builder:
+          (context) => AlertDialog(
+            title: MainText('${context.l10n.distributors_in} ${region.name}'),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MainText(
+                    ' ${context.l10n.this_region_has} ${region.distributorCount} ${context.l10n.distributors_covering_the_following_districts}',
+                  ),
+                  const SizedBox(height: 10),
+                  ...region.districts.map((d) => Text('• $d')).toList(),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: MainText(context.l10n.close),
+              ),
             ],
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
     );
   }
 }

@@ -559,5 +559,461 @@ class AppLocalizationsAr extends AppLocalizations {
   String get are_sure_want_delete => 'هل أنت متأكد أنك تريد الحذف؟';
 
   @override
+  String get edit_category => 'تعديل الفئة';
+
+  @override
+  String get category_name => 'اسم الفئة';
+
+  @override
+  String get add_distributor => 'إضافة موزع';
+
+  @override
+  String get contact_information => 'معلومات الاتصال';
+
+  @override
+  String get email_address => 'عنوان البريد الإلكتروني';
+
+  @override
+  String get please_enter_email_address =>
+      'الرجاء إدخال عنوان البريد الإلكتروني';
+
+  @override
+  String get please_enter_valid_email => 'الرجاء إدخال بريد إلكتروني صالح';
+
+  @override
+  String get emergency_contact => 'جهة الاتصال في حالات الطوارئ';
+
+  @override
+  String get please_enter_emergency_contact =>
+      'الرجاء إدخال جهة الاتصال في حالات الطوارئ';
+
+  @override
+  String get work_information => 'معلومات العمل';
+
+  @override
+  String get experience => 'الخبرة';
+
+  @override
+  String get please_enter_experience => 'الرجاء إدخال الخبرة';
+
+  @override
+  String get skills_languages => 'المهارات واللغات';
+
+  @override
+  String get languages => 'اللغات:';
+
+  @override
+  String get specializations => 'التخصصات: ';
+
+  @override
+  String get save_distributor => 'حفظ الموزع';
+
+  @override
+  String get distributor => 'موزع';
+
+  @override
+  String get added_successfully => 'تمت الإضافة بنجاح!';
+
+  @override
+  String get available => 'متاح';
+
+  @override
+  String get please_select_at_least_one_specialization =>
+      'الرجاء اختيار تخصص واحد على الأقل';
+
+  @override
+  String get please_select_at_least_one_language =>
+      'الرجاء تحديد لغة واحدة على الأقل';
+
+  @override
+  String get changes_for => 'تغييرات ل';
+
+  @override
+  String get saved_successfully => 'تم الحفظ بنجاح!';
+
+  @override
+  String get please_select_at_least_one_language_and_specialization =>
+      'الرجاء تحديد لغة واحدة على الأقل وتخصص واحد';
+
+  @override
+  String get save_changes => 'حفظ التغييرات';
+
+  @override
+  String get edit_distributor => 'تعديل الموزع';
+
+  @override
+  String get distributors => 'الموزعون';
+
+  @override
+  String get search_distributors => 'البحث عن الموزعين...';
+
+  @override
+  String get avg_rating => 'متوسط ​​التقييم';
+
+  @override
+  String get no_distributors_found => 'لم يتم العثور على موزعين';
+
+  @override
+  String get try_adjusting_your_search_or_filters =>
+      'حاول تعديل بحثك أو المرشحات';
+
+  @override
+  String get advanced_filters => 'المرشحات المتقدمة';
+
+  @override
+  String get additional_filtering_options_coming_soon =>
+      'خيارات التصفية الإضافية قادمة قريبا...';
+
+  @override
+  String get filter_by_rating => '• تصفية حسب التقييم';
+
+  @override
+  String get filter_by_experience => '• تصفية حسب الخبرة';
+
+  @override
+  String get filter_by_specialization => '• تصفية حسب التخصص';
+
+  @override
+  String get filter_by_vehicle_type => '• تصفية حسب نوع السيارة';
+
+  @override
+  String get available_now => 'متوفر الآن';
+
+  @override
+  String get total_deliveries => 'إجمالي التسليمات';
+
+  @override
+  String get top_performer => 'أفضل أداء';
+
+  @override
+  String get average_rating => 'متوسط ​​التقييم';
+
+  @override
+  String get active_rate => 'معدل النشاط';
+
+  @override
+  String get total_distributors => 'إجمالي الموزعين';
+
+  @override
+  String get distributor_analytics => 'تحليلات الموزع';
+
+  @override
+  String get delivery_scheduled_for => 'تم جدولة التسليم في';
+
+  @override
+  String get on => 'على';
+
+  @override
+  String get call => 'يتصل';
+
+  @override
+  String get contact => 'اتصال';
+
+  @override
+  String get calling => 'نداء';
+
+  @override
+  String get opening_email_to => 'فتح البريد الإلكتروني إلى';
+
+  @override
+  String get calling_emergency_contact =>
+      'الاتصال بجهة الاتصال في حالات الطوارئ...';
+
+  @override
+  String get deactivate => 'إلغاء التنشيط';
+
+  @override
+  String get has_been_deactivated => 'تم إلغاء تنشيطه';
+
+  @override
+  String get unavailable => 'غير متاح';
+
+  @override
+  String get inactive => 'غير نشط';
+
+  @override
+  String get are_you_sure_you_want_to_deactivate =>
+      'هل أنت متأكد أنك تريد إلغاء التنشيط؟';
+
+  @override
+  String get deactivate_distributor => 'إلغاء تنشيط الموزع';
+
+  @override
+  String get distributor_profile => 'ملف تعريف الموزع';
+
+  @override
+  String get avatar => 'الصورة الرمزية_';
+
+  @override
+  String get rating => 'تصنيف';
+
+  @override
+  String get deliveries => 'التسليمات';
+
+  @override
+  String get contact_details => 'الاتصال والتفاصيل';
+
+  @override
+  String get phone => 'هاتف';
+
+  @override
+  String get vehicle_type => 'نوع السيارة';
+
+  @override
+  String get join_date => 'تاريخ الانضمام';
+
+  @override
+  String get performance_statistics => 'إحصائيات الأداء';
+
+  @override
+  String get last_delivery => 'التسليم الأخير';
+
+  @override
+  String get specializations_languages => 'التخصصات واللغات';
+
+  @override
+  String get search_donation_types => 'البحث عن أنواع التبرعات...';
+
+  @override
+  String get types => 'أنواع';
+
+  @override
+  String get total_donations => 'إجمالي التبرعات';
+
+  @override
+  String get avg_value => 'متوسط ​​القيمة';
+
+  @override
+  String get all => 'الجميع';
+
+  @override
+  String get no_donation_types_found => 'لم يتم العثور على أنواع التبرعات';
+
+  @override
+  String get no_data_available_for_analytics =>
+      'لا توجد بيانات متاحة للتحليلات.';
+
+  @override
+  String get donation_type => 'نوع التبرع';
+
+  @override
+  String get deleted_successfully => 'تم الحذف بنجاح';
+
+  @override
+  String get are_you_sure_you_want_to_delete => 'هل أنت متأكد أنك تريد الحذف؟';
+
+  @override
+  String get this_action_cannot_be_undone => 'لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get delete_donation_type => 'حذف نوع التبرع';
+
+  @override
+  String get activated => 'تم تفعيله';
+
+  @override
+  String get deactivated => 'تم تعطيله';
+
+  @override
+  String get duplicated_successfully => 'تمت التكرار بنجاح!';
+
+  @override
+  String get copy => 'ينسخ';
+
+  @override
+  String get updated_successfully => 'تم التحديث بنجاح!';
+
+  @override
+  String get donation_analytics => 'تحليلات التبرعات';
+
+  @override
+  String get most_popular => 'الأكثر شعبية';
+
+  @override
+  String get highest_value => 'أعلى قيمة';
+
+  @override
+  String get total_value => 'القيمة الإجمالية';
+
+  @override
+  String get active_types => 'الأنواع النشطة';
+
+  @override
+  String get please_enter_a_name => 'الرجاء إدخال الاسم';
+
+  @override
+  String get edit_donation_type => 'تعديل نوع التبرع';
+
+  @override
+  String get unit => 'الوحدة';
+
+  @override
+  String get estimated_value => 'القيمة التقديرية (\$)';
+
+  @override
+  String get items => 'العناصر (مفصولة بفاصلة)';
+
+  @override
+  String get e_g_Rice_Oil_Sugar => 'على سبيل المثال، الأرز، الزيت، السكر';
+
+  @override
+  String get select_icon => 'حدد الرمز:';
+
+  @override
+  String get select_color => 'اختر اللون:';
+
+  @override
+  String get add_donation_type => 'إضافة نوع التبرع';
+
+  @override
+  String get typical_items => 'العناصر النموذجية:';
+
+  @override
+  String get last_donation => 'التبرع الأخير';
+
+  @override
+  String get last => 'آخر:';
+
+  @override
+  String get activate => 'فعل';
+
+  @override
+  String get toggle => 'تبديل';
+
+  @override
+  String get duplicate => 'ينسخ';
+
+  @override
+  String get view_details => 'عرض التفاصيل';
+
+  @override
+  String get view => 'منظر';
+
+  @override
+  String get search_regions => 'البحث عن المناطق...';
+
+  @override
+  String get total_regions => 'إجمالي المناطق';
+
+  @override
+  String get beneficiaries => 'المستفيدون';
+
+  @override
+  String get interactive_map_view => 'عرض الخريطة التفاعلية';
+
+  @override
+  String get map_integration => 'تكامل الخريطة';
+
+  @override
+  String get interactive_map_showing =>
+      'خريطة تفاعلية تُظهر جميع المناطق مع مناطق تغطيتها وحالة نشاطها';
+
+  @override
+  String get map_integration_feature_coming_soon =>
+      'تكامل الخريطة - الميزة قادمة قريبًا';
+
+  @override
+  String get open_full_map => 'افتح الخريطة الكاملة';
+
+  @override
+  String get no_regions_found => 'لم يتم العثور على مناطق';
+
+  @override
+  String get this_region_has => ' هذه المنطقة لديها';
+
+  @override
+  String get distributors_covering_the_following_districts =>
+      'الموزعون الذين يغطون المناطق التالية:';
+
+  @override
+  String get distributors_in => 'الموزعين في';
+
+  @override
+  String get view_on_map => 'عرض على الخريطة:';
+
+  @override
+  String get showing_details_for => 'عرض التفاصيل لـ';
+
+  @override
+  String get full_map_integration_is_coming_soon =>
+      'سيتم دمج الخريطة بالكامل قريبًا.';
+
+  @override
+  String get best_coverage => 'أفضل تغطية';
+
+  @override
+  String get largest_region => 'أكبر منطقة';
+
+  @override
+  String get most_active => 'الأكثر نشاطا';
+
+  @override
+  String get regional_analytics => 'التحليلات الإقليمية';
+
+  @override
+  String get total_coverage => 'التغطية الشاملة';
+
+  @override
+  String get highest_priority => 'أعلى أولوية';
+
+  @override
+  String get add_region => 'إضافة منطقة';
+
+  @override
+  String get basic_information => 'معلومات اساسية';
+
+  @override
+  String get region_name => 'اسم المنطقة';
+
+  @override
+  String get please_enter_region_name => 'الرجاء إدخال اسم المنطقة';
+
+  @override
+  String get type => 'يكتب';
+
+  @override
+  String get priority => 'أولوية';
+
+  @override
+  String get please_enter_description => 'الرجاء إدخال الوصف';
+
+  @override
+  String get coordinator_information => 'معلومات المنسق';
+
+  @override
+  String get coordinator_name => 'اسم المنسق';
+
+  @override
+  String get please_enter_coordinator_name => 'الرجاء إدخال اسم المنسق';
+
+  @override
+  String get office_address => 'عنوان المكتب';
+
+  @override
+  String get please_enter_office_address => 'الرجاء إدخال عنوان المكتب';
+
+  @override
+  String get region_saved_successfully => 'تم حفظ المنطقة بنجاح!';
+
+  @override
+  String get save_region => 'حفظ المنطقة';
+
+  @override
+  String get active_status => 'الحالة النشطة:';
+
+  @override
+  String get districts => 'المقاطعات (مفصولة بفاصلة)';
+
+  @override
+  String get e_district => 'على سبيل المثال، المنطقة 1، المنطقة 2، المنطقة 3';
+
+  @override
+  String get please_enter_at_least_one_district =>
+      'الرجاء إدخال منطقة واحدة على الأقل';
+
+  @override
+  String get coverage_area => 'منطقة التغطية';
+
+  @override
   String get name => 'الأسم';
 }

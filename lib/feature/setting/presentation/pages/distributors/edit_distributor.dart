@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 
+import '../../../../../core/style/app_colors.dart';
 import '../../../domain/entities/distributors.dart';
 
 class EditDistributorForm extends StatefulWidget {
@@ -26,11 +30,36 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
   late List<String> selectedLanguages;
   late List<String> selectedSpecializations;
 
-  List<String> regions = ['Greater Cairo', 'Alexandria Coastal', 'Upper Egypt Rural', 'Delta Region', 'Red Sea Coast'];
-  List<String> vehicleTypes = ['Car', 'Motorcycle', 'Van', 'Bicycle', 'Walking'];
+  List<String> regions = [
+    'Greater Cairo',
+    'Alexandria Coastal',
+    'Upper Egypt Rural',
+    'Delta Region',
+    'Red Sea Coast',
+  ];
+  List<String> vehicleTypes = [
+    'Car',
+    'Motorcycle',
+    'Van',
+    'Bicycle',
+    'Walking',
+  ];
   List<String> statuses = ['Active', 'On Leave', 'Inactive'];
-  List<String> availableLanguages = ['Arabic', 'English', 'French', 'German', 'Spanish'];
-  List<String> availableSpecializations = ['Food Packages', 'Cash Assistance', 'Medical Supplies', 'Clothes', 'School Supplies', 'Emergency Aid'];
+  List<String> availableLanguages = [
+    'Arabic',
+    'English',
+    'French',
+    'German',
+    'Spanish',
+  ];
+  List<String> availableSpecializations = [
+    'Food Packages',
+    'Cash Assistance',
+    'Medical Supplies',
+    'Clothes',
+    'School Supplies',
+    'Emergency Aid',
+  ];
 
   @override
   void initState() {
@@ -40,7 +69,9 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
     _emailController = TextEditingController(text: d.email);
     _phoneController = TextEditingController(text: d.phone);
     _addressController = TextEditingController(text: d.address);
-    _emergencyContactController = TextEditingController(text: d.emergencyContact);
+    _emergencyContactController = TextEditingController(
+      text: d.emergencyContact,
+    );
     _experienceController = TextEditingController(text: d.experience);
 
     selectedRegion = d.region;
@@ -55,8 +86,8 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text('Edit Distributor'),
-        backgroundColor: Colors.white,
+        title: MainText(context.l10n.edit_distributor),
+        backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black87,
         elevation: 0,
       ),
@@ -96,7 +127,7 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: const Text('Cancel'),
+            child: MainText(context.l10n.cancel),
           ),
         ),
         const SizedBox(width: 12),
@@ -105,13 +136,13 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
             onPressed: _saveChanges,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple.shade600,
-              foregroundColor: Colors.white,
+              foregroundColor: AppColors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: const Text('Save Changes'),
+            child: MainText(context.l10n.save_changes),
           ),
         ),
       ],
@@ -122,9 +153,13 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
     if (_formKey.currentState?.validate() ?? false) {
       if (selectedLanguages.isEmpty || selectedSpecializations.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please select at least one language and specialization'),
-            backgroundColor: Colors.red,
+          SnackBar(
+            content: MainText(
+              context
+                  .l10n
+                  .please_select_at_least_one_language_and_specialization,
+            ),
+            backgroundColor: AppColors.red,
           ),
         );
         return;
@@ -145,7 +180,9 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Changes for "${distributor.name}" saved successfully!'),
+          content: MainText(
+            '${context.l10n.changes_for}"${distributor.name}" ${context.l10n.saved_successfully}',
+          ),
           backgroundColor: Colors.green,
         ),
       );
@@ -160,11 +197,11 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -173,44 +210,40 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Personal Information',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.personal_information,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
+
           const SizedBox(height: 16),
-          TextFormField(
+          MainTextField(
             controller: _nameController,
-            decoration: InputDecoration(
-              labelText: 'Full Name',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: const Icon(Icons.person),
-            ),
+
+            label: context.l10n.full_name,
+
+            prefixIcon: const Icon(Icons.person),
+
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Please enter full name';
+                return context.l10n.please_enter_full_name;
               }
               return null;
             },
           ),
           const SizedBox(height: 16),
-          TextFormField(
+          MainTextField(
             controller: _addressController,
-            decoration: InputDecoration(
-              labelText: 'Address',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: const Icon(Icons.home),
-            ),
+
+            label: context.l10n.address,
+
+            prefixIcon: const Icon(Icons.home),
+
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Please enter address';
+                return context.l10n.address_required;
               }
               return null;
             },
@@ -228,10 +261,15 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
                     ),
                     prefixIcon: const Icon(Icons.location_on),
                   ),
-                  items: regions.map((region) => DropdownMenuItem(
-                    value: region,
-                    child: Text(region),
-                  )).toList(),
+                  items:
+                      regions
+                          .map(
+                            (region) => DropdownMenuItem(
+                              value: region,
+                              child: Text(region),
+                            ),
+                          )
+                          .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedRegion = value!;
@@ -250,10 +288,15 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
                     ),
                     prefixIcon: const Icon(Icons.flag),
                   ),
-                  items: statuses.map((status) => DropdownMenuItem(
-                    value: status,
-                    child: Text(status),
-                  )).toList(),
+                  items:
+                      statuses
+                          .map(
+                            (status) => DropdownMenuItem(
+                              value: status,
+                              child: Text(status),
+                            ),
+                          )
+                          .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedStatus = value!;
@@ -286,67 +329,61 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Contact Information',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.contact_information,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
+
           const SizedBox(height: 16),
-          TextFormField(
+          MainTextField(
             controller: _emailController,
-            decoration: InputDecoration(
-              labelText: 'Email Address',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: const Icon(Icons.email),
-            ),
+
+            label: context.l10n.email_address,
+
+            prefixIcon: const Icon(Icons.email),
+
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Please enter email address';
+                return context.l10n.please_enter_email_address;
               }
               if (!value!.contains('@')) {
-                return 'Please enter a valid email';
+                return context.l10n.please_enter_valid_email;
               }
               return null;
             },
           ),
           const SizedBox(height: 16),
-          TextFormField(
+          MainTextField(
             controller: _phoneController,
-            decoration: InputDecoration(
-              labelText: 'Phone Number',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: const Icon(Icons.phone),
-            ),
+
+            label: context.l10n.phone_number,
+
+            prefixIcon: const Icon(Icons.phone),
+
             keyboardType: TextInputType.phone,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Please enter phone number';
+                return context.l10n.phone_number_required;
               }
               return null;
             },
           ),
           const SizedBox(height: 16),
-          TextFormField(
+          MainTextField(
             controller: _emergencyContactController,
-            decoration: InputDecoration(
-              labelText: 'Emergency Contact',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: const Icon(Icons.emergency),
-            ),
+
+            label: context.l10n.emergency_contact,
+
+            prefixIcon: const Icon(Icons.emergency),
+
             keyboardType: TextInputType.phone,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Please enter emergency contact';
+                return context.l10n.please_enter_emergency_contact;
               }
               return null;
             },
@@ -361,11 +398,11 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -374,30 +411,23 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Work Information',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.work_information,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
           const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
-                child: TextFormField(
+                child: MainTextField(
                   controller: _experienceController,
-                  decoration: InputDecoration(
-                    labelText: 'Experience (e.g., 2 years)',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    prefixIcon: const Icon(Icons.work),
-                  ),
+                  label: context.l10n.experience,
+                  prefixIcon: const Icon(Icons.work),
                   validator: (value) {
                     if (value?.isEmpty ?? true) {
-                      return 'Please enter experience';
+                      return context.l10n.please_enter_experience;
                     }
                     return null;
                   },
@@ -414,10 +444,15 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
                     ),
                     prefixIcon: const Icon(Icons.directions_car),
                   ),
-                  items: vehicleTypes.map((vehicle) => DropdownMenuItem(
-                    value: vehicle,
-                    child: Text(vehicle),
-                  )).toList(),
+                  items:
+                      vehicleTypes
+                          .map(
+                            (vehicle) => DropdownMenuItem(
+                              value: vehicle,
+                              child: Text(vehicle),
+                            ),
+                          )
+                          .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedVehicleType = value!;
@@ -437,7 +472,7 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -450,79 +485,78 @@ class _EditDistributorFormState extends State<EditDistributorForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Skills & Languages',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+          MainText(
+            context.l10n.skills_languages,
+
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
+
           const SizedBox(height: 16),
-          Text(
-            'Languages:',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade700,
-            ),
+          MainText(
+            context.l10n.languages,
+
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700,
           ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: availableLanguages.map((lang) {
-              final isSelected = selectedLanguages.contains(lang);
-              return FilterChip(
-                label: Text(lang),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    if (selected) {
-                      selectedLanguages.add(lang);
-                    } else {
-                      selectedLanguages.remove(lang);
-                    }
-                  });
-                },
-                backgroundColor: Colors.grey.shade100,
-                selectedColor: Colors.green.shade100,
-                checkmarkColor: Colors.green.shade600,
-              );
-            }).toList(),
+            children:
+                availableLanguages.map((lang) {
+                  final isSelected = selectedLanguages.contains(lang);
+                  return FilterChip(
+                    label: MainText(lang),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        if (selected) {
+                          selectedLanguages.add(lang);
+                        } else {
+                          selectedLanguages.remove(lang);
+                        }
+                      });
+                    },
+                    backgroundColor: Colors.grey.shade100,
+                    selectedColor: Colors.green.shade100,
+                    checkmarkColor: Colors.green.shade600,
+                  );
+                }).toList(),
           ),
           const SizedBox(height: 16),
-          Text(
-            'Specializations:',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade700,
-            ),
+          MainText(
+            context.l10n.specializations,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700,
           ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: availableSpecializations.map((spec) {
-              final isSelected = selectedSpecializations.contains(spec);
-              return FilterChip(
-                label: Text(spec),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    if (selected) {
-                      selectedSpecializations.add(spec);
-                    } else {
-                      selectedSpecializations.remove(spec);
-                    }
-                  });
-                },
-                backgroundColor: Colors.grey.shade100,
-                selectedColor: Colors.blue.shade100,
-                checkmarkColor: Colors.blue.shade600,
-              );
-            }).toList(),
+            children:
+                availableSpecializations.map((spec) {
+                  final isSelected = selectedSpecializations.contains(spec);
+                  return FilterChip(
+                    label: MainText(spec),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        if (selected) {
+                          selectedSpecializations.add(spec);
+                        } else {
+                          selectedSpecializations.remove(spec);
+                        }
+                      });
+                    },
+                    backgroundColor: Colors.grey.shade100,
+                    selectedColor: Colors.blue.shade100,
+                    checkmarkColor: Colors.blue.shade600,
+                  );
+                }).toList(),
           ),
         ],
       ),

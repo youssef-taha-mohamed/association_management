@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_text.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
+import '../../../../../core/style/app_colors.dart';
 import 'donation_types.dart';
 
 class AddDonationTypePage extends StatefulWidget {
@@ -24,20 +28,38 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
   @override
   void initState() {
     super.initState();
-    selectedCategory = widget.categories.isNotEmpty ? widget.categories.first : null;
+    selectedCategory =
+        widget.categories.isNotEmpty ? widget.categories.first : null;
   }
 
   final List<IconData> availableIcons = [
-    Icons.local_grocery_store, Icons.attach_money, Icons.checkroom,
-    Icons.medical_services, Icons.school, Icons.devices, Icons.home,
-    Icons.local_hospital, Icons.restaurant, Icons.directions_car,
-    Icons.build, Icons.pets,
+    Icons.local_grocery_store,
+    Icons.attach_money,
+    Icons.checkroom,
+    Icons.medical_services,
+    Icons.school,
+    Icons.devices,
+    Icons.home,
+    Icons.local_hospital,
+    Icons.restaurant,
+    Icons.directions_car,
+    Icons.build,
+    Icons.pets,
   ];
 
   final List<Color> availableColors = [
-    Colors.blue, Colors.green, Colors.orange, Colors.purple, Colors.red,
-    Colors.teal, Colors.pink, Colors.indigo, Colors.amber, Colors.cyan,
-    Colors.lime, Colors.brown,
+    Colors.blue,
+    Colors.green,
+    Colors.orange,
+    Colors.purple,
+    Colors.red,
+    Colors.teal,
+    Colors.pink,
+    Colors.indigo,
+    Colors.amber,
+    Colors.cyan,
+    Colors.lime,
+    Colors.brown,
   ];
 
   void _addDonationType() {
@@ -46,9 +68,10 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         name: nameController.text,
         category: selectedCategory!,
-        description: descriptionController.text.isEmpty
-            ? 'No description provided'
-            : descriptionController.text,
+        description:
+            descriptionController.text.isEmpty
+                ? 'No description provided'
+                : descriptionController.text,
         unit: unitController.text.isEmpty ? 'Item' : unitController.text,
         estimatedValue: double.tryParse(valueController.text) ?? 0.0,
         icon: selectedIcon,
@@ -56,9 +79,10 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
         isActive: true,
         donationsCount: 0,
         lastDonation: DateTime.now(),
-        items: itemsController.text.isEmpty
-            ? []
-            : itemsController.text.split(',').map((e) => e.trim()).toList(),
+        items:
+            itemsController.text.isEmpty
+                ? []
+                : itemsController.text.split(',').map((e) => e.trim()).toList(),
       );
       Navigator.pop(context, newDonationType);
     }
@@ -68,12 +92,12 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Donation Type'),
+        title: MainText(context.l10n.add_donation_type),
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: _addDonationType,
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -83,15 +107,14 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextFormField(
+              MainTextField(
                 controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
+
+                label: context.l10n.name,
+
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter a name';
+                    return context.l10n.please_enter_a_name;
                   }
                   return null;
                 },
@@ -104,10 +127,15 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
                     labelText: 'Category',
                     border: OutlineInputBorder(),
                   ),
-                  items: widget.categories.map((category) => DropdownMenuItem(
-                    value: category,
-                    child: Text(category),
-                  )).toList(),
+                  items:
+                      widget.categories
+                          .map(
+                            (category) => DropdownMenuItem(
+                              value: category,
+                              child: Text(category),
+                            ),
+                          )
+                          .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedCategory = value!;
@@ -115,54 +143,57 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
                   },
                 ),
               const SizedBox(height: 16),
-              TextFormField(
+              MainTextField(
                 controller: descriptionController,
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                  border: OutlineInputBorder(),
-                ),
+
+                label: context.l10n.description,
+
                 maxLines: 2,
               ),
               const SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
-                    child: TextFormField(
+                    child: MainTextField(
                       controller: unitController,
-                      decoration: const InputDecoration(
-                        labelText: 'Unit (e.g., Package)',
-                        border: OutlineInputBorder(),
-                      ),
+
+                      label: context.l10n.unit,
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: TextFormField(
+                    child: MainTextField(
                       controller: valueController,
-                      decoration: const InputDecoration(
-                        labelText: 'Estimated Value (\$)',
-                        border: OutlineInputBorder(),
-                      ),
+
+                      label: context.l10n.estimated_value,
+
                       keyboardType: TextInputType.number,
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
-              TextFormField(
+              MainTextField(
                 controller: itemsController,
-                decoration: const InputDecoration(
-                  labelText: 'Items (comma separated)',
-                  border: OutlineInputBorder(),
-                  hintText: 'e.g., Rice, Oil, Sugar',
-                ),
+
+                label: context.l10n.items,
+
+                hint: context.l10n.e_g_Rice_Oil_Sugar,
               ),
               const SizedBox(height: 24),
-              const Text('Select Icon:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
+              MainText(
+                context.l10n.select_icon,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
               const SizedBox(height: 8),
               _buildIconSelector(),
               const SizedBox(height: 24),
-              const Text('Select Color:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
+              MainText(
+                context.l10n.select_color,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
               const SizedBox(height: 8),
               _buildColorSelector(),
             ],
@@ -190,11 +221,21 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
           onTap: () => setState(() => selectedIcon = icon),
           child: Container(
             decoration: BoxDecoration(
-              color: isSelected ? selectedColor.withAlpha(40) : Colors.grey.shade100,
+              color:
+                  isSelected
+                      ? selectedColor.withAlpha(40)
+                      : Colors.grey.shade100,
               borderRadius: BorderRadius.circular(8),
-              border: isSelected ? Border.all(color: selectedColor, width: 2) : null,
+              border:
+                  isSelected
+                      ? Border.all(color: selectedColor, width: 2)
+                      : null,
             ),
-            child: Icon(icon, color: isSelected ? selectedColor : Colors.grey.shade600, size: 24),
+            child: Icon(
+              icon,
+              color: isSelected ? selectedColor : Colors.grey.shade600,
+              size: 24,
+            ),
           ),
         );
       },
@@ -221,9 +262,15 @@ class _AddDonationTypePageState extends State<AddDonationTypePage> {
             decoration: BoxDecoration(
               color: color,
               shape: BoxShape.circle,
-              border: isSelected ? Border.all(color: Colors.black, width: 3) : null,
+              border:
+                  isSelected
+                      ? Border.all(color: AppColors.black, width: 3)
+                      : null,
             ),
-            child: isSelected ? const Icon(Icons.check, color: Colors.white, size: 16) : null,
+            child:
+                isSelected
+                    ? const Icon(Icons.check, color: AppColors.white, size: 16)
+                    : null,
           ),
         );
       },

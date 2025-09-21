@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
+import '../../../../../shared/widgets/main_text.dart';
 import 'beneficiary_categories.dart'; // Import your model
 
 class EditBeneficiaryCategoryPage extends StatefulWidget {
@@ -34,8 +37,8 @@ class _EditBeneficiaryCategoryPageState
   }
 
   // Same lists as in the Add Page
-  final List<IconData> availableIcons = [ /* ... */ ];
-  final List<Color> availableColors = [ /* ... */ ];
+  final List<IconData> availableIcons = [/* ... */];
+  final List<Color> availableColors = [/* ... */];
   final List<String> priorities = ['Low', 'Medium', 'High', 'Critical'];
 
   void _updateCategory() {
@@ -44,12 +47,14 @@ class _EditBeneficiaryCategoryPageState
         id: widget.category.id, // Keep the same ID
         name: nameController.text,
         description: descriptionController.text,
-        beneficiaryCount: widget.category.beneficiaryCount, // Keep original count
+        beneficiaryCount:
+            widget.category.beneficiaryCount, // Keep original count
         icon: selectedIcon,
         color: selectedColor,
         priority: selectedPriority,
         isActive: widget.category.isActive, // Keep original status
-        criteria: criteriaController.text.split(',').map((e) => e.trim()).toList(),
+        criteria:
+            criteriaController.text.split(',').map((e) => e.trim()).toList(),
         lastUpdated: DateTime.now(), // Update timestamp
       );
       Navigator.pop(context, updatedCategory);
@@ -60,12 +65,9 @@ class _EditBeneficiaryCategoryPageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Category'),
+        title: MainText(context.l10n.edit_category),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.check),
-            onPressed: _updateCategory,
-          ),
+          IconButton(icon: const Icon(Icons.check), onPressed: _updateCategory),
         ],
       ),
       body: SingleChildScrollView(
@@ -75,12 +77,9 @@ class _EditBeneficiaryCategoryPageState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextFormField(
+              MainTextField(
                 controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Category Name',
-                  border: OutlineInputBorder(),
-                ),
+                label: context.l10n.category_name,
                 validator: (v) => v!.isEmpty ? 'Name is required' : null,
               ),
               const SizedBox(height: 16),
@@ -108,19 +107,24 @@ class _EditBeneficiaryCategoryPageState
                   labelText: 'Priority',
                   border: OutlineInputBorder(),
                 ),
-                items: priorities
-                    .map((p) => DropdownMenuItem(value: p, child: Text(p)))
-                    .toList(),
+                items:
+                    priorities
+                        .map((p) => DropdownMenuItem(value: p, child: Text(p)))
+                        .toList(),
                 onChanged: (v) => setState(() => selectedPriority = v!),
               ),
               const SizedBox(height: 24),
-              const Text('Select Icon',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              const Text(
+                'Select Icon',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 8),
               _buildIconSelector(),
               const SizedBox(height: 24),
-              const Text('Select Color',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              const Text(
+                'Select Color',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 8),
               _buildColorSelector(),
             ],
@@ -131,6 +135,13 @@ class _EditBeneficiaryCategoryPageState
   }
 
   // Helper widgets for icon and color selection (same as add page)
-  Widget _buildIconSelector() { /* ... implementation ... */ return Container();}
-  Widget _buildColorSelector() { /* ... implementation ... */ return Container();}
+  Widget _buildIconSelector() {
+    /* ... implementation ... */
+    return Container();
+  }
+
+  Widget _buildColorSelector() {
+    /* ... implementation ... */
+    return Container();
+  }
 }

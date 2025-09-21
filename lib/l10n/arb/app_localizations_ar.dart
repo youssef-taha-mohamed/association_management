@@ -544,5 +544,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addition => 'إضافة';
 
   @override
+  String get permissions => 'الأذونات:';
+
+  @override
+  String get users => 'المستخدمين';
+
+  @override
+  String get feature_coming_soon => ' - الميزة قادمة قريبا';
+
+  @override
+  String get delete_role => 'حذف الدور';
+
+  @override
+  String get are_sure_want_delete => 'هل أنت متأكد أنك تريد الحذف؟';
+
+  @override
   String get name => 'الأسم';
 }

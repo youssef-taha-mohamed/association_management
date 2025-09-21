@@ -549,5 +549,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addition => 'Addition';
 
   @override
+  String get permissions => 'Permissions:';
+
+  @override
+  String get users => 'Users';
+
+  @override
+  String get feature_coming_soon => 'Feature coming soon - ';
+
+  @override
+  String get delete_role => 'Delete Role';
+
+  @override
+  String get are_sure_want_delete => 'Are you sure you want to delete';
+
+  @override
   String get name => 'Name';
 }

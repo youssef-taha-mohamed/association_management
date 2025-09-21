@@ -176,5 +176,10 @@
   "delete":"يمسح",
   "edit_user":"تعديل المستخدم",
   "addition":"إضافة",
+  "permissions":"الأذونات:",
+  "users":"المستخدمين",
+  "feature_coming_soon":" - الميزة قادمة قريبا",
+  "delete_role":"حذف الدور",
+  "are_sure_want_delete":"هل أنت متأكد أنك تريد الحذف؟",
   "name": "الأسم"
 }

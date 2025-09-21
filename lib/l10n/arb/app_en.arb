@@ -176,5 +176,10 @@
   "delete":"Delete",
   "edit_user":"Edit User",
   "addition":"Addition",
+  "permissions":"Permissions:",
+  "users":"Users",
+  "feature_coming_soon":"Feature coming soon - ",
+  "delete_role":"Delete Role",
+  "are_sure_want_delete":"Are you sure you want to delete",
   "name": "Name"
 }

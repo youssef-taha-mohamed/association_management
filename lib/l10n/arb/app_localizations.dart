@@ -1154,6 +1154,36 @@ abstract class AppLocalizations {
   /// **'Addition'**
   String get addition;
 
+  /// No description provided for @permissions.
+  ///
+  /// In en, this message translates to:
+  /// **'Permissions:'**
+  String get permissions;
+
+  /// No description provided for @users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get users;
+
+  /// No description provided for @feature_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature coming soon - '**
+  String get feature_coming_soon;
+
+  /// No description provided for @delete_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Role'**
+  String get delete_role;
+
+  /// No description provided for @are_sure_want_delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete'**
+  String get are_sure_want_delete;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

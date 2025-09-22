@@ -2252,6 +2252,78 @@ abstract class AppLocalizations {
   /// **'View Employees'**
   String get view_employees;
 
+  /// No description provided for @criteria.
+  ///
+  /// In en, this message translates to:
+  /// **'Criteria'**
+  String get criteria;
+
+  /// No description provided for @last_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated'**
+  String get last_updated;
+
+  /// No description provided for @months_ago.
+  ///
+  /// In en, this message translates to:
+  /// **'months ago'**
+  String get months_ago;
+
+  /// No description provided for @updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get updated;
+
+  /// No description provided for @criteria_comma_separated.
+  ///
+  /// In en, this message translates to:
+  /// **'Criteria (comma separated)'**
+  String get criteria_comma_separated;
+
+  /// No description provided for @low_income_has_children.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Low income, Has children'**
+  String get low_income_has_children;
+
+  /// No description provided for @add_new_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Category'**
+  String get add_new_category;
+
+  /// No description provided for @search_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Search categories...'**
+  String get search_categories;
+
+  /// No description provided for @total_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Categories'**
+  String get total_categories;
+
+  /// No description provided for @total_beneficiaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Beneficiaries'**
+  String get total_beneficiaries;
+
+  /// No description provided for @no_categories_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No categories found'**
+  String get no_categories_found;
+
+  /// No description provided for @try_adjusting_your_search.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your search'**
+  String get try_adjusting_your_search;
+
   /// No description provided for @name.
   ///
   /// In en, this message translates to:

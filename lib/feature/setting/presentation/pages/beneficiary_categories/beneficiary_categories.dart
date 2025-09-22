@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:management/l10n/l10n.dart';
+import 'package:management/shared/widgets/main_textfield.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../shared/widgets/main_text.dart';
 import 'add_beneficiary_page.dart';
@@ -22,49 +23,54 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
   List<BeneficiaryCategory> categories = [
     BeneficiaryCategory(
       id: '1',
-      name: 'Families in Need',
-      description: 'Families facing financial hardship and basic needs',
+      name: 'الأسر المحتاجة',
+      description:
+          'الأسر التي تواجه صعوبات مالية وتحتاج لتوفير الاحتياجات الأساسية',
       beneficiaryCount: 245,
       icon: Icons.family_restroom,
       color: Colors.blue,
-      priority: 'High',
+      priority: 'عالية',
       isActive: true,
       criteria: [
-        'Household income below poverty line',
-        'Unemployed head of household',
-        'Medical expenses burden',
+        'دخل الأسرة أقل من خط الفقر',
+        'رب الأسرة عاطل عن العمل',
+        'عبء المصاريف الطبية',
       ],
       lastUpdated: DateTime.now().subtract(const Duration(days: 5)),
     ),
     BeneficiaryCategory(
       id: '2',
-      name: 'Elderly Care',
-      description: 'Senior citizens requiring support and assistance',
+      name: 'رعاية المسنين',
+      description: 'كبار السن الذين يحتاجون إلى دعم ومساعدة',
       beneficiaryCount: 128,
       icon: Icons.elderly,
       color: Colors.purple,
-      priority: 'High',
+      priority: 'عالية',
       isActive: true,
-      criteria: ['Age 65 and above', 'Limited mobility', 'Social isolation'],
+      criteria: [
+        'العمر 65 فما فوق',
+        'ضعف الحركة أو محدوديتها',
+        'العزلة الاجتماعية',
+      ],
       lastUpdated: DateTime.now().subtract(const Duration(days: 12)),
     ),
     BeneficiaryCategory(
       id: '3',
-      name: 'Orphans & Vulnerable Children',
-      description: 'Children without parental care or at risk',
+      name: 'الأيتام والأطفال المعرضون للخطر',
+      description: 'الأطفال بدون رعاية أبوية أو في ظروف خطرة',
       beneficiaryCount: 89,
       icon: Icons.child_care,
       color: Colors.orange,
-      priority: 'Critical',
+      priority: 'حرجة',
       isActive: true,
       criteria: [
-        'No living parents or guardians',
-        'Child-headed households',
-        'Street children',
+        'بدون والدين أو أوصياء أحياء',
+        'الأسر التي يعيلها أطفال',
+        'أطفال الشوارع',
       ],
       lastUpdated: DateTime.now().subtract(const Duration(days: 3)),
     ),
-    // ... other categories
+    // ... باقي الفئات
   ];
 
   @override
@@ -112,35 +118,22 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          MainTextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search categories...',
-              prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  _searchController.clear();
-                  setState(() {});
-                },
-              )
-                  : null,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.indigo.shade600),
-              ),
-              filled: true,
-              fillColor: Colors.grey.shade50,
-            ),
+
+            hint: context.l10n.search_categories,
+            prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+            suffixIcon:
+                _searchController.text.isNotEmpty
+                    ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                    )
+                    : null,
+
             onChanged: (value) => setState(() {}),
           ),
           const SizedBox(height: 16),
@@ -148,7 +141,7 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Total Categories',
+                  context.l10n.total_categories,
                   categories.length.toString(),
                   Icons.category,
                   Colors.blue,
@@ -157,7 +150,7 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Active',
+                  context.l10n.active,
                   categories.where((c) => c.isActive).length.toString(),
                   Icons.check_circle,
                   Colors.green,
@@ -166,7 +159,7 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  'Total Beneficiaries',
+                  context.l10n.total_beneficiaries,
                   categories
                       .fold(0, (sum, c) => sum + c.beneficiaryCount)
                       .toString(),
@@ -182,11 +175,11 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
   }
 
   Widget _buildStatCard(
-      String title,
-      String value,
-      IconData icon,
-      Color color,
-      ) {
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -198,17 +191,17 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
         children: [
           Icon(icon, color: color, size: 20),
           const SizedBox(height: 4),
-          Text(
+          MainText(
             value,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
-          Text(
+          MainText(
             title,
-            style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+            fontSize: 11,
+            color: Colors.grey.shade600,
             textAlign: TextAlign.center,
           ),
         ],
@@ -217,14 +210,15 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
   }
 
   Widget _buildCategoriesList() {
-    List<BeneficiaryCategory> filteredCategories = categories.where((c) {
-      return c.name
-          .toLowerCase()
-          .contains(_searchController.text.toLowerCase()) ||
-          c.description
-              .toLowerCase()
-              .contains(_searchController.text.toLowerCase());
-    }).toList();
+    List<BeneficiaryCategory> filteredCategories =
+        categories.where((c) {
+          return c.name.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              ) ||
+              c.description.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              );
+        }).toList();
 
     if (filteredCategories.isEmpty) {
       return Center(
@@ -237,18 +231,17 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
               color: Colors.grey.shade400,
             ),
             const SizedBox(height: 16),
-            Text(
-              'No categories found',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
-              ),
+            MainText(
+              context.l10n.no_categories_found,
+
+              fontSize: 18,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your search',
-              style: TextStyle(color: Colors.grey.shade500),
+            MainText(
+              context.l10n.try_adjusting_your_search,
+              color: Colors.grey.shade500,
             ),
           ],
         ),
@@ -277,7 +270,9 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
   void _navigateToAddCategoryPage() async {
     final newCategory = await Navigator.push<BeneficiaryCategory>(
       context,
-      MaterialPageRoute(builder: (context) => const AddBeneficiaryCategoryPage()),
+      MaterialPageRoute(
+        builder: (context) => const AddBeneficiaryCategoryPage(),
+      ),
     );
     if (newCategory != null) {
       setState(() {
@@ -285,7 +280,9 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Category "${newCategory.name}" added successfully!'),
+          content: MainText(
+            '${context.l10n.category} "${newCategory.name}" ${context.l10n.added_successfully}',
+          ),
           backgroundColor: Colors.green,
         ),
       );
@@ -296,7 +293,8 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
     final updatedCategory = await Navigator.push<BeneficiaryCategory>(
       context,
       MaterialPageRoute(
-          builder: (context) => EditBeneficiaryCategoryPage(category: category)),
+        builder: (context) => EditBeneficiaryCategoryPage(category: category),
+      ),
     );
     if (updatedCategory != null) {
       setState(() {
@@ -307,8 +305,9 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:
-          Text('Category "${updatedCategory.name}" updated successfully!'),
+          content: MainText(
+            '${context.l10n.category} "${updatedCategory.name}"${context.l10n.updated_successfully}',
+          ),
           backgroundColor: Colors.green,
         ),
       );
@@ -336,7 +335,7 @@ class _BeneficiaryCategoriesPageState extends State<BeneficiaryCategoriesPage> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
+        content: MainText(
           '${category.name} ${!category.isActive ? 'activated' : 'deactivated'}',
         ),
         backgroundColor: !category.isActive ? Colors.green : Colors.orange,

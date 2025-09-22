@@ -359,5 +359,17 @@
   "established":"مقرر",
   "location":"موقع",
   "view_employees":"عرض الموظفين",
+  "criteria":"معايير",
+  "last_updated":"آخر تحديث",
+  "months_ago":"منذ أشهر",
+  "updated":"تم التحديث",
+  "criteria_comma_separated":"المعايير (مفصولة بفاصلة)",
+  "low_income_has_children":"على سبيل المثال، دخل منخفض، لديه أطفال",
+  "add_new_category":"إضافة فئة جديدة",
+  "search_categories":"البحث عن الفئات...",
+  "total_categories":"إجمالي الفئات",
+  "total_beneficiaries":"إجمالي المستفيدين",
+  "no_categories_found":"لم يتم العثور على فئات",
+  "try_adjusting_your_search":"حاول تعديل بحثك",
   "name": "الأسم"
 }

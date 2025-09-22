@@ -1113,5 +1113,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get view_employees => 'View Employees';
 
   @override
+  String get criteria => 'Criteria';
+
+  @override
+  String get last_updated => 'Last Updated';
+
+  @override
+  String get months_ago => 'months ago';
+
+  @override
+  String get updated => 'Updated';
+
+  @override
+  String get criteria_comma_separated => 'Criteria (comma separated)';
+
+  @override
+  String get low_income_has_children => 'e.g., Low income, Has children';
+
+  @override
+  String get add_new_category => 'Add New Category';
+
+  @override
+  String get search_categories => 'Search categories...';
+
+  @override
+  String get total_categories => 'Total Categories';
+
+  @override
+  String get total_beneficiaries => 'Total Beneficiaries';
+
+  @override
+  String get no_categories_found => 'No categories found';
+
+  @override
+  String get try_adjusting_your_search => 'Try adjusting your search';
+
+  @override
   String get name => 'Name';
 }

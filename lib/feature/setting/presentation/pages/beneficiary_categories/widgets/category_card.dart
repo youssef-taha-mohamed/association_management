@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:management/l10n/l10n.dart';
+import '../../../../../../shared/widgets/main_text.dart';
 import '../beneficiary_categories.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -61,18 +63,18 @@ class CategoryCard extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: Text(
+                              child: MainText(
                                 category.name,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      category.isActive
-                                          ? Colors.black87
-                                          : Colors.grey.shade600,
-                                ),
+
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color:
+                                    category.isActive
+                                        ? Colors.black87
+                                        : Colors.grey.shade600,
                               ),
                             ),
+
                             if (!category.isActive)
                               Container(
                                 padding: EdgeInsets.symmetric(
@@ -83,24 +85,23 @@ class CategoryCard extends StatelessWidget {
                                   color: Colors.grey.shade200,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: Text(
-                                  'INACTIVE',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey.shade600,
-                                  ),
+                                child: MainText(
+                                  context.l10n.inactive,
+
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey.shade600,
                                 ),
                               ),
                           ],
                         ),
                         SizedBox(height: 4),
-                        Text(
+                        MainText(
                           category.description,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey.shade600,
-                          ),
+
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
+
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -118,13 +119,12 @@ class CategoryCard extends StatelessWidget {
                                 ).withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
+                              child: MainText(
                                 category.priority,
-                                style: TextStyle(
-                                  color: _getPriorityColor(category.priority),
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                ),
+
+                                color: _getPriorityColor(category.priority),
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             SizedBox(width: 8),
@@ -137,13 +137,12 @@ class CategoryCard extends StatelessWidget {
                                 color: Colors.blue.shade50,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
-                                '${category.beneficiaryCount} beneficiaries',
-                                style: TextStyle(
-                                  color: Colors.blue.shade700,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              child: MainText(
+                                '${category.beneficiaryCount} ${context.l10n.beneficiaries}',
+
+                                color: Colors.blue.shade700,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
@@ -154,23 +153,23 @@ class CategoryCard extends StatelessWidget {
                   PopupMenuButton<String>(
                     icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
                     onSelected: (value) {
-                      if (value == 'view') {
+                      if (value == context.l10n.view) {
                         _showCategoryDetails(context, category);
                       }
-                      if (value == 'edit') {
+                      if (value == context.l10n.edit) {
                         editCategory(); // استدعاء الدالة الجديدة
                       }
-                      if (value == 'toggle') {
+                      if (value == context.l10n.toggle) {
                         toggleCategoryStatus();
                       }
-                      if (value == 'delete') {
+                      if (value == context.l10n.delete) {
                         deleteCategory();
                       }
                     },
                     itemBuilder:
                         (context) => [
-                          const PopupMenuItem(
-                            value: 'view',
+                          PopupMenuItem(
+                            value: context.l10n.view,
                             child: Row(
                               children: [
                                 Icon(
@@ -179,22 +178,22 @@ class CategoryCard extends StatelessWidget {
                                   color: Colors.blue,
                                 ),
                                 SizedBox(width: 8),
-                                Text('View Details'),
-                              ],
-                            ),
-                          ),
-                          const PopupMenuItem(
-                            value: 'edit',
-                            child: Row(
-                              children: [
-                                Icon(Icons.edit, size: 20, color: Colors.green),
-                                SizedBox(width: 8),
-                                Text('Edit'),
+                                MainText(context.l10n.view_details),
                               ],
                             ),
                           ),
                           PopupMenuItem(
-                            value: 'toggle',
+                            value: context.l10n.edit,
+                            child: Row(
+                              children: [
+                                Icon(Icons.edit, size: 20, color: Colors.green),
+                                SizedBox(width: 8),
+                                MainText(context.l10n.edit),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: context.l10n.toggle,
                             child: Row(
                               children: [
                                 Icon(
@@ -208,19 +207,21 @@ class CategoryCard extends StatelessWidget {
                                           : Colors.green,
                                 ),
                                 const SizedBox(width: 8),
-                                Text(
-                                  category.isActive ? 'Deactivate' : 'Activate',
+                                MainText(
+                                  category.isActive
+                                      ? context.l10n.deactivate
+                                      : context.l10n.activate,
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
-                            value: 'delete',
+                          PopupMenuItem(
+                            value: context.l10n.delete,
                             child: Row(
                               children: [
                                 Icon(Icons.delete, size: 20, color: Colors.red),
                                 SizedBox(width: 8),
-                                Text('Delete'),
+                                MainText(context.l10n.delete),
                               ],
                             ),
                           ),
@@ -229,9 +230,10 @@ class CategoryCard extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12),
-              Text(
-                'Updated ${_formatDate(category.lastUpdated)}',
-                style: TextStyle(color: Colors.grey.shade500, fontSize: 12),
+              MainText(
+                '${context.l10n.updated} ${_formatDate(category.lastUpdated)}',
+                color: Colors.grey.shade500,
+                fontSize: 12,
               ),
             ],
           ),
@@ -242,13 +244,13 @@ class CategoryCard extends StatelessWidget {
 
   Color _getPriorityColor(String priority) {
     switch (priority.toLowerCase()) {
-      case 'critical':
+      case 'شديد الأهمية':
         return Colors.red;
-      case 'high':
+      case 'عالي':
         return Colors.orange;
-      case 'medium':
+      case 'واسطة':
         return Colors.blue;
-      case 'low':
+      case 'قليل':
         return Colors.green;
       default:
         return Colors.grey;
@@ -292,7 +294,7 @@ class CategoryCard extends StatelessWidget {
                   child: Icon(category.icon, color: category.color, size: 20),
                 ),
                 SizedBox(width: 12),
-                Expanded(child: Text(category.name)),
+                Expanded(child: MainText(category.name)),
               ],
             ),
             content: SingleChildScrollView(
@@ -301,35 +303,34 @@ class CategoryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildDetailRow(
-                    'Status',
-                    category.isActive ? 'Active' : 'Inactive',
+                    context.l10n.status,
+                    category.isActive
+                        ? context.l10n.active
+                        : context.l10n.inactive,
                   ),
-                  _buildDetailRow('Priority', category.priority),
+                  _buildDetailRow(context.l10n.priority, category.priority),
                   _buildDetailRow(
-                    'Beneficiaries',
+                    context.l10n.beneficiaries,
                     category.beneficiaryCount.toString(),
                   ),
                   _buildDetailRow(
-                    'Last Updated',
+                    context.l10n.last_updated,
                     _formatDate(category.lastUpdated),
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    'Description:',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                  MainText(
+                    context.l10n.description,
+                    fontWeight: FontWeight.w500,
                   ),
                   SizedBox(height: 4),
-                  Text(category.description),
+                  MainText(category.description),
                   SizedBox(height: 12),
-                  Text(
-                    'Criteria:',
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
+                  MainText(context.l10n.criteria, fontWeight: FontWeight.w500),
                   SizedBox(height: 4),
                   ...category.criteria.map(
                     (criterion) => Padding(
                       padding: EdgeInsets.only(bottom: 4),
-                      child: Text('• $criterion'),
+                      child: MainText('• $criterion'),
                     ),
                   ),
                 ],
@@ -338,14 +339,14 @@ class CategoryCard extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
+                child: MainText(context.l10n.close),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                   editCategory;
                 },
-                child: Text('Edit'),
+                child: MainText(context.l10n.edit),
               ),
             ],
           ),
@@ -360,15 +361,14 @@ class CategoryCard extends StatelessWidget {
         children: [
           SizedBox(
             width: 100,
-            child: Text(
+            child: MainText(
               '$label:',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey.shade700,
-              ),
+
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade700,
             ),
           ),
-          Expanded(child: Text(value, style: TextStyle(color: Colors.black87))),
+          Expanded(child: MainText(value, color: Colors.black87)),
         ],
       ),
     );

@@ -359,5 +359,17 @@
   "established":"Established",
   "location":"Location",
   "view_employees":"View Employees",
+  "criteria":"Criteria",
+  "last_updated":"Last Updated",
+  "months_ago":"months ago",
+  "updated":"Updated",
+  "criteria_comma_separated":"Criteria (comma separated)",
+  "low_income_has_children":"e.g., Low income, Has children",
+  "add_new_category":"Add New Category",
+  "search_categories":"Search categories...",
+  "total_categories":"Total Categories",
+  "total_beneficiaries":"Total Beneficiaries",
+  "no_categories_found":"No categories found",
+  "try_adjusting_your_search":"Try adjusting your search",
   "name": "Name"
 }

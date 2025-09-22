@@ -1109,5 +1109,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get view_employees => 'عرض الموظفين';
 
   @override
+  String get criteria => 'معايير';
+
+  @override
+  String get last_updated => 'آخر تحديث';
+
+  @override
+  String get months_ago => 'منذ أشهر';
+
+  @override
+  String get updated => 'تم التحديث';
+
+  @override
+  String get criteria_comma_separated => 'المعايير (مفصولة بفاصلة)';
+
+  @override
+  String get low_income_has_children =>
+      'على سبيل المثال، دخل منخفض، لديه أطفال';
+
+  @override
+  String get add_new_category => 'إضافة فئة جديدة';
+
+  @override
+  String get search_categories => 'البحث عن الفئات...';
+
+  @override
+  String get total_categories => 'إجمالي الفئات';
+
+  @override
+  String get total_beneficiaries => 'إجمالي المستفيدين';
+
+  @override
+  String get no_categories_found => 'لم يتم العثور على فئات';
+
+  @override
+  String get try_adjusting_your_search => 'حاول تعديل بحثك';
+
+  @override
   String get name => 'الأسم';
 }

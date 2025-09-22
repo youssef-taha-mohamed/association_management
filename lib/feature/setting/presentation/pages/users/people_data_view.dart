@@ -393,13 +393,12 @@ class _PeopleDataViewState extends State<PeopleDataView> {
                                     Expanded(
                                       child: OutlinedButton(
                                         onPressed: () => Navigator.pop(context),
-                                        child: Text(
-                                          'إلغاء',
-                                          style: TextStyle(
-                                            color: Colors.grey[600],
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                        child: MainText(
+                                          context.l10n.cancellation,
+
+                                          color: Colors.grey[600],
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                         style: OutlinedButton.styleFrom(
                                           padding: EdgeInsets.symmetric(
